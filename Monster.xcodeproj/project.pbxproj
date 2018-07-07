@@ -63,6 +63,8 @@
 		9B87074C20EB639900156E39 /* SliderMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B87074A20EB639900156E39 /* SliderMenuView.xib */; };
 		9B9DFD3520EF7CA900E56B2F /* CapitalDetailsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9DFD3320EF7CA900E56B2F /* CapitalDetailsViewCell.m */; };
 		9B9DFD3620EF7CA900E56B2F /* CapitalDetailsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B9DFD3420EF7CA900E56B2F /* CapitalDetailsViewCell.xib */; };
+		9BA85A9820F0AC3F00C096B0 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA85A9620F0AC3F00C096B0 /* OrderDetailViewController.m */; };
+		9BA85A9920F0AC3F00C096B0 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA85A9720F0AC3F00C096B0 /* OrderDetailViewController.xib */; };
 		9BB945D820EC63C400B8D7BE /* NavigtionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB945D720EC63C400B8D7BE /* NavigtionController.m */; };
 		9BB945DF20EC6B2600B8D7BE /* UINavigationController+JZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB945DA20EC6B2500B8D7BE /* UINavigationController+JZExtension.m */; };
 		9BB945E020EC6B2600B8D7BE /* UIViewController+JZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB945DD20EC6B2600B8D7BE /* UIViewController+JZExtension.m */; };
@@ -208,6 +210,9 @@
 		9B9DFD3220EF7CA900E56B2F /* CapitalDetailsViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalDetailsViewCell.h; sourceTree = "<group>"; };
 		9B9DFD3320EF7CA900E56B2F /* CapitalDetailsViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalDetailsViewCell.m; sourceTree = "<group>"; };
 		9B9DFD3420EF7CA900E56B2F /* CapitalDetailsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapitalDetailsViewCell.xib; sourceTree = "<group>"; };
+		9BA85A9520F0AC3F00C096B0 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
+		9BA85A9620F0AC3F00C096B0 /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
+		9BA85A9720F0AC3F00C096B0 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
 		9BB945D620EC63C400B8D7BE /* NavigtionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigtionController.h; sourceTree = "<group>"; };
 		9BB945D720EC63C400B8D7BE /* NavigtionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigtionController.m; sourceTree = "<group>"; };
 		9BB945DA20EC6B2500B8D7BE /* UINavigationController+JZExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+JZExtension.m"; sourceTree = "<group>"; };
@@ -481,6 +486,9 @@
 				D735D7AB20F0A696007E2B7C /* OrderHistoryViewController.h */,
 				D735D7AC20F0A696007E2B7C /* OrderHistoryViewController.m */,
 				D735D7AD20F0A696007E2B7C /* OrderHistoryViewController.xib */,
+				9BA85A9520F0AC3F00C096B0 /* OrderDetailViewController.h */,
+				9BA85A9620F0AC3F00C096B0 /* OrderDetailViewController.m */,
+				9BA85A9720F0AC3F00C096B0 /* OrderDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -691,6 +699,7 @@
 				9B42212A20EDE944009D5A8A /* EntrustNowViewCell.xib in Resources */,
 				9B7EEE8D20E9C39000DF88B4 /* Main.storyboard in Resources */,
 				9BB9461F20ECE85F00B8D7BE /* MarketTableViewCell.xib in Resources */,
+				9BA85A9920F0AC3F00C096B0 /* OrderDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,6 +817,7 @@
 				9B7EEE9520E9C39200DF88B4 /* main.m in Sources */,
 				9B7EEECE20EA288400DF88B4 /* MRUserAccount.m in Sources */,
 				9B87074020EB453600156E39 /* HomePageViewController.m in Sources */,
+				9BA85A9820F0AC3F00C096B0 /* OrderDetailViewController.m in Sources */,
 				9B7EEF1320EA322E00DF88B4 /* JSONKit.m in Sources */,
 				9B87073C20EB3B3600156E39 /* MRBaseModel.m in Sources */,
 				D735D7AE20F0A696007E2B7C /* OrderHistoryViewController.m in Sources */,

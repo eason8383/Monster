@@ -8,6 +8,7 @@
 
 #import "MyOrderViewController.h"
 #import "EntrustNowViewCell.h"
+#import "OrderDetailViewController.h"
 #import "OrderHistoryViewController.h"
 
 #define NOWCell 2
@@ -97,6 +98,9 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    OrderDetailViewController *odVc = [[OrderDetailViewController alloc]initWithNibName:@"OrderDetailViewController" bundle:nil];
+    [self homeDefaultPushController:odVc];
     
 }
 

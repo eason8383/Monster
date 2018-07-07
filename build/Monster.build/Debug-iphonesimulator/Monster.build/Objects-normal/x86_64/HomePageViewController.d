@@ -1,29 +1,29 @@
 dependencies: \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/HomePageViewController.m \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Supporting\ Files/PrefixHeader.pch \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JSONKit.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/MRWebClient.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/MRUserAccount.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/MRBaseModel.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIColor+JKRColor.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/Common.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIViewController+Alert.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/Reachability.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/InputVerifyTool.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/JZNavigationExtension.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/UINavigationController+JZExtension.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/UIViewController+JZExtension.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/HomePageViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/RNFrostedSidebar.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/View/SliderMenuView.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/View/HeadTableViewCell.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/View/MACDTableViewCell.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ExponentialCell.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/View/CoinTrendsCell.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/CoinDetailViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MarketViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MyAssetViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MyOrderViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/IdentityViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SecurityViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SetupViewController.h
+  /Users/eason/Monster/Monster/Controller/HomePageViewController.m \
+  /Users/eason/Monster/Monster/Supporting\ Files/PrefixHeader.pch \
+  /Users/eason/Monster/Monster/Tools/JSONKit.h \
+  /Users/eason/Monster/Monster/Tools/MRWebClient.h \
+  /Users/eason/Monster/Monster/Model/MRUserAccount.h \
+  /Users/eason/Monster/Monster/Model/MRBaseModel.h \
+  /Users/eason/Monster/Monster/Tools/UIColor+JKRColor.h \
+  /Users/eason/Monster/Monster/Tools/Common.h \
+  /Users/eason/Monster/Monster/Tools/UIViewController+Alert.h \
+  /Users/eason/Monster/Monster/Tools/Reachability.h \
+  /Users/eason/Monster/Monster/Tools/InputVerifyTool.h \
+  /Users/eason/Monster/Monster/Tools/JZNavigationExtension/JZNavigationExtension.h \
+  /Users/eason/Monster/Monster/Tools/JZNavigationExtension/UINavigationController+JZExtension.h \
+  /Users/eason/Monster/Monster/Tools/JZNavigationExtension/UIViewController+JZExtension.h \
+  /Users/eason/Monster/Monster/Controller/HomePageViewController.h \
+  /Users/eason/Monster/Monster/Tools/RNFrostedSidebar.h \
+  /Users/eason/Monster/Monster/View/SliderMenuView.h \
+  /Users/eason/Monster/Monster/View/HeadTableViewCell.h \
+  /Users/eason/Monster/Monster/View/MACDTableViewCell.h \
+  /Users/eason/Monster/Monster/View/ExponentialCell.h \
+  /Users/eason/Monster/Monster/View/CoinTrendsCell.h \
+  /Users/eason/Monster/Monster/Controller/CoinDetailViewController.h \
+  /Users/eason/Monster/Monster/Controller/MarketViewController.h \
+  /Users/eason/Monster/Monster/Controller/MyAssetViewController.h \
+  /Users/eason/Monster/Monster/Controller/MyOrderViewController.h \
+  /Users/eason/Monster/Monster/Controller/IdentityViewController.h \
+  /Users/eason/Monster/Monster/Controller/SecurityViewController.h \
+  /Users/eason/Monster/Monster/Controller/SetupViewController.h

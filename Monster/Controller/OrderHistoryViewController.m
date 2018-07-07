@@ -8,6 +8,7 @@
 
 #import "OrderHistoryViewController.h"
 #import "CapitalDetailsViewCell.h"
+#import "OrderDetailViewController.h"
 
 #define NOWCell 8
 
@@ -74,6 +75,18 @@ static NSString *capitalViewCellIdentifier = @"capitalDeViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    OrderDetailViewController *odVc = [[OrderDetailViewController alloc]initWithNibName:@"OrderDetailViewController" bundle:nil];
+    
+    [self homeDefaultPushController:odVc];
+}
+
+- (void)homeDefaultPushController:(UIViewController*)cV{
+    cV.jz_navigationBarHidden = NO;
+    [cV setJz_navigationBarTintColor:[UIColor blackColor]];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    backBtn.tintColor = [UIColor whiteColor];
+    [self.navigationItem setBackBarButtonItem:backBtn];
+    [self.navigationController pushViewController:cV animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
