@@ -1,0 +1,36 @@
+//
+// Prefix header
+//
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import <UIKit/UIKit.h>
+#import "JSONKit.h"
+#import "MRWebClient.h"
+#import "MRUserAccount.h"
+#import "UIColor+JKRColor.h"
+#import "Common.h"
+#import "UIViewController+Alert.h"
+#import "Reachability.h"
+#import "InputVerifyTool.h"
+
+
+#endif
+
+#define MREnvironment_TEST      @"TEST"
+#define MREnvironment_Public    @"PUBLIC"
+
+
+#define printf_console printf
+
+//Test
+#define TEST_URL @"testweb.monstermarket.cn"
+
+//poblic
+#define PUBLIC_URL @"www.monster.one"
+
+
+//ScreenSize
+#define kScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
