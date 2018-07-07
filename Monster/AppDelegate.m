@@ -33,13 +33,13 @@
 - (void)initScreen{
     
 //   LoginViewController *loginController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-//    
-//    
-//    
+//
+//
+//
 //    [loginController setLoginHandler:^(NSString *clientId) {
-//            
+//
 //            [self readyToShowMainController];
-//            
+//
 //            NSLog(@"So you get message from Login Handler:%@",clientId);
 //    }];
 //    _window.rootViewController = loginController;

@@ -7,6 +7,9 @@
 //
 
 #import "SecurityViewController.h"
+#import "BindingMobileViewController.h"
+#import "BindingMailBoxViewController.h"
+#import "SetFCodeViewController.h"
 
 @interface SecurityViewController ()
 
@@ -31,14 +34,45 @@
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)tapToVerify:(UIButton*)btn{
+    UIViewController *cV = [[UIViewController alloc]init];
+    switch (btn.tag) {
+        case 0:{
+            BindingMobileViewController *bMobileVc = [[BindingMobileViewController alloc]initWithNibName:@"BindingMobileViewController" bundle:nil];
+            cV = bMobileVc;
+        }
+            break;
+        case 1:{
+            
+        }
+            break;
+        case 2:{
+            SetFCodeViewController *sfVc = [[SetFCodeViewController alloc]initWithNibName:@"SetFCodeViewController" bundle:nil];
+            cV = sfVc;
+        }
+            
+            break;
+        case 3:{
+            BindingMailBoxViewController *bMailVc = [[BindingMailBoxViewController alloc]initWithNibName:@"BindingMailBoxViewController" bundle:nil];
+            cV = bMailVc;
+        }
+            
+            break;
+            
+        default:
+            break;
+    }
+    [self homeDefaultPushController:cV];
 }
-*/
+
+- (void)homeDefaultPushController:(UIViewController*)cV{
+    cV.jz_navigationBarHidden = NO;
+    [cV setJz_navigationBarTintColor:[UIColor blackColor]];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    backBtn.tintColor = [UIColor whiteColor];
+    [self.navigationItem setBackBarButtonItem:backBtn];
+    [self.navigationController pushViewController:cV animated:YES];
+}
+
 
 @end

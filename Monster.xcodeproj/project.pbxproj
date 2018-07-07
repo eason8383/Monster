@@ -93,6 +93,12 @@
 		9BB9461F20ECE85F00B8D7BE /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9461D20ECE85F00B8D7BE /* MarketTableViewCell.xib */; };
 		D735D7AE20F0A696007E2B7C /* OrderHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D735D7AC20F0A696007E2B7C /* OrderHistoryViewController.m */; };
 		D735D7AF20F0A696007E2B7C /* OrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7AD20F0A696007E2B7C /* OrderHistoryViewController.xib */; };
+		D735D7B320F0B531007E2B7C /* BindingMobileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D735D7B120F0B531007E2B7C /* BindingMobileViewController.m */; };
+		D735D7B420F0B531007E2B7C /* BindingMobileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7B220F0B531007E2B7C /* BindingMobileViewController.xib */; };
+		D735D7B820F0BECC007E2B7C /* BindingMailBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D735D7B620F0BECC007E2B7C /* BindingMailBoxViewController.m */; };
+		D735D7B920F0BECC007E2B7C /* BindingMailBoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7B720F0BECC007E2B7C /* BindingMailBoxViewController.xib */; };
+		D735D7BD20F0C17D007E2B7C /* SetFCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D735D7BB20F0C17D007E2B7C /* SetFCodeViewController.m */; };
+		D735D7BE20F0C17D007E2B7C /* SetFCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7BC20F0C17D007E2B7C /* SetFCodeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,6 +268,15 @@
 		D735D7AB20F0A696007E2B7C /* OrderHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderHistoryViewController.h; sourceTree = "<group>"; };
 		D735D7AC20F0A696007E2B7C /* OrderHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderHistoryViewController.m; sourceTree = "<group>"; };
 		D735D7AD20F0A696007E2B7C /* OrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryViewController.xib; sourceTree = "<group>"; };
+		D735D7B020F0B531007E2B7C /* BindingMobileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingMobileViewController.h; sourceTree = "<group>"; };
+		D735D7B120F0B531007E2B7C /* BindingMobileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingMobileViewController.m; sourceTree = "<group>"; };
+		D735D7B220F0B531007E2B7C /* BindingMobileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindingMobileViewController.xib; sourceTree = "<group>"; };
+		D735D7B520F0BECC007E2B7C /* BindingMailBoxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingMailBoxViewController.h; sourceTree = "<group>"; };
+		D735D7B620F0BECC007E2B7C /* BindingMailBoxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingMailBoxViewController.m; sourceTree = "<group>"; };
+		D735D7B720F0BECC007E2B7C /* BindingMailBoxViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindingMailBoxViewController.xib; sourceTree = "<group>"; };
+		D735D7BA20F0C17D007E2B7C /* SetFCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetFCodeViewController.h; sourceTree = "<group>"; };
+		D735D7BB20F0C17D007E2B7C /* SetFCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetFCodeViewController.m; sourceTree = "<group>"; };
+		D735D7BC20F0C17D007E2B7C /* SetFCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetFCodeViewController.xib; sourceTree = "<group>"; };
 		F818C59F4A61CE9D392675B5 /* Pods-MonsterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonsterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MonsterUITests/Pods-MonsterUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -489,6 +504,15 @@
 				9BA85A9520F0AC3F00C096B0 /* OrderDetailViewController.h */,
 				9BA85A9620F0AC3F00C096B0 /* OrderDetailViewController.m */,
 				9BA85A9720F0AC3F00C096B0 /* OrderDetailViewController.xib */,
+				D735D7B020F0B531007E2B7C /* BindingMobileViewController.h */,
+				D735D7B120F0B531007E2B7C /* BindingMobileViewController.m */,
+				D735D7B220F0B531007E2B7C /* BindingMobileViewController.xib */,
+				D735D7B520F0BECC007E2B7C /* BindingMailBoxViewController.h */,
+				D735D7B620F0BECC007E2B7C /* BindingMailBoxViewController.m */,
+				D735D7B720F0BECC007E2B7C /* BindingMailBoxViewController.xib */,
+				D735D7BA20F0C17D007E2B7C /* SetFCodeViewController.h */,
+				D735D7BB20F0C17D007E2B7C /* SetFCodeViewController.m */,
+				D735D7BC20F0C17D007E2B7C /* SetFCodeViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -669,6 +693,7 @@
 			files = (
 				9B42212020EDB9BD009D5A8A /* TradeViewController.xib in Resources */,
 				9B4F1DA320EF545F00DEF626 /* SetupViewController.xib in Resources */,
+				D735D7B920F0BECC007E2B7C /* BindingMailBoxViewController.xib in Resources */,
 				9B4F1DA820EF57CF00DEF626 /* ChargeViewController.xib in Resources */,
 				9B7EEEC420EA030A00DF88B4 /* LoginViewController.xib in Resources */,
 				9BB9461A20ECE76700B8D7BE /* MarketViewController.xib in Resources */,
@@ -679,11 +704,13 @@
 				9BB945F920EC7CEE00B8D7BE /* ExponentialView.xib in Resources */,
 				9B4F1D9920EF41D400DEF626 /* UpLoadImagView.xib in Resources */,
 				9B4F1D8020EE32E600DEF626 /* MyAssetTableViewCell.xib in Resources */,
+				D735D7B420F0B531007E2B7C /* BindingMobileViewController.xib in Resources */,
 				9BB9460820ECB19000B8D7BE /* ExponentialCell.xib in Resources */,
 				9BB945EC20EC6E8300B8D7BE /* HeadTableViewCell.xib in Resources */,
 				9B7EEE9220E9C39200DF88B4 /* LaunchScreen.storyboard in Resources */,
 				9B4F1D9420EF408900DEF626 /* IdentityViewController.xib in Resources */,
 				9BB9460D20ECB5C100B8D7BE /* CoinTrendsCell.xib in Resources */,
+				D735D7BE20F0C17D007E2B7C /* SetFCodeViewController.xib in Resources */,
 				9BB945F120EC6ED200B8D7BE /* MainPageHeadView.xib in Resources */,
 				9B4F1D9E20EF525F00DEF626 /* SecurityViewController.xib in Resources */,
 				9BB9460320ECA61900B8D7BE /* HighLowLabelView.xib in Resources */,
@@ -818,6 +845,7 @@
 				9B7EEECE20EA288400DF88B4 /* MRUserAccount.m in Sources */,
 				9B87074020EB453600156E39 /* HomePageViewController.m in Sources */,
 				9BA85A9820F0AC3F00C096B0 /* OrderDetailViewController.m in Sources */,
+				D735D7B320F0B531007E2B7C /* BindingMobileViewController.m in Sources */,
 				9B7EEF1320EA322E00DF88B4 /* JSONKit.m in Sources */,
 				9B87073C20EB3B3600156E39 /* MRBaseModel.m in Sources */,
 				D735D7AE20F0A696007E2B7C /* OrderHistoryViewController.m in Sources */,
@@ -825,8 +853,10 @@
 				9BB9461920ECE76700B8D7BE /* MarketViewController.m in Sources */,
 				9BB945F720EC7CD800B8D7BE /* ExponentialView.m in Sources */,
 				9B4F1D9D20EF525F00DEF626 /* SecurityViewController.m in Sources */,
+				D735D7B820F0BECC007E2B7C /* BindingMailBoxViewController.m in Sources */,
 				9B4F1D7A20EE328B00DEF626 /* MyAssetViewController.m in Sources */,
 				9B7EEE8720E9C39000DF88B4 /* AppDelegate.m in Sources */,
+				D735D7BD20F0C17D007E2B7C /* SetFCodeViewController.m in Sources */,
 				9BB945E720EC6B5300B8D7BE /* _JZNavigationDelegating.m in Sources */,
 				9B42211F20EDB9BD009D5A8A /* TradeViewController.m in Sources */,
 			);
