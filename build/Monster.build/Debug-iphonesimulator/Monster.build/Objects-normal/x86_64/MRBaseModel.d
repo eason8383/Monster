@@ -1,12 +1,15 @@
 dependencies: \
-  /Users/eason/Documents/WorkSpace/Monster/Monster/Model/MRBaseModel.m \
-  /Users/eason/Documents/WorkSpace/Monster/Monster/Supporting\ Files/PrefixHeader.pch \
-  /Users/eason/Documents/WorkSpace/Monster/Monster/Tools/JSONKit.h \
-  /Users/eason/Documents/WorkSpace/Monster/Monster/Tools/MRWebClient.h \
-  /Users/eason/Documents/WorkSpace/Monster/Monster/Model/MRUserAccount.h \
-  /Users/eason/Documents/WorkSpace/Monster/Monster/Model/MRBaseModel.h \
-  /Users/eason/Documents/WorkSpace/Monster/Monster/Tools/UIColor+JKRColor.h \
-  /Users/eason/Documents/WorkSpace/Monster/Monster/Tools/Common.h \
-  /Users/eason/Documents/WorkSpace/Monster/Monster/Tools/UIViewController+Alert.h \
-  /Users/eason/Documents/WorkSpace/Monster/Monster/Tools/Reachability.h \
-  /Users/eason/Documents/WorkSpace/Monster/Monster/Tools/InputVerifyTool.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/MRBaseModel.m \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Supporting\ Files/PrefixHeader.pch \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JSONKit.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/MRWebClient.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/MRUserAccount.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/MRBaseModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIColor+JKRColor.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/Common.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIViewController+Alert.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/Reachability.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/InputVerifyTool.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/JZNavigationExtension.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/UINavigationController+JZExtension.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/UIViewController+JZExtension.h

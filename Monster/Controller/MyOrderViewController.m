@@ -8,6 +8,7 @@
 
 #import "MyOrderViewController.h"
 #import "EntrustNowViewCell.h"
+#import "OrderHistoryViewController.h"
 
 #define NOWCell 2
 
@@ -32,14 +33,24 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (void)viewWillAppear:(BOOL)animated{
 //    UIBarButtonItem *timeFilterBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"watch"] style:UIBarButtonItemStylePlain target:self action:@selector(showFilter:)];
-    UIBarButtonItem *timeFilterBtn = [[UIBarButtonItem alloc]initWithTitle:@"历史委托>" style:UIBarButtonItemStylePlain target:self action:@selector(showFilter:)];
+    UIBarButtonItem *timeFilterBtn = [[UIBarButtonItem alloc]initWithTitle:@"历史委托>" style:UIBarButtonItemStylePlain target:self action:@selector(showHistory:)];
     timeFilterBtn.tintColor = [UIColor whiteColor];
     
     [self.navigationItem setRightBarButtonItem:timeFilterBtn];
 }
 
-- (void)showFilter:(id)sender{
-    
+- (void)showHistory:(id)sender{
+    OrderHistoryViewController *hisVc = [[OrderHistoryViewController alloc]initWithNibName:@"OrderHistoryViewController" bundle:nil];
+    [self homeDefaultPushController:hisVc];
+}
+
+- (void)homeDefaultPushController:(UIViewController*)cV{
+    cV.jz_navigationBarHidden = NO;
+    [cV setJz_navigationBarTintColor:[UIColor blackColor]];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    backBtn.tintColor = [UIColor whiteColor];
+    [self.navigationItem setBackBarButtonItem:backBtn];
+    [self.navigationController pushViewController:cV animated:YES];
 }
 
 - (void)loadView{

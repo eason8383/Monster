@@ -89,6 +89,8 @@
 		9BB9461A20ECE76700B8D7BE /* MarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9461820ECE76700B8D7BE /* MarketViewController.xib */; };
 		9BB9461E20ECE85F00B8D7BE /* MarketTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9461C20ECE85F00B8D7BE /* MarketTableViewCell.m */; };
 		9BB9461F20ECE85F00B8D7BE /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9461D20ECE85F00B8D7BE /* MarketTableViewCell.xib */; };
+		D735D7AE20F0A696007E2B7C /* OrderHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D735D7AC20F0A696007E2B7C /* OrderHistoryViewController.m */; };
+		D735D7AF20F0A696007E2B7C /* OrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7AD20F0A696007E2B7C /* OrderHistoryViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -252,6 +254,9 @@
 		9BD78A1320EB1859005CB088 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		9DC00ABAFEF852810B94CD50 /* libPods-MonsterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MonsterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7C3C3307B61D2F8DC3C3B4 /* Pods-MonsterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonsterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MonsterTests/Pods-MonsterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D735D7AB20F0A696007E2B7C /* OrderHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderHistoryViewController.h; sourceTree = "<group>"; };
+		D735D7AC20F0A696007E2B7C /* OrderHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderHistoryViewController.m; sourceTree = "<group>"; };
+		D735D7AD20F0A696007E2B7C /* OrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryViewController.xib; sourceTree = "<group>"; };
 		F818C59F4A61CE9D392675B5 /* Pods-MonsterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonsterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MonsterUITests/Pods-MonsterUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -473,6 +478,9 @@
 				9B4F1DB320EF6B9700DEF626 /* WithdrawViewController.h */,
 				9B4F1DB420EF6B9700DEF626 /* WithdrawViewController.m */,
 				9B4F1DB520EF6B9700DEF626 /* WithdrawViewController.xib */,
+				D735D7AB20F0A696007E2B7C /* OrderHistoryViewController.h */,
+				D735D7AC20F0A696007E2B7C /* OrderHistoryViewController.m */,
+				D735D7AD20F0A696007E2B7C /* OrderHistoryViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -679,6 +687,7 @@
 				9B4F1DB220EF583E00DEF626 /* CapitalViewController.xib in Resources */,
 				9B4F1D8A20EF0ED600DEF626 /* MyOrderViewController.xib in Resources */,
 				9B9DFD3620EF7CA900E56B2F /* CapitalDetailsViewCell.xib in Resources */,
+				D735D7AF20F0A696007E2B7C /* OrderHistoryViewController.xib in Resources */,
 				9B42212A20EDE944009D5A8A /* EntrustNowViewCell.xib in Resources */,
 				9B7EEE8D20E9C39000DF88B4 /* Main.storyboard in Resources */,
 				9BB9461F20ECE85F00B8D7BE /* MarketTableViewCell.xib in Resources */,
@@ -801,6 +810,7 @@
 				9B87074020EB453600156E39 /* HomePageViewController.m in Sources */,
 				9B7EEF1320EA322E00DF88B4 /* JSONKit.m in Sources */,
 				9B87073C20EB3B3600156E39 /* MRBaseModel.m in Sources */,
+				D735D7AE20F0A696007E2B7C /* OrderHistoryViewController.m in Sources */,
 				9B4F1D9720EF41C300DEF626 /* UpLoadImagView.m in Sources */,
 				9BB9461920ECE76700B8D7BE /* MarketViewController.m in Sources */,
 				9BB945F720EC7CD800B8D7BE /* ExponentialView.m in Sources */,
