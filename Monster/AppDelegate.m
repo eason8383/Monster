@@ -44,7 +44,7 @@
 //    }];
 //    _window.rootViewController = loginController;
     
-    
+    //jump over login
     [self readyToShowMainController];
 }
 

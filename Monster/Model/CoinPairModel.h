@@ -16,10 +16,23 @@
 @property(nonatomic,copy)NSString *mainCoinId;
 
 @property(nonatomic,copy)NSString *subCoinId;
-@property(nonatomic,copy)NSDictionary *pairStatus;
+@property(nonatomic,copy)NSString *pairStatus;
 @property(nonatomic,assign)float buyFeeRate;
 @property(nonatomic,assign)float sellFeeRate;
 
+@property(nonatomic,copy)NSString *klineType;
+@property(nonatomic,copy)NSString *barTime;
+
+@property(nonatomic,assign)double totalVolume;
+@property(nonatomic,assign)double totalAmount;
+@property(nonatomic,assign)long barTimeLong;
+@property(nonatomic,assign)double beginPrice;
+@property(nonatomic,assign)double minPrice;
+@property(nonatomic,assign)double endPrice;
+@property(nonatomic,assign)double maxPrice;
+
+
++(instancetype)coinPairWithDict:(NSDictionary *)dict;
 //"buyFeeRate": 0.0001,
 //"coinPairId": "10001",
 //"mainCoinId": "ETH",

@@ -31,7 +31,7 @@
 #define printf_console printf
 
 //Test
-#define TEST_URL @"testweb.monstermarket.cn"
+#define TEST_URL @"testapi.monstermarket.cn"
 
 //poblic
 #define PUBLIC_URL @"www.monster.one"

@@ -11,13 +11,17 @@
 
 
 //登录
-#define CGUSER @"cgUser"
-#define TEXCHANGEQUERY @"tExchangeQuery"
+#define EGUSER @"egUser"
+#define ERQUERY @"egQuery"
 
 #define MR_SMSVERIFYCODE @"sendSmsVerifyCode"
 #define MR_SMSLOGIN @"smsLogin"
 
 #define MR_QUERYCOINPAIR @"queryCoinPair"
+#define MR_QUERYKLINELASTBAR @"queryKlineLastBar"
+
+#define MR_QUERYKLINELIST @"queryKlineList"
+
 
 //保存account路径
 

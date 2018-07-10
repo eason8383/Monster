@@ -49,7 +49,6 @@
     //     [_lineView layoutIfNeeded];
     //    _dataArray = @[@"12",@"33",@"26",@"10",@"7",@"30",@"21"];
         if ([_lineView.dataArray count] < 1) {
-            NSLog(@"設定資料 %ld",(long)self.tag);
             _lineView.dataArray = @[@"12",@"33",@"26",@"10",@"7",@"30",@"21",@"26",@"10",@"7",@"30",@"21",@"26",@"10",@"7",@"30",@"21"];
         }
         _lineView.leftMargin = 0;

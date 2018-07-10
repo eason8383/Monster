@@ -2,7 +2,7 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/CapitalViewController.m \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Supporting\ Files/PrefixHeader.pch \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JSONKit.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/MRWebClient.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/APIManager/MRWebClient.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Model/MRUserAccount.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Model/MRBaseModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIColor+JKRColor.h \

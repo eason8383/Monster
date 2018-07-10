@@ -18,8 +18,8 @@
 #import "IdentityViewController.h"
 #import "SecurityViewController.h"
 #import "SetupViewController.h"
-
-#import "CapitalViewController.h"
+#import "AboutusViewController.h"
+#import "HomeViewModel.h"
 
 @interface HomePageViewController () <UITableViewDelegate,UITableViewDataSource,RNFrostedSidebarDelegate>
 
@@ -62,8 +62,9 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     
     self.jz_navigationInteractivePopGestureEnabled = true;
     
-    
     [self initial];
+    
+    [[HomeViewModel sharedInstance]getData];
 }
 
 - (void)initial{
@@ -99,7 +100,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return 3 + [HomeViewModel sharedInstance].numberOfRowsInSection;
 }
 
 #pragma mark - UITableViewDelegate
@@ -158,7 +159,6 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     
     if (indexPath.row > 0 && indexPath.row != 2) {
         CoinDetailViewController *coVC = [[CoinDetailViewController alloc]initWithNibName:@"CoinDetailViewController" bundle:nil];
-//        CapitalViewController *coVC = [[CapitalViewController alloc]initWithNibName:@"CapitalViewController" bundle:nil];
         coVC.isHighLowKLine = (indexPath.row == 1)?NO:YES;
         coVC.jz_navigationBarHidden = NO;
         coVC.jz_navigationBarBackgroundHidden = true;
@@ -223,28 +223,36 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     UIViewController *cV = [[UIViewController alloc]init];
     switch ([index integerValue]) {
         case 0: {
-            MyAssetViewController *maCV = [[MyAssetViewController alloc]initWithNibName:@"MyAssetViewController" bundle:nil];
-            cV = maCV;
+            MyAssetViewController *maVc = [[MyAssetViewController alloc]initWithNibName:@"MyAssetViewController" bundle:nil];
+            cV = maVc;
             break;
         }
         case 1: {
-            MyOrderViewController *moCV = [[MyOrderViewController alloc]initWithNibName:@"MyOrderViewController" bundle:nil];
-            cV = moCV;
+            MyOrderViewController *moVc = [[MyOrderViewController alloc]initWithNibName:@"MyOrderViewController" bundle:nil];
+            cV = moVc;
             break;
         }
         case 2: {
-            IdentityViewController *idCV = [[IdentityViewController alloc]initWithNibName:@"IdentityViewController" bundle:nil];
-            cV = idCV;
+            IdentityViewController *idVc = [[IdentityViewController alloc]initWithNibName:@"IdentityViewController" bundle:nil];
+            cV = idVc;
             break;
         }
         case 3: {
-            SecurityViewController *siCV = [[SecurityViewController alloc]initWithNibName:@"SecurityViewController" bundle:nil];
-            cV = siCV;
+            SecurityViewController *siVc = [[SecurityViewController alloc]initWithNibName:@"SecurityViewController" bundle:nil];
+            cV = siVc;
+            break;
+        }
+        case 4: {
+            AboutusViewController *abVc= [[AboutusViewController alloc]initWithNibName:@"AboutusViewController" bundle:nil];
+            abVc.jz_navigationBarBackgroundHidden = YES;
+            cV = abVc;
+            
+            
             break;
         }
         case 5: {
-            SetupViewController *siCV = [[SetupViewController alloc]initWithNibName:@"SetupViewController" bundle:nil];
-            cV = siCV;
+            SetupViewController *siVc = [[SetupViewController alloc]initWithNibName:@"SetupViewController" bundle:nil];
+            cV = siVc;
             break;
         }
         case 6: {
