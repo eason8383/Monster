@@ -12,6 +12,10 @@
 
 @interface TradeView : UIView
 
+@property(nonatomic,assign)BOOL isHighMode;
+
+-(void)setMode:(BOOL)isHigh;
+
 @end
 
 

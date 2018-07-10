@@ -13,6 +13,11 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/JZNavigationExtension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/UINavigationController+JZExtension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/UIViewController+JZExtension.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWLineModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIBezierPath+Draw.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIView+Extension.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/HomePageViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/RNFrostedSidebar.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/SliderMenuView.h \
@@ -26,4 +31,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MyOrderViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/IdentityViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SecurityViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SetupViewController.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SetupViewController.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/CapitalViewController.h

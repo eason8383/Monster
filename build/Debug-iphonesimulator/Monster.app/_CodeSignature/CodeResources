@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		wVbyQZQpZxLvck0sqIVSCSaQAz0=
+		Hpc5CFtFJtI6YMecVYD2K4eCX04=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		zmoGTA3XN4SUFVWsGEYEc+hw1mQ=
+		25zubuimOEURe7Zu6TvVf6EEQDM=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -18,11 +18,11 @@
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		AHwKuXTp8+pDqQIZCb3jm+4iXI4=
+		rwSDTvlabRfERAgbcVBQHC9aV+M=
 		</data>
 		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</key>
 		<data>
-		S/ubJBhjEQnIOv4G0G02NxXbsm8=
+		ngK4zeeOZunCppEPn5Whefp/Yt8=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
@@ -30,95 +30,95 @@
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r.nib</key>
 		<data>
-		otK1A1RGrJ2lRuSemY5ZHF+gOEg=
+		ZEQoxl3HjpFvB0M9B0EZPYCMosM=
 		</data>
 		<key>BindingMailBoxViewController.nib/objects-11.0+.nib</key>
 		<data>
-		K0UfEsxosb3IGJp+NDlqAI3e3ZM=
+		c9qmlkQ7R+9mDYWU47QZIxsFIAo=
 		</data>
 		<key>BindingMailBoxViewController.nib/runtime.nib</key>
 		<data>
-		v0k6QrHQKQxni3Mgd3GrqDcFKcs=
+		Jun6hO0ABdpyiHWAbMOOy4Cpfh4=
 		</data>
 		<key>BindingMobileViewController.nib/objects-11.0+.nib</key>
 		<data>
-		oHNOh3299R/BjSPzun4KTj5FxUc=
+		+UM1qWuiaXlfsKQHX3RNyNuahRc=
 		</data>
 		<key>BindingMobileViewController.nib/runtime.nib</key>
 		<data>
-		ijJjMInAxTVjQpol0lI18p051IY=
+		8ieI8wvFWgyOsdyHl0Neu2XnARQ=
 		</data>
 		<key>CapitalDetailsViewCell.nib</key>
 		<data>
-		93tAdqQqAKuRH0fGYyYGZRd6SYM=
+		YizjtWddplPwSzOjQZMwz/j708Y=
 		</data>
 		<key>CapitalViewController.nib</key>
 		<data>
-		fgqbeTqHiVkkB7a1fMGdtKkz7Rs=
+		EDUJlG4UOfwO1P7rB+WdMxSKAJU=
 		</data>
 		<key>ChargeViewController.nib/objects-11.0+.nib</key>
 		<data>
-		SYY7IBoGHL2qk1p7O1d3o1+/o+I=
+		fFHhJm21wIk3GTVjG+F5AddvwCE=
 		</data>
 		<key>ChargeViewController.nib/runtime.nib</key>
 		<data>
-		+NXywTALy2NH8oiO3LUur2CprEM=
+		0C9vOKraimSX57uu/wn7g2Z+zKU=
 		</data>
 		<key>CoinCanUseViewCell.nib</key>
 		<data>
-		1OrzmHKC2fbwPM4FhboLyt90Tq4=
+		1r6O1sJpcEnpDAW9ZjJmDkyQwDA=
 		</data>
 		<key>CoinDetailViewController.nib/objects-11.0+.nib</key>
 		<data>
-		q9cip/soS+qPn7k5/bza8Bc0ZDs=
+		9fNpfy0Gf3CY2wSD/qFo3L9tYzY=
 		</data>
 		<key>CoinDetailViewController.nib/runtime.nib</key>
 		<data>
-		kqakhqdMtf1VU3NTG9VGJTMpO88=
+		0fQ+Dv65Wx2w1rS13ICdgcs2qig=
 		</data>
 		<key>CoinTrendsCell.nib</key>
 		<data>
-		irNVrfwRrC+n5kJE1z/kHtT57ls=
+		usLDJNiSze0Dp17rDkX8Q+Zqdhg=
 		</data>
 		<key>EntrustNowViewCell.nib</key>
 		<data>
-		PtPSY26OeNhEkilHazyF2W0Hg9E=
+		K84+OGwlQ8g4W9RSktWKOFzGRu8=
 		</data>
 		<key>ExponentialCell.nib</key>
 		<data>
-		quQbFNcEl/2RJ6bew2vrcNnwhJg=
+		VDdWk3gBIPubF9vjHY9cyUweSRo=
 		</data>
 		<key>ExponentialView.nib/objects-11.0+.nib</key>
 		<data>
-		oDamBdJ0en6bB5DUvwbsLBO71dg=
+		G+j2E6aX7Sc+2wgtpXWnv73tB1I=
 		</data>
 		<key>ExponentialView.nib/runtime.nib</key>
 		<data>
-		Zc53AIRlSiHOuhrrhHqFORWJwqI=
+		c0nzk+Q84QFPdGzLZXzjwrZHsMA=
 		</data>
 		<key>HeadTableViewCell.nib</key>
 		<data>
-		TwhkjTmn8x3/q5iUf/T1ZAVL9mI=
+		zuYfNSyhLIypvBgkWHtHRxKZ/HE=
 		</data>
 		<key>HighLowLabelView.nib/objects-11.0+.nib</key>
 		<data>
-		5PHNDBP0tmVxlp2UKQChgbTcjdo=
+		4YvYO+IEvsUZATuJiFZC+TXuqwE=
 		</data>
 		<key>HighLowLabelView.nib/runtime.nib</key>
 		<data>
-		rw7rchK1bdSmyqXorYPOPBwJr20=
+		NKtul5dvfKpSGTgNlhGvBTw7rlY=
 		</data>
 		<key>HomePageViewController.nib/objects-11.0+.nib</key>
 		<data>
-		xKIGmDuDDG1SOxEhBDbNmzibsHQ=
+		So7UOZ2BV2EkupoPke3dJTkauwE=
 		</data>
 		<key>HomePageViewController.nib/runtime.nib</key>
 		<data>
-		VHGZylM1Z4NiQJiJqlgR67zAIx0=
+		MbYvmEyLsQ8HHDlj7PZhkGji1t8=
 		</data>
 		<key>IdentityViewController.nib</key>
 		<data>
-		2J/1dq6jLIStvb5hQccegzrhAkI=
+		YVm6kJb2OG5p6yHzwx2hNw5oXPo=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -126,55 +126,55 @@
 		</data>
 		<key>LoginViewController.nib/objects-11.0+.nib</key>
 		<data>
-		jw4s1KGwuWibzSTRq5nok1l78us=
+		PpVJZiILmenD4UaGJjK44MgN6l0=
 		</data>
 		<key>LoginViewController.nib/runtime.nib</key>
 		<data>
-		ukLBQhuIHmK1AoYh1XPMxA5dbno=
+		hw5aPgws57JJcEAo6nub0ODLdBQ=
 		</data>
 		<key>MACDTableViewCell.nib</key>
 		<data>
-		dkkhvlo1JwvX9poLbP7tM0YMFyc=
+		/0EwfioAykQ9s9dXg9HW2LpCwUY=
 		</data>
 		<key>MainPageHeadView.nib/objects-11.0+.nib</key>
 		<data>
-		VfWtTwQ/P6RJPfcBF2x7MpdDuTQ=
+		tL6JPVOPdEz651Pbp9s6vv5Ry64=
 		</data>
 		<key>MainPageHeadView.nib/runtime.nib</key>
 		<data>
-		jgNs5ixJdy2sQ4rzPCLeal+GuaY=
+		aH1xuzDuxLMQ2PpUBLOBqI+qaug=
 		</data>
 		<key>MarketTableViewCell.nib</key>
 		<data>
-		ZMpZJYlDFRF0vfaGsfUHKYwBMps=
+		SAOYMKMWBpqLzD0wU34K5zBJZfU=
 		</data>
 		<key>MarketViewController.nib</key>
 		<data>
-		hUtvmwclOqd09m0+9Db9EbU0g0g=
+		809+gLSqhjl8FnRA9U7NCwQl5LA=
 		</data>
 		<key>MyAssetTableViewCell.nib</key>
 		<data>
-		4J9fvFiclrWfkYdHllNFjEA6gP0=
+		iEmLnoj/lWxZ42RrwGK+0lZQQWg=
 		</data>
 		<key>MyAssetViewController.nib</key>
 		<data>
-		WJwYI1J8UsCijXwlsUiCwN0is7I=
+		4TAxbEhDMAq2ai4RdAYH225nlrI=
 		</data>
 		<key>MyOrderViewController.nib</key>
 		<data>
-		YZhb8j7fkerLAOWP0z7tBuFQk/U=
+		lnSj5gp573hN5lg2SEGQHdpvWYg=
 		</data>
 		<key>OrderDetailViewController.nib/objects-11.0+.nib</key>
 		<data>
-		pU/OWmLsI8xDPb8L6wPvrOawo/E=
+		G6Hrtis+cBAvrx6ySPzOi7pL2n0=
 		</data>
 		<key>OrderDetailViewController.nib/runtime.nib</key>
 		<data>
-		IYMwLEtWPwST5dLQsHl31pyOAgU=
+		lJXbk1Pa0s090V9QUsZgFCQFjPI=
 		</data>
 		<key>OrderHistoryViewController.nib</key>
 		<data>
-		oGdk/f8kkMFzoTprfD5hejMG0uk=
+		5VnOAi3N9UdkYRufkLWljXwf1oY=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -182,59 +182,71 @@
 		</data>
 		<key>SecurityViewController.nib/objects-11.0+.nib</key>
 		<data>
-		n6ZPfUco0PEUHYt2JOfuU/79mPU=
+		scnYJleV2+LCQtzIML9lYCA8wfU=
 		</data>
 		<key>SecurityViewController.nib/runtime.nib</key>
 		<data>
-		W4OoLogNX6ivHIwXph/dBAj4+L4=
+		gwOHXEakWyGjUjwIeZ1o2Q3qmC4=
 		</data>
 		<key>SetFCodeViewController.nib/objects-11.0+.nib</key>
 		<data>
-		aBxWw50BxpMjuWOgxBtRIL5EiE8=
+		V0h7AfSyb81IF1gHL/HgYoGamWg=
 		</data>
 		<key>SetFCodeViewController.nib/runtime.nib</key>
 		<data>
-		IzOSutRYAIedv+SOki0fOX4Is/A=
+		EcJVH0G0J5oDABN+AP3gVzrengQ=
 		</data>
 		<key>SetupViewController.nib/objects-11.0+.nib</key>
 		<data>
-		UNH+GMa+CqxRIguY5CXBuTGfqcY=
+		+JBK0ffgutF8ZYcuuGWtYJr9aMQ=
 		</data>
 		<key>SetupViewController.nib/runtime.nib</key>
 		<data>
-		49gfgBYvnfBJLERIbghYLIk/A4o=
+		QVRnkcODGIA6YPK1ISuNliw2LiI=
 		</data>
 		<key>SliderMenuView.nib</key>
 		<data>
-		sz3FTNDOe3AnsGghgwv1eC1vHv8=
+		aMZudk1/dvkCrHhb+TIvaP49Ltw=
 		</data>
 		<key>TradeView.nib/objects-11.0+.nib</key>
 		<data>
-		ETDq8WxW8meHqprVDYOlY62ktDc=
+		CT9AAzvdbB81QxyK8bJNgnCgWe4=
 		</data>
 		<key>TradeView.nib/runtime.nib</key>
 		<data>
-		OkKAhJvhe02MHGCjG30nuWSJeA0=
+		VoNssWkBipISI80WzJSOvDZTS7A=
 		</data>
 		<key>TradeViewController.nib</key>
 		<data>
-		xLWSemjOwHC1BhEF8ZKeopO8tYU=
+		dRGQmZAekRFotutlyY7oGshpwZE=
 		</data>
 		<key>UpLoadImagView.nib/objects-11.0+.nib</key>
 		<data>
-		zufd3fp9rjcS4avBd/mFEJ89rZw=
+		Qz413smkrygx6CSg03Gamq6X/oQ=
 		</data>
 		<key>UpLoadImagView.nib/runtime.nib</key>
 		<data>
-		IdbOuJPHEdKeQL6YZ4I/Bv+FCVU=
+		fa+Tq9C5bHMh0ptd6KCJEaJ4/ts=
 		</data>
 		<key>WithdrawViewController.nib/objects-11.0+.nib</key>
 		<data>
-		8vIsMzJiA5vjbK/GdjIFGHhfEYU=
+		+6i+jn2Y4ADEqB8R9AFeLLZ6ezw=
 		</data>
 		<key>WithdrawViewController.nib/runtime.nib</key>
 		<data>
-		nYI8Vrt8bqiD2JC8bQjZxZUDpW4=
+		te4a/5ry8SzBhMVic5TU1e/4SMY=
+		</data>
+		<key>greenGrid.gif</key>
+		<data>
+		JaVAQcqQ8Z78eOY19W4X3K1PgTM=
+		</data>
+		<key>purpleGrid.gif</key>
+		<data>
+		oE5LzvqNaHXLdrLACdnKlqf44dI=
+		</data>
+		<key>redGrid.gif</key>
+		<data>
+		n6VTsO4llii3gSJ2pK3QxOFIhvY=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -243,22 +255,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wVbyQZQpZxLvck0sqIVSCSaQAz0=
+			Hpc5CFtFJtI6YMecVYD2K4eCX04=
 			</data>
 			<key>hash2</key>
 			<data>
-			0eSzcCtVIbprutiFBg3tPK0kBe+VDGTnq3IrqxiA00Q=
+			OypyZvcbjOO8gjP1WfhVaIs2Fl4TvuHmsKMQjtSgcWI=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			zmoGTA3XN4SUFVWsGEYEc+hw1mQ=
+			25zubuimOEURe7Zu6TvVf6EEQDM=
 			</data>
 			<key>hash2</key>
 			<data>
-			HVtRn3r3wuQMjNb9q+jaJjVv43WItsQetM1m5ZKnfMw=
+			yoOHu5YgEKpoEMX4Du5dU+eTcV2dtYVXtpGKbpxYZy0=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
@@ -276,22 +288,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AHwKuXTp8+pDqQIZCb3jm+4iXI4=
+			rwSDTvlabRfERAgbcVBQHC9aV+M=
 			</data>
 			<key>hash2</key>
 			<data>
-			lplQGY83KwO3y0/8BhnhzXj13wn3QLi2aVcbbpsyGDY=
+			TR5Cc9AZIpINgdVmZqTq/77sQNOZhJyQILAFX+CeJm0=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			S/ubJBhjEQnIOv4G0G02NxXbsm8=
+			ngK4zeeOZunCppEPn5Whefp/Yt8=
 			</data>
 			<key>hash2</key>
 			<data>
-			7YufrOVhm9yT+75rv7JCydcy4C3/pfISz8WVYmtMbsc=
+			SfKg4AAarKwHM6Uio/7kWnKO81NfHdHy4hTpBLr07PY=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
@@ -309,550 +321,583 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			otK1A1RGrJ2lRuSemY5ZHF+gOEg=
+			ZEQoxl3HjpFvB0M9B0EZPYCMosM=
 			</data>
 			<key>hash2</key>
 			<data>
-			WKUFZnK/42PUoYw+qcfu1kGHh3zLpI5/kePNZ7Fh3VA=
+			VDtEkpHEIJdWrpvC9BCpZl4bzh1eM3qozIcQoeHIpXA=
 			</data>
 		</dict>
 		<key>BindingMailBoxViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			K0UfEsxosb3IGJp+NDlqAI3e3ZM=
+			c9qmlkQ7R+9mDYWU47QZIxsFIAo=
 			</data>
 			<key>hash2</key>
 			<data>
-			L/wQi8dMn7X9+IGd+J3oFLZT75crtsaARUv40ELI2UE=
+			cRTUfGt3jZYVZsiSHLYFedvD1e6Ir5FO2CH1KlmRaKM=
 			</data>
 		</dict>
 		<key>BindingMailBoxViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			v0k6QrHQKQxni3Mgd3GrqDcFKcs=
+			Jun6hO0ABdpyiHWAbMOOy4Cpfh4=
 			</data>
 			<key>hash2</key>
 			<data>
-			4PgFGU94e92xB5vmGihoI7x8eaUb7I5p7ThBk+7lXJw=
+			qSAnqlzgwxF5IG4ZCh8lRDltozFoo10pY2F4XP1FBZg=
 			</data>
 		</dict>
 		<key>BindingMobileViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			oHNOh3299R/BjSPzun4KTj5FxUc=
+			+UM1qWuiaXlfsKQHX3RNyNuahRc=
 			</data>
 			<key>hash2</key>
 			<data>
-			AFp8yMfwvDuQmA+4aO0wIpWgTundtJuZDkgRAf3Ur90=
+			mIhnbgrZyK/NbWYQKkEETahLbsOQ7SzhZOn7YUhefzM=
 			</data>
 		</dict>
 		<key>BindingMobileViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ijJjMInAxTVjQpol0lI18p051IY=
+			8ieI8wvFWgyOsdyHl0Neu2XnARQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			wSo2hKNkl6yLvMh3rTDNnGPYXniHlcYbZfYxOgU6XUY=
+			okNZVXPE9fc6xbkW9OjkHSvUTHGonqj9Y59pN8433oo=
 			</data>
 		</dict>
 		<key>CapitalDetailsViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			93tAdqQqAKuRH0fGYyYGZRd6SYM=
+			YizjtWddplPwSzOjQZMwz/j708Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			xOEHNS9AhNrsKnxoRWekQ2WQ6hLzGdvWLuPQxfQ+6YA=
+			eYdYsspEsBRIygDoJgcUY3G9ftyiyDcIv1GnuWwR35o=
 			</data>
 		</dict>
 		<key>CapitalViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fgqbeTqHiVkkB7a1fMGdtKkz7Rs=
+			EDUJlG4UOfwO1P7rB+WdMxSKAJU=
 			</data>
 			<key>hash2</key>
 			<data>
-			qrzu07/RZVDtXdG6w8GOAmTjpqlH2NGO3VANG+gNwMs=
+			SYqZDv2dVdauDLqkBZGY+pduFqn2s3UHfIAwCkuNW/s=
 			</data>
 		</dict>
 		<key>ChargeViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			SYY7IBoGHL2qk1p7O1d3o1+/o+I=
+			fFHhJm21wIk3GTVjG+F5AddvwCE=
 			</data>
 			<key>hash2</key>
 			<data>
-			wfmtOd7GvkqM+I0MBAQS/qXoRm7n1meAHLwd7TKDenw=
+			HW2H/Dkf3iqKj4SACUfK60khzJ1CdvjN4J6g9n3t7pk=
 			</data>
 		</dict>
 		<key>ChargeViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+NXywTALy2NH8oiO3LUur2CprEM=
+			0C9vOKraimSX57uu/wn7g2Z+zKU=
 			</data>
 			<key>hash2</key>
 			<data>
-			IT0V+fVPXUuuuPnEYaz9jBl7OaL1oN1WGbZYHxi9fXU=
+			w+bCmQmBEI/esPFV2xt+Ao/nbXplUue9Coexu5wN+mM=
 			</data>
 		</dict>
 		<key>CoinCanUseViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1OrzmHKC2fbwPM4FhboLyt90Tq4=
+			1r6O1sJpcEnpDAW9ZjJmDkyQwDA=
 			</data>
 			<key>hash2</key>
 			<data>
-			qHxT2+vHKxuUzglslLJtUik1m/7gXGj0qfGl2v8X4/Q=
+			tv3mVjMbS64SbOWDT4x61ZWk7MA5ng2Zcl3+cyohzPk=
 			</data>
 		</dict>
 		<key>CoinDetailViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			q9cip/soS+qPn7k5/bza8Bc0ZDs=
+			9fNpfy0Gf3CY2wSD/qFo3L9tYzY=
 			</data>
 			<key>hash2</key>
 			<data>
-			cnsH1oECOfDhyBzmenWkHB4lJhibq0ke6K+ZTg5pXpk=
+			SinJjFqUDcEAll8u4D4AfngL2VPl7HnyvVjQLnOpvXw=
 			</data>
 		</dict>
 		<key>CoinDetailViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			kqakhqdMtf1VU3NTG9VGJTMpO88=
+			0fQ+Dv65Wx2w1rS13ICdgcs2qig=
 			</data>
 			<key>hash2</key>
 			<data>
-			ikdwy8vQa+ZedUdCGsjDCwRCb4JdRpQLW1OkdQw2EAc=
+			r82ou88mgg6bASRjO14fh0p1qRylGptCrYIQtHf/7ig=
 			</data>
 		</dict>
 		<key>CoinTrendsCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			irNVrfwRrC+n5kJE1z/kHtT57ls=
+			usLDJNiSze0Dp17rDkX8Q+Zqdhg=
 			</data>
 			<key>hash2</key>
 			<data>
-			esOnMIL2WSUHRy9plV41BCp+aAYXbqj1vVL6peIFFgQ=
+			cugfzu1ivcxdqxsSl75+6HfnsQMVi6dB57y7uBX3GRQ=
 			</data>
 		</dict>
 		<key>EntrustNowViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			PtPSY26OeNhEkilHazyF2W0Hg9E=
+			K84+OGwlQ8g4W9RSktWKOFzGRu8=
 			</data>
 			<key>hash2</key>
 			<data>
-			xY1dvI8SXZhH10SgyHpSnK6wJ1Spd8yG9tf+l8p9JZs=
+			3J7sVxDBy9GRt7BbLGxz5DiLBuQeiuDrmsddIqSYAtI=
 			</data>
 		</dict>
 		<key>ExponentialCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			quQbFNcEl/2RJ6bew2vrcNnwhJg=
+			VDdWk3gBIPubF9vjHY9cyUweSRo=
 			</data>
 			<key>hash2</key>
 			<data>
-			IjECc+z0S/JkjZIWy+vBCnTcOna42qpSfr2V9oZM+Zk=
+			B1tadRdWUjbzTXKI1oFeE+GZsDCQPOvopqoWygavSAw=
 			</data>
 		</dict>
 		<key>ExponentialView.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			oDamBdJ0en6bB5DUvwbsLBO71dg=
+			G+j2E6aX7Sc+2wgtpXWnv73tB1I=
 			</data>
 			<key>hash2</key>
 			<data>
-			yYfqVc1zOfL73D50DUq6bc6lPOBL+0htyHS1WvDbgpA=
+			5wmygUo3X8UdgtaEUow0mfCE1g1nawPURiMwAz4PzXc=
 			</data>
 		</dict>
 		<key>ExponentialView.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Zc53AIRlSiHOuhrrhHqFORWJwqI=
+			c0nzk+Q84QFPdGzLZXzjwrZHsMA=
 			</data>
 			<key>hash2</key>
 			<data>
-			B7bgmO5ScSJb7cIM9Ln3Lwvxi7QraeM75ztQnExswNY=
+			XJ42fDz7gkUGi3JPf20bv3MAvSnCRZ1M+nN0gdcDu/A=
 			</data>
 		</dict>
 		<key>HeadTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TwhkjTmn8x3/q5iUf/T1ZAVL9mI=
+			zuYfNSyhLIypvBgkWHtHRxKZ/HE=
 			</data>
 			<key>hash2</key>
 			<data>
-			ERog0sBCEWYuwBtk5uvf7HA3ofPU9zoH10F5xz6EhWA=
+			mEVuRhQdi0lWvXWY5GeKaodMTX6dTH1z0RSQiPGPIw8=
 			</data>
 		</dict>
 		<key>HighLowLabelView.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5PHNDBP0tmVxlp2UKQChgbTcjdo=
+			4YvYO+IEvsUZATuJiFZC+TXuqwE=
 			</data>
 			<key>hash2</key>
 			<data>
-			mlYx9ylbtPqNCpRYKG+TdF7dAZfivSpeQLiALk6j1i0=
+			DbfA2h10UgdW2z/Lwh61nSGjMv/jXQGNrgKADk3Co6g=
 			</data>
 		</dict>
 		<key>HighLowLabelView.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			rw7rchK1bdSmyqXorYPOPBwJr20=
+			NKtul5dvfKpSGTgNlhGvBTw7rlY=
 			</data>
 			<key>hash2</key>
 			<data>
-			hcOucrTDtPdghDEgTwLcCg2NnTp24+gFw9OD4MXWXaE=
+			/cW7YWGnIYSbw7ZAcJ+CC+6imakdeBg6eGSPNPLbHpk=
 			</data>
 		</dict>
 		<key>HomePageViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xKIGmDuDDG1SOxEhBDbNmzibsHQ=
+			So7UOZ2BV2EkupoPke3dJTkauwE=
 			</data>
 			<key>hash2</key>
 			<data>
-			W9MvvLnia6QE8xBblg8yqwrgHi6vciY8j1PD+F6fvEM=
+			nvYV18QEP6EZXROJXad+99RI4dgvPA9/b+uoUkS1KX8=
 			</data>
 		</dict>
 		<key>HomePageViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VHGZylM1Z4NiQJiJqlgR67zAIx0=
+			MbYvmEyLsQ8HHDlj7PZhkGji1t8=
 			</data>
 			<key>hash2</key>
 			<data>
-			1+Xfxz/pr0CLDkY/Sc56iy3X/r0lZT1yfwPFR3muEGM=
+			xIQ3vjE3XP+mrgKH3DhIRPsCTb4t0goFsZrBy+vzw9A=
 			</data>
 		</dict>
 		<key>IdentityViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2J/1dq6jLIStvb5hQccegzrhAkI=
+			YVm6kJb2OG5p6yHzwx2hNw5oXPo=
 			</data>
 			<key>hash2</key>
 			<data>
-			fjQ2VdpuRb001O5qCY5zUnDRRwhffPHaoMkFRdn0pJs=
+			vQ6ahmjYw7E93vvUCJdbPMfvz25iBtSMxp2oWyIyjEA=
 			</data>
 		</dict>
 		<key>LoginViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			jw4s1KGwuWibzSTRq5nok1l78us=
+			PpVJZiILmenD4UaGJjK44MgN6l0=
 			</data>
 			<key>hash2</key>
 			<data>
-			EA3S00kNEYcvAsXwvgvH1scQnPv82hOeXCKCLMUJbe0=
+			ngcCJWQr/E0Jamwsb8M8QZT6SHjthNZpG1mcNE6tk8c=
 			</data>
 		</dict>
 		<key>LoginViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ukLBQhuIHmK1AoYh1XPMxA5dbno=
+			hw5aPgws57JJcEAo6nub0ODLdBQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			8x8vUr1+wRghhY1cNRb2/xlI3SQFOI3qXXhMlZRAacA=
+			hP6SwI0LnD9h9Hksi0lDD8lWH+Thk/juz8UXmhK04+U=
 			</data>
 		</dict>
 		<key>MACDTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dkkhvlo1JwvX9poLbP7tM0YMFyc=
+			/0EwfioAykQ9s9dXg9HW2LpCwUY=
 			</data>
 			<key>hash2</key>
 			<data>
-			SYir+AbpNK7Rz+uGVnh3UhRKvzDI0FpyD0WiSxbAikQ=
+			FoZ/EUHFuXbS0PXczcpVZb8sV/3Te7so4Om57mv1zK0=
 			</data>
 		</dict>
 		<key>MainPageHeadView.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VfWtTwQ/P6RJPfcBF2x7MpdDuTQ=
+			tL6JPVOPdEz651Pbp9s6vv5Ry64=
 			</data>
 			<key>hash2</key>
 			<data>
-			gSdELe5yC/zwC15gNJP3BXgPCOrpg2PmiIkeQSpgGiY=
+			NJgQf2ixZBsi7DEXSQ6rl1wEMzgkq4wUGGj9DzBSgl0=
 			</data>
 		</dict>
 		<key>MainPageHeadView.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			jgNs5ixJdy2sQ4rzPCLeal+GuaY=
+			aH1xuzDuxLMQ2PpUBLOBqI+qaug=
 			</data>
 			<key>hash2</key>
 			<data>
-			tVApj4QxkVpGWpaTqhY/qk+whkGE4ZRBvRjYyviega8=
+			2yCj3HOSsluvavuVwUzkWSeL1Lt5vPnKMTw7smQwvL4=
 			</data>
 		</dict>
 		<key>MarketTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ZMpZJYlDFRF0vfaGsfUHKYwBMps=
+			SAOYMKMWBpqLzD0wU34K5zBJZfU=
 			</data>
 			<key>hash2</key>
 			<data>
-			APvXd47rYGDTfyUIpV4Ei3Ne/tliGYn//NzUaW6rPwA=
+			vfXTQz4uoDCYno/QtmiR9fsq2uD1kx4zN6A4StPk+BY=
 			</data>
 		</dict>
 		<key>MarketViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hUtvmwclOqd09m0+9Db9EbU0g0g=
+			809+gLSqhjl8FnRA9U7NCwQl5LA=
 			</data>
 			<key>hash2</key>
 			<data>
-			tYbPXIN4M7kzxQGSszsE0ixG7AY/i/Jr6OUJbkkNLaU=
+			GYY7Lx5QKGiajAIQu9pv/59IRTHRzIU6de0AM5AuKuQ=
 			</data>
 		</dict>
 		<key>MyAssetTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4J9fvFiclrWfkYdHllNFjEA6gP0=
+			iEmLnoj/lWxZ42RrwGK+0lZQQWg=
 			</data>
 			<key>hash2</key>
 			<data>
-			kMKyHDblfHrgGjv45/I4WIY6bux2+qsQsNyvlJR4XBc=
+			mmdyUSq0KI6y5QiZ7ByOc8/Zhqj1+aDexlmq/ueaNjE=
 			</data>
 		</dict>
 		<key>MyAssetViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			WJwYI1J8UsCijXwlsUiCwN0is7I=
+			4TAxbEhDMAq2ai4RdAYH225nlrI=
 			</data>
 			<key>hash2</key>
 			<data>
-			V/ZXQlBuf7j1E+Eo0tb1s0LLRYjA9S9YsQ2yYy0Qp8Q=
+			BHjp7lIgVjYNEpQM7J/mPugDuN2lIVjYLvR7Fj3FRIE=
 			</data>
 		</dict>
 		<key>MyOrderViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YZhb8j7fkerLAOWP0z7tBuFQk/U=
+			lnSj5gp573hN5lg2SEGQHdpvWYg=
 			</data>
 			<key>hash2</key>
 			<data>
-			mjDKzwXlKXC3tG0ON/kIEdpzsBe3pvnlRT1OLRY96TA=
+			BEhjuujjEf8XY49V7HSTNadFx4qMLFZqQB57phZzHJc=
 			</data>
 		</dict>
 		<key>OrderDetailViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			pU/OWmLsI8xDPb8L6wPvrOawo/E=
+			G6Hrtis+cBAvrx6ySPzOi7pL2n0=
 			</data>
 			<key>hash2</key>
 			<data>
-			fNh3dCHWKHPwI2ZDgTyrISC8a+Che+Gb8qoXXsbO0CM=
+			ukT4n3Q21h4JAHTqZ57X5gJzXGqya6wfH5XVqHjVMVE=
 			</data>
 		</dict>
 		<key>OrderDetailViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IYMwLEtWPwST5dLQsHl31pyOAgU=
+			lJXbk1Pa0s090V9QUsZgFCQFjPI=
 			</data>
 			<key>hash2</key>
 			<data>
-			LW7WKcvFIAHXRW3Pm9nq1Q3Vx70mGmzpGySChZDESy0=
+			vKJSdMnyqZqQjZjPHNqGj+isHFzswykS0NjC/ndZCx8=
 			</data>
 		</dict>
 		<key>OrderHistoryViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			oGdk/f8kkMFzoTprfD5hejMG0uk=
+			5VnOAi3N9UdkYRufkLWljXwf1oY=
 			</data>
 			<key>hash2</key>
 			<data>
-			bpcVoTzmQ3fo3diHgAR+u7eqY6axC8god5RX9hf3m6w=
+			n0U1djwcOTn9AF3qHmV3qVz/8HcSUaEmdKxSlTVWKIM=
 			</data>
 		</dict>
 		<key>SecurityViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			n6ZPfUco0PEUHYt2JOfuU/79mPU=
+			scnYJleV2+LCQtzIML9lYCA8wfU=
 			</data>
 			<key>hash2</key>
 			<data>
-			YC4KpD1LdfwYes9WERNMB8ylP72fCK9obuKI/F1VSJI=
+			fZcDNZ+5YMZNMMmWgIQmNqAVrPXpZmXTpG0zW8Tk464=
 			</data>
 		</dict>
 		<key>SecurityViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			W4OoLogNX6ivHIwXph/dBAj4+L4=
+			gwOHXEakWyGjUjwIeZ1o2Q3qmC4=
 			</data>
 			<key>hash2</key>
 			<data>
-			UmTMXmQAQhN/I1gha2ziZH50k0M7gxk6t4HTshfI7Jw=
+			pIrmCyeNwBjzh+jIJyc+ATgX8hTX56AHZ0/A0hxBbqI=
 			</data>
 		</dict>
 		<key>SetFCodeViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			aBxWw50BxpMjuWOgxBtRIL5EiE8=
+			V0h7AfSyb81IF1gHL/HgYoGamWg=
 			</data>
 			<key>hash2</key>
 			<data>
-			765KV33LbKjeeadbH1uTfAuWex0NDuSdtcDhM3j40Fc=
+			x4jAGpQT2rHOSZE52pBgHDIJF1S6KJIRKbg0W6C3GvY=
 			</data>
 		</dict>
 		<key>SetFCodeViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IzOSutRYAIedv+SOki0fOX4Is/A=
+			EcJVH0G0J5oDABN+AP3gVzrengQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ng1X1ZMM6YbisfKGehMu5SJ1g7a6DUnkhrAV8ferjwo=
+			baVa7dBGJ04vuaGwJynav5VIqBuLO+VODxq2fIpLw88=
 			</data>
 		</dict>
 		<key>SetupViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			UNH+GMa+CqxRIguY5CXBuTGfqcY=
+			+JBK0ffgutF8ZYcuuGWtYJr9aMQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			OXU7kclXd9icRi6byXEeaYH2t++sCfh2hJ0DAiKq5bk=
+			iqzuNz5nLdblHyFWZFKSha7vr1TlephKYoG3D4Jedbg=
 			</data>
 		</dict>
 		<key>SetupViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			49gfgBYvnfBJLERIbghYLIk/A4o=
+			QVRnkcODGIA6YPK1ISuNliw2LiI=
 			</data>
 			<key>hash2</key>
 			<data>
-			vtyWcnFGuTXiW9HH0c3zwbi6i6SPer3LBq0cJ6eVM70=
+			hhJt+07SJ7UUe722eFpxPzvXRxJGCXgzgZoKh5B46uU=
 			</data>
 		</dict>
 		<key>SliderMenuView.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			sz3FTNDOe3AnsGghgwv1eC1vHv8=
+			aMZudk1/dvkCrHhb+TIvaP49Ltw=
 			</data>
 			<key>hash2</key>
 			<data>
-			18Gg50N+FCwKusNnC90Uqw6xGbj3/D2ZUg+bLvZwZNg=
+			9Jbiq0O91bSaMNjJPWP9s/SscCpN9HVUs4qRquwIU1M=
 			</data>
 		</dict>
 		<key>TradeView.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ETDq8WxW8meHqprVDYOlY62ktDc=
+			CT9AAzvdbB81QxyK8bJNgnCgWe4=
 			</data>
 			<key>hash2</key>
 			<data>
-			udGiygD/IJPP3siLJLbMVoyDpA327MO5lsOelf6ce20=
+			oH6ZSS57GuXy58RCng7z5BhvMA+EYYvacBuklNXNZZI=
 			</data>
 		</dict>
 		<key>TradeView.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OkKAhJvhe02MHGCjG30nuWSJeA0=
+			VoNssWkBipISI80WzJSOvDZTS7A=
 			</data>
 			<key>hash2</key>
 			<data>
-			XIpgp6vQUPG7T1rs/xxSfHPkh1mQieo61qDp5auewI0=
+			EqQdVRNHyw8OWtk5PRt9AFWoYFvQnz+RrkLibib9mnM=
 			</data>
 		</dict>
 		<key>TradeViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xLWSemjOwHC1BhEF8ZKeopO8tYU=
+			dRGQmZAekRFotutlyY7oGshpwZE=
 			</data>
 			<key>hash2</key>
 			<data>
-			4zYPY7ArcYbnqRvziuGMZR1iOSW0nYwN1uqfwoCCQ6I=
+			DO7g1T09LMkuWEKzjYK5DWBHiopG/WVZTJIwzWyg0AM=
 			</data>
 		</dict>
 		<key>UpLoadImagView.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			zufd3fp9rjcS4avBd/mFEJ89rZw=
+			Qz413smkrygx6CSg03Gamq6X/oQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			CpJF4/eogOjnRqw5nsz/inKY1Hr3PkzbpSFPYtg2s+Q=
+			MdAbgm02/dJLFXPVEepVODioXZv4chScjex+vt7LbyI=
 			</data>
 		</dict>
 		<key>UpLoadImagView.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IdbOuJPHEdKeQL6YZ4I/Bv+FCVU=
+			fa+Tq9C5bHMh0ptd6KCJEaJ4/ts=
 			</data>
 			<key>hash2</key>
 			<data>
-			I1NgzX6mXiIhW/G6bo1uLu2qk2GytjxynbutVbwT4sQ=
+			ML3zcX1weFEkelM0gk1dRkpKNotTTDER6/qAfv8+SeI=
 			</data>
 		</dict>
 		<key>WithdrawViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8vIsMzJiA5vjbK/GdjIFGHhfEYU=
+			+6i+jn2Y4ADEqB8R9AFeLLZ6ezw=
 			</data>
 			<key>hash2</key>
 			<data>
-			YkeKPuKaiiuhs3ME4yZ2gTfcJHz1Hhexes2ssgQOgFM=
+			NN2i1DqJ1Zs7D5PGkbj/VIi9qfws1M0WOcnh7YQyG6I=
 			</data>
 		</dict>
 		<key>WithdrawViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nYI8Vrt8bqiD2JC8bQjZxZUDpW4=
+			te4a/5ry8SzBhMVic5TU1e/4SMY=
 			</data>
 			<key>hash2</key>
 			<data>
-			H72OKtQq1brHIhuRQcLa1U6pnV87spnZIkkePtp3+kM=
+			yFeNoALZ3h914hAq9ssVV17hWpjC/QWvmu0IuDEy1t4=
+			</data>
+		</dict>
+		<key>greenGrid.gif</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			JaVAQcqQ8Z78eOY19W4X3K1PgTM=
+			</data>
+			<key>hash2</key>
+			<data>
+			vjGnkvZR+Q/ynTjHuejq3s3fzkSuaaDFYuh5vFOUZgA=
+			</data>
+		</dict>
+		<key>purpleGrid.gif</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			oE5LzvqNaHXLdrLACdnKlqf44dI=
+			</data>
+			<key>hash2</key>
+			<data>
+			ROHV4mIw1ow1cZe3xoBR1TDr5shh+H/cbYU0/m741gc=
+			</data>
+		</dict>
+		<key>redGrid.gif</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			n6VTsO4llii3gSJ2pK3QxOFIhvY=
+			</data>
+			<key>hash2</key>
+			<data>
+			C/10+IXFkLRnk1X4VHsNhEEPVyn2QSKiudgHbkwfFr8=
 			</data>
 		</dict>
 	</dict>

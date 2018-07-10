@@ -19,6 +19,7 @@
 @property(nonatomic,strong)IBOutlet UILabel *canUseLabel;
 @property(nonatomic,strong)IBOutlet UILabel *canBuyLabel;
 @property(nonatomic,strong)IBOutlet UILabel *valueLabel;
+@property(nonatomic,strong)IBOutlet UIView *tagView;
 
 @property(nonatomic,strong)IBOutlet UIButton *buyBtn;
 @property(nonatomic,strong)IBOutlet UIButton *saleBtn;
@@ -57,7 +58,52 @@
 @implementation TradeView
 
 - (void)awakeFromNib {
+    
     [super awakeFromNib];
+    _buyBtn.layer.cornerRadius = 4;
+    _saleBtn.layer.cornerRadius = 4;
+    _comfirmBtn.layer.cornerRadius = 4;
+    _tagView.layer.cornerRadius = 4;
+}
+
+- (void)highMode{
+    _buyBtn.backgroundColor = [UIColor  colorWithHexString:MRCOLORHEX_HIGH];
+    [_buyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _comfirmBtn.backgroundColor = [UIColor colorWithHexString:MRCOLORHEX_HIGH];
+    _saleBtn.backgroundColor = [UIColor clearColor];
+    _saleBtn.layer.borderColor = [UIColor colorWithHexString:MRCOLORHEX_LOW].CGColor;
+    _saleBtn.layer.borderWidth = 1;
+    [_saleBtn setTitleColor:[UIColor colorWithHexString:MRCOLORHEX_LOW] forState:UIControlStateNormal];
+}
+
+- (void)lowMode{
+    _buyBtn.backgroundColor = [UIColor  clearColor];
+    
+    [_buyBtn setTitleColor:[UIColor colorWithHexString:MRCOLORHEX_HIGH] forState:UIControlStateNormal];
+    _buyBtn.layer.borderWidth = 1;
+    _buyBtn.layer.borderColor  = [UIColor  colorWithHexString:MRCOLORHEX_HIGH].CGColor;
+    _comfirmBtn.backgroundColor = [UIColor colorWithHexString:MRCOLORHEX_LOW];
+    _saleBtn.backgroundColor = [UIColor colorWithHexString:MRCOLORHEX_LOW];
+    [_saleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
+
+- (void)setMode:(BOOL)isHigh{
+    self.isHighMode = isHigh;
+    if (self.isHighMode) {
+        [self highMode];
+    } else {
+        [self lowMode];
+    }
+}
+
+
+- (IBAction)switchMode:(UIButton*)btn{
+    
+    if (btn.tag == 1) {
+        [self highMode];
+    } else {
+        [self lowMode];
+    }
 }
 
 @end

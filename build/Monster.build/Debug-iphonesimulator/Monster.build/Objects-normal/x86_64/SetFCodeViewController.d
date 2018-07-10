@@ -13,4 +13,9 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/JZNavigationExtension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/UINavigationController+JZExtension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/UIViewController+JZExtension.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWLineModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIBezierPath+Draw.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIView+Extension.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SetFCodeViewController.h

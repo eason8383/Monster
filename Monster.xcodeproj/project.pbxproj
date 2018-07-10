@@ -99,6 +99,25 @@
 		D735D7B920F0BECC007E2B7C /* BindingMailBoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7B720F0BECC007E2B7C /* BindingMailBoxViewController.xib */; };
 		D735D7BD20F0C17D007E2B7C /* SetFCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D735D7BB20F0C17D007E2B7C /* SetFCodeViewController.m */; };
 		D735D7BE20F0C17D007E2B7C /* SetFCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7BC20F0C17D007E2B7C /* SetFCodeViewController.xib */; };
+		D7CAB0CE20F3094000B8B99B /* ZYWLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0CD20F3094000B8B99B /* ZYWLineView.m */; };
+		D7CAB0D120F3094A00B8B99B /* ZYWBaseChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0D020F3094A00B8B99B /* ZYWBaseChartView.m */; };
+		D7CAB0D420F3096B00B8B99B /* ZYWLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0D320F3096B00B8B99B /* ZYWLineModel.m */; };
+		D7CAB0E420F309A800B8B99B /* ZYWCandleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0D620F309A600B8B99B /* ZYWCandleModel.m */; };
+		D7CAB0E520F309A800B8B99B /* ZYWTimeLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0D820F309A600B8B99B /* ZYWTimeLineModel.m */; };
+		D7CAB0E620F309A800B8B99B /* ZYWLineUntil.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0D920F309A600B8B99B /* ZYWLineUntil.m */; };
+		D7CAB0E720F309A800B8B99B /* ZYWMacdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0DB20F309A600B8B99B /* ZYWMacdModel.m */; };
+		D7CAB0E820F309A800B8B99B /* ZYWCandlePostionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0DC20F309A600B8B99B /* ZYWCandlePostionModel.m */; };
+		D7CAB0E920F309A800B8B99B /* ZYWLineData.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0DF20F309A700B8B99B /* ZYWLineData.m */; };
+		D7CAB0EA20F309A800B8B99B /* ZYWMacdPostionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0E120F309A700B8B99B /* ZYWMacdPostionModel.m */; };
+		D7CAB0F120F30A1C00B8B99B /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0EB20F30A1B00B8B99B /* UIView+Extension.m */; };
+		D7CAB0F320F30A1C00B8B99B /* UIBezierPath+Draw.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0EE20F30A1C00B8B99B /* UIBezierPath+Draw.m */; };
+		D7CAB0F620F30AF400B8B99B /* ZYWSlipLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0F520F30AF400B8B99B /* ZYWSlipLineView.m */; };
+		D7D062B520F34D30001ABA16 /* greenGrid.gif in Resources */ = {isa = PBXBuildFile; fileRef = D7D062B220F34D2F001ABA16 /* greenGrid.gif */; };
+		D7D062B620F34D30001ABA16 /* purpleGrid.gif in Resources */ = {isa = PBXBuildFile; fileRef = D7D062B320F34D30001ABA16 /* purpleGrid.gif */; };
+		D7D062B720F34D30001ABA16 /* redGrid.gif in Resources */ = {isa = PBXBuildFile; fileRef = D7D062B420F34D30001ABA16 /* redGrid.gif */; };
+		D7D062B820F34E04001ABA16 /* greenGrid.gif in Resources */ = {isa = PBXBuildFile; fileRef = D7D062B220F34D2F001ABA16 /* greenGrid.gif */; };
+		D7D062B920F34E04001ABA16 /* purpleGrid.gif in Resources */ = {isa = PBXBuildFile; fileRef = D7D062B320F34D30001ABA16 /* purpleGrid.gif */; };
+		D7D062BA20F34E04001ABA16 /* redGrid.gif in Resources */ = {isa = PBXBuildFile; fileRef = D7D062B420F34D30001ABA16 /* redGrid.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -277,6 +296,35 @@
 		D735D7BA20F0C17D007E2B7C /* SetFCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetFCodeViewController.h; sourceTree = "<group>"; };
 		D735D7BB20F0C17D007E2B7C /* SetFCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetFCodeViewController.m; sourceTree = "<group>"; };
 		D735D7BC20F0C17D007E2B7C /* SetFCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetFCodeViewController.xib; sourceTree = "<group>"; };
+		D7CAB0CC20F3094000B8B99B /* ZYWLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWLineView.h; sourceTree = "<group>"; };
+		D7CAB0CD20F3094000B8B99B /* ZYWLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWLineView.m; sourceTree = "<group>"; };
+		D7CAB0CF20F3094A00B8B99B /* ZYWBaseChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWBaseChartView.h; sourceTree = "<group>"; };
+		D7CAB0D020F3094A00B8B99B /* ZYWBaseChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWBaseChartView.m; sourceTree = "<group>"; };
+		D7CAB0D220F3096B00B8B99B /* ZYWLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWLineModel.h; sourceTree = "<group>"; };
+		D7CAB0D320F3096B00B8B99B /* ZYWLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWLineModel.m; sourceTree = "<group>"; };
+		D7CAB0D620F309A600B8B99B /* ZYWCandleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWCandleModel.m; sourceTree = "<group>"; };
+		D7CAB0D720F309A600B8B99B /* ZYWCandlePostionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWCandlePostionModel.h; sourceTree = "<group>"; };
+		D7CAB0D820F309A600B8B99B /* ZYWTimeLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWTimeLineModel.m; sourceTree = "<group>"; };
+		D7CAB0D920F309A600B8B99B /* ZYWLineUntil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWLineUntil.m; sourceTree = "<group>"; };
+		D7CAB0DA20F309A600B8B99B /* ZYWTimeLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWTimeLineModel.h; sourceTree = "<group>"; };
+		D7CAB0DB20F309A600B8B99B /* ZYWMacdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWMacdModel.m; sourceTree = "<group>"; };
+		D7CAB0DC20F309A600B8B99B /* ZYWCandlePostionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWCandlePostionModel.m; sourceTree = "<group>"; };
+		D7CAB0DD20F309A700B8B99B /* ZYWMacdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWMacdModel.h; sourceTree = "<group>"; };
+		D7CAB0DE20F309A700B8B99B /* ZYWMacdPostionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWMacdPostionModel.h; sourceTree = "<group>"; };
+		D7CAB0DF20F309A700B8B99B /* ZYWLineData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWLineData.m; sourceTree = "<group>"; };
+		D7CAB0E020F309A700B8B99B /* ZYWCandleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWCandleModel.h; sourceTree = "<group>"; };
+		D7CAB0E120F309A700B8B99B /* ZYWMacdPostionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWMacdPostionModel.m; sourceTree = "<group>"; };
+		D7CAB0E220F309A800B8B99B /* ZYWLineData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWLineData.h; sourceTree = "<group>"; };
+		D7CAB0E320F309A800B8B99B /* ZYWLineUntil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWLineUntil.h; sourceTree = "<group>"; };
+		D7CAB0EB20F30A1B00B8B99B /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		D7CAB0ED20F30A1C00B8B99B /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		D7CAB0EE20F30A1C00B8B99B /* UIBezierPath+Draw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Draw.m"; sourceTree = "<group>"; };
+		D7CAB0F020F30A1C00B8B99B /* UIBezierPath+Draw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Draw.h"; sourceTree = "<group>"; };
+		D7CAB0F420F30AF400B8B99B /* ZYWSlipLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWSlipLineView.h; sourceTree = "<group>"; };
+		D7CAB0F520F30AF400B8B99B /* ZYWSlipLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWSlipLineView.m; sourceTree = "<group>"; };
+		D7D062B220F34D2F001ABA16 /* greenGrid.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = greenGrid.gif; sourceTree = "<group>"; };
+		D7D062B320F34D30001ABA16 /* purpleGrid.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = purpleGrid.gif; sourceTree = "<group>"; };
+		D7D062B420F34D30001ABA16 /* redGrid.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = redGrid.gif; sourceTree = "<group>"; };
 		F818C59F4A61CE9D392675B5 /* Pods-MonsterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonsterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MonsterUITests/Pods-MonsterUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -398,6 +446,7 @@
 		9B7EEEBC20E9C40900DF88B4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D7CAB0CB20F308FB00B8B99B /* ZYWChart */,
 				9B87074820EB639800156E39 /* SliderMenuView.h */,
 				9B87074920EB639900156E39 /* SliderMenuView.m */,
 				9B87074A20EB639900156E39 /* SliderMenuView.xib */,
@@ -549,6 +598,10 @@
 				9B87074320EB4BAC00156E39 /* InputVerifyTool.m */,
 				9B87074520EB60A900156E39 /* RNFrostedSidebar.h */,
 				9B87074620EB60AA00156E39 /* RNFrostedSidebar.m */,
+				D7CAB0F020F30A1C00B8B99B /* UIBezierPath+Draw.h */,
+				D7CAB0EE20F30A1C00B8B99B /* UIBezierPath+Draw.m */,
+				D7CAB0ED20F30A1C00B8B99B /* UIView+Extension.h */,
+				D7CAB0EB20F30A1B00B8B99B /* UIView+Extension.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -557,6 +610,9 @@
 			isa = PBXGroup;
 			children = (
 				9B7EEF1520EA328100DF88B4 /* PrefixHeader.pch */,
+				D7D062B220F34D2F001ABA16 /* greenGrid.gif */,
+				D7D062B320F34D30001ABA16 /* purpleGrid.gif */,
+				D7D062B420F34D30001ABA16 /* redGrid.gif */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -583,6 +639,43 @@
 				9BB945E320EC6B5300B8D7BE /* _JZ-objc-internal.m */,
 			);
 			path = Private;
+			sourceTree = "<group>";
+		};
+		D7CAB0CB20F308FB00B8B99B /* ZYWChart */ = {
+			isa = PBXGroup;
+			children = (
+				D7CAB0D520F3098F00B8B99B /* model */,
+				D7CAB0CF20F3094A00B8B99B /* ZYWBaseChartView.h */,
+				D7CAB0D020F3094A00B8B99B /* ZYWBaseChartView.m */,
+				D7CAB0CC20F3094000B8B99B /* ZYWLineView.h */,
+				D7CAB0CD20F3094000B8B99B /* ZYWLineView.m */,
+				D7CAB0F420F30AF400B8B99B /* ZYWSlipLineView.h */,
+				D7CAB0F520F30AF400B8B99B /* ZYWSlipLineView.m */,
+			);
+			path = ZYWChart;
+			sourceTree = "<group>";
+		};
+		D7CAB0D520F3098F00B8B99B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D7CAB0D220F3096B00B8B99B /* ZYWLineModel.h */,
+				D7CAB0D320F3096B00B8B99B /* ZYWLineModel.m */,
+				D7CAB0E020F309A700B8B99B /* ZYWCandleModel.h */,
+				D7CAB0D620F309A600B8B99B /* ZYWCandleModel.m */,
+				D7CAB0D720F309A600B8B99B /* ZYWCandlePostionModel.h */,
+				D7CAB0DC20F309A600B8B99B /* ZYWCandlePostionModel.m */,
+				D7CAB0E220F309A800B8B99B /* ZYWLineData.h */,
+				D7CAB0DF20F309A700B8B99B /* ZYWLineData.m */,
+				D7CAB0E320F309A800B8B99B /* ZYWLineUntil.h */,
+				D7CAB0D920F309A600B8B99B /* ZYWLineUntil.m */,
+				D7CAB0DD20F309A700B8B99B /* ZYWMacdModel.h */,
+				D7CAB0DB20F309A600B8B99B /* ZYWMacdModel.m */,
+				D7CAB0DE20F309A700B8B99B /* ZYWMacdPostionModel.h */,
+				D7CAB0E120F309A700B8B99B /* ZYWMacdPostionModel.m */,
+				D7CAB0DA20F309A600B8B99B /* ZYWTimeLineModel.h */,
+				D7CAB0D820F309A600B8B99B /* ZYWTimeLineModel.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -700,6 +793,7 @@
 				9B4F1D7B20EE328B00DEF626 /* MyAssetViewController.xib in Resources */,
 				9B4F1D8520EE3E1700DEF626 /* CoinCanUseViewCell.xib in Resources */,
 				9B42212520EDDF20009D5A8A /* TradeView.xib in Resources */,
+				D7D062B520F34D30001ABA16 /* greenGrid.gif in Resources */,
 				9B87074120EB453600156E39 /* HomePageViewController.xib in Resources */,
 				9BB945F920EC7CEE00B8D7BE /* ExponentialView.xib in Resources */,
 				9B4F1D9920EF41D400DEF626 /* UpLoadImagView.xib in Resources */,
@@ -707,9 +801,11 @@
 				D735D7B420F0B531007E2B7C /* BindingMobileViewController.xib in Resources */,
 				9BB9460820ECB19000B8D7BE /* ExponentialCell.xib in Resources */,
 				9BB945EC20EC6E8300B8D7BE /* HeadTableViewCell.xib in Resources */,
+				D7D062B720F34D30001ABA16 /* redGrid.gif in Resources */,
 				9B7EEE9220E9C39200DF88B4 /* LaunchScreen.storyboard in Resources */,
 				9B4F1D9420EF408900DEF626 /* IdentityViewController.xib in Resources */,
 				9BB9460D20ECB5C100B8D7BE /* CoinTrendsCell.xib in Resources */,
+				D7D062B620F34D30001ABA16 /* purpleGrid.gif in Resources */,
 				D735D7BE20F0C17D007E2B7C /* SetFCodeViewController.xib in Resources */,
 				9BB945F120EC6ED200B8D7BE /* MainPageHeadView.xib in Resources */,
 				9B4F1D9E20EF525F00DEF626 /* SecurityViewController.xib in Resources */,
@@ -741,6 +837,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7D062B820F34E04001ABA16 /* greenGrid.gif in Resources */,
+				D7D062B920F34E04001ABA16 /* purpleGrid.gif in Resources */,
+				D7D062BA20F34E04001ABA16 /* redGrid.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,11 +911,13 @@
 				9B87074420EB4BAC00156E39 /* InputVerifyTool.m in Sources */,
 				9B4F1DB620EF6B9700DEF626 /* WithdrawViewController.m in Sources */,
 				9B4F1D8420EE3E1700DEF626 /* CoinCanUseViewCell.m in Sources */,
+				D7CAB0D420F3096B00B8B99B /* ZYWLineModel.m in Sources */,
 				9B4F1D7F20EE32E600DEF626 /* MyAssetTableViewCell.m in Sources */,
 				9BB945E620EC6B5300B8D7BE /* _JZ-objc-internal.m in Sources */,
 				9BB945E020EC6B2600B8D7BE /* UIViewController+JZExtension.m in Sources */,
 				9B7EEEC320EA030A00DF88B4 /* LoginViewController.m in Sources */,
 				9BB945D820EC63C400B8D7BE /* NavigtionController.m in Sources */,
+				D7CAB0CE20F3094000B8B99B /* ZYWLineView.m in Sources */,
 				9BB945FD20ECA2B400B8D7BE /* MACDTableViewCell.m in Sources */,
 				9B87074B20EB639900156E39 /* SliderMenuView.m in Sources */,
 				9B42212320EDDE3D009D5A8A /* TradeView.m in Sources */,
@@ -824,6 +925,8 @@
 				9B87074720EB60AA00156E39 /* RNFrostedSidebar.m in Sources */,
 				9B9DFD3520EF7CA900E56B2F /* CapitalDetailsViewCell.m in Sources */,
 				9BB945DF20EC6B2600B8D7BE /* UINavigationController+JZExtension.m in Sources */,
+				D7CAB0E620F309A800B8B99B /* ZYWLineUntil.m in Sources */,
+				D7CAB0D120F3094A00B8B99B /* ZYWBaseChartView.m in Sources */,
 				9B4F1DA720EF57CF00DEF626 /* ChargeViewController.m in Sources */,
 				9B87073620EB1FC700156E39 /* UIViewController+Alert.m in Sources */,
 				9BB945EB20EC6E8300B8D7BE /* HeadTableViewCell.m in Sources */,
@@ -841,16 +944,25 @@
 				9B7EEF1820EA32E400DF88B4 /* UIColor+JKRColor.m in Sources */,
 				9B4F1D8920EF0ED600DEF626 /* MyOrderViewController.m in Sources */,
 				9BB9461E20ECE85F00B8D7BE /* MarketTableViewCell.m in Sources */,
+				D7CAB0E720F309A800B8B99B /* ZYWMacdModel.m in Sources */,
+				D7CAB0E420F309A800B8B99B /* ZYWCandleModel.m in Sources */,
 				9B7EEE9520E9C39200DF88B4 /* main.m in Sources */,
+				D7CAB0E920F309A800B8B99B /* ZYWLineData.m in Sources */,
 				9B7EEECE20EA288400DF88B4 /* MRUserAccount.m in Sources */,
 				9B87074020EB453600156E39 /* HomePageViewController.m in Sources */,
 				9BA85A9820F0AC3F00C096B0 /* OrderDetailViewController.m in Sources */,
 				D735D7B320F0B531007E2B7C /* BindingMobileViewController.m in Sources */,
 				9B7EEF1320EA322E00DF88B4 /* JSONKit.m in Sources */,
+				D7CAB0EA20F309A800B8B99B /* ZYWMacdPostionModel.m in Sources */,
 				9B87073C20EB3B3600156E39 /* MRBaseModel.m in Sources */,
 				D735D7AE20F0A696007E2B7C /* OrderHistoryViewController.m in Sources */,
+				D7CAB0F620F30AF400B8B99B /* ZYWSlipLineView.m in Sources */,
 				9B4F1D9720EF41C300DEF626 /* UpLoadImagView.m in Sources */,
+				D7CAB0F320F30A1C00B8B99B /* UIBezierPath+Draw.m in Sources */,
+				D7CAB0F120F30A1C00B8B99B /* UIView+Extension.m in Sources */,
+				D7CAB0E820F309A800B8B99B /* ZYWCandlePostionModel.m in Sources */,
 				9BB9461920ECE76700B8D7BE /* MarketViewController.m in Sources */,
+				D7CAB0E520F309A800B8B99B /* ZYWTimeLineModel.m in Sources */,
 				9BB945F720EC7CD800B8D7BE /* ExponentialView.m in Sources */,
 				9B4F1D9D20EF525F00DEF626 /* SecurityViewController.m in Sources */,
 				D735D7B820F0BECC007E2B7C /* BindingMailBoxViewController.m in Sources */,

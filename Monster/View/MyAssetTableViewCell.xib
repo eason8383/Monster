@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -255,6 +255,7 @@
             <color key="backgroundColor" red="0.094117647058823528" green="0.098039215686274508" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="backView" destination="6BO-hW-wTa" id="MKY-wI-AS3"/>
                 <outlet property="capitalBtn" destination="Ef3-uN-KDG" id="7Pw-xq-CGO"/>
                 <outlet property="chargeBtn" destination="q2K-WV-Ep8" id="Gbc-P3-kCG"/>
                 <outlet property="checkBox" destination="SnE-LD-JtS" id="lyP-BD-Dvh"/>
@@ -268,9 +269,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="capital record " width="7" height="7"/>
-        <image name="charge money" width="7" height="7"/>
+        <image name="capital record " width="14" height="14"/>
+        <image name="charge money" width="15" height="14"/>
         <image name="unchecked-checkbox" width="32" height="32"/>
-        <image name="withdraw money" width="7" height="7"/>
+        <image name="withdraw money" width="15" height="14"/>
     </resources>
 </document>

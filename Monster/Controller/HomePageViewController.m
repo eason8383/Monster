@@ -19,6 +19,8 @@
 #import "SecurityViewController.h"
 #import "SetupViewController.h"
 
+#import "CapitalViewController.h"
+
 @interface HomePageViewController () <UITableViewDelegate,UITableViewDataSource,RNFrostedSidebarDelegate>
 
 @property(nonatomic,strong)UITableView *tableView;
@@ -143,7 +145,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         
         default:{
             CoinTrendsCell *ctCell = (CoinTrendsCell *)[tableView dequeueReusableCellWithIdentifier:coinTrendsCellIdentifier];
-            
+            ctCell.tag = indexPath.row;
             [ctCell setContent:@""];
             return ctCell;
         }
@@ -156,9 +158,11 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     
     if (indexPath.row > 0 && indexPath.row != 2) {
         CoinDetailViewController *coVC = [[CoinDetailViewController alloc]initWithNibName:@"CoinDetailViewController" bundle:nil];
+//        CapitalViewController *coVC = [[CapitalViewController alloc]initWithNibName:@"CapitalViewController" bundle:nil];
+        coVC.isHighLowKLine = (indexPath.row == 1)?NO:YES;
         coVC.jz_navigationBarHidden = NO;
         coVC.jz_navigationBarBackgroundHidden = true;
-        UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"ETH/MR" style:UIBarButtonItemStylePlain target:nil action:nil];
+        UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"MR/ETH" style:UIBarButtonItemStylePlain target:nil action:nil];
         backBtn.tintColor = [UIColor whiteColor];
         [self.navigationItem setBackBarButtonItem:backBtn];
         [self.navigationController pushViewController:coVC animated:YES];

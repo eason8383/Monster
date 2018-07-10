@@ -13,13 +13,23 @@
 @property(nonatomic,strong)IBOutlet UILabel *subAssetLabel;
 @property(nonatomic,strong)IBOutlet UILabel *titleLabel;
 @property(nonatomic,strong)IBOutlet UIImageView *checkBox;
+@property(nonatomic,strong)IBOutlet UIView *backView;
+
+@property (nonatomic) CGPoint inputPoint0;
+@property (nonatomic) CGPoint inputPoint1;
+@property (nonatomic) UIColor *inputColor0;
+@property (nonatomic) UIColor *inputColor1;
+
 @end
 
 @implementation MyAssetTableViewCell
 
+
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
 }
 
 - (void)setBtnTarget:(id)target select:(SEL)select{

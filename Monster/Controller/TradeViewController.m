@@ -50,7 +50,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     
     _tradeView = [nib objectAtIndex:0];
 //    [_tradeView setFrame:CGRectMake(0, 0, kScreenWidth, 396)];
-
+    [_tradeView setMode:self.isHigh];
     [self.view addSubview:_tradeView];
     [self.view addSubview:self.tableView];
 }
