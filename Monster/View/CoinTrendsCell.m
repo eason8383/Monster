@@ -68,6 +68,7 @@
 
 - (void)setContent:(CoinPairModel*)coinInfo dataArray:(NSArray*)ary{
     [_coinTitleLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
+    [self.local_DataAry removeAllObjects];
     [self.local_DataAry addObjectsFromArray:ary];
     _lineView.dataArray = [self generateDataArray:self.local_DataAry];
     [_lineView stockFill];

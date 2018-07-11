@@ -50,7 +50,6 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     [self.navigationItem setBackBarButtonItem:backBtn];
     NSLog(@"Previous visible view controller is %@", self.navigationController.jz_previousVisibleViewController);
     
-    
     [_homeModel getData:100];
     _updatTimer = [NSTimer scheduledTimerWithTimeInterval:60
                                                   repeats:YES block:^(NSTimer *timer){

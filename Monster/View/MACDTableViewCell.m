@@ -88,6 +88,7 @@
 
 - (void)setContent:(CoinPairModel*)coinInfo dataArray:(NSArray*)ary{
     [_coinTypeLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
+    [self.local_DataAry removeAllObjects];
     [self.local_DataAry addObjectsFromArray:ary];
     if (self.local_DataAry.count > 0) {
 //        if (_kLineView != nil) {
