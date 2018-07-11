@@ -15,7 +15,6 @@
 @property (nonatomic,assign) BOOL isFillColor;
 @property (nonatomic,assign) BOOL useAnimation;
 
-
 - (void)stockFill;
 
 @end

@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class CoinPairModel;
 
 
 @interface CoinTrendsCell : UITableViewCell
 
-- (void)setContent:(id)info;
+- (void)setContent:(CoinPairModel*)coinInfo dataArray:(NSArray*)ary;
 
 @end
 

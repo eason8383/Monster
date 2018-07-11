@@ -9,12 +9,24 @@
 #import <Foundation/Foundation.h>
 
 
+@protocol HomeModelDelegate <NSObject>
+
+@optional
+
+- (void)getDataSucess;
+- (void)getDataFalid:(NSError*)error;
+
+@end
+
 @interface HomeViewModel : NSObject
+@property(nonatomic,weak) id<HomeModelDelegate> delegate;
 
 + (instancetype)sharedInstance;
 
-- (void)getData;
+- (void)getData:(NSInteger)linit;
 - (NSInteger)numberOfRowsInSection;
+
+- (NSArray*)getHomeDataArray;
 
 - (NSArray*)getDrawKLineInfoArray:(NSString*)coinPairId;
 

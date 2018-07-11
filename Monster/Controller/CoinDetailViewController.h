@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class CoinPairModel;
 
 
 @interface CoinDetailViewController : UIViewController
 
 @property(nonatomic,assign)BOOL isHighLowKLine;
+@property(nonatomic,strong)CoinPairModel *model;
+@property(nonatomic,strong)NSMutableArray *klineDataAry;
 
 @end
 

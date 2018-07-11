@@ -17,6 +17,7 @@
 
 @property(nonatomic,copy)NSString *subCoinId;
 @property(nonatomic,copy)NSString *pairStatus;
+
 @property(nonatomic,assign)float buyFeeRate;
 @property(nonatomic,assign)float sellFeeRate;
 
@@ -30,7 +31,6 @@
 @property(nonatomic,assign)double minPrice;
 @property(nonatomic,assign)double endPrice;
 @property(nonatomic,assign)double maxPrice;
-
 
 +(instancetype)coinPairWithDict:(NSDictionary *)dict;
 //"buyFeeRate": 0.0001,

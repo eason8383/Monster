@@ -11,7 +11,7 @@
 @interface ZYWLineView ()
 
 @property (nonatomic,strong) NSMutableArray *modelPostionArray;
-@property (nonatomic, strong) CAShapeLayer *lineChartLayer;
+@property (nonatomic,strong) CAShapeLayer *lineChartLayer;
 
 @end
 
@@ -38,6 +38,8 @@
 
 - (void)drawLineLayer
 {
+    [self.lineChartLayer removeFromSuperlayer];
+    self.lineChartLayer = nil;
     UIBezierPath *path = [UIBezierPath drawLine:self.modelPostionArray];
     self.lineChartLayer = [CAShapeLayer layer];
     self.lineChartLayer.path = path.CGPath;
@@ -79,6 +81,7 @@
 
 - (void)initModelPostion
 {
+    [_modelPostionArray removeAllObjects];
     __weak typeof(self) this = self;
     [_dataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat value = [self.dataArray[idx] floatValue];
@@ -103,9 +106,9 @@
 {
     [self initConfig];
     [self initModelPostion];
-    if (self.lineChartLayer == nil) {
+//    if (self.lineChartLayer == nil) {
         [self drawLineLayer];
-    }
+//    }
 }
 
 - (void)stockFill

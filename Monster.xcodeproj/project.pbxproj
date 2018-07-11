@@ -103,6 +103,7 @@
 		D735D7BE20F0C17D007E2B7C /* SetFCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7BC20F0C17D007E2B7C /* SetFCodeViewController.xib */; };
 		D7820BA920F4C11200B01F05 /* MRHomePageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BA820F4C11200B01F05 /* MRHomePageClient.m */; };
 		D7820BAC20F4C50C00B01F05 /* HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BAB20F4C50C00B01F05 /* HomeViewModel.m */; };
+		D7820BAF20F5E1B200B01F05 /* CoinDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BAE20F5E1B200B01F05 /* CoinDetailViewModel.m */; };
 		D7CAB0CE20F3094000B8B99B /* ZYWLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0CD20F3094000B8B99B /* ZYWLineView.m */; };
 		D7CAB0D120F3094A00B8B99B /* ZYWBaseChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0D020F3094A00B8B99B /* ZYWBaseChartView.m */; };
 		D7CAB0D420F3096B00B8B99B /* ZYWLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0D320F3096B00B8B99B /* ZYWLineModel.m */; };
@@ -307,6 +308,8 @@
 		D7820BA820F4C11200B01F05 /* MRHomePageClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRHomePageClient.m; sourceTree = "<group>"; };
 		D7820BAA20F4C50C00B01F05 /* HomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewModel.h; sourceTree = "<group>"; };
 		D7820BAB20F4C50C00B01F05 /* HomeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewModel.m; sourceTree = "<group>"; };
+		D7820BAD20F5E1B200B01F05 /* CoinDetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoinDetailViewModel.h; sourceTree = "<group>"; };
+		D7820BAE20F5E1B200B01F05 /* CoinDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoinDetailViewModel.m; sourceTree = "<group>"; };
 		D7CAB0CC20F3094000B8B99B /* ZYWLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWLineView.h; sourceTree = "<group>"; };
 		D7CAB0CD20F3094000B8B99B /* ZYWLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWLineView.m; sourceTree = "<group>"; };
 		D7CAB0CF20F3094A00B8B99B /* ZYWBaseChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWBaseChartView.h; sourceTree = "<group>"; };
@@ -652,6 +655,8 @@
 			children = (
 				D7820BAA20F4C50C00B01F05 /* HomeViewModel.h */,
 				D7820BAB20F4C50C00B01F05 /* HomeViewModel.m */,
+				D7820BAD20F5E1B200B01F05 /* CoinDetailViewModel.h */,
+				D7820BAE20F5E1B200B01F05 /* CoinDetailViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -950,6 +955,7 @@
 				9B42212320EDDE3D009D5A8A /* TradeView.m in Sources */,
 				9B7EEE8A20E9C39000DF88B4 /* ViewController.m in Sources */,
 				9B87074720EB60AA00156E39 /* RNFrostedSidebar.m in Sources */,
+				D7820BAF20F5E1B200B01F05 /* CoinDetailViewModel.m in Sources */,
 				9B9DFD3520EF7CA900E56B2F /* CapitalDetailsViewCell.m in Sources */,
 				9BB945DF20EC6B2600B8D7BE /* UINavigationController+JZExtension.m in Sources */,
 				D7CAB0E620F309A800B8B99B /* ZYWLineUntil.m in Sources */,

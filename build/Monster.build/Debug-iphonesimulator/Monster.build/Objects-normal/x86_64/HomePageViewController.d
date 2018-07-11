@@ -33,4 +33,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SecurityViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SetupViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/AboutusViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/HomeViewModel.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/HomeViewModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/CoinPairModel.h

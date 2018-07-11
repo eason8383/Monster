@@ -19,6 +19,8 @@
 
 @property(nonatomic,strong)NSDictionary *drawKLineInfo;
 
+@property(nonatomic,assign)NSInteger limit;
+
 @end
 
 @implementation HomeViewModel
@@ -36,8 +38,8 @@
     return instance;
 }
 
-- (void)getData{
-    
+- (void)getData:(NSInteger)limit{
+    _limit = limit;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self getCoinPair];
         
@@ -58,7 +60,6 @@
             
             
         }
-        
         
         NSLog(@"response:%@",response);
         
@@ -98,16 +99,17 @@
 }
 
 - (void)getKlineList{
-    [[MRHomePageClient alloc]getKlienList:@"" withKLineType:@"1" withLimit:100 withBeginBarTimeLong:@"" success:^(id response) {
+    [[MRHomePageClient alloc]getKlienList:@"" withKLineType:@"1" withLimit:_limit withBeginBarTimeLong:@"" success:^(id response) {
         NSDictionary *dic = response;
-//        dispatch_async(dispatch_get_main_queue(), ^{
-            if ([[dic objectForKey:@"success"] integerValue] == 1) {
-                self.drawKLineInfo = [dic objectForKey:@"klineBarListMap"];
-            } else {
-                
-                
-            }
-//        });
+        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            [self addLatestKLineInfofrom:[dic objectForKey:@"klineBarListMap"]];
+        } else {
+            
+            
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate getDataSucess];
+        });
         
         NSLog(@"response:%@",response);
         
@@ -118,6 +120,34 @@
         });
     }];
 }
+
+- (void)addLatestKLineInfofrom:(NSDictionary*)newDic{
+    
+    if (self.drawKLineInfo.count == 0) {
+        self.drawKLineInfo = newDic;
+    } else {
+        NSMutableDictionary *resultDic = [NSMutableDictionary dictionary];
+        
+        [self.drawKLineInfo enumerateKeysAndObjectsUsingBlock:^(NSString* key, id obj, BOOL *stop) {
+            
+            NSMutableArray *ary = [[NSMutableArray alloc]initWithArray:[self.drawKLineInfo objectForKey:key]];
+            
+            NSArray *newAry = [newDic objectForKey:key];
+            if (newAry.count > 0) {
+                [ary addObjectsFromArray:newAry];
+                if (ary.count > 100) {
+                    [ary removeObjectsInRange:NSMakeRange(0,ary.count - 100)];
+                }
+            }
+
+            [resultDic setObject:ary forKey:key];
+        }];
+        
+        self.drawKLineInfo = resultDic;
+    }
+
+}
+
 
 - (void)combinData{
     
@@ -133,12 +163,13 @@
         CoinPairModel *coModel = [CoinPairModel coinPairWithDict:finalDic];
         [self.homeDataAry addObject:coModel];
     }
+    
     [self getKlineList];
 }
 
 - (NSArray*)getDrawKLineInfoArray:(NSString*)coinPairId{
     NSMutableArray *resultAry = [NSMutableArray array];
-    NSArray *ary = [_drawKLineInfo objectForKey:@"coinPairId"];
+    NSArray *ary = [_drawKLineInfo objectForKey:coinPairId];
     
     for (NSDictionary *dic in ary) {
         CoinPairModel *coModel = [CoinPairModel coinPairWithDict:dic];
@@ -149,6 +180,10 @@
 
 - (NSInteger)numberOfRowsInSection{
     return self.coinPairAry.count;
+}
+
+- (NSArray*)getHomeDataArray{
+    return _homeDataAry;
 }
 
 - (NSMutableArray*)homeDataAry{

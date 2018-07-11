@@ -10,6 +10,7 @@
 #import "TradeViewController.h"
 #import <FLAnimatedImage/FLAnimatedImage.h>
 #import "ZYWLineView.h"
+#import "CoinPairModel.h"
 
 @interface CoinDetailViewController ()
 
@@ -58,13 +59,17 @@
     _timeBtn_day.layer.cornerRadius = 4;
     _timeBtn_week.layer.cornerRadius = 4;
     _timeBtn_month.layer.cornerRadius = 4;
-    
 }
+
 
 - (void)setStyle{
     if (self.isHighLowKLine) {
-        _gridString = @"redGrid";
-        _klineColorString = MRCOLORHEX_LOW;
+        
+        BOOL isGoingHigher = [self isEndPriceHigher:_model];
+    
+        _gridString = isGoingHigher?@"greenGrid":@"redGrid";
+        _klineColorString = isGoingHigher?MRCOLORHEX_HIGH:MRCOLORHEX_LOW;
+    
         [_buyBtn setBackgroundColor:[UIColor colorWithHexString:MRCOLORHEX_HIGH]];
         [_saleBtn setBackgroundColor:[UIColor colorWithHexString:MRCOLORHEX_LOW]];
     } else {
@@ -76,11 +81,28 @@
     }
 }
 
+- (BOOL)isEndPriceHigher:(CoinPairModel*)coinInfo{
+    double priceGap = coinInfo.endPrice - coinInfo.beginPrice;
+    return (priceGap > 0)?YES:NO;
+}
 
 - (void)loadView{
     [super loadView];
     [self setStyle];
+    [self setContent];
     [self setKLine];
+    [self setBottomGrid];
+}
+
+- (void)setContent{
+    double result = (_model.endPrice - _model.beginPrice)/_model.beginPrice * 100;
+    [_pesent_Label setText:[NSString stringWithFormat:@"%.2f",result]];
+    [_height_Label setText:[NSString stringWithFormat:@"%.5f",_model.maxPrice]];
+    [_low_Label setText:[NSString stringWithFormat:@"%.5f",_model.minPrice]];
+    [_oneDay_Label setText:[NSString stringWithFormat:@"%.5f",_model.endPrice]];
+}
+
+- (void)setBottomGrid{
     if (!self.imageView1) {
         self.imageView1 = [[FLAnimatedImageView alloc] init];
         self.imageView1.contentMode = UIViewContentModeScaleAspectFill;
@@ -114,12 +136,23 @@
 //    [_lineView layoutIfNeeded];
 //        _dataArray = @[@"12",@"33",@"26",@"10",@"7",@"30",@"21"];
     
-    _lineView.dataArray = @[@"12",@"33",@"26",@"18",@"25",@"30",@"25",@"33",@"26",@"27",@"25",@"30",@"32",@"33",@"26",@"18",@"25",@"30",@"38",@"44",@"46"];
+    _lineView.dataArray = [self generateDataArray:self.klineDataAry];
     _lineView.leftMargin = 0;
     _lineView.rightMargin = 0;
     _lineView.topMargin = 0;
     _lineView.bottomMargin = 0;
     [_lineView stockFill];
+}
+
+- (NSArray*)generateDataArray:(NSArray*)ary{
+    NSMutableArray *resultStrAry = [NSMutableArray array];
+    
+    for (CoinPairModel *coInfo in ary) {
+        NSString *endPriceStr = [NSString stringWithFormat:@"%f",coInfo.endPrice];
+        [resultStrAry addObject:endPriceStr];
+    }
+    //    NSLog(@"%@",resultStrAry);
+    return resultStrAry;
 }
 
 
@@ -131,8 +164,6 @@
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tdVC];
     
     [self presentViewController:nav animated:YES completion:nil];
-    
-    
     
 }
 
