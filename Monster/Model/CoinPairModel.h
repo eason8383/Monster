@@ -31,6 +31,7 @@
 @property(nonatomic,assign)double minPrice;
 @property(nonatomic,assign)double endPrice;
 @property(nonatomic,assign)double maxPrice;
+@property(nonatomic,assign)double lastPrice;
 
 +(instancetype)coinPairWithDict:(NSDictionary *)dict;
 //"buyFeeRate": 0.0001,

@@ -11,9 +11,10 @@
 
 
 @interface MACDTableViewCell : UITableViewCell
-
+@property(nonatomic,assign)float multiple;
 
 - (void)setContent:(CoinPairModel*)coinInfo dataArray:(NSArray*)ary;
+
 
 @end
 

@@ -27,7 +27,7 @@
         NSDictionary *dic = [self dictionaryWithJsonString:result];
         NSDictionary *resdic = [dic objectForKey:@"respCode"];
         if (![[resdic objectForKey:@"code"] isEqualToString:@"00000"]) {
-            NSError *error = [NSError errorWithDomain:@"Get model data error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            NSError *error = [NSError errorWithDomain:@"Get CoinPair error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
             
             failureBlock(error);
             
@@ -56,7 +56,7 @@
         NSDictionary *dic = [self dictionaryWithJsonString:result];
         NSDictionary *resdic = [dic objectForKey:@"respCode"];
         if (![[resdic objectForKey:@"code"] isEqualToString:@"00000"]) {
-            NSError *error = [NSError errorWithDomain:@"Get model data error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            NSError *error = [NSError errorWithDomain:@"Get KlineLastBar error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
             
             failureBlock(error);
             
@@ -88,7 +88,35 @@
         NSDictionary *dic = [self dictionaryWithJsonString:result];
         NSDictionary *resdic = [dic objectForKey:@"respCode"];
         if (![[resdic objectForKey:@"code"] isEqualToString:@"00000"]) {
-            NSError *error = [NSError errorWithDomain:@"Get model data error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            NSError *error = [NSError errorWithDomain:@"Get KlienList error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            
+            failureBlock(error);
+            
+        } else {
+            successBlock(dic);
+        }
+        
+    } error:^(NSError *error) {
+        if (error) {
+            failureBlock(error);
+        }
+    }];
+}
+
+- (void)getExternalMarketSuccess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
+    NSDictionary *parameters = @{
+                                 @"source":@"03",
+                                 @"version":@"1.0",
+                                 };
+    
+    NSString *jsonParameter = [parameters JSONString];
+    
+    [self getResponse:MR_QUERYEXTERNALMARKET action:ERQUERY parametes:jsonParameter isEncrypt:NO complete:^(NSString *result) {
+        
+        NSDictionary *dic = [self dictionaryWithJsonString:result];
+        NSDictionary *resdic = [dic objectForKey:@"respCode"];
+        if (![[resdic objectForKey:@"code"] isEqualToString:@"00000"]) {
+            NSError *error = [NSError errorWithDomain:@"Get ExternalMarket error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
             
             failureBlock(error);
             

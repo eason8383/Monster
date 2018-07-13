@@ -67,6 +67,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         NSLog(@"Controller will push to another.");
     }
     [_updatTimer invalidate];
+    _updatTimer = nil;
 }
 
 - (void)viewDidLoad {
@@ -77,7 +78,6 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     self.jz_navigationInteractivePopGestureEnabled = true;
     
     [self initial];
-    
     
 }
 
@@ -116,7 +116,6 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 
 - (void)getDataSucess{
     [self.tableView reloadData];
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -158,7 +157,9 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
             NSArray *ary = [_homeModel getHomeDataArray];
             CoinPairModel *model = [ary objectAtIndex:indexPath.row - 1];
             NSArray *klineAry = [_homeModel getDrawKLineInfoArray:model.coinPairId];
+            mcdCell.multiple = [_homeModel getMultipleWithCurrentCoinId:model.subCoinId];
             [mcdCell setContent:model dataArray:klineAry];
+            
             return mcdCell;
         }
         case 2: {
@@ -192,7 +193,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         NSArray *klineAry = [_homeModel getDrawKLineInfoArray:model.coinPairId];
         coVC.model = model;
         coVC.klineDataAry = [[NSMutableArray alloc]initWithArray:klineAry];
-        
+        coVC.multiple = [_homeModel getMultipleWithCurrentCoinId:model.subCoinId];
         coVC.isHighLowKLine = (indexPath.row == 1)?NO:YES;
         coVC.jz_navigationBarHidden = NO;
         coVC.jz_navigationBarBackgroundHidden = true;
@@ -202,29 +203,6 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         [self.navigationController pushViewController:coVC animated:YES];
     }
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 45;
-//}
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//
-//    return (section == 0)?274:45;
-//}
-
-//- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    if (section == 0) {
-//        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MainPageHeadView" owner:self options:nil];
-//        MainPageHeadView *hdView = [nib objectAtIndex:0];
-//        [hdView.callMenuBtn addTarget:self action:@selector(callMenu:) forControlEvents:UIControlEventTouchUpInside];
-//        [hdView.audioViewBtn addTarget:self action:@selector(pushSome:) forControlEvents:UIControlEventTouchUpInside];
-//        return hdView;
-//    } else {
-//        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ExponentialView" owner:self options:nil];
-//        ExponentialView *exView = [nib objectAtIndex:0];
-//        [exView.moreDetailBtn addTarget:self action:@selector(moreDetail:) forControlEvents:UIControlEventTouchUpInside];
-//        return exView;
-//    }
-//}
 
 #pragma mark - RNFrostedSidebarDelegate
 

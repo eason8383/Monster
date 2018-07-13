@@ -23,16 +23,35 @@
     self.title = @"设置";
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
+    
+    NSString *nowCurrency = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+    if ([nowCurrency isEqualToString:CNY]) {
+        self.currencyLabel.text = @"人民币>";
+    } else {
+        self.currencyLabel.text = @"美元>";
+    }
 }
 
-/*
-#pragma mark - Navigation
+- (IBAction)setDafaultCurrency:(id)sender{
+    
+    NSMutableArray *actions = [NSMutableArray array];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UIAlertAction *CNYAction = [UIAlertAction actionWithTitle:@"人民币" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        self.currencyLabel.text = [NSString stringWithFormat:@"%@>",action.title];
+        [[NSUserDefaults standardUserDefaults]setObject:CNY forKey:DEFAULTCURRENCY];
+    }];
+    UIAlertAction *USDAction = [UIAlertAction actionWithTitle:@"美元" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    
+        self.currencyLabel.text = [NSString stringWithFormat:@"%@>",action.title];
+        [[NSUserDefaults standardUserDefaults]setObject:USD forKey:DEFAULTCURRENCY];
+    }];
+    [actions addObject:CNYAction];
+    [actions addObject:USDAction];
+
+    
+    [self showActionSheet:@"" message:@"计价方式" withActions:actions];
+    
 }
-*/
 
 @end

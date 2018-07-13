@@ -23,11 +23,15 @@
 
 + (instancetype)sharedInstance;
 
-- (void)getData:(NSInteger)linit;
+- (void)getData:(NSInteger)limit;
 - (NSInteger)numberOfRowsInSection;
 
 - (NSArray*)getHomeDataArray;
 
 - (NSArray*)getDrawKLineInfoArray:(NSString*)coinPairId;
+
+- (NSArray*)getExternalMarketInfo;
+- (NSDictionary*)getExternalMarketInfoWithCoinId:(NSString*)coinId;
+- (float)getMultipleWithCurrentCoinId:(NSString*)coinId;
 
 @end

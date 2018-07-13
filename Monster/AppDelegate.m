@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "HomePageViewController.h"
+#import "MRWebClient.h"
 #import "MRUserAccount.h"
 
 @interface AppDelegate ()
@@ -27,25 +28,39 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self initScreen];
+    //默认人民币汇率
+    [[NSUserDefaults standardUserDefaults]setObject:CNY forKey:DEFAULTCURRENCY];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initScreen) name:@"logout" object:nil];
+    
     return YES;
 }
 
 - (void)initScreen{
     
-//   LoginViewController *loginController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-//
-//
-//
-//    [loginController setLoginHandler:^(NSString *clientId) {
-//
-//            [self readyToShowMainController];
-//
-//            NSLog(@"So you get message from Login Handler:%@",clientId);
-//    }];
-//    _window.rootViewController = loginController;
-    
+    NSString *sessionId = [[NSUserDefaults standardUserDefaults]objectForKey:@"sessionId"];
+    id userAccountObject = [[NSUserDefaults standardUserDefaults]objectForKey:@"userAccount"];
+    if (userAccountObject && [userAccountObject isKindOfClass:[NSData class]]) {
+        NSData *userData = [[NSUserDefaults standardUserDefaults]objectForKey:@"userAccount"];
+        MRUserAccount *account = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+        [MRWebClient sharedInstance].userAccount = account;
+        
+        [self readyToShowMainController];
+    } else {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userAccount"];
+        sessionId = nil;
+        
+        LoginViewController *loginController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+        
+        [loginController setLoginHandler:^(NSString *clientId) {
+            
+            [self readyToShowMainController];
+            
+            NSLog(@"So you get message from Login Handler:%@",clientId);
+        }];
+        _window.rootViewController = loginController;
+    }
     //jump over login
-    [self readyToShowMainController];
+//    [self readyToShowMainController];
 }
 
 - (void)readyToShowMainController{

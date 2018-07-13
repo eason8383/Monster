@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-
+@class CoinPairModel;
 
 @interface TradeView : UIView
 
 @property(nonatomic,assign)BOOL isHighMode;
+@property(nonatomic,assign)float multiple;
 
--(void)setMode:(BOOL)isHigh;
+- (void)setMode:(BOOL)isHigh;
+
+- (void)setContent:(CoinPairModel*)coinInfo;
 
 @end
 

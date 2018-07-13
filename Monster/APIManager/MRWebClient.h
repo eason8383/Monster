@@ -19,6 +19,10 @@ typedef void(^loginCompleteBlock)(NSString*result);
 
 - (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
 
+- (void)saveUserAccount:(MRUserAccount*)userAccount;
+//获取到useraccount
+- (MRUserAccount*)getUserAccount;
+
 //异步请求
 - (void)getResponse:(NSString*)controller action:(NSString*)action parametes:(NSString*)parameters isEncrypt:(BOOL)isEncrypt complete:(loginCompleteBlock)complete error:(void(^)(NSError*error))errorBlock;
 

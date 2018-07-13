@@ -10,10 +10,14 @@
 #import "ExponentialView.h"
 #import "MarketTableViewCell.h"
 #import "ExponentialView.h"
+#import "HomeViewModel.h"
+#import "CoinPairModel.h"
 
-@interface MarketViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface MarketViewController () <UITableViewDelegate,UITableViewDataSource,HomeModelDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableDictionary *heightAtIndexPath;//缓存高度所用字典
+@property(nonatomic,strong)HomeViewModel *homeModel;
+@property(nonatomic,strong)NSTimer *updatTimer;
 
 @end
 
@@ -21,15 +25,34 @@
 
 static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
 
-- (void)viewDidLoad {
+- (void)viewDidLoad{
     [super viewDidLoad];
     self.title = @"行情";
+    
+    [self initial];
+}
+
+- (void)initial{
+    _homeModel = [HomeViewModel sharedInstance];
+    _homeModel.delegate = self;
     [self registerCells];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [_homeModel getData:100];
+    _updatTimer = [NSTimer scheduledTimerWithTimeInterval:60
+                                                  repeats:YES block:^(NSTimer *timer){
+                                                      [self.homeModel getData:1];
+                                                  }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [UINavigationBar appearance].translucent = YES;
+    [_updatTimer invalidate];
+    _updatTimer = nil;
 }
 
 - (void)loadView{
@@ -47,6 +70,10 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
 //    [self.navigationItem setLeftBarButtonItem:backHomeBtn];
 }
 
+- (void)getDataSucess{
+    [_tableView reloadData];
+}
+
 - (void)dismissBackToHome:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -58,7 +85,7 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return _homeModel.numberOfRowsInSection;
 }
 
 #pragma mark - UITableViewDelegate
@@ -76,14 +103,14 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
     [self.heightAtIndexPath setObject:height forKey:indexPath];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     MarketTableViewCell *mkCell = (MarketTableViewCell *)[tableView dequeueReusableCellWithIdentifier:marketTableViewCellIdentifier];
+    NSArray *ary = [_homeModel getHomeDataArray];
+    CoinPairModel *model = [ary objectAtIndex:indexPath.row];
+    mkCell.multiple = [_homeModel getMultipleWithCurrentCoinId:model.subCoinId];
+    [mkCell setContent:model];
     return mkCell;
-    
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

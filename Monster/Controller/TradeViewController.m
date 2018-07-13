@@ -11,13 +11,16 @@
 #import "ExponentialCell.h"
 #import "EntrustNowViewCell.h"
 #import "MarketViewController.h"
+#import "TradeViewModel.h"
+#import "TrandModel.h"
 
 #define NOWBILL 1
 
-@interface TradeViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface TradeViewController () <UITableViewDelegate,UITableViewDataSource,TradeViewModelDelegate>
 
 @property(nonatomic,strong)TradeView *tradeView;
 @property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong)TradeViewModel *tradeViewModel;
 @property(nonatomic,strong)NSMutableDictionary *heightAtIndexPath;//缓存高度所用字典
 @end
 
@@ -28,6 +31,14 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initial];
+}
+
+- (void)initial{
+    
+    _tradeViewModel = [TradeViewModel sharedInstance];
+    _tradeViewModel.delegate = self;
+    
     [self registerCells];
 }
 
@@ -36,6 +47,8 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     backHomeBtn.tintColor = [UIColor whiteColor];
     
     [self.navigationItem setLeftBarButtonItem:backHomeBtn];
+    
+    [_tradeViewModel getData:@"10001"];
 }
 
 - (void)loadView{
@@ -51,6 +64,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     _tradeView = [nib objectAtIndex:0];
 //    [_tradeView setFrame:CGRectMake(0, 0, kScreenWidth, 396)];
     [_tradeView setMode:self.isHigh];
+    [_tradeView setContent:self.model];
     [self.view addSubview:_tradeView];
     [self.view addSubview:self.tableView];
 }
@@ -58,6 +72,10 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     [_tradeView setFrame:CGRectMake(0, 0, kScreenWidth, 396)];
+}
+
+- (void)getDataSucess{
+    NSLog(@"Trade getDataSucess");
 }
 
 - (void)dismissBackToHome:(id)sender{

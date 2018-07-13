@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class CoinPairModel;
 @interface MarketTableViewCell : UITableViewCell
+@property(nonatomic,assign)float multiple;
+
+- (void)setContent:(CoinPairModel*)coinInfo;
 
 @end

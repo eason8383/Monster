@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class CoinPairModel;
 
 @interface TradeViewController : UIViewController
 
 @property(nonatomic,assign)BOOL isHigh;
-
+@property(nonatomic,strong)CoinPairModel *model;
+@property(nonatomic,assign)float multiple;
 
 @end
 

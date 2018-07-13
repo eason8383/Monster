@@ -19,6 +19,8 @@
 
 @property(nonatomic,strong)NSDictionary *drawKLineInfo;
 
+@property(nonatomic,strong)NSMutableArray *externalMarketAry;
+
 @property(nonatomic,assign)NSInteger limit;
 
 @end
@@ -58,7 +60,6 @@
             [self getKlineLastBar];
         } else {
             
-            
         }
         
         NSLog(@"response:%@",response);
@@ -84,9 +85,7 @@
             [self combinData];
         } else {
             
-            
         }
-        
         
         NSLog(@"response:%@",response);
         
@@ -105,6 +104,25 @@
             [self addLatestKLineInfofrom:[dic objectForKey:@"klineBarListMap"]];
         } else {
             
+        }
+        [self getExternalMarket];
+        
+        NSLog(@"response:%@",response);
+        
+    } failure:^(NSError *error) {
+        //失敗
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+        });
+    }];
+}
+
+- (void)getExternalMarket{
+    [[MRHomePageClient alloc]getExternalMarketSuccess:^(id response) {
+        NSDictionary *dic = response;
+        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            self.externalMarketAry = [dic objectForKey:@"resultList"];
+        } else {
             
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -145,9 +163,7 @@
         
         self.drawKLineInfo = resultDic;
     }
-
 }
-
 
 - (void)combinData{
     
@@ -176,6 +192,32 @@
         [resultAry addObject:coModel];
     }
     return resultAry;
+}
+
+- (NSArray*)getExternalMarketInfo{
+
+    return self.externalMarketAry;
+}
+
+- (NSDictionary*)getExternalMarketInfoWithCoinId:(NSString*)coinId;{
+    NSDictionary *resultDic = [NSDictionary dictionary];
+    for (NSDictionary *dic in self.externalMarketAry) {
+        if ([[dic objectForKey:@"coinId"]isEqualToString:coinId]) {
+            resultDic = dic;
+        }
+    }
+    return resultDic;
+}
+
+- (float)getMultipleWithCurrentCoinId:(NSString*)coinId{
+    float result = 0;
+    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+    for (NSDictionary *dic in self.externalMarketAry) {
+        if ([[dic objectForKey:@"coinId"]isEqualToString:coinId]) {
+            result = [[dic objectForKey:currencyStr] floatValue];
+        }
+    }
+    return result;
 }
 
 - (NSInteger)numberOfRowsInSection{
@@ -209,5 +251,14 @@
     
     return _kLineBarAry;
 }
+
+- (NSMutableArray*)externalMarketAry{
+    if (_externalMarketAry == nil) {
+        _externalMarketAry = [NSMutableArray array];
+    }
+    
+    return _externalMarketAry;
+}
+
 
 @end

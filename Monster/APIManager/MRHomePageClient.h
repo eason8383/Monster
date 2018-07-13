@@ -17,4 +17,6 @@
 
 - (void)getKlienList:(NSString*)coinPairId withKLineType:(NSString*)type withLimit:(NSInteger)limit withBeginBarTimeLong:(NSString*)beginBarTimeLong success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
+- (void)getExternalMarketSuccess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
 @end

@@ -14,7 +14,7 @@
 @interface MACDTableViewCell()
 
 @property(nonatomic,strong)IBOutlet UILabel *coinTypeLabel;
-@property(nonatomic,strong)IBOutlet UILabel *priceLabel;
+@property(nonatomic,strong)IBOutlet UILabel *latestPriceLabel;
 @property(nonatomic,strong)IBOutlet UILabel *nowPriceLabel;
 @property(nonatomic,strong)IBOutlet UILabel *highestPriceLabel;
 @property(nonatomic,strong)IBOutlet UILabel *lowestPriceLabel;
@@ -44,10 +44,8 @@
 //    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     _backView.layer.borderWidth = 1;
-    
     _backView.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.2].CGColor;
-    
-//    [self setKLine];
+
 }
 
 - (void)setKLine{
@@ -67,9 +65,9 @@
         [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.kLineView);
             make.bottom.equalTo(self.kLineView);
-            //        make.center.equalTo(self.kLineView);
             make.left.equalTo(self.kLineView);
             make.right.equalTo(self.kLineView);
+            //        make.center.equalTo(self.kLineView);
             //        make.height.equalTo(@(63));
         }];
         _lineView.dataArray = [self generateDataArray:self.local_DataAry];
@@ -78,29 +76,32 @@
         _lineView.rightMargin = 0;
         _lineView.topMargin = 0;
         _lineView.bottomMargin = 0;
-        [_lineView stockFill];
+        
     } else {
         _lineView.dataArray = [self generateDataArray:self.local_DataAry];
-        [_lineView stockFill];
     }
-    
+    [_lineView stockFill];
 }
 
 - (void)setContent:(CoinPairModel*)coinInfo dataArray:(NSArray*)ary{
+    
+    [_latestPriceLabel setText:[NSString stringWithFormat:@"%f",coinInfo.lastPrice]];
+    [_nowPriceLabel setText:[NSString stringWithFormat:@"$%.2f",coinInfo.lastPrice*self.multiple]];
+    [_highestPriceLabel  setText:[NSString stringWithFormat:@"最高价:$%.2f",coinInfo.maxPrice*self.multiple]];
+    [_lowestPriceLabel  setText:[NSString stringWithFormat:@"最低价:$%.2f",coinInfo.minPrice*self.multiple]];
+    [_volumLabel  setText:[NSString stringWithFormat:@"24H成交量:%f",coinInfo.totalVolume]];
     [_coinTypeLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
     [self.local_DataAry removeAllObjects];
     [self.local_DataAry addObjectsFromArray:ary];
     if (self.local_DataAry.count > 0) {
-//        if (_kLineView != nil) {
-////            [_kLineView removeFromSuperview];
-//            _kLineView = nil;
-//        }
         [self setKLine];
     }
-//    [_lineView stockFill];
-//
+    
     BOOL isGoingHigher = [self isEndPriceHigher:coinInfo];
     double result = (coinInfo.endPrice - coinInfo.beginPrice)/coinInfo.beginPrice * 100;
+    if (isnan(result)) {      //isnan为系统函数
+        result = 0.0;
+    }
     [_hlView setValue:[NSString stringWithFormat:@"%@%.2f%@",isGoingHigher?@"+":@"",result,@"%"] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
 }
 

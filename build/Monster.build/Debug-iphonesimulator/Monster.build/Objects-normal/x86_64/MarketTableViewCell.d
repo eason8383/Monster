@@ -19,4 +19,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/MarketTableViewCell.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/View/HighLowLabelView.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/HighLowLabelView.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/CoinPairModel.h

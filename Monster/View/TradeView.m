@@ -7,6 +7,7 @@
 //
 
 #import "TradeView.h"
+#import "CoinPairModel.h"
 
 @interface TradeView ()
 @property(nonatomic,strong)IBOutlet UILabel *titleLabel;
@@ -94,6 +95,24 @@
     } else {
         [self lowMode];
     }
+}
+
+- (void)setContent:(CoinPairModel*)coinInfo{
+    [_titleLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
+    [_priceLabel setText:[NSString stringWithFormat:@"%f",coinInfo.lastPrice]];
+    [_subPriceLabel setText:[NSString stringWithFormat:@"%f",coinInfo.lastPrice*self.multiple]];
+//    BOOL isGoingHigher = [self isEndPriceHigher:coinInfo];
+    double result = (coinInfo.endPrice - coinInfo.beginPrice)/coinInfo.beginPrice * 100;
+    if (isnan(result)) {      //isnan为系统函数
+        result = 0.0;
+    }
+    
+//    [_hlView setValue:[NSString stringWithFormat:@"%@%.2f%@",isGoingHigher?@"+":@"",result,@"%"] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
+}
+
+- (BOOL)isEndPriceHigher:(CoinPairModel*)coinInfo{
+    double priceGap = coinInfo.endPrice - coinInfo.beginPrice;
+    return (priceGap > 0)?YES:NO;
 }
 
 

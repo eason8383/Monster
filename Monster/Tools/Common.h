@@ -22,6 +22,10 @@
 
 #define MR_QUERYKLINELIST @"queryKlineList"
 
+#define MR_QUERYEXTERNALMARKET @"queryExternalMarket"
+
+#define MR_QUERYORDERDEPTH @"queryOrderDepth"
+#define MR_QUERYUSERCOINQUANTITY @"queryUserCoinQuantity"
 
 //保存account路径
 
@@ -29,6 +33,11 @@
 
 #define isiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
+//默认货币汇率
+#define DEFAULTCURRENCY @"defaultCurrency"
+
+#define CNY @"priceCNY"
+#define USD @"priceUSD"
 
 
 #define FilePath @"userAccount.archiver"

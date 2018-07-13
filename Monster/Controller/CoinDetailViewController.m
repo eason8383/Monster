@@ -17,7 +17,7 @@
 @property(nonatomic,strong)IBOutlet UIView *kLineView;
 @property(nonatomic,strong)IBOutlet UIImageView *gridImag;
 
-@property(nonatomic,strong)IBOutlet UILabel *priceLabel;
+@property(nonatomic,strong)IBOutlet UILabel *latestPriceLabel;
 @property(nonatomic,strong)IBOutlet UILabel *pricePointLabel;
 
 @property(nonatomic,strong)IBOutlet UILabel *height_Label;
@@ -61,8 +61,8 @@
     _timeBtn_month.layer.cornerRadius = 4;
 }
 
-
 - (void)setStyle{
+    
     if (self.isHighLowKLine) {
         
         BOOL isGoingHigher = [self isEndPriceHigher:_model];
@@ -79,6 +79,9 @@
         _gridString = @"purpleGrid";
         _klineColorString = @"6241D1";
     }
+    
+    [self cleanAlltimeBtn];
+    [_timeBtn_min setBackgroundColor:[UIColor colorWithHexString:_klineColorString]];
 }
 
 - (BOOL)isEndPriceHigher:(CoinPairModel*)coinInfo{
@@ -96,10 +99,20 @@
 
 - (void)setContent{
     double result = (_model.endPrice - _model.beginPrice)/_model.beginPrice * 100;
+    if (isnan(result)) {      //isnan为系统函数
+        result = 0.0;
+    }
+    NSString *priceStr = [NSString stringWithFormat:@"%f",_model.lastPrice];
+    NSArray *priceAry = [priceStr componentsSeparatedByString:@"."];
+    [_latestPriceLabel setText: [NSString stringWithFormat:@"%@.",[priceAry objectAtIndex:0]]];
+    [_pricePointLabel setText:[priceAry objectAtIndex:1]];
+    [_subPrice_Label  setText:[NSString stringWithFormat:@"≈$%.2f",_model.lastPrice*self.multiple]];
+    [_height_Label setText:[NSString stringWithFormat:@"$%.2f",_model.maxPrice*self.multiple]];
+    [_low_Label  setText:[NSString stringWithFormat:@"$%.2f",_model.minPrice*self.multiple]];
+    [_oneDay_Label  setText:[NSString stringWithFormat:@"$%.2f",_model.endPrice*self.multiple]];
+    
     [_pesent_Label setText:[NSString stringWithFormat:@"%.2f",result]];
-    [_height_Label setText:[NSString stringWithFormat:@"%.5f",_model.maxPrice]];
-    [_low_Label setText:[NSString stringWithFormat:@"%.5f",_model.minPrice]];
-    [_oneDay_Label setText:[NSString stringWithFormat:@"%.5f",_model.endPrice]];
+    
 }
 
 - (void)setBottomGrid{
@@ -162,9 +175,24 @@
     tdVC.isHigh = (btn.tag == 1)?YES:NO;
     tdVC.title = @"交易";
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tdVC];
-    
+    tdVC.multiple = self.multiple;
+    tdVC.model = self.model;
     [self presentViewController:nav animated:YES completion:nil];
     
+}
+
+- (IBAction)selectTimeInteval:(UIButton*)btn{
+    [self cleanAlltimeBtn];
+    [btn setBackgroundColor:[UIColor colorWithHexString:_klineColorString]];
+}
+
+- (void)cleanAlltimeBtn{
+    _timeBtn_min.backgroundColor = [UIColor clearColor];
+    _timeBtn_quter.backgroundColor = [UIColor clearColor];
+    _timeBtn_hour.backgroundColor = [UIColor clearColor];
+    _timeBtn_day.backgroundColor = [UIColor clearColor];
+    _timeBtn_week.backgroundColor = [UIColor clearColor];
+    _timeBtn_month.backgroundColor = [UIColor clearColor];
 }
 
 @end

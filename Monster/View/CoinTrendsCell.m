@@ -75,6 +75,9 @@
     
     BOOL isGoingHigher = [self isEndPriceHigher:coinInfo];
     double result = (coinInfo.endPrice - coinInfo.beginPrice)/coinInfo.beginPrice * 100;
+    if (isnan(result)) {      //isnan为系统函数
+        result = 0.0;
+    }
     [_hlView setValue:[NSString stringWithFormat:@"$%.2f",result] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
     
     _klineColorString = isGoingHigher?MRCOLORHEX_HIGH:MRCOLORHEX_LOW;

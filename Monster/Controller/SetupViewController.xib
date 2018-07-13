@@ -12,6 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupViewController">
             <connections>
+                <outlet property="currencyBtn" destination="nD4-AR-EYg" id="5UU-kx-xQO"/>
+                <outlet property="currencyLabel" destination="2W1-Ae-EiP" id="SVl-aY-5Lk"/>
+                <outlet property="languageBtn" destination="hvD-yv-h20" id="x93-YA-bcM"/>
+                <outlet property="languageLabel" destination="4uS-FI-WfC" id="XcH-5Q-bWq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -65,6 +69,9 @@
                         <constraint firstAttribute="height" constant="30" id="dtd-Lu-uad"/>
                         <constraint firstAttribute="width" constant="123" id="koL-0q-1L9"/>
                     </constraints>
+                    <connections>
+                        <action selector="setDafaultCurrency:" destination="-1" eventType="touchUpInside" id="bve-hP-yv9"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.090196078431372548" green="0.094117647058823528" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

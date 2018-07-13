@@ -40,11 +40,11 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最低價: $0.18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypa-Fk-Z1e">
-                                <rect key="frame" x="221" y="37" width="80" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最低價: $0.180000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypa-Fk-Z1e">
+                                <rect key="frame" x="211" y="37" width="90" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="c7z-eG-k3G"/>
-                                    <constraint firstAttribute="width" constant="80" id="uWL-nV-ToF"/>
+                                    <constraint firstAttribute="width" constant="90" id="uWL-nV-ToF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,7 +77,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最高價: $0.18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ic-Lz-R7K">
-                                <rect key="frame" x="140" y="37" width="80" height="17"/>
+                                <rect key="frame" x="130" y="37" width="80" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="AHQ-Si-1iy"/>
                                     <constraint firstAttribute="width" constant="80" id="c3o-3h-xhi"/>
@@ -129,9 +129,9 @@
                 <outlet property="highLowView" destination="BTb-EH-liB" id="e6F-QX-ApN"/>
                 <outlet property="highestPriceLabel" destination="5ic-Lz-R7K" id="WMs-rh-Uu5"/>
                 <outlet property="kLineView" destination="n4S-jy-MHv" id="4IN-6W-87S"/>
+                <outlet property="latestPriceLabel" destination="ml6-fm-E2t" id="A5j-kc-7sh"/>
                 <outlet property="lowestPriceLabel" destination="ypa-Fk-Z1e" id="lcE-jJ-5c2"/>
                 <outlet property="nowPriceLabel" destination="JgA-LK-ZBE" id="saf-Fb-I1N"/>
-                <outlet property="priceLabel" destination="ml6-fm-E2t" id="MQj-cd-Cah"/>
                 <outlet property="volumLabel" destination="Uqu-hw-5N9" id="XLo-Wb-Pva"/>
             </connections>
             <point key="canvasLocation" x="34" y="120.5"/>

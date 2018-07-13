@@ -42,8 +42,10 @@ static NSString *sessionId;
 
 - (void)getVerifyCode:(NSString*)mobileNo success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     NSDictionary *parameters = @{
-                            @"mobileNo":mobileNo,
-                            @"sceneCode":@"001"
+                            @"mobileNoOrEmail":mobileNo,
+                            @"sceneCode":@"001",
+                            @"source":@"03",
+                            @"version":@"1.0"
                             };
     
     NSString *jsonParameter = [parameters JSONString];
@@ -94,6 +96,13 @@ static NSString *sessionId;
             self.userAccount = [MRUserAccount accountWithDict:dic];
             self.userAccount.mobileNo = mobileNo;
             sessionId = self.userAccount.sessionId;
+            
+            //save for auto login
+            [[NSUserDefaults standardUserDefaults]setObject:sessionId forKey:@"sessionId"];
+            
+            NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.userAccount];
+            [[NSUserDefaults standardUserDefaults]setObject:userData forKey:@"userAccount"];
+            
 #pragma mark
 #pragma mark - 只保存用户信息
             [self saveUserAccount:self.userAccount];
@@ -113,16 +122,15 @@ static NSString *sessionId;
 #pragma mark - 保存对象
 
 -(void)saveUserAccount:(MRUserAccount*)userAccount{
-//    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:userAccount requiringSecureCoding:YES error:nil];
-//    [[NSUserDefaults standardUserDefaults]setObject:userData forKey:FilePath];
+    self.userAccount = userAccount;
+    [NSKeyedArchiver archiveRootObject:userAccount toFile:FilePath];
 }
 
 #pragma mark
 #pragma mark - 得到对象
--(MRUserAccount*)getUserAccount{
-    NSData *userData = [[NSUserDefaults standardUserDefaults]objectForKey:FilePath];
-//    MRUserAccount *userAccount = [NSKeyedUnarchiver unarchivedObjectOfClass:[MRUserAccount class] fromData:userData error:nil];
-    return nil;
+- (MRUserAccount*)getUserAccount{
+    MRUserAccount *userAccount = [NSKeyedUnarchiver unarchiveObjectWithFile:FilePath];
+    return userAccount;
 }
 
 #pragma mark

@@ -24,7 +24,9 @@
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/HeadTableViewCell.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/SetupViewController.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/CoinDetailViewController.o
+/Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/MRTradeClient.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/CoinTrendsCell.o
+/Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/MRUserInfoClient.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/ExponentialCell.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/EntrustNowViewCell.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/CapitalViewController.o
@@ -37,6 +39,7 @@
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/MyOrderViewController.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/MarketTableViewCell.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/ZYWMacdModel.o
+/Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/TrandModel.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/ZYWCandleModel.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/main.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/ZYWLineData.o
@@ -57,6 +60,7 @@
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/ZYWCandlePostionModel.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/MarketViewController.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/ZYWTimeLineModel.o
+/Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/TradeViewModel.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/ExponentialView.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/SecurityViewController.o
 /Users/chenhaoli/WorkPlace/Monster/build/Monster.build/Debug-iphonesimulator/Monster.build/Objects-normal/x86_64/BindingMailBoxViewController.o

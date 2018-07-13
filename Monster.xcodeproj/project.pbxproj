@@ -101,6 +101,10 @@
 		D735D7B920F0BECC007E2B7C /* BindingMailBoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7B720F0BECC007E2B7C /* BindingMailBoxViewController.xib */; };
 		D735D7BD20F0C17D007E2B7C /* SetFCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D735D7BB20F0C17D007E2B7C /* SetFCodeViewController.m */; };
 		D735D7BE20F0C17D007E2B7C /* SetFCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7BC20F0C17D007E2B7C /* SetFCodeViewController.xib */; };
+		D745E25520F74E9B0001EA11 /* TradeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25420F74E9B0001EA11 /* TradeViewModel.m */; };
+		D745E25820F74EE40001EA11 /* MRTradeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25720F74EE40001EA11 /* MRTradeClient.m */; };
+		D745E25B20F750960001EA11 /* MRUserInfoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25A20F750960001EA11 /* MRUserInfoClient.m */; };
+		D745E25E20F757D20001EA11 /* TrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25D20F757D20001EA11 /* TrandModel.m */; };
 		D7820BA920F4C11200B01F05 /* MRHomePageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BA820F4C11200B01F05 /* MRHomePageClient.m */; };
 		D7820BAC20F4C50C00B01F05 /* HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BAB20F4C50C00B01F05 /* HomeViewModel.m */; };
 		D7820BAF20F5E1B200B01F05 /* CoinDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BAE20F5E1B200B01F05 /* CoinDetailViewModel.m */; };
@@ -304,6 +308,14 @@
 		D735D7BA20F0C17D007E2B7C /* SetFCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetFCodeViewController.h; sourceTree = "<group>"; };
 		D735D7BB20F0C17D007E2B7C /* SetFCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetFCodeViewController.m; sourceTree = "<group>"; };
 		D735D7BC20F0C17D007E2B7C /* SetFCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetFCodeViewController.xib; sourceTree = "<group>"; };
+		D745E25320F74E9B0001EA11 /* TradeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TradeViewModel.h; sourceTree = "<group>"; };
+		D745E25420F74E9B0001EA11 /* TradeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TradeViewModel.m; sourceTree = "<group>"; };
+		D745E25620F74EE40001EA11 /* MRTradeClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRTradeClient.h; sourceTree = "<group>"; };
+		D745E25720F74EE40001EA11 /* MRTradeClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRTradeClient.m; sourceTree = "<group>"; };
+		D745E25920F750960001EA11 /* MRUserInfoClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRUserInfoClient.h; sourceTree = "<group>"; };
+		D745E25A20F750960001EA11 /* MRUserInfoClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRUserInfoClient.m; sourceTree = "<group>"; };
+		D745E25C20F757D20001EA11 /* TrandModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrandModel.h; sourceTree = "<group>"; };
+		D745E25D20F757D20001EA11 /* TrandModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrandModel.m; sourceTree = "<group>"; };
 		D7820BA720F4C11200B01F05 /* MRHomePageClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRHomePageClient.h; sourceTree = "<group>"; };
 		D7820BA820F4C11200B01F05 /* MRHomePageClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRHomePageClient.m; sourceTree = "<group>"; };
 		D7820BAA20F4C50C00B01F05 /* HomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewModel.h; sourceTree = "<group>"; };
@@ -586,6 +598,8 @@
 				9B87073B20EB3B3600156E39 /* MRBaseModel.m */,
 				9BB9460E20ECC27D00B8D7BE /* CoinPairModel.h */,
 				9BB9460F20ECC27D00B8D7BE /* CoinPairModel.m */,
+				D745E25C20F757D20001EA11 /* TrandModel.h */,
+				D745E25D20F757D20001EA11 /* TrandModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -657,6 +671,8 @@
 				D7820BAB20F4C50C00B01F05 /* HomeViewModel.m */,
 				D7820BAD20F5E1B200B01F05 /* CoinDetailViewModel.h */,
 				D7820BAE20F5E1B200B01F05 /* CoinDetailViewModel.m */,
+				D745E25320F74E9B0001EA11 /* TradeViewModel.h */,
+				D745E25420F74E9B0001EA11 /* TradeViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -668,6 +684,10 @@
 				9B7EEEC720EA281D00DF88B4 /* MRWebClient.m */,
 				D7820BA720F4C11200B01F05 /* MRHomePageClient.h */,
 				D7820BA820F4C11200B01F05 /* MRHomePageClient.m */,
+				D745E25620F74EE40001EA11 /* MRTradeClient.h */,
+				D745E25720F74EE40001EA11 /* MRTradeClient.m */,
+				D745E25920F750960001EA11 /* MRUserInfoClient.h */,
+				D745E25A20F750960001EA11 /* MRUserInfoClient.m */,
 			);
 			path = APIManager;
 			sourceTree = "<group>";
@@ -965,7 +985,9 @@
 				9BB945EB20EC6E8300B8D7BE /* HeadTableViewCell.m in Sources */,
 				9B4F1DA220EF545F00DEF626 /* SetupViewController.m in Sources */,
 				9BB9461420ECD90600B8D7BE /* CoinDetailViewController.m in Sources */,
+				D745E25820F74EE40001EA11 /* MRTradeClient.m in Sources */,
 				9BB9460C20ECB5C100B8D7BE /* CoinTrendsCell.m in Sources */,
+				D745E25B20F750960001EA11 /* MRUserInfoClient.m in Sources */,
 				9BB9460720ECB19000B8D7BE /* ExponentialCell.m in Sources */,
 				9B42212920EDE944009D5A8A /* EntrustNowViewCell.m in Sources */,
 				9B4F1DB120EF583E00DEF626 /* CapitalViewController.m in Sources */,
@@ -978,6 +1000,7 @@
 				9B4F1D8920EF0ED600DEF626 /* MyOrderViewController.m in Sources */,
 				9BB9461E20ECE85F00B8D7BE /* MarketTableViewCell.m in Sources */,
 				D7CAB0E720F309A800B8B99B /* ZYWMacdModel.m in Sources */,
+				D745E25E20F757D20001EA11 /* TrandModel.m in Sources */,
 				D7CAB0E420F309A800B8B99B /* ZYWCandleModel.m in Sources */,
 				9B7EEE9520E9C39200DF88B4 /* main.m in Sources */,
 				D7CAB0E920F309A800B8B99B /* ZYWLineData.m in Sources */,
@@ -998,6 +1021,7 @@
 				D7CAB0E820F309A800B8B99B /* ZYWCandlePostionModel.m in Sources */,
 				9BB9461920ECE76700B8D7BE /* MarketViewController.m in Sources */,
 				D7CAB0E520F309A800B8B99B /* ZYWTimeLineModel.m in Sources */,
+				D745E25520F74E9B0001EA11 /* TradeViewModel.m in Sources */,
 				9BB945F720EC7CD800B8D7BE /* ExponentialView.m in Sources */,
 				9B4F1D9D20EF525F00DEF626 /* SecurityViewController.m in Sources */,
 				D735D7B820F0BECC007E2B7C /* BindingMailBoxViewController.m in Sources */,
