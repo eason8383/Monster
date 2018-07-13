@@ -78,6 +78,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     self.jz_navigationInteractivePopGestureEnabled = true;
     
     [self initial];
+    [[VWProgressHUD shareInstance]showLoading];
     
 }
 
@@ -116,6 +117,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 
 - (void)getDataSucess{
     [self.tableView reloadData];
+    [[VWProgressHUD shareInstance]dismiss];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -266,6 +268,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         }
         case 6: {
             //Logout
+            [[NSNotificationCenter defaultCenter] postNotificationName:DOLOGOUT object:nil];
             return;
         }
 

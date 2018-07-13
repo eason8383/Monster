@@ -7,6 +7,7 @@
 //
 
 #import "EntrustNowViewCell.h"
+#import "UserOrderModel.h"
 
 @interface EntrustNowViewCell ()
 
@@ -22,7 +23,31 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.cancelBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.cancelBtn.layer.borderWidth = 1;
+    self.cancelBtn.layer.cornerRadius = 8;
+}
+
+- (void)setContent:(UserOrderModel*)orderInfo{
+    if ([orderInfo.buySell isEqualToString:@"B"]) {
+        [_buySaleLabel setText:@"买入"];
+        [_buySaleLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_HIGH]];
+    } else {
+        [_buySaleLabel setText:@"卖出"];
+        [_buySaleLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_LOW]];
+    }
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/China"]];
+    [formatter setDateFormat:@"hh:mm MM/dd"];
+    // Date to string
+    NSDate *now = [NSDate dateWithTimeIntervalSince1970:orderInfo.createTime/1000];
+    NSString *currentDateString = [formatter stringFromDate:now];
+    
+    [_coinLabel setText:[NSString stringWithFormat:@"%@/MR",self.subCoinId]];
+    [_priceLabel setText:[NSString stringWithFormat:@"%f",orderInfo.orderPrice]];
+    [_timeLabel setText:[NSString stringWithFormat:@"%@",currentDateString]];
+    [_measureLabel setText:[NSString stringWithFormat:@"%f",orderInfo.orderQuantity]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

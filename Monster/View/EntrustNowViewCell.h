@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class UserOrderModel;
 
 @interface EntrustNowViewCell : UITableViewCell
 
+@property(nonatomic,strong)NSString *subCoinId;
 @property(nonatomic,strong)IBOutlet UIButton *cancelBtn;
+
+- (void)setContent:(UserOrderModel*)orderInfo;
 
 @end
 

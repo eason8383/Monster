@@ -7,12 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+@class CoinPairModel;
 @protocol TradeViewModelDelegate <NSObject>
 
 @optional
 
 - (void)getDataSucess;
 - (void)getDataFalid:(NSError*)error;
+
+- (void)getUserOrderSucess;
+
+- (void)orderRequestSucess:(NSDictionary*)res;
+
+- (void)orderCancelSucess:(NSDictionary*)res;
 
 @end
 
@@ -22,10 +29,17 @@
 + (instancetype)sharedInstance;
 
 - (void)getData:(NSString*)coinPairId;
+- (void)getUserOrder:(NSString*)coinPairId;
 
+- (void)oderRequest:(CoinPairModel*)model coinQuantity:(float)coinQuantity orderPrice:(float)orderPrice buyOrSale:(BOOL)isBuy;
+
+- (void)cancelOder:(CoinPairModel*)model;
 
 - (NSArray*)getBuyAry;
 - (NSArray*)getSaleAry;
 - (NSArray*)getUserQuantityAry;
+- (NSArray*)getUserOrderAry;
+
+- (NSInteger)numberOfRowsInSection;
 
 @end

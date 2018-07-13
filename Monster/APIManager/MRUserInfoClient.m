@@ -7,13 +7,13 @@
 //
 
 #import "MRUserInfoClient.h"
+#import "MRWebClient.h"
 
 @implementation MRUserInfoClient
 
 - (void)getUserCoinQuantitySuccess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
     
-    //空？？？
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",

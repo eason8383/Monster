@@ -30,9 +30,15 @@
     [self initScreen];
     //默认人民币汇率
     [[NSUserDefaults standardUserDefaults]setObject:CNY forKey:DEFAULTCURRENCY];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initScreen) name:@"logout" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doLogout) name:DOLOGOUT object:nil];
     
     return YES;
+}
+
+- (void)doLogout{
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"sessionId"];
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userAccount"];
+    [self initScreen];
 }
 
 - (void)initScreen{

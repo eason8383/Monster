@@ -13,6 +13,7 @@
 //登录
 #define EGUSER @"egUser"
 #define ERQUERY @"egQuery"
+#define ERORDER @"egOrder"
 
 #define MR_SMSVERIFYCODE @"sendSmsVerifyCode"
 #define MR_SMSLOGIN @"smsLogin"
@@ -27,9 +28,16 @@
 #define MR_QUERYORDERDEPTH @"queryOrderDepth"
 #define MR_QUERYUSERCOINQUANTITY @"queryUserCoinQuantity"
 
+#define MR_ORDERREQUEST @"orderRequest"
+#define MR_ORDERCANCEL @"orderCancelRequest"
+
+#define MR_QUERYUSERORDER @"queryUserOrder"
+
+#define DOLOGOUT @"logout"
+
 //保存account路径
 
-//#define FilePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingString:@"userAccount.archiver"]
+#define FilePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingString:@"userAccount.archiver"]
 
 #define isiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
@@ -40,7 +48,7 @@
 #define USD @"priceUSD"
 
 
-#define FilePath @"userAccount.archiver"
+//#define FilePath @"userAccount.archiver"
 
 //忘记密码
 #define ForgotPassword @"ForgotPassword"

@@ -10,7 +10,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		JaxQKEC0Dp1zTkBbmd+bFusDD2k=
+		bRlL7MmRG8/Yj0W7wg0c1UaP63Q=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -111,6 +111,14 @@
 		<key>HighLowLabelView.nib/runtime.nib</key>
 		<data>
 		NKtul5dvfKpSGTgNlhGvBTw7rlY=
+		</data>
+		<key>HighLowLabelViewForTrade.nib/objects-11.0+.nib</key>
+		<data>
+		ZMxWhwx/oyL0E7E3gKk6HxD1P2Y=
+		</data>
+		<key>HighLowLabelViewForTrade.nib/runtime.nib</key>
+		<data>
+		3wL/8DopBqigZZghAyONDMJSDy4=
 		</data>
 		<key>HomePageViewController.nib/objects-11.0+.nib</key>
 		<data>
@@ -214,11 +222,11 @@
 		</data>
 		<key>TradeView.nib/objects-11.0+.nib</key>
 		<data>
-		CT9AAzvdbB81QxyK8bJNgnCgWe4=
+		ucaL20eD1lI4p3BdKV0R33J6rtw=
 		</data>
 		<key>TradeView.nib/runtime.nib</key>
 		<data>
-		VoNssWkBipISI80WzJSOvDZTS7A=
+		PRse9PCg6MIJ60LZ0k8uZeBx+Ac=
 		</data>
 		<key>TradeViewController.nib</key>
 		<data>
@@ -231,6 +239,42 @@
 		<key>UpLoadImagView.nib/runtime.nib</key>
 		<data>
 		fa+Tq9C5bHMh0ptd6KCJEaJ4/ts=
+		</data>
+		<key>VWProgressHUD.bundle/done.png</key>
+		<data>
+		jF4u3dVGbYZce3ZvkiVQ6LqqO6k=
+		</data>
+		<key>VWProgressHUD.bundle/done@2x.png</key>
+		<data>
+		pRrok33J18wA51Lb7UQv2tQAq94=
+		</data>
+		<key>VWProgressHUD.bundle/done@3x.png</key>
+		<data>
+		Zuv+/5/d6sg4QPH/FlXgSsMCUwA=
+		</data>
+		<key>VWProgressHUD.bundle/fail.png</key>
+		<data>
+		wP4cm43ZxXyWHLyHJmAnBuGDO8c=
+		</data>
+		<key>VWProgressHUD.bundle/fail@2x.png</key>
+		<data>
+		bzDC/c71RCn9pgjSOrIJrpEdLkI=
+		</data>
+		<key>VWProgressHUD.bundle/fail@3x.png</key>
+		<data>
+		eC0jXUUUNZerfk9GID8nK6+TVtw=
+		</data>
+		<key>VWProgressHUD.bundle/warning.png</key>
+		<data>
+		HkwDmqqMbWLs/3Ha4pKAODyQYOs=
+		</data>
+		<key>VWProgressHUD.bundle/warning@2x.png</key>
+		<data>
+		wLxnkoteJ04kFhK1gVOWHYgNGWQ=
+		</data>
+		<key>VWProgressHUD.bundle/warning@3x.png</key>
+		<data>
+		wEvhpDxmB09kNROkWU1GPDh6P5M=
 		</data>
 		<key>WithdrawViewController.nib/objects-11.0+.nib</key>
 		<data>
@@ -270,11 +314,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JaxQKEC0Dp1zTkBbmd+bFusDD2k=
+			bRlL7MmRG8/Yj0W7wg0c1UaP63Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			AkPr70j9FL3/GVlDfIUWisaC9J+N8mphU7ym2kADXLI=
+			32d5IoEneZzWs2dj2IQJfcqh9AYfiBByOSS/PkUSSm8=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -552,6 +596,28 @@
 			/cW7YWGnIYSbw7ZAcJ+CC+6imakdeBg6eGSPNPLbHpk=
 			</data>
 		</dict>
+		<key>HighLowLabelViewForTrade.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ZMxWhwx/oyL0E7E3gKk6HxD1P2Y=
+			</data>
+			<key>hash2</key>
+			<data>
+			TrqAk4nYqt0kLFIIokGpeqNLPIg0Mg3Efe8Verwe7ao=
+			</data>
+		</dict>
+		<key>HighLowLabelViewForTrade.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3wL/8DopBqigZZghAyONDMJSDy4=
+			</data>
+			<key>hash2</key>
+			<data>
+			iJNI75rbd4cy/fekWHBYBhxQ9Fc1gElBZqaZ280Azug=
+			</data>
+		</dict>
 		<key>HomePageViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
@@ -809,22 +875,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CT9AAzvdbB81QxyK8bJNgnCgWe4=
+			ucaL20eD1lI4p3BdKV0R33J6rtw=
 			</data>
 			<key>hash2</key>
 			<data>
-			oH6ZSS57GuXy58RCng7z5BhvMA+EYYvacBuklNXNZZI=
+			cuNkIoXnoSrxuEiQsUDT4PLUI2KTH/LrgjS2b/5l6jw=
 			</data>
 		</dict>
 		<key>TradeView.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VoNssWkBipISI80WzJSOvDZTS7A=
+			PRse9PCg6MIJ60LZ0k8uZeBx+Ac=
 			</data>
 			<key>hash2</key>
 			<data>
-			EqQdVRNHyw8OWtk5PRt9AFWoYFvQnz+RrkLibib9mnM=
+			308KDxVgkSYL5u9alrOHLzCJgFDIIybyf6yrRLlknms=
 			</data>
 		</dict>
 		<key>TradeViewController.nib</key>
@@ -858,6 +924,105 @@
 			<key>hash2</key>
 			<data>
 			ML3zcX1weFEkelM0gk1dRkpKNotTTDER6/qAfv8+SeI=
+			</data>
+		</dict>
+		<key>VWProgressHUD.bundle/done.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			jF4u3dVGbYZce3ZvkiVQ6LqqO6k=
+			</data>
+			<key>hash2</key>
+			<data>
+			oKLnbQIty/BFA7CExJI6Q/M4jXCpHuzPU8AoJMVR5OY=
+			</data>
+		</dict>
+		<key>VWProgressHUD.bundle/done@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			pRrok33J18wA51Lb7UQv2tQAq94=
+			</data>
+			<key>hash2</key>
+			<data>
+			Mk1Smy0edzfQ49EbbbNR/3M0mt/NggBQ+FVcA5pebJg=
+			</data>
+		</dict>
+		<key>VWProgressHUD.bundle/done@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Zuv+/5/d6sg4QPH/FlXgSsMCUwA=
+			</data>
+			<key>hash2</key>
+			<data>
+			wKPcwFDQ+8ZKKRdWau9/eAETXO0Yi0waShIDBywGcb4=
+			</data>
+		</dict>
+		<key>VWProgressHUD.bundle/fail.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wP4cm43ZxXyWHLyHJmAnBuGDO8c=
+			</data>
+			<key>hash2</key>
+			<data>
+			kMqDOJTt9n2sQ88CTEiw2tm2Un+NBSkQLCWC4YlKwrc=
+			</data>
+		</dict>
+		<key>VWProgressHUD.bundle/fail@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			bzDC/c71RCn9pgjSOrIJrpEdLkI=
+			</data>
+			<key>hash2</key>
+			<data>
+			RrbV/EJmeSU5PEIU4QnaUE2zJvfmG1WljK753KXbJSs=
+			</data>
+		</dict>
+		<key>VWProgressHUD.bundle/fail@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			eC0jXUUUNZerfk9GID8nK6+TVtw=
+			</data>
+			<key>hash2</key>
+			<data>
+			deZyNMwShg97z8jLvWJ44Gir1kpUDyU5K/86UPf+Dfk=
+			</data>
+		</dict>
+		<key>VWProgressHUD.bundle/warning.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HkwDmqqMbWLs/3Ha4pKAODyQYOs=
+			</data>
+			<key>hash2</key>
+			<data>
+			qH5GB58sYAYmgI4cAtZ1LjHwa+Khojb741+4lGSFZE0=
+			</data>
+		</dict>
+		<key>VWProgressHUD.bundle/warning@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wLxnkoteJ04kFhK1gVOWHYgNGWQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			L2NgmWRgVNvtBnv+birHS4nMBdCUUA406otScc1Y+fE=
+			</data>
+		</dict>
+		<key>VWProgressHUD.bundle/warning@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wEvhpDxmB09kNROkWU1GPDh6P5M=
+			</data>
+			<key>hash2</key>
+			<data>
+			Dl7oqDChZ4SukwGsh095AEtx3HHTK4462ishARj2beU=
 			</data>
 		</dict>
 		<key>WithdrawViewController.nib/objects-11.0+.nib</key>

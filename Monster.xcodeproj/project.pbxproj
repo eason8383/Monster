@@ -93,6 +93,9 @@
 		9BB9461F20ECE85F00B8D7BE /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9461D20ECE85F00B8D7BE /* MarketTableViewCell.xib */; };
 		D708218E20F48C80002AEDA2 /* AboutusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D708218C20F48C80002AEDA2 /* AboutusViewController.m */; };
 		D708218F20F48C80002AEDA2 /* AboutusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D708218D20F48C80002AEDA2 /* AboutusViewController.xib */; };
+		D71F719C20F84FF9003513C5 /* UCoinQuantity.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F719B20F84FF9003513C5 /* UCoinQuantity.m */; };
+		D71F719E20F8736E003513C5 /* HighLowLabelViewForTrade.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71F719D20F8736E003513C5 /* HighLowLabelViewForTrade.xib */; };
+		D71F71A720F8B959003513C5 /* UserOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F71A620F8B959003513C5 /* UserOrderModel.m */; };
 		D735D7AE20F0A696007E2B7C /* OrderHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D735D7AC20F0A696007E2B7C /* OrderHistoryViewController.m */; };
 		D735D7AF20F0A696007E2B7C /* OrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7AD20F0A696007E2B7C /* OrderHistoryViewController.xib */; };
 		D735D7B320F0B531007E2B7C /* BindingMobileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D735D7B120F0B531007E2B7C /* BindingMobileViewController.m */; };
@@ -296,6 +299,11 @@
 		D708218B20F48C80002AEDA2 /* AboutusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutusViewController.h; sourceTree = "<group>"; };
 		D708218C20F48C80002AEDA2 /* AboutusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutusViewController.m; sourceTree = "<group>"; };
 		D708218D20F48C80002AEDA2 /* AboutusViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutusViewController.xib; sourceTree = "<group>"; };
+		D71F719A20F84FF9003513C5 /* UCoinQuantity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UCoinQuantity.h; sourceTree = "<group>"; };
+		D71F719B20F84FF9003513C5 /* UCoinQuantity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UCoinQuantity.m; sourceTree = "<group>"; };
+		D71F719D20F8736E003513C5 /* HighLowLabelViewForTrade.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighLowLabelViewForTrade.xib; sourceTree = "<group>"; };
+		D71F71A520F8B959003513C5 /* UserOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserOrderModel.h; sourceTree = "<group>"; };
+		D71F71A620F8B959003513C5 /* UserOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserOrderModel.m; sourceTree = "<group>"; };
 		D735D7AB20F0A696007E2B7C /* OrderHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderHistoryViewController.h; sourceTree = "<group>"; };
 		D735D7AC20F0A696007E2B7C /* OrderHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderHistoryViewController.m; sourceTree = "<group>"; };
 		D735D7AD20F0A696007E2B7C /* OrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryViewController.xib; sourceTree = "<group>"; };
@@ -492,6 +500,7 @@
 				9BB945FF20ECA5FD00B8D7BE /* HighLowLabelView.h */,
 				9BB9460020ECA5FD00B8D7BE /* HighLowLabelView.m */,
 				9BB9460220ECA61900B8D7BE /* HighLowLabelView.xib */,
+				D71F719D20F8736E003513C5 /* HighLowLabelViewForTrade.xib */,
 				9BB9460420ECB19000B8D7BE /* ExponentialCell.h */,
 				9BB9460520ECB19000B8D7BE /* ExponentialCell.m */,
 				9BB9460620ECB19000B8D7BE /* ExponentialCell.xib */,
@@ -600,6 +609,10 @@
 				9BB9460F20ECC27D00B8D7BE /* CoinPairModel.m */,
 				D745E25C20F757D20001EA11 /* TrandModel.h */,
 				D745E25D20F757D20001EA11 /* TrandModel.m */,
+				D71F719A20F84FF9003513C5 /* UCoinQuantity.h */,
+				D71F719B20F84FF9003513C5 /* UCoinQuantity.m */,
+				D71F71A520F8B959003513C5 /* UserOrderModel.h */,
+				D71F71A620F8B959003513C5 /* UserOrderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -740,6 +753,7 @@
 				9B7EEE7E20E9C39000DF88B4 /* Sources */,
 				9B7EEE7F20E9C39000DF88B4 /* Frameworks */,
 				9B7EEE8020E9C39000DF88B4 /* Resources */,
+				8393FFCEBA8CC98E8F5EA824 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -870,6 +884,7 @@
 				9B4F1DB220EF583E00DEF626 /* CapitalViewController.xib in Resources */,
 				9B4F1D8A20EF0ED600DEF626 /* MyOrderViewController.xib in Resources */,
 				9B9DFD3620EF7CA900E56B2F /* CapitalDetailsViewCell.xib in Resources */,
+				D71F719E20F8736E003513C5 /* HighLowLabelViewForTrade.xib in Resources */,
 				D735D7AF20F0A696007E2B7C /* OrderHistoryViewController.xib in Resources */,
 				9B42212A20EDE944009D5A8A /* EntrustNowViewCell.xib in Resources */,
 				9B7EEE8D20E9C39000DF88B4 /* Main.storyboard in Resources */,
@@ -934,6 +949,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8393FFCEBA8CC98E8F5EA824 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Monster/Pods-Monster-resources.sh",
+				"${PODS_ROOT}/VWProgressHUD/VWProgressHUD/Assets/VWProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/VWProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Monster/Pods-Monster-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DF428BB6BE83F7E316BAD3A0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -963,6 +996,7 @@
 				9B87074420EB4BAC00156E39 /* InputVerifyTool.m in Sources */,
 				9B4F1DB620EF6B9700DEF626 /* WithdrawViewController.m in Sources */,
 				9B4F1D8420EE3E1700DEF626 /* CoinCanUseViewCell.m in Sources */,
+				D71F719C20F84FF9003513C5 /* UCoinQuantity.m in Sources */,
 				D7CAB0D420F3096B00B8B99B /* ZYWLineModel.m in Sources */,
 				9B4F1D7F20EE32E600DEF626 /* MyAssetTableViewCell.m in Sources */,
 				9BB945E620EC6B5300B8D7BE /* _JZ-objc-internal.m in Sources */,
@@ -979,6 +1013,7 @@
 				9B9DFD3520EF7CA900E56B2F /* CapitalDetailsViewCell.m in Sources */,
 				9BB945DF20EC6B2600B8D7BE /* UINavigationController+JZExtension.m in Sources */,
 				D7CAB0E620F309A800B8B99B /* ZYWLineUntil.m in Sources */,
+				D71F71A720F8B959003513C5 /* UserOrderModel.m in Sources */,
 				D7CAB0D120F3094A00B8B99B /* ZYWBaseChartView.m in Sources */,
 				9B4F1DA720EF57CF00DEF626 /* ChargeViewController.m in Sources */,
 				9B87073620EB1FC700156E39 /* UIViewController+Alert.m in Sources */,

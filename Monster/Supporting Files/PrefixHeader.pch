@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
+#import <VWProgressHUD/VWProgressHUD.h>
 #import "JSONKit.h"
 #import "MRWebClient.h"
 #import "MRUserAccount.h"

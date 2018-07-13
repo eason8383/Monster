@@ -9,7 +9,6 @@
 #import "HighLowLabelView.h"
 
 @interface HighLowLabelView()
-
 @property(nonatomic,strong)IBOutlet UILabel *numberLabel;
 
 @end

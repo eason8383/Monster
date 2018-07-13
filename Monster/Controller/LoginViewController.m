@@ -29,8 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(firstResponder:)];
-    _tapRecognizer.delegate = self;
+    _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(firstResponder:)];
+//    _tapRecognizer.delegate = self;
     _tapRecognizer.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:_tapRecognizer];
     
