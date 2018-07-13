@@ -124,12 +124,14 @@
 }
 
 - (void)cancelOder:(NSString*)orderId withCoinPair:(NSString*)coinPairId Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
-    
+    self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
                                  @"coinPairId":coinPairId,
                                  @"orderId":orderId,
+                                 @"userId":self.userAccount.userId,
+                                 @"sessionId":self.userAccount.sessionId,
                                  };
     
     NSString *jsonParameter = [parameters JSONString];

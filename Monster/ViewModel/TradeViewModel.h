@@ -33,7 +33,7 @@
 
 - (void)oderRequest:(CoinPairModel*)model coinQuantity:(float)coinQuantity orderPrice:(float)orderPrice buyOrSale:(BOOL)isBuy;
 
-- (void)cancelOder:(CoinPairModel*)model;
+- (void)cancelOder:(NSString*)orderId coinPair:(NSString*)coinPairId;
 
 - (NSArray*)getBuyAry;
 - (NSArray*)getSaleAry;

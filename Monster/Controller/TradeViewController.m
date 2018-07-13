@@ -114,6 +114,11 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     [self.tableView reloadData];
 }
 
+- (void)orderCancelSucess:(NSDictionary*)res{
+    [[VWProgressHUD shareInstance]dismiss];
+    [_tradeViewModel getUserOrder:self.model.coinPairId];
+}
+
 - (void)orderRequest:(UIButton*)btn{
     
     if (_tradeView.stepperVolumField.text.length < 1 || _tradeView.stepperPriceField.text.length < 1) {
@@ -149,8 +154,23 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     }
 }
 
-- (void)cancelOrder:(id)sender{
+- (void)cancelOrder:(UIButton*)btn{
+    NSMutableArray *actions = [NSMutableArray array];
     
+    UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [[VWProgressHUD shareInstance]showLoading];
+        NSArray *orderAry = [self.tradeViewModel getUserOrderAry];
+        UserOrderModel *model = [orderAry objectAtIndex:btn.tag];
+        [self.tradeViewModel cancelOder:model.orderId coinPair:self.model.coinPairId];
+    }];
+    UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+       
+    }];
+    [actions addObject:okBtn];
+    [actions addObject:cancelBtn];
+    
+    [self showAlert:@"" withMsg:@"你确定要撤销此笔订单吗?" withActions:actions];
 }
 
 - (void)popTheCv:(id)sender{
@@ -211,6 +231,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
         default:{
             EntrustNowViewCell *enCell = (EntrustNowViewCell *)[tableView dequeueReusableCellWithIdentifier:entrustNowViewCellIdentifier];
             enCell.subCoinId = self.model.subCoinId;
+            enCell.cancelBtn.tag = indexPath.row - 1;
             [enCell.cancelBtn addTarget:self action:@selector(cancelOrder:) forControlEvents:UIControlEventTouchUpInside];
             NSArray *modelAry = [_tradeViewModel getUserOrderAry];
             UserOrderModel *tModel = [modelAry objectAtIndex:indexPath.row - 1];

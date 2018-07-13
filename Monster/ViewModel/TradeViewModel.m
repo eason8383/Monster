@@ -155,9 +155,9 @@
     });
 }
 
-- (void)cancelOder:(CoinPairModel*)model{
+- (void)cancelOder:(NSString*)orderId coinPair:(NSString*)coinPairId{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[MRTradeClient alloc]cancelOder:model.mainCoinId withCoinPair:model.coinPairId Success:^(id response) {
+        [[MRTradeClient alloc]cancelOder:orderId withCoinPair:coinPairId Success:^(id response) {
             NSDictionary *dic = response;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate orderCancelSucess:dic];
