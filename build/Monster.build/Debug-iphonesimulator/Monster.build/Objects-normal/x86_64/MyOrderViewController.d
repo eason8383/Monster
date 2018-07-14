@@ -21,4 +21,7 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MyOrderViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/EntrustNowViewCell.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/OrderDetailViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/OrderHistoryViewController.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/OrderHistoryViewController.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/MyOrderViewModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/TradeViewModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/UserOrderModel.h

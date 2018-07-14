@@ -20,4 +20,6 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/OrderHistoryViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/CapitalDetailsViewCell.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/OrderDetailViewController.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/OrderDetailViewController.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/MyOrderViewModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/SGLoadMoreView.h

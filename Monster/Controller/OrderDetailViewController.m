@@ -7,10 +7,12 @@
 //
 
 #import "OrderDetailViewController.h"
+#import "UserOrderModel.h"
+
 
 @interface OrderDetailViewController ()
 
-@property(nonatomic,strong)IBOutlet UIButton *dealBtn;
+@property(nonatomic,strong)IBOutlet UIButton *orderStateBtn;
 @property(nonatomic,strong)IBOutlet UILabel *buySaleLabel;
 @property(nonatomic,strong)IBOutlet UILabel *coinLabel;
 
@@ -32,16 +34,45 @@
     self.title = @"成交明细";
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
+    [self initial];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)initial{
+    if ([self.userOrderInfo.buySell isEqualToString:@"B"]) {
+        [_buySaleLabel setText:@"买入"];
+        [_buySaleLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_HIGH]];
+    } else {
+        [_buySaleLabel setText:@"卖出"];
+        [_buySaleLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_LOW]];
+    }
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/China"]];
+    [formatter setDateFormat:@"hh:mm MM/dd"];
+    // Date to string
+    NSDate *now = [NSDate dateWithTimeIntervalSince1970:self.userOrderInfo.createTime/1000];
+    NSString *currentDateString = [formatter stringFromDate:now];
+    
+    NSDictionary *coinPairTable = [[NSUserDefaults standardUserDefaults]objectForKey:COINPAIRTABLE];
+    
+    [_coinLabel setText:[NSString stringWithFormat:@"%@/MR",[coinPairTable objectForKey:self.userOrderInfo.coinPairId]]];
+    [_priceLabel setText:[NSString stringWithFormat:@"%f",self.userOrderInfo.dealPrice]];
+    [_timeLabel setText:[NSString stringWithFormat:@"%@",currentDateString]];
+    
+    [_measureLabel setText:[NSString stringWithFormat:@"%f%@",self.userOrderInfo.dealAmount,[coinPairTable objectForKey:self.userOrderInfo.coinPairId]]];
+    
+    [_transFeeLabel setText:[NSString stringWithFormat:@"%f",self.userOrderInfo.feeRate]];
+    
+    [_orderStateBtn setTitle:self.userOrderInfo.orderStatusName forState:UIControlStateNormal];
+    
+    [_totalDealLabel setText:[NSString stringWithFormat:@"%f",self.userOrderInfo.orderPrice]];
+    [_avegDealLabel setText:[NSString stringWithFormat:@"%f",self.userOrderInfo.orderPrice]];
+    [_meanDealLabel setText:[NSString stringWithFormat:@"%f",self.userOrderInfo.orderQuantity]];
+    
+    
 }
-*/
+
+
 
 @end

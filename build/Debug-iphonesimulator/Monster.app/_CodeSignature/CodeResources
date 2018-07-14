@@ -10,7 +10,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		bRlL7MmRG8/Yj0W7wg0c1UaP63Q=
+		Zo1jKj8HPYAr4FkEcsloya4DQJQ=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>CapitalDetailsViewCell.nib</key>
 		<data>
-		YizjtWddplPwSzOjQZMwz/j708Y=
+		HdH/fZrKVmP+FREOkAoETc4jZRE=
 		</data>
 		<key>CapitalViewController.nib</key>
 		<data>
@@ -178,11 +178,11 @@
 		</data>
 		<key>OrderDetailViewController.nib/objects-11.0+.nib</key>
 		<data>
-		G6Hrtis+cBAvrx6ySPzOi7pL2n0=
+		Az1ir3UfXSTIgZ9dviBZioAP/28=
 		</data>
 		<key>OrderDetailViewController.nib/runtime.nib</key>
 		<data>
-		lJXbk1Pa0s090V9QUsZgFCQFjPI=
+		fGj8f5EpWCrW94CUWqej2N52eR0=
 		</data>
 		<key>OrderHistoryViewController.nib</key>
 		<data>
@@ -314,11 +314,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bRlL7MmRG8/Yj0W7wg0c1UaP63Q=
+			Zo1jKj8HPYAr4FkEcsloya4DQJQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			32d5IoEneZzWs2dj2IQJfcqh9AYfiBByOSS/PkUSSm8=
+			SKMqhJetDZCImV8XxBX3AuPuIXYn5NJMqUGa+g+y/Ho=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -435,11 +435,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			YizjtWddplPwSzOjQZMwz/j708Y=
+			HdH/fZrKVmP+FREOkAoETc4jZRE=
 			</data>
 			<key>hash2</key>
 			<data>
-			eYdYsspEsBRIygDoJgcUY3G9ftyiyDcIv1GnuWwR35o=
+			1eHBopcxdVjVO8HGhh+pNS97RwoBgXurBVGw/DemGjY=
 			</data>
 		</dict>
 		<key>CapitalViewController.nib</key>
@@ -765,22 +765,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			G6Hrtis+cBAvrx6ySPzOi7pL2n0=
+			Az1ir3UfXSTIgZ9dviBZioAP/28=
 			</data>
 			<key>hash2</key>
 			<data>
-			ukT4n3Q21h4JAHTqZ57X5gJzXGqya6wfH5XVqHjVMVE=
+			cPDCMJlZALlHMduCy6DhUH95Qkqo2BJvWp/UV7Dijsc=
 			</data>
 		</dict>
 		<key>OrderDetailViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lJXbk1Pa0s090V9QUsZgFCQFjPI=
+			fGj8f5EpWCrW94CUWqej2N52eR0=
 			</data>
 			<key>hash2</key>
 			<data>
-			vKJSdMnyqZqQjZjPHNqGj+isHFzswykS0NjC/ndZCx8=
+			ekYbBer/I3Bh8j/3aOVdjTAZljwoJ7X9MafbQJHvgEE=
 			</data>
 		</dict>
 		<key>OrderHistoryViewController.nib</key>

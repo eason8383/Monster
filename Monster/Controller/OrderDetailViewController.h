@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
+@class UserOrderModel;
 
 @interface OrderDetailViewController : UIViewController
 
+@property(nonatomic,strong)UserOrderModel *userOrderInfo;
+
 @end
 
-NS_ASSUME_NONNULL_END
+

@@ -33,6 +33,8 @@
 
 #define MR_QUERYUSERORDER @"queryUserOrder"
 
+#define MR_QUERYUSERORDERDEAL @"queryUserOrderDeal"
+
 #define DOLOGOUT @"logout"
 
 //保存account路径
@@ -40,6 +42,8 @@
 #define FilePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingString:@"userAccount.archiver"]
 
 #define isiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define COINPAIRTABLE @"CoinPairTable"
 
 //默认货币汇率
 #define DEFAULTCURRENCY @"defaultCurrency"

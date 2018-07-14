@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class UserOrderModel;
+
 @interface CapitalDetailsViewCell : UITableViewCell
+
+
+- (void)setContent:(UserOrderModel*)userOrderInfo;
 
 @end

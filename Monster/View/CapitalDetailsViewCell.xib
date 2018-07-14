@@ -85,9 +85,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPu-ZA-GRM">
-                        <rect key="frame" x="294" y="64" width="71" height="17"/>
+                        <rect key="frame" x="291" y="64" width="74" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="71" id="LPL-xE-aW2"/>
+                            <constraint firstAttribute="width" constant="74" id="LPL-xE-aW2"/>
                             <constraint firstAttribute="height" constant="17" id="kyU-q9-GjA"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -158,10 +158,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubu-Hf-Fi9">
-                        <rect key="frame" x="294" y="106" width="71" height="17"/>
+                        <rect key="frame" x="291" y="106" width="74" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="6nc-iH-u89"/>
-                            <constraint firstAttribute="width" constant="71" id="wOv-vS-XJD"/>
+                            <constraint firstAttribute="width" constant="74" id="wOv-vS-XJD"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -211,9 +211,9 @@
                 <outlet property="avegDealLabel" destination="rtv-lV-dh7" id="5zm-h0-Hu7"/>
                 <outlet property="buySaleLabel" destination="VYg-Np-dpq" id="lrm-Hy-SCA"/>
                 <outlet property="coinLabel" destination="ip2-Dn-tk6" id="Xlt-AL-obT"/>
-                <outlet property="dealBtn" destination="VKV-Ik-2K8" id="LxE-zH-c1Y"/>
                 <outlet property="meanDealLabel" destination="ubu-Hf-Fi9" id="lIT-Cv-Rxm"/>
                 <outlet property="measureLabel" destination="YPu-ZA-GRM" id="7ma-Mo-Rb6"/>
+                <outlet property="orderStateBtn" destination="VKV-Ik-2K8" id="nxl-87-rAK"/>
                 <outlet property="priceLabel" destination="UCY-MP-reo" id="okr-kq-L6j"/>
                 <outlet property="timeLabel" destination="lwS-Xk-3Zm" id="JKh-XI-2ex"/>
                 <outlet property="totalDealLabel" destination="V9y-Xx-MZ8" id="ZhS-D6-sRv"/>

@@ -17,6 +17,7 @@
                 <outlet property="coinLabel" destination="gdm-mB-AeO" id="NeT-sA-fNP"/>
                 <outlet property="meanDealLabel" destination="Ymq-VS-Fhp" id="x2m-aP-awT"/>
                 <outlet property="measureLabel" destination="yVG-yh-HQF" id="rif-6e-9Ag"/>
+                <outlet property="orderStateBtn" destination="Pxf-zW-lyM" id="jxO-gx-u4R"/>
                 <outlet property="priceLabel" destination="b5T-6R-peG" id="lLw-F4-hgd"/>
                 <outlet property="timeLabel" destination="tco-Py-bNF" id="u63-jE-kOy"/>
                 <outlet property="totalDealLabel" destination="VoB-nw-o1Y" id="GUx-x7-Hqd"/>
@@ -49,7 +50,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxf-zW-lyM">
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxf-zW-lyM">
                     <rect key="frame" x="316" y="43" width="52" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="UNc-FD-klP"/>

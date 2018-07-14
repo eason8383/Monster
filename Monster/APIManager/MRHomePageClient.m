@@ -32,6 +32,8 @@
             failureBlock(error);
             
         } else {
+            
+            [self makeACoinPairTable:[dic objectForKey:@"resultList"]];
             successBlock(dic);
         }
         
@@ -129,6 +131,16 @@
             failureBlock(error);
         }
     }];
+}
+
+- (void)makeACoinPairTable:(NSArray*)ary{
+    NSMutableDictionary *pairTable = [NSMutableDictionary dictionary];
+    
+    for (NSDictionary *dic in ary) {
+        [pairTable  setObject:[dic objectForKey:@"subCoinId"] forKey:[dic objectForKey:@"coinPairId"]];
+    }
+    
+    [[NSUserDefaults standardUserDefaults]setObject:pairTable forKey:COINPAIRTABLE];
 }
 
 @end

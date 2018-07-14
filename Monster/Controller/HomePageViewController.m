@@ -78,7 +78,8 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     self.jz_navigationInteractivePopGestureEnabled = true;
     
     [self initial];
-    [[VWProgressHUD shareInstance]showLoading];
+    
+//    [[VWProgressHUD shareInstance]showLoading];
     
 }
 
@@ -86,7 +87,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     
     _homeModel = [HomeViewModel sharedInstance];
     _homeModel.delegate = self;
-    
+
     [self registerCells];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
@@ -117,7 +118,8 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 
 - (void)getDataSucess{
     [self.tableView reloadData];
-    [[VWProgressHUD shareInstance]dismiss];
+//    [[VWProgressHUD shareInstance]dismiss];
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

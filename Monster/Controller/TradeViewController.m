@@ -10,12 +10,10 @@
 #import "TradeView.h"
 #import "ExponentialCell.h"
 #import "EntrustNowViewCell.h"
-#import "MarketViewController.h"
 #import "TradeViewModel.h"
 #import "CoinPairModel.h"
 #import "UserOrderModel.h"
-
-#define NOWBILL 1
+#import "MyOrderViewController.h"
 
 @interface TradeViewController () <UITableViewDelegate,UITableViewDataSource,TradeViewModelDelegate>
 
@@ -54,7 +52,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     backHomeBtn.tintColor = [UIColor whiteColor];
     
     [self.navigationItem setLeftBarButtonItem:backHomeBtn];
-    
+    _tradeViewModel.delegate = self;
     [_tradeViewModel getData:_model.coinPairId];
 }
 
@@ -97,17 +95,27 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 }
 
 - (void)moreDetail:(id)sender{
-    MarketViewController *mVC = [[MarketViewController alloc]initWithNibName:@"MarketViewController" bundle:nil];
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(popTheCv:)];
+    
+    MyOrderViewController *moVc = [[MyOrderViewController alloc]initWithNibName:@"MyOrderViewController" bundle:nil];
+//    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(popTheCv:)];
+//    backBtn.tintColor = [UIColor whiteColor];
+//    [self.navigationItem setBackBarButtonItem:backBtn];
+//    [self.navigationController pushViewController:moVc animated:YES];
+    
+    moVc.jz_navigationBarHidden = NO;
+    [moVc setJz_navigationBarTintColor:[UIColor blackColor]];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     backBtn.tintColor = [UIColor whiteColor];
     [self.navigationItem setBackBarButtonItem:backBtn];
-    [self.navigationController pushViewController:mVC animated:YES];
+    [self.navigationController pushViewController:moVc animated:YES];
+    
 }
 
 - (void)getDataSucess{
     NSLog(@"Trade getDataSucess");
     [_tradeView setPriceCrew:[_tradeViewModel getBuyAry] saleAry:[_tradeViewModel getSaleAry]];
     [_tradeView setUerCoinQuantity:[_tradeViewModel getUserQuantityAry]];
+    [_tableView reloadData];
 }
 
 - (void)getUserOrderSucess{
@@ -115,7 +123,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 }
 
 - (void)orderCancelSucess:(NSDictionary*)res{
-    [[VWProgressHUD shareInstance]dismiss];
+//    [[VWProgressHUD shareInstance]dismiss];
     [_tradeViewModel getUserOrder:self.model.coinPairId];
 }
 
@@ -124,7 +132,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     if (_tradeView.stepperVolumField.text.length < 1 || _tradeView.stepperPriceField.text.length < 1) {
         [self justShowAlert:@"信息不完整" message:@"请将价格以及数量填写完成"];
     } else {
-        [[VWProgressHUD shareInstance]showLoading];
+//        [[VWProgressHUD shareInstance]showLoading];
         BOOL isBuy = _tradeView.isHighMode?YES:NO; //isHighMode = YES 就是买入
         float coinQuantity = [_tradeView.stepperVolumField.text floatValue];
         float orderPrice = [_tradeView.stepperPriceField.text floatValue];
@@ -135,14 +143,14 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (void)orderRequestSucess:(NSDictionary *)res{
     NSLog(@"orderRequestSucess:%@",res);
-    [[VWProgressHUD shareInstance]dismiss];
+//    [[VWProgressHUD shareInstance]dismiss];
     [self justShowAlert:@"委托成功" message:[NSString stringWithFormat:@"订单号:%@",[res objectForKey:@"orderId"]]];
     
     [_tradeViewModel getUserOrder:self.model.coinPairId];
 }
 
 - (void)getDataFalid:(NSError *)error{
-    [[VWProgressHUD shareInstance]dismiss];
+//    [[VWProgressHUD shareInstance]dismiss];
     NSLog(@"orderRequestFalid:%@",error.userInfo);
     NSDictionary *dic = error.userInfo;
     NSDictionary *respCode = [dic objectForKey:@"respCode"];
@@ -158,7 +166,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     NSMutableArray *actions = [NSMutableArray array];
     
     UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [[VWProgressHUD shareInstance]showLoading];
+//        [[VWProgressHUD shareInstance]showLoading];
         NSArray *orderAry = [self.tradeViewModel getUserOrderAry];
         UserOrderModel *model = [orderAry objectAtIndex:btn.tag];
         [self.tradeViewModel cancelOder:model.orderId coinPair:self.model.coinPairId];
@@ -230,7 +238,6 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
         
         default:{
             EntrustNowViewCell *enCell = (EntrustNowViewCell *)[tableView dequeueReusableCellWithIdentifier:entrustNowViewCellIdentifier];
-            enCell.subCoinId = self.model.subCoinId;
             enCell.cancelBtn.tag = indexPath.row - 1;
             [enCell.cancelBtn addTarget:self action:@selector(cancelOrder:) forControlEvents:UIControlEventTouchUpInside];
             NSArray *modelAry = [_tradeViewModel getUserOrderAry];

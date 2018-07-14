@@ -44,7 +44,9 @@
     NSDate *now = [NSDate dateWithTimeIntervalSince1970:orderInfo.createTime/1000];
     NSString *currentDateString = [formatter stringFromDate:now];
     
-    [_coinLabel setText:[NSString stringWithFormat:@"%@/MR",self.subCoinId]];
+    NSDictionary *coinPairTable = [[NSUserDefaults standardUserDefaults]objectForKey:COINPAIRTABLE];
+    
+    [_coinLabel setText:[NSString stringWithFormat:@"%@/MR",[coinPairTable objectForKey:orderInfo.coinPairId]]];
     [_priceLabel setText:[NSString stringWithFormat:@"%f",orderInfo.orderPrice]];
     [_timeLabel setText:[NSString stringWithFormat:@"%@",currentDateString]];
     [_measureLabel setText:[NSString stringWithFormat:@"%f",orderInfo.orderQuantity]];

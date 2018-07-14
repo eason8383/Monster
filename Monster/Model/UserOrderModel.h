@@ -18,6 +18,9 @@
 @property(nonatomic,copy)NSString *orderStatus;
 @property(nonatomic,copy)NSString *userId;
 
+@property(nonatomic,assign)float dealQuantity;
+@property(nonatomic,assign)float dealAmount;
+@property(nonatomic,assign)float dealPrice;
 @property(nonatomic,assign)long createTime;
 @property(nonatomic,assign)float leftQuantity;
 @property(nonatomic,assign)float orderQuantity;

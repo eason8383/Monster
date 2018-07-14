@@ -111,6 +111,9 @@
 		D7820BA920F4C11200B01F05 /* MRHomePageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BA820F4C11200B01F05 /* MRHomePageClient.m */; };
 		D7820BAC20F4C50C00B01F05 /* HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BAB20F4C50C00B01F05 /* HomeViewModel.m */; };
 		D7820BAF20F5E1B200B01F05 /* CoinDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BAE20F5E1B200B01F05 /* CoinDetailViewModel.m */; };
+		D7894B8520F9C67500BC1703 /* MRMyOrderClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D7894B8420F9C67500BC1703 /* MRMyOrderClient.m */; };
+		D7894B8820F9CA6600BC1703 /* MyOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7894B8720F9CA6600BC1703 /* MyOrderViewModel.m */; };
+		D7894B8B20F9F3AA00BC1703 /* SGLoadMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7894B8920F9F3A900BC1703 /* SGLoadMoreView.m */; };
 		D7CAB0CE20F3094000B8B99B /* ZYWLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0CD20F3094000B8B99B /* ZYWLineView.m */; };
 		D7CAB0D120F3094A00B8B99B /* ZYWBaseChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0D020F3094A00B8B99B /* ZYWBaseChartView.m */; };
 		D7CAB0D420F3096B00B8B99B /* ZYWLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0D320F3096B00B8B99B /* ZYWLineModel.m */; };
@@ -330,6 +333,12 @@
 		D7820BAB20F4C50C00B01F05 /* HomeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewModel.m; sourceTree = "<group>"; };
 		D7820BAD20F5E1B200B01F05 /* CoinDetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoinDetailViewModel.h; sourceTree = "<group>"; };
 		D7820BAE20F5E1B200B01F05 /* CoinDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoinDetailViewModel.m; sourceTree = "<group>"; };
+		D7894B8320F9C67500BC1703 /* MRMyOrderClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRMyOrderClient.h; sourceTree = "<group>"; };
+		D7894B8420F9C67500BC1703 /* MRMyOrderClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRMyOrderClient.m; sourceTree = "<group>"; };
+		D7894B8620F9CA6600BC1703 /* MyOrderViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderViewModel.h; sourceTree = "<group>"; };
+		D7894B8720F9CA6600BC1703 /* MyOrderViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewModel.m; sourceTree = "<group>"; };
+		D7894B8920F9F3A900BC1703 /* SGLoadMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoadMoreView.m; sourceTree = "<group>"; };
+		D7894B8A20F9F3AA00BC1703 /* SGLoadMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoadMoreView.h; sourceTree = "<group>"; };
 		D7CAB0CC20F3094000B8B99B /* ZYWLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWLineView.h; sourceTree = "<group>"; };
 		D7CAB0CD20F3094000B8B99B /* ZYWLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWLineView.m; sourceTree = "<group>"; };
 		D7CAB0CF20F3094A00B8B99B /* ZYWBaseChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWBaseChartView.h; sourceTree = "<group>"; };
@@ -485,6 +494,8 @@
 				9B87074820EB639800156E39 /* SliderMenuView.h */,
 				9B87074920EB639900156E39 /* SliderMenuView.m */,
 				9B87074A20EB639900156E39 /* SliderMenuView.xib */,
+				D7894B8A20F9F3AA00BC1703 /* SGLoadMoreView.h */,
+				D7894B8920F9F3A900BC1703 /* SGLoadMoreView.m */,
 				9BB945E820EC6E8300B8D7BE /* HeadTableViewCell.h */,
 				9BB945E920EC6E8300B8D7BE /* HeadTableViewCell.m */,
 				9BB945EA20EC6E8300B8D7BE /* HeadTableViewCell.xib */,
@@ -686,6 +697,8 @@
 				D7820BAE20F5E1B200B01F05 /* CoinDetailViewModel.m */,
 				D745E25320F74E9B0001EA11 /* TradeViewModel.h */,
 				D745E25420F74E9B0001EA11 /* TradeViewModel.m */,
+				D7894B8620F9CA6600BC1703 /* MyOrderViewModel.h */,
+				D7894B8720F9CA6600BC1703 /* MyOrderViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -701,6 +714,8 @@
 				D745E25720F74EE40001EA11 /* MRTradeClient.m */,
 				D745E25920F750960001EA11 /* MRUserInfoClient.h */,
 				D745E25A20F750960001EA11 /* MRUserInfoClient.m */,
+				D7894B8320F9C67500BC1703 /* MRMyOrderClient.h */,
+				D7894B8420F9C67500BC1703 /* MRMyOrderClient.m */,
 			);
 			path = APIManager;
 			sourceTree = "<group>";
@@ -1000,6 +1015,7 @@
 				D7CAB0D420F3096B00B8B99B /* ZYWLineModel.m in Sources */,
 				9B4F1D7F20EE32E600DEF626 /* MyAssetTableViewCell.m in Sources */,
 				9BB945E620EC6B5300B8D7BE /* _JZ-objc-internal.m in Sources */,
+				D7894B8B20F9F3AA00BC1703 /* SGLoadMoreView.m in Sources */,
 				9BB945E020EC6B2600B8D7BE /* UIViewController+JZExtension.m in Sources */,
 				9B7EEEC320EA030A00DF88B4 /* LoginViewController.m in Sources */,
 				9BB945D820EC63C400B8D7BE /* NavigtionController.m in Sources */,
@@ -1015,6 +1031,7 @@
 				D7CAB0E620F309A800B8B99B /* ZYWLineUntil.m in Sources */,
 				D71F71A720F8B959003513C5 /* UserOrderModel.m in Sources */,
 				D7CAB0D120F3094A00B8B99B /* ZYWBaseChartView.m in Sources */,
+				D7894B8820F9CA6600BC1703 /* MyOrderViewModel.m in Sources */,
 				9B4F1DA720EF57CF00DEF626 /* ChargeViewController.m in Sources */,
 				9B87073620EB1FC700156E39 /* UIViewController+Alert.m in Sources */,
 				9BB945EB20EC6E8300B8D7BE /* HeadTableViewCell.m in Sources */,
@@ -1060,6 +1077,7 @@
 				9BB945F720EC7CD800B8D7BE /* ExponentialView.m in Sources */,
 				9B4F1D9D20EF525F00DEF626 /* SecurityViewController.m in Sources */,
 				D735D7B820F0BECC007E2B7C /* BindingMailBoxViewController.m in Sources */,
+				D7894B8520F9C67500BC1703 /* MRMyOrderClient.m in Sources */,
 				9B4F1D7A20EE328B00DEF626 /* MyAssetViewController.m in Sources */,
 				D7820BAC20F4C50C00B01F05 /* HomeViewModel.m in Sources */,
 				9B7EEE8720E9C39000DF88B4 /* AppDelegate.m in Sources */,

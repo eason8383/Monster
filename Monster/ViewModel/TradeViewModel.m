@@ -54,6 +54,7 @@
         NSDictionary *dic = response;
         
         if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            [self.userQuantityAry removeAllObjects];
             for (NSDictionary *dicCoin in [dic objectForKey:@"resultList"]) {
                 UCoinQuantity *coinInfo = [UCoinQuantity uCoinQuantityWithDict:dicCoin];
                 [self.userQuantityAry addObject:coinInfo];
@@ -89,6 +90,8 @@
         
         if ([[dic objectForKey:@"success"] integerValue] == 1) {
             NSMutableArray *tradeAry = [dic objectForKey:@"resultList"];
+            [self.buyAry removeAllObjects];
+            [self.saleAry removeAllObjects];
             for (NSDictionary *tInfo in tradeAry) {
                 TrandModel *tModel = [TrandModel tradeModelWithDict:tInfo];
                 if ([tModel.buySell isEqualToString:@"B"]) {
