@@ -7,6 +7,7 @@
 //
 
 #import "CoinCanUseViewCell.h"
+#import "UserCoinQuantity.h"
 
 @interface CoinCanUseViewCell()
 
@@ -21,6 +22,22 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setContent:(UserCoinQuantity*)coinInfo{
+//    NSNumber *number = coinInfo.coinQuantity;
+//    float coin = [coinInfo.coinQuantity floatValue];
+    [_coinLabel setText:coinInfo.coinId];
+    if ([coinInfo.quantityStatusName isEqualToString:@"冻结"]) {
+        [_cannotLabel setText:[NSString stringWithFormat:@"%.8f",coinInfo.coinQuantity]];
+        [_canUseLabel setText:@"0"];
+    } else {
+        [_canUseLabel setText:[NSString stringWithFormat:@"%.8f",coinInfo.coinQuantity]];
+        [_cannotLabel setText:@"0"];
+    }
+    
+    
+//    [_cannotLabel setText:[NSString stringWithFormat:@"%.8f",coinInfo.coinQuantity]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

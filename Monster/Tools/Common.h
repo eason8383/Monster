@@ -54,6 +54,10 @@
 
 //#define FilePath @"userAccount.archiver"
 
+#define COINPAIRMODEL @"coinPairModel.archiver"
+#define MYETH @"MyAsset_myETH"
+
+
 //忘记密码
 #define ForgotPassword @"ForgotPassword"
 

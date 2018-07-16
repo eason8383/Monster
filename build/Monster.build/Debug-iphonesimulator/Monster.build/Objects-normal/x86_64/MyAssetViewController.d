@@ -23,4 +23,6 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/CoinCanUseViewCell.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/ChargeViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/WithdrawViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/CapitalViewController.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/CapitalViewController.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/MyAssetViewModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/UserCoinQuantity.h

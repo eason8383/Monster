@@ -19,6 +19,7 @@
 @interface TradeViewModel()
 @property(nonatomic,strong)NSMutableArray *userQuantityAry;
 @property(nonatomic,strong)NSMutableArray *userOrderAry;
+@property(nonatomic,strong)NSArray *coinPairAry;
 @property(nonatomic,strong)NSMutableArray *saleAry;
 @property(nonatomic,strong)NSMutableArray *buyAry;
 @property(nonatomic,strong)NSString *local_coinPairId;
@@ -26,7 +27,6 @@
 @end
 
 @implementation TradeViewModel
-
 
 + (instancetype)sharedInstance{
     
@@ -47,41 +47,6 @@
         [self getOrderDepth:coinPairId];
         
     });
-}
-
-- (void)getUserCoinQuantity{
-    [[MRUserInfoClient alloc]getUserCoinQuantitySuccess:^(id response) {
-        NSDictionary *dic = response;
-        
-        if ([[dic objectForKey:@"success"] integerValue] == 1) {
-            [self.userQuantityAry removeAllObjects];
-            for (NSDictionary *dicCoin in [dic objectForKey:@"resultList"]) {
-                UCoinQuantity *coinInfo = [UCoinQuantity uCoinQuantityWithDict:dicCoin];
-                [self.userQuantityAry addObject:coinInfo];
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate getDataSucess];
-                //接着获取UserOrders
-                [self getUserOrder:self.local_coinPairId];
-            });
-        } else {
-            NSError *error = [NSError errorWithDomain:@"getOrderDepth" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate getDataFalid:error];
-                
-            });
-        }
-
-        NSLog(@"response:%@",response);
-        
-    } failure:^(NSError *error) {
-        //失敗
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate getDataFalid:error];
-            
-        });
-    }];
 }
 
 - (void)getOrderDepth:(NSString*)coinPairId{
@@ -110,7 +75,42 @@
             });
         }
         
-//        NSLog(@"response:%@",response);
+        //        NSLog(@"response:%@",response);
+        
+    } failure:^(NSError *error) {
+        //失敗
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate getDataFalid:error];
+            
+        });
+    }];
+}
+
+- (void)getUserCoinQuantity{
+    [[MRUserInfoClient alloc]getUserCoinQuantitySuccess:^(id response) {
+        NSDictionary *dic = response;
+        
+        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            [self.userQuantityAry removeAllObjects];
+            for (NSDictionary *dicCoin in [dic objectForKey:@"resultList"]) {
+                UCoinQuantity *coinInfo = [UCoinQuantity uCoinQuantityWithDict:dicCoin];
+                [self.userQuantityAry addObject:coinInfo];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate getDataSucess];
+                //接着获取UserOrders
+                [self getUserOrder:self.local_coinPairId];
+            });
+        } else {
+            NSError *error = [NSError errorWithDomain:@"getOrderDepth" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate getDataFalid:error];
+                
+            });
+        }
+
+        NSLog(@"response:%@",response);
         
     } failure:^(NSError *error) {
         //失敗
@@ -193,6 +193,17 @@
     return _userOrderAry;
 }
 
+- (NSArray*)getCoinPairAry{
+    NSData *coinPairData = [[NSUserDefaults standardUserDefaults] objectForKey:COINPAIRMODEL    ];
+    if (_coinPairAry == nil) {
+        _coinPairAry = [NSArray array];
+    }
+    _coinPairAry = nil;
+    _coinPairAry = [NSKeyedUnarchiver unarchiveObjectWithData:coinPairData];
+    
+    return _coinPairAry;
+}
+
 - (NSMutableArray*)userQuantityAry{
     if (_userQuantityAry == nil) {
         _userQuantityAry = [NSMutableArray array];
@@ -216,6 +227,7 @@
     
     return _saleAry;
 }
+
 
 - (NSMutableArray*)buyAry{
     if (_buyAry == nil) {

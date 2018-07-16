@@ -25,4 +25,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/TradeViewModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Model/CoinPairModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Model/UserOrderModel.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MyOrderViewController.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MyOrderViewController.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ChoseCoinTableViewCell.h

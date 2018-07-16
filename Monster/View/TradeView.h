@@ -13,6 +13,7 @@
 @interface TradeView : UIView
 
 @property(nonatomic,strong)IBOutlet UIButton *comfirmBtn;
+@property(nonatomic,strong)IBOutlet UIButton *titleDownBtn;
 @property(nonatomic,strong)IBOutlet UITextField *stepperPriceField;
 @property(nonatomic,strong)IBOutlet UITextField *stepperVolumField;
 @property(nonatomic,assign)BOOL isHighMode;

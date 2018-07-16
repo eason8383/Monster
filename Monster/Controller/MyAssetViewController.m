@@ -12,12 +12,13 @@
 #import "ChargeViewController.h"
 #import "WithdrawViewController.h"
 #import "CapitalViewController.h"
+#import "MyAssetViewModel.h"
+#import "UserCoinQuantity.h"
 
-#define NOWCell 10
-
-@interface MyAssetViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface MyAssetViewController () <UITableViewDelegate,UITableViewDataSource,MyAssetViewModelDelegate>
 
 @property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong)MyAssetViewModel *myAssetViewModel;
 @property(nonatomic,strong)NSMutableDictionary *heightAtIndexPath;//缓存高度所用字典
 @end
 
@@ -31,6 +32,14 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
     self.title = @"我的资产";
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
+    [self initial];
+}
+
+- (void)initial{
+    _myAssetViewModel = [MyAssetViewModel sharedInstance];
+    _myAssetViewModel.delegate = self;
+    [_myAssetViewModel getData];
+    
     [self registerCells];
 }
 
@@ -47,12 +56,21 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
     
 }
 
+- (void)getDataSucess{
+    [_tableView reloadData];
+}
+
+- (void)getDataFalid:(NSError *)error{
+    
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return NOWCell;
+    return [_myAssetViewModel numberOfRowinSection] + 1;
 }
 
 #pragma mark - UITableViewDelegate
@@ -77,13 +95,18 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
         case 0: {
             MyAssetTableViewCell *maCell = (MyAssetTableViewCell *)[tableView dequeueReusableCellWithIdentifier:myassetCellIdentifier];
             [maCell setBtnTarget:self select:@selector(callVcCaseByBtnTag:)];
+            NSDictionary *myAssetDic = [[NSUserDefaults standardUserDefaults]objectForKey:MYETH];
+            [maCell setContent:myAssetDic];
+            
             return maCell;
             
         }
             
         default:{
             CoinCanUseViewCell *ccCell = (CoinCanUseViewCell *)[tableView dequeueReusableCellWithIdentifier:coinCanUseCellIdentifier];
-            
+            NSArray *ary = [_myAssetViewModel getUserCoinQuantity];
+            UserCoinQuantity *model = [ary objectAtIndex:indexPath.row - 1];
+            [ccCell setContent:model];
             return ccCell;
         }
     }

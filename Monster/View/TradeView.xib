@@ -16,11 +16,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="396"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MR / ETH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2K-Cw-69X">
-                    <rect key="frame" x="9" y="14" width="85" height="26"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MON/ETH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2K-Cw-69X">
+                    <rect key="frame" x="9" y="14" width="90" height="26"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="26" id="BQR-Ma-Hbf"/>
-                        <constraint firstAttribute="width" constant="85" id="t9r-9U-qgt"/>
+                        <constraint firstAttribute="width" constant="90" id="t9r-9U-qgt"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -657,6 +657,16 @@
                         <action selector="bringPriceToField:" destination="iN0-l3-epB" eventType="touchUpInside" id="SOg-Mr-vZe"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRL-kD-zYV">
+                    <rect key="frame" x="101" y="11" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="fLn-yT-NgY"/>
+                        <constraint firstAttribute="height" constant="32" id="k5U-TE-7BE"/>
+                    </constraints>
+                    <state key="normal" image="down5">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.12941176470588237" green="0.12549019607843137" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -716,10 +726,12 @@
                 <constraint firstItem="xCb-FB-0eE" firstAttribute="centerY" secondItem="giW-mv-FOG" secondAttribute="centerY" id="R2l-mg-r4M"/>
                 <constraint firstItem="Mgh-gM-Qd3" firstAttribute="leading" secondItem="Zkx-SF-RRO" secondAttribute="leading" id="R9a-sU-QP7"/>
                 <constraint firstItem="FOQ-U8-fSx" firstAttribute="leading" secondItem="Len-Sy-4Dg" secondAttribute="leading" id="RXZ-Yc-iq2"/>
+                <constraint firstItem="IRL-kD-zYV" firstAttribute="leading" secondItem="a2K-Cw-69X" secondAttribute="trailing" constant="2" id="Rx4-bA-P7x"/>
                 <constraint firstItem="Mgh-gM-Qd3" firstAttribute="trailing" secondItem="Zkx-SF-RRO" secondAttribute="trailing" id="S1S-O1-6X4"/>
                 <constraint firstItem="Fj0-bW-cZ8" firstAttribute="centerY" secondItem="5BV-3j-FWE" secondAttribute="centerY" id="SgC-So-ZLv"/>
                 <constraint firstItem="MaC-mj-c2l" firstAttribute="centerY" secondItem="7vC-xg-A4e" secondAttribute="centerY" id="Srp-1I-j4t"/>
                 <constraint firstItem="Fj0-bW-cZ8" firstAttribute="trailing" secondItem="Zkx-SF-RRO" secondAttribute="trailing" id="TCM-wg-qM1"/>
+                <constraint firstItem="IRL-kD-zYV" firstAttribute="centerY" secondItem="a2K-Cw-69X" secondAttribute="centerY" id="TdS-qz-UBa"/>
                 <constraint firstItem="O4F-wv-Evl" firstAttribute="leading" secondItem="FOQ-U8-fSx" secondAttribute="leading" id="V7l-1y-E5M"/>
                 <constraint firstItem="Len-Sy-4Dg" firstAttribute="leading" secondItem="pbJ-cz-eiF" secondAttribute="leading" id="WPW-dv-waS"/>
                 <constraint firstItem="zdR-vT-FI1" firstAttribute="centerY" secondItem="a2K-Cw-69X" secondAttribute="centerY" id="WUu-pA-oMC"/>
@@ -819,6 +831,7 @@
                 <outlet property="stepperVolumField" destination="G72-EH-Eui" id="0DO-Lp-flI"/>
                 <outlet property="subPriceLabel" destination="LJl-Jn-GDg" id="b6C-I9-Fat"/>
                 <outlet property="tagView" destination="Len-Sy-4Dg" id="oVL-9k-uvC"/>
+                <outlet property="titleDownBtn" destination="IRL-kD-zYV" id="96P-33-ghL"/>
                 <outlet property="titleLabel" destination="a2K-Cw-69X" id="VYg-kE-iOq"/>
                 <outlet property="upBtn_price1" destination="0R1-7Y-7x7" id="SIl-AR-jvl"/>
                 <outlet property="upBtn_price2" destination="5Sg-hy-pxg" id="7DA-56-WD5"/>
@@ -832,7 +845,7 @@
                 <outlet property="up_unit5Label" destination="6s6-G4-dW8" id="DCE-vt-BRi"/>
                 <outlet property="valueLabel" destination="sQW-D4-AAz" id="gfV-ZB-Cmj"/>
             </connections>
-            <point key="canvasLocation" x="75" y="-107"/>
+            <point key="canvasLocation" x="74.5" y="-107"/>
         </view>
     </objects>
     <resources>

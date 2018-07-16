@@ -108,6 +108,10 @@
 		D745E25820F74EE40001EA11 /* MRTradeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25720F74EE40001EA11 /* MRTradeClient.m */; };
 		D745E25B20F750960001EA11 /* MRUserInfoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25A20F750960001EA11 /* MRUserInfoClient.m */; };
 		D745E25E20F757D20001EA11 /* TrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25D20F757D20001EA11 /* TrandModel.m */; };
+		D773385320FC6D430039F924 /* ChoseCoinTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D773385120FC6D430039F924 /* ChoseCoinTableViewCell.m */; };
+		D773385420FC6D430039F924 /* ChoseCoinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D773385220FC6D430039F924 /* ChoseCoinTableViewCell.xib */; };
+		D773385720FC90EE0039F924 /* UserCoinQuantity.m in Sources */ = {isa = PBXBuildFile; fileRef = D773385620FC90EE0039F924 /* UserCoinQuantity.m */; };
+		D773385A20FCA2A10039F924 /* MyAssetViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D773385920FCA2A10039F924 /* MyAssetViewModel.m */; };
 		D7820BA920F4C11200B01F05 /* MRHomePageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BA820F4C11200B01F05 /* MRHomePageClient.m */; };
 		D7820BAC20F4C50C00B01F05 /* HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BAB20F4C50C00B01F05 /* HomeViewModel.m */; };
 		D7820BAF20F5E1B200B01F05 /* CoinDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BAE20F5E1B200B01F05 /* CoinDetailViewModel.m */; };
@@ -327,6 +331,13 @@
 		D745E25A20F750960001EA11 /* MRUserInfoClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRUserInfoClient.m; sourceTree = "<group>"; };
 		D745E25C20F757D20001EA11 /* TrandModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrandModel.h; sourceTree = "<group>"; };
 		D745E25D20F757D20001EA11 /* TrandModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrandModel.m; sourceTree = "<group>"; };
+		D773385020FC6D430039F924 /* ChoseCoinTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoseCoinTableViewCell.h; sourceTree = "<group>"; };
+		D773385120FC6D430039F924 /* ChoseCoinTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoseCoinTableViewCell.m; sourceTree = "<group>"; };
+		D773385220FC6D430039F924 /* ChoseCoinTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoseCoinTableViewCell.xib; sourceTree = "<group>"; };
+		D773385520FC90EE0039F924 /* UserCoinQuantity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCoinQuantity.h; sourceTree = "<group>"; };
+		D773385620FC90EE0039F924 /* UserCoinQuantity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCoinQuantity.m; sourceTree = "<group>"; };
+		D773385820FCA2A10039F924 /* MyAssetViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAssetViewModel.h; sourceTree = "<group>"; };
+		D773385920FCA2A10039F924 /* MyAssetViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAssetViewModel.m; sourceTree = "<group>"; };
 		D7820BA720F4C11200B01F05 /* MRHomePageClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRHomePageClient.h; sourceTree = "<group>"; };
 		D7820BA820F4C11200B01F05 /* MRHomePageClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRHomePageClient.m; sourceTree = "<group>"; };
 		D7820BAA20F4C50C00B01F05 /* HomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewModel.h; sourceTree = "<group>"; };
@@ -539,6 +550,9 @@
 				9B9DFD3220EF7CA900E56B2F /* CapitalDetailsViewCell.h */,
 				9B9DFD3320EF7CA900E56B2F /* CapitalDetailsViewCell.m */,
 				9B9DFD3420EF7CA900E56B2F /* CapitalDetailsViewCell.xib */,
+				D773385020FC6D430039F924 /* ChoseCoinTableViewCell.h */,
+				D773385120FC6D430039F924 /* ChoseCoinTableViewCell.m */,
+				D773385220FC6D430039F924 /* ChoseCoinTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -624,6 +638,8 @@
 				D71F719B20F84FF9003513C5 /* UCoinQuantity.m */,
 				D71F71A520F8B959003513C5 /* UserOrderModel.h */,
 				D71F71A620F8B959003513C5 /* UserOrderModel.m */,
+				D773385520FC90EE0039F924 /* UserCoinQuantity.h */,
+				D773385620FC90EE0039F924 /* UserCoinQuantity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -699,6 +715,8 @@
 				D745E25420F74E9B0001EA11 /* TradeViewModel.m */,
 				D7894B8620F9CA6600BC1703 /* MyOrderViewModel.h */,
 				D7894B8720F9CA6600BC1703 /* MyOrderViewModel.m */,
+				D773385820FCA2A10039F924 /* MyAssetViewModel.h */,
+				D773385920FCA2A10039F924 /* MyAssetViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -891,6 +909,7 @@
 				9BB945F120EC6ED200B8D7BE /* MainPageHeadView.xib in Resources */,
 				9B4F1D9E20EF525F00DEF626 /* SecurityViewController.xib in Resources */,
 				9BB9460320ECA61900B8D7BE /* HighLowLabelView.xib in Resources */,
+				D773385420FC6D430039F924 /* ChoseCoinTableViewCell.xib in Resources */,
 				9BB945FE20ECA2B400B8D7BE /* MACDTableViewCell.xib in Resources */,
 				9BB9461520ECD90600B8D7BE /* CoinDetailViewController.xib in Resources */,
 				9B7EEE8F20E9C39200DF88B4 /* Assets.xcassets in Resources */,
@@ -1050,7 +1069,9 @@
 				9B87073920EB220800156E39 /* Reachability.m in Sources */,
 				9B7EEF1820EA32E400DF88B4 /* UIColor+JKRColor.m in Sources */,
 				9B4F1D8920EF0ED600DEF626 /* MyOrderViewController.m in Sources */,
+				D773385320FC6D430039F924 /* ChoseCoinTableViewCell.m in Sources */,
 				9BB9461E20ECE85F00B8D7BE /* MarketTableViewCell.m in Sources */,
+				D773385720FC90EE0039F924 /* UserCoinQuantity.m in Sources */,
 				D7CAB0E720F309A800B8B99B /* ZYWMacdModel.m in Sources */,
 				D745E25E20F757D20001EA11 /* TrandModel.m in Sources */,
 				D7CAB0E420F309A800B8B99B /* ZYWCandleModel.m in Sources */,
@@ -1068,6 +1089,7 @@
 				D7CAB0F620F30AF400B8B99B /* ZYWSlipLineView.m in Sources */,
 				D7820BA920F4C11200B01F05 /* MRHomePageClient.m in Sources */,
 				9B4F1D9720EF41C300DEF626 /* UpLoadImagView.m in Sources */,
+				D773385A20FCA2A10039F924 /* MyAssetViewModel.m in Sources */,
 				D7CAB0F320F30A1C00B8B99B /* UIBezierPath+Draw.m in Sources */,
 				D7CAB0F120F30A1C00B8B99B /* UIView+Extension.m in Sources */,
 				D7CAB0E820F309A800B8B99B /* ZYWCandlePostionModel.m in Sources */,

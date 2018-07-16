@@ -32,6 +32,14 @@
     
 }
 
+- (void)setContent:(NSDictionary *)info{
+    float asset = [[info objectForKey:@"myAsset"] floatValue];
+    
+    [_myAssetLabel setText:[NSString stringWithFormat:@"%.8f",asset]];
+    
+    [_subAssetLabel setText:[NSString stringWithFormat:@"≈$%@",[info objectForKey:@"result"]]];
+}
+
 - (void)setBtnTarget:(id)target select:(SEL)select{
     [self.chargeBtn addTarget:target action:select forControlEvents:UIControlEventTouchUpInside];
     [self.withDrawBtn addTarget:target action:select forControlEvents:UIControlEventTouchUpInside];

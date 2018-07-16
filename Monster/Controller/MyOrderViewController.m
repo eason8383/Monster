@@ -34,7 +34,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     self.title = @"当前委托";
     
     [self initial];
-//    [[VWProgressHUD shareInstance]showLoading];
+    [[VWProgressHUD shareInstance]showLoading];
     [_myOrderViewModel getData];
 }
 
@@ -61,12 +61,12 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 }
 
 - (void)getDataSucess{
-//    [[VWProgressHUD shareInstance]dismiss];
+    [[VWProgressHUD shareInstance]dismiss];
     [_tableView reloadData];
 }
 
 - (void)orderCancelSucess:(NSDictionary*)res{
-//    [[VWProgressHUD shareInstance]showLoading];
+    [[VWProgressHUD shareInstance]showLoading];
     [_myOrderViewModel getData];
 }
 

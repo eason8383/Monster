@@ -6,7 +6,7 @@ target 'Monster' do
   #pod 'JZNavigationExtension', '~> 1.5.0.1'
   pod 'KVOController', '~> 1.2.0'
   pod 'Masonry'
-  pod 'FHHFPSIndicator'
+ # pod 'FHHFPSIndicator'
   pod 'FLAnimatedImage', '~> 1.0.12'
   pod 'VWProgressHUD', '~> 0.1.9'
  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks

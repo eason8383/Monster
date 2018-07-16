@@ -37,6 +37,8 @@
 
 - (NSArray*)getBuyAry;
 - (NSArray*)getSaleAry;
+
+- (NSArray*)getCoinPairAry;
 - (NSArray*)getUserQuantityAry;
 - (NSArray*)getUserOrderAry;
 

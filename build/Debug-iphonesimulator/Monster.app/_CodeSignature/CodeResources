@@ -68,9 +68,13 @@
 		<data>
 		0C9vOKraimSX57uu/wn7g2Z+zKU=
 		</data>
+		<key>ChoseCoinTableViewCell.nib</key>
+		<data>
+		Cpp6FDEtkqTUB6T5rm2cZKyMUHM=
+		</data>
 		<key>CoinCanUseViewCell.nib</key>
 		<data>
-		1r6O1sJpcEnpDAW9ZjJmDkyQwDA=
+		5uB0n4FoK4qDyQO9C7bHOH1lfjo=
 		</data>
 		<key>CoinDetailViewController.nib/objects-11.0+.nib</key>
 		<data>
@@ -134,7 +138,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ku44JSXklCOxbT+L5fAkQB2GaNE=
+		AIdcX+Lbo8YKyeC2mB7txmGGlMA=
 		</data>
 		<key>LoginViewController.nib/objects-11.0+.nib</key>
 		<data>
@@ -222,11 +226,11 @@
 		</data>
 		<key>TradeView.nib/objects-11.0+.nib</key>
 		<data>
-		ucaL20eD1lI4p3BdKV0R33J6rtw=
+		d3xpP5OzlU3B1XOQtHYX50AxEaY=
 		</data>
 		<key>TradeView.nib/runtime.nib</key>
 		<data>
-		PRse9PCg6MIJ60LZ0k8uZeBx+Ac=
+		Hd775dwI8ngEckavpl/syHsia1c=
 		</data>
 		<key>TradeViewController.nib</key>
 		<data>
@@ -475,15 +479,26 @@
 			w+bCmQmBEI/esPFV2xt+Ao/nbXplUue9Coexu5wN+mM=
 			</data>
 		</dict>
+		<key>ChoseCoinTableViewCell.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Cpp6FDEtkqTUB6T5rm2cZKyMUHM=
+			</data>
+			<key>hash2</key>
+			<data>
+			aouhQAOTb6b/zs8fiWaWAsxDfv2Zz3GKLbFACTI24MM=
+			</data>
+		</dict>
 		<key>CoinCanUseViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1r6O1sJpcEnpDAW9ZjJmDkyQwDA=
+			5uB0n4FoK4qDyQO9C7bHOH1lfjo=
 			</data>
 			<key>hash2</key>
 			<data>
-			tv3mVjMbS64SbOWDT4x61ZWk7MA5ng2Zcl3+cyohzPk=
+			Mr4d9cMNBahTnNK3tD3Zs7LfJbo0b3ZccW0BHiFCcdM=
 			</data>
 		</dict>
 		<key>CoinDetailViewController.nib/objects-11.0+.nib</key>
@@ -875,22 +890,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ucaL20eD1lI4p3BdKV0R33J6rtw=
+			d3xpP5OzlU3B1XOQtHYX50AxEaY=
 			</data>
 			<key>hash2</key>
 			<data>
-			cuNkIoXnoSrxuEiQsUDT4PLUI2KTH/LrgjS2b/5l6jw=
+			MH9t8o+1+bXHxYQxWIFN52PaMabb1lY+Vi9JQfCxcMA=
 			</data>
 		</dict>
 		<key>TradeView.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			PRse9PCg6MIJ60LZ0k8uZeBx+Ac=
+			Hd775dwI8ngEckavpl/syHsia1c=
 			</data>
 			<key>hash2</key>
 			<data>
-			308KDxVgkSYL5u9alrOHLzCJgFDIIybyf6yrRLlknms=
+			+yN6V7m4qzzfPl3GKJpMFuUlrmmokHwEl0c3UksIOCE=
 			</data>
 		</dict>
 		<key>TradeViewController.nib</key>

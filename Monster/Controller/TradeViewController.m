@@ -14,11 +14,13 @@
 #import "CoinPairModel.h"
 #import "UserOrderModel.h"
 #import "MyOrderViewController.h"
+#import "ChoseCoinTableViewCell.h"
 
 @interface TradeViewController () <UITableViewDelegate,UITableViewDataSource,TradeViewModelDelegate>
 
 @property(nonatomic,strong)TradeView *tradeView;
 @property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong)UITableView *coinTableView;
 @property(nonatomic,strong)TradeViewModel *tradeViewModel;
 @property(nonatomic,strong)NSMutableDictionary *heightAtIndexPath;//缓存高度所用字典
 @property UITapGestureRecognizer *tapRecognizer;
@@ -29,6 +31,7 @@
 
 static NSString *exponentialCellIdentifier = @"ExponenCell";
 static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
+static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,6 +46,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(firstResponder:)];
     _tapRecognizer.numberOfTapsRequired = 1;
     [_tradeView addGestureRecognizer:_tapRecognizer];
+    
     
     [self registerCells];
 }
@@ -70,8 +74,36 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     [_tradeView setMode:self.isHigh];
     [_tradeView setContent:self.model];
     [_tradeView.comfirmBtn addTarget:self action:@selector(orderRequest:) forControlEvents:UIControlEventTouchUpInside];
+    [_tradeView.titleDownBtn addTarget:self action:@selector(coinTableView:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_tradeView];
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.coinTableView];
+}
+
+- (void)coinTableView:(id)sender{
+    CGRect frame = _coinTableView.bounds;
+    float bottomFix = isiPhoneX?88:44;
+    if (_coinTableView.height == 0) {
+        frame = CGRectMake(0, 54, kScreenWidth, kScreenHeight - 50 + 5 - bottomFix);
+    } else {
+        
+        frame = CGRectMake(0, 54, kScreenWidth, 0);
+    }
+    
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.1
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         self.coinTableView.frame = frame;
+                     }
+                     completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.1 animations:^{
+//                             view.layer.transform = CATransform3DIdentity;
+                         }];
+                     }];
+    
+    
 }
 
 - (void)viewDidLayoutSubviews{
@@ -87,6 +119,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     
     [_tableView registerNib:[UINib nibWithNibName:@"ExponentialCell" bundle:nil] forCellReuseIdentifier:exponentialCellIdentifier];
     [_tableView registerNib:[UINib nibWithNibName:@"EntrustNowViewCell" bundle:nil] forCellReuseIdentifier:entrustNowViewCellIdentifier];
+    [_coinTableView registerNib:[UINib nibWithNibName:@"ChoseCoinTableViewCell" bundle:nil] forCellReuseIdentifier:choseCoinTableViewCell];
 }
 
 - (void)firstResponder:(id)sender{
@@ -113,17 +146,20 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (void)getDataSucess{
     NSLog(@"Trade getDataSucess");
+    [_tradeView setContent:self.model];
     [_tradeView setPriceCrew:[_tradeViewModel getBuyAry] saleAry:[_tradeViewModel getSaleAry]];
     [_tradeView setUerCoinQuantity:[_tradeViewModel getUserQuantityAry]];
     [_tableView reloadData];
+    [[VWProgressHUD shareInstance]dismiss];
 }
 
 - (void)getUserOrderSucess{
+    [[VWProgressHUD shareInstance]dismiss];
     [self.tableView reloadData];
 }
 
 - (void)orderCancelSucess:(NSDictionary*)res{
-//    [[VWProgressHUD shareInstance]dismiss];
+    [[VWProgressHUD shareInstance]dismiss];
     [_tradeViewModel getUserOrder:self.model.coinPairId];
 }
 
@@ -132,7 +168,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     if (_tradeView.stepperVolumField.text.length < 1 || _tradeView.stepperPriceField.text.length < 1) {
         [self justShowAlert:@"信息不完整" message:@"请将价格以及数量填写完成"];
     } else {
-//        [[VWProgressHUD shareInstance]showLoading];
+        [[VWProgressHUD shareInstance]showLoading];
         BOOL isBuy = _tradeView.isHighMode?YES:NO; //isHighMode = YES 就是买入
         float coinQuantity = [_tradeView.stepperVolumField.text floatValue];
         float orderPrice = [_tradeView.stepperPriceField.text floatValue];
@@ -143,14 +179,14 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (void)orderRequestSucess:(NSDictionary *)res{
     NSLog(@"orderRequestSucess:%@",res);
-//    [[VWProgressHUD shareInstance]dismiss];
+    [[VWProgressHUD shareInstance]dismiss];
     [self justShowAlert:@"委托成功" message:[NSString stringWithFormat:@"订单号:%@",[res objectForKey:@"orderId"]]];
     
     [_tradeViewModel getUserOrder:self.model.coinPairId];
 }
 
 - (void)getDataFalid:(NSError *)error{
-//    [[VWProgressHUD shareInstance]dismiss];
+    [[VWProgressHUD shareInstance]dismiss];
     NSLog(@"orderRequestFalid:%@",error.userInfo);
     NSDictionary *dic = error.userInfo;
     NSDictionary *respCode = [dic objectForKey:@"respCode"];
@@ -166,7 +202,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     NSMutableArray *actions = [NSMutableArray array];
     
     UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//        [[VWProgressHUD shareInstance]showLoading];
+        [[VWProgressHUD shareInstance]showLoading];
         NSArray *orderAry = [self.tradeViewModel getUserOrderAry];
         UserOrderModel *model = [orderAry objectAtIndex:btn.tag];
         [self.tradeViewModel cancelOder:model.orderId coinPair:self.model.coinPairId];
@@ -186,71 +222,114 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    if (tableView == _tableView) {
+        return 1;
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_tradeViewModel numberOfRowsInSection] + 1;
+    
+    
+    if (tableView == _tableView) {
+        return [_tradeViewModel numberOfRowsInSection] + 1;
+    } else {
+        NSArray *ary = [_tradeViewModel getCoinPairAry];
+        return ary.count;
+    }
 }
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
-    if (height) {
-        return height.floatValue;
+    if (tableView == _tableView) {
+        NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
+        if (height) {
+            return height.floatValue;
+        } else {
+            return 100;
+        }
     } else {
-        return 100;
+        return 42;
     }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSNumber *height = @(cell.frame.size.height);
-    [self.heightAtIndexPath setObject:height forKey:indexPath];
+    
+    if (tableView == _tableView) {
+        NSNumber *height = @(cell.frame.size.height);
+        [self.heightAtIndexPath setObject:height forKey:indexPath];
+    } else {
+    
+    }
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    
-    UIView *noBillView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 89)];
-    
-    noBillView.backgroundColor = [UIColor colorWithHexString:@"212025"];
-    if ([_tradeViewModel numberOfRowsInSection] < 1) {
-        UILabel *noBillLabel = [[UILabel alloc]initWithFrame:noBillView.frame];
-        [noBillLabel setText:@"暂无委托单"];
-        [noBillLabel setTextAlignment:NSTextAlignmentCenter];
-        [noBillLabel setTextColor:[UIColor whiteColor]];
-        [noBillView addSubview:noBillLabel];
+    if (tableView == _tableView) {
+        UIView *noBillView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 89)];
+        
+        noBillView.backgroundColor = [UIColor colorWithHexString:@"212025"];
+        if ([_tradeViewModel numberOfRowsInSection] < 1) {
+            UILabel *noBillLabel = [[UILabel alloc]initWithFrame:noBillView.frame];
+            [noBillLabel setText:@"暂无委托单"];
+            [noBillLabel setTextAlignment:NSTextAlignmentCenter];
+            [noBillLabel setTextColor:[UIColor whiteColor]];
+            [noBillView addSubview:noBillLabel];
+        }
+        return noBillView;
+    } else {
+        
+        UIView *viewe = [[UIView alloc]init];
+        return viewe;
     }
-    return noBillView;
+    
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    switch (indexPath.row) {
-        case 0: {
-            ExponentialCell *exCell = (ExponentialCell *)[tableView dequeueReusableCellWithIdentifier:exponentialCellIdentifier];
-            [exCell.moreDetailBtn addTarget:self action:@selector(moreDetail:) forControlEvents:UIControlEventTouchUpInside];
-            [exCell.contentView setBackgroundColor:[UIColor colorWithHexString:@"212025"]];
-            [exCell setTitle:@"当前委托" subTitle:@"全部"];
-            
-            return exCell;
+    if (tableView == _tableView) {
+        switch (indexPath.row) {
+            case 0: {
+                ExponentialCell *exCell = (ExponentialCell *)[tableView dequeueReusableCellWithIdentifier:exponentialCellIdentifier];
+                [exCell.moreDetailBtn addTarget:self action:@selector(moreDetail:) forControlEvents:UIControlEventTouchUpInside];
+                [exCell.contentView setBackgroundColor:[UIColor colorWithHexString:@"212025"]];
+                [exCell setTitle:@"当前委托" subTitle:@"全部"];
+                
+                return exCell;
+            }
+                
+            default:{
+                EntrustNowViewCell *enCell = (EntrustNowViewCell *)[tableView dequeueReusableCellWithIdentifier:entrustNowViewCellIdentifier];
+                enCell.cancelBtn.tag = indexPath.row - 1;
+                [enCell.cancelBtn addTarget:self action:@selector(cancelOrder:) forControlEvents:UIControlEventTouchUpInside];
+                NSArray *modelAry = [_tradeViewModel getUserOrderAry];
+                UserOrderModel *tModel = [modelAry objectAtIndex:indexPath.row - 1];
+                [enCell setContent:tModel];
+                return enCell;
+            }
         }
-        
-        default:{
-            EntrustNowViewCell *enCell = (EntrustNowViewCell *)[tableView dequeueReusableCellWithIdentifier:entrustNowViewCellIdentifier];
-            enCell.cancelBtn.tag = indexPath.row - 1;
-            [enCell.cancelBtn addTarget:self action:@selector(cancelOrder:) forControlEvents:UIControlEventTouchUpInside];
-            NSArray *modelAry = [_tradeViewModel getUserOrderAry];
-            UserOrderModel *tModel = [modelAry objectAtIndex:indexPath.row - 1];
-            [enCell setContent:tModel];
-            return enCell;
-        }
+    } else {
+        NSArray *ary = [_tradeViewModel getCoinPairAry];
+        ChoseCoinTableViewCell *ccCell = (ChoseCoinTableViewCell *)[tableView dequeueReusableCellWithIdentifier:choseCoinTableViewCell];
+        CoinPairModel *model = [ary objectAtIndex:indexPath.row];
+        [ccCell setContent:model];
+        return ccCell;
     }
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    if (tableView == _tableView) {
+        
+    } else {
+        NSArray *ary = [_tradeViewModel getCoinPairAry];
+        CoinPairModel *model = [ary objectAtIndex:indexPath.row];
+        self.model = model;
+        [_tradeViewModel getData:self.model.coinPairId];
+        [self coinTableView:nil];
+        [[VWProgressHUD shareInstance]showLoading];
+    }
 }
 
 - (UITableView *)tableView{
@@ -269,6 +348,24 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
         _tableView.dataSource = self;
     }
     return _tableView;
+}
+
+- (UITableView *)coinTableView{
+    if (_coinTableView == nil) {
+        
+//        float bottomFix = isiPhoneX?88:44;
+        CGRect frame = CGRectMake(0, 50, kScreenWidth, 0);
+        _coinTableView = [[UITableView alloc] initWithFrame:frame
+                                                  style:UITableViewStylePlain];
+        _coinTableView.backgroundColor = [UIColor colorWithHexString:@"212025"];
+        _coinTableView.rowHeight = UITableViewAutomaticDimension;
+        _coinTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _coinTableView.estimatedRowHeight = 100;
+        
+        _coinTableView.delegate = self;
+        _coinTableView.dataSource = self;
+    }
+    return _coinTableView;
 }
 
 @end

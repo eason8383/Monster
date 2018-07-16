@@ -9,11 +9,15 @@
 #import "HomeViewModel.h"
 #import "MRHomePageClient.h"
 #import "CoinPairModel.h"
+#import "MRUserInfoClient.h"
+#import "UserCoinQuantity.h"
 
 @interface HomeViewModel()
 @property(nonatomic,strong)NSMutableArray *coinPairAry;
 @property(nonatomic,strong)NSMutableArray *kLineBarAry;
 @property(nonatomic,strong)NSMutableArray *homeDataAry;
+
+@property(nonatomic,strong)NSMutableArray *userCoinQuantityAry;
 
 @property(nonatomic,strong)NSMutableArray *kLineInfoAry;
 
@@ -126,8 +130,50 @@
             
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate getDataSucess];
+            [self getUserInfo];
         });
+        
+        NSLog(@"response:%@",response);
+        
+    } failure:^(NSError *error) {
+        //失敗
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+        });
+    }];
+}
+
+- (void)getUserInfo{
+    [[MRUserInfoClient alloc]getUserCoinQuantitySuccess:^(id response) {
+        NSDictionary *dic = response;
+        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            [self.userCoinQuantityAry removeAllObjects];
+            for (NSDictionary *info in [dic objectForKey:@"resultList"]) {
+                UserCoinQuantity *ucq = [UserCoinQuantity userCoinQuantityWithDict:info];
+                [self.userCoinQuantityAry addObject:ucq];
+            }
+            float result = 0;
+            double myAsset = 0;
+            for (UserCoinQuantity *ucq in self.userCoinQuantityAry) {
+                
+                if ([ucq.coinId isEqualToString:@"ETH"]) {
+                    float multiple = [self getMultipleWithCurrentCoinId:@"ETH"];
+                    myAsset = ucq.coinQuantity;
+                    result = myAsset * multiple;
+                }
+            }
+            NSDictionary *dic = @{@"myAsset":[NSNumber numberWithDouble:myAsset],@"result":[NSNumber numberWithFloat:result]};
+            
+            [[NSUserDefaults standardUserDefaults]setObject:dic forKey:MYETH];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter]postNotificationName:MYETH object:dic];
+                [self.delegate getDataSucess];
+            });
+            
+        } else {
+            
+        }
         
         NSLog(@"response:%@",response);
         
@@ -166,7 +212,7 @@
 }
 
 - (void)combinData{
-    
+    [self.homeDataAry removeAllObjects];
     for (NSDictionary *dic in self.coinPairAry) {
         NSMutableDictionary *finalDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
         for (NSDictionary *barDic in self.kLineBarAry) {
@@ -179,6 +225,10 @@
         CoinPairModel *coModel = [CoinPairModel coinPairWithDict:finalDic];
         [self.homeDataAry addObject:coModel];
     }
+    
+    //存起来 Trade的时候用
+    NSData *coinPairData = [NSKeyedArchiver archivedDataWithRootObject:self.homeDataAry];
+    [[NSUserDefaults standardUserDefaults] setObject:coinPairData forKey:COINPAIRMODEL];
     
     [self getKlineList];
 }
@@ -260,5 +310,11 @@
     return _externalMarketAry;
 }
 
+- (NSMutableArray*)userCoinQuantityAry{
+    if (_userCoinQuantityAry == nil) {
+        _userCoinQuantityAry = [NSMutableArray array];
+    }
+    return _userCoinQuantityAry;
+}
 
 @end

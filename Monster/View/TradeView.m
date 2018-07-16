@@ -31,6 +31,8 @@
 @property(nonatomic,strong)IBOutlet UIButton *buyBtn;
 @property(nonatomic,strong)IBOutlet UIButton *saleBtn;
 
+
+
 @property(nonatomic,strong)IBOutlet UIButton *add_stepper1Btn;
 @property(nonatomic,strong)IBOutlet UIButton *add_stepper2Btn;
 @property(nonatomic,strong)IBOutlet UIButton *minus_stepper1Btn;

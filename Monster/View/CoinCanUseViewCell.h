@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class UserCoinQuantity;
 
 @interface CoinCanUseViewCell : UITableViewCell
+
+- (void)setContent:(UserCoinQuantity*)coinInfo;
 
 @end
 

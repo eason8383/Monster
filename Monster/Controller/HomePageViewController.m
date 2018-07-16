@@ -79,7 +79,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     
     [self initial];
     
-//    [[VWProgressHUD shareInstance]showLoading];
+    [[VWProgressHUD shareInstance]showLoading];
     
 }
 
@@ -91,6 +91,16 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     [self registerCells];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
+    UISwipeGestureRecognizer *swipeLeftToRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    [self.view addGestureRecognizer:swipeLeftToRight];
+    
+}
+
+- (void)handleSwipe:(id)sender {
+    UISwipeGestureRecognizer *swipe = sender;
+    if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+        [self callMenu:nil];
+    }
 }
 
 - (void)setStatusBarBackgroundColor:(UIColor *)color {
@@ -118,7 +128,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 
 - (void)getDataSucess{
     [self.tableView reloadData];
-//    [[VWProgressHUD shareInstance]dismiss];
+    [[VWProgressHUD shareInstance]dismiss];
     
 }
 

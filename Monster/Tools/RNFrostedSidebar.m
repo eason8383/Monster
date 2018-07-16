@@ -10,6 +10,7 @@
 
 #import "RNFrostedSidebar.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
 
 #pragma mark - Categories
 
@@ -340,6 +341,12 @@ static RNFrostedSidebar *rn_frostedMenu;
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SliderMenuView" owner:self options:nil];
     self.contentView = [nib objectAtIndex:0];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getMyAssetUpdate:) name:MYETH object:nil];
+    
+    NSDictionary *myAssetDic = [[NSUserDefaults standardUserDefaults]objectForKey:MYETH];
+    
+    [self setMyAsset:myAssetDic];
+    
     [self.contentView.myAsset_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView.myOrder_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView.identy_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -352,6 +359,22 @@ static RNFrostedSidebar *rn_frostedMenu;
     [self.view addSubview:self.contentView];
     self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.view addGestureRecognizer:self.tapGesture];
+}
+
+- (void)getMyAssetUpdate:(NSNotification*)noti{
+    NSDictionary *myAssetDic = noti.object;
+    [self setMyAsset:myAssetDic];
+}
+
+- (void)setMyAsset:(NSDictionary*)assetInfo{
+    float asset = [[assetInfo objectForKey:@"myAsset"] floatValue];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.contentView.asset_Label setText:[NSString stringWithFormat:@"%.8f",asset]];
+        
+        [self.contentView.subAsset_Label setText:[NSString stringWithFormat:@"≈$%@",[assetInfo objectForKey:@"result"]]];
+    });
+    
 }
 
 - (BOOL)shouldAutorotate {
@@ -489,7 +512,9 @@ static RNFrostedSidebar *rn_frostedMenu;
 }
 
 - (void)showAnimated:(BOOL)animated {
-    UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *controller = appDelegate.nav;
     while (controller.presentedViewController != nil) {
         controller = controller.presentedViewController;
     }

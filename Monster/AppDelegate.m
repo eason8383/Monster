@@ -18,6 +18,7 @@
 
 @implementation AppDelegate
 
+
 + (NSString *)environment{
     
     return MREnvironment_TEST;
@@ -97,8 +98,8 @@
 //    [_tabController setViewControllers:@[nav1,nav2,nav3,nav4]];
     
     HomePageViewController *hpVC = [[HomePageViewController alloc]initWithNibName:@"HomePageViewController" bundle:nil];
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:hpVC];
-    _window.rootViewController = nav;
+    self.nav = [[UINavigationController alloc]initWithRootViewController:hpVC];
+    _window.rootViewController = self.nav;
     
     
 }

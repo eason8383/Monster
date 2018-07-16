@@ -19,6 +19,8 @@
 
 - (void)setBtnTarget:(id)target select:(SEL)select;
 
+- (void)setContent:(NSDictionary*)info;
+
 @end
 
 

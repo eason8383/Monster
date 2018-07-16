@@ -1,12 +1,10 @@
 PODS:
-  - FHHFPSIndicator (1.0.0)
   - FLAnimatedImage (1.0.12)
   - KVOController (1.2.0)
   - Masonry (1.1.0)
   - VWProgressHUD (0.1.9)
 
 DEPENDENCIES:
-  - FHHFPSIndicator
   - FLAnimatedImage (~> 1.0.12)
   - KVOController (~> 1.2.0)
   - Masonry
@@ -14,19 +12,17 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - FHHFPSIndicator
     - FLAnimatedImage
     - KVOController
     - Masonry
     - VWProgressHUD
 
 SPEC CHECKSUMS:
-  FHHFPSIndicator: b4d34c3a93b702ad18358a4eb49839f83f4f30fb
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   VWProgressHUD: b2e89ea7bf495b9391720a49f50940ffe4d25d0c
 
-PODFILE CHECKSUM: 8e1e7c16d609f2c3f59aeca990dae1547feb2876
+PODFILE CHECKSUM: ebd0f2147499ed06a55e4d175e7d3a1ce19a231d
 
 COCOAPODS: 1.5.3
