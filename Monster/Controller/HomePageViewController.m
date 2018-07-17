@@ -132,6 +132,19 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     
 }
 
+- (void)getDataFalid:(NSError *)error{
+    [[VWProgressHUD shareInstance]dismiss];
+    NSLog(@"Home get data Falid:%@",error.userInfo);
+    NSDictionary *dic = error.userInfo;
+    NSDictionary *respCode = [dic objectForKey:@"respCode"];
+    if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"]) {
+        [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
+    } else {
+        [self justShowAlert:@"错误信息" message:[dic objectForKey:@"respMessage"]];
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }

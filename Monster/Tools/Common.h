@@ -35,7 +35,15 @@
 
 #define MR_QUERYUSERORDERDEAL @"queryUserOrderDeal"
 
+#define GOOGLEAUTHGEN @"googleAuthGen"
+#define GOOGLESMSVERIFY @"sendSmsVerifyCodeByUserId"
+#define GOOGLEAUTHCHECK @"googleAuthCheck"
+
+
+
 #define DOLOGOUT @"logout"
+
+#define PASSTHEAUTH @"passTheAuth"
 
 //保存account路径
 
@@ -56,6 +64,9 @@
 
 #define COINPAIRMODEL @"coinPairModel.archiver"
 #define MYETH @"MyAsset_myETH"
+
+#define GOOGLE_AUTH_BINDING @"googleAuthIsBinding"
+#define TRADEPASSWORD  @"hasTradePassword"
 
 
 //忘记密码

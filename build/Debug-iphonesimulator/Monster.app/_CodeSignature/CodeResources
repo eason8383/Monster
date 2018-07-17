@@ -104,9 +104,25 @@
 		<data>
 		c0nzk+Q84QFPdGzLZXzjwrZHsMA=
 		</data>
+		<key>GoogleAuthVerifyVC.nib/objects-11.0+.nib</key>
+		<data>
+		dPHPhczC6ZFbjAafR8WvueaMKto=
+		</data>
+		<key>GoogleAuthVerifyVC.nib/runtime.nib</key>
+		<data>
+		rpTXzSdj0t53ddkniIxTvcWaoXw=
+		</data>
+		<key>GoogleAuthViewController.nib/objects-11.0+.nib</key>
+		<data>
+		LkRkXiFBKDHQhVUIcEZUfQ0jVGE=
+		</data>
+		<key>GoogleAuthViewController.nib/runtime.nib</key>
+		<data>
+		9Lj/Io6MveLhQ9q9Y5wx2ikqjgA=
+		</data>
 		<key>HeadTableViewCell.nib</key>
 		<data>
-		zuYfNSyhLIypvBgkWHtHRxKZ/HE=
+		hgKx1vpqvEUAGxCFClXFwBf+za8=
 		</data>
 		<key>HighLowLabelView.nib/objects-11.0+.nib</key>
 		<data>
@@ -578,15 +594,59 @@
 			XJ42fDz7gkUGi3JPf20bv3MAvSnCRZ1M+nN0gdcDu/A=
 			</data>
 		</dict>
+		<key>GoogleAuthVerifyVC.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dPHPhczC6ZFbjAafR8WvueaMKto=
+			</data>
+			<key>hash2</key>
+			<data>
+			SLiiiQCyAEl5jWPgRJAE0FuobogWoXwXHBd97FFMDRc=
+			</data>
+		</dict>
+		<key>GoogleAuthVerifyVC.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			rpTXzSdj0t53ddkniIxTvcWaoXw=
+			</data>
+			<key>hash2</key>
+			<data>
+			ja7EUDBOsK3TPErY/sYBloZu/rDs7QFsHg53Ol4devU=
+			</data>
+		</dict>
+		<key>GoogleAuthViewController.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			LkRkXiFBKDHQhVUIcEZUfQ0jVGE=
+			</data>
+			<key>hash2</key>
+			<data>
+			P7C/HRH4Pk7+VQmnVadFzzc1kYE/BZEWWebEGrbuLNk=
+			</data>
+		</dict>
+		<key>GoogleAuthViewController.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			9Lj/Io6MveLhQ9q9Y5wx2ikqjgA=
+			</data>
+			<key>hash2</key>
+			<data>
+			RMGESuKMZ9edvZP42qQvnUD/qWq2hsr6X4Mr4H7Dcu4=
+			</data>
+		</dict>
 		<key>HeadTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			zuYfNSyhLIypvBgkWHtHRxKZ/HE=
+			hgKx1vpqvEUAGxCFClXFwBf+za8=
 			</data>
 			<key>hash2</key>
 			<data>
-			mEVuRhQdi0lWvXWY5GeKaodMTX6dTH1z0RSQiPGPIw8=
+			AW8iA+40Zo02ftDh8W5vnVrpEbknp0Q1GvZ76nwpAGI=
 			</data>
 		</dict>
 		<key>HighLowLabelView.nib/objects-11.0+.nib</key>

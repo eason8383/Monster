@@ -63,7 +63,10 @@
             }
             [self getKlineLastBar];
         } else {
-            
+            NSError *error = [NSError errorWithDomain:@"getCoinPairInfo" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate getDataFalid:error];
+            });
         }
         
         NSLog(@"response:%@",response);
@@ -71,7 +74,7 @@
     } failure:^(NSError *error) {
         //失敗
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            [self.delegate getDataFalid:error];
         });
     }];
 }
@@ -88,7 +91,10 @@
             }
             [self combinData];
         } else {
-            
+            NSError *error = [NSError errorWithDomain:@"getKlineLastBar" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate getDataFalid:error];
+            });
         }
         
         NSLog(@"response:%@",response);
@@ -96,7 +102,7 @@
     } failure:^(NSError *error) {
         //失敗
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            [self.delegate getDataFalid:error];
         });
     }];
 }
@@ -106,17 +112,21 @@
         NSDictionary *dic = response;
         if ([[dic objectForKey:@"success"] integerValue] == 1) {
             [self addLatestKLineInfofrom:[dic objectForKey:@"klineBarListMap"]];
-        } else {
             
+            [self getExternalMarket];
+        } else {
+            NSError *error = [NSError errorWithDomain:@"getKlineLastBar" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate getDataFalid:error];
+            });
         }
-        [self getExternalMarket];
         
         NSLog(@"response:%@",response);
         
     } failure:^(NSError *error) {
         //失敗
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            [self.delegate getDataFalid:error];
         });
     }];
 }
@@ -126,19 +136,23 @@
         NSDictionary *dic = response;
         if ([[dic objectForKey:@"success"] integerValue] == 1) {
             self.externalMarketAry = [dic objectForKey:@"resultList"];
-        } else {
             
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
             [self getUserInfo];
-        });
+            
+        } else {
+            NSError *error = [NSError errorWithDomain:@"getExternalMarket" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate getDataFalid:error];
+            });
+        }
+        
         
         NSLog(@"response:%@",response);
         
     } failure:^(NSError *error) {
         //失敗
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            [self.delegate getDataFalid:error];
         });
     }];
 }
@@ -172,7 +186,10 @@
             });
             
         } else {
-            
+            NSError *error = [NSError errorWithDomain:@"getUserInfo" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate getDataFalid:error];
+            });
         }
         
         NSLog(@"response:%@",response);
@@ -180,7 +197,7 @@
     } failure:^(NSError *error) {
         //失敗
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            [self.delegate getDataFalid:error];
         });
     }];
 }

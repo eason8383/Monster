@@ -118,6 +118,12 @@
 		D7894B8520F9C67500BC1703 /* MRMyOrderClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D7894B8420F9C67500BC1703 /* MRMyOrderClient.m */; };
 		D7894B8820F9CA6600BC1703 /* MyOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7894B8720F9CA6600BC1703 /* MyOrderViewModel.m */; };
 		D7894B8B20F9F3AA00BC1703 /* SGLoadMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7894B8920F9F3A900BC1703 /* SGLoadMoreView.m */; };
+		D7A2508D20FDB81700E4846D /* GoogleAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A2508B20FDB81700E4846D /* GoogleAuthViewController.m */; };
+		D7A2508E20FDB81700E4846D /* GoogleAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A2508C20FDB81700E4846D /* GoogleAuthViewController.xib */; };
+		D7A2509120FDB83000E4846D /* GoogleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A2509020FDB83000E4846D /* GoogleViewModel.m */; };
+		D7A2509420FDB85200E4846D /* MRGoogleClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A2509320FDB85200E4846D /* MRGoogleClient.m */; };
+		D7A2509B20FDD0CF00E4846D /* GoogleAuthVerifyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A2509920FDD0CF00E4846D /* GoogleAuthVerifyVC.m */; };
+		D7A2509C20FDD0CF00E4846D /* GoogleAuthVerifyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A2509A20FDD0CF00E4846D /* GoogleAuthVerifyVC.xib */; };
 		D7CAB0CE20F3094000B8B99B /* ZYWLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0CD20F3094000B8B99B /* ZYWLineView.m */; };
 		D7CAB0D120F3094A00B8B99B /* ZYWBaseChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0D020F3094A00B8B99B /* ZYWBaseChartView.m */; };
 		D7CAB0D420F3096B00B8B99B /* ZYWLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB0D320F3096B00B8B99B /* ZYWLineModel.m */; };
@@ -350,6 +356,16 @@
 		D7894B8720F9CA6600BC1703 /* MyOrderViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewModel.m; sourceTree = "<group>"; };
 		D7894B8920F9F3A900BC1703 /* SGLoadMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoadMoreView.m; sourceTree = "<group>"; };
 		D7894B8A20F9F3AA00BC1703 /* SGLoadMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoadMoreView.h; sourceTree = "<group>"; };
+		D7A2508A20FDB81700E4846D /* GoogleAuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleAuthViewController.h; sourceTree = "<group>"; };
+		D7A2508B20FDB81700E4846D /* GoogleAuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleAuthViewController.m; sourceTree = "<group>"; };
+		D7A2508C20FDB81700E4846D /* GoogleAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleAuthViewController.xib; sourceTree = "<group>"; };
+		D7A2508F20FDB83000E4846D /* GoogleViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleViewModel.h; sourceTree = "<group>"; };
+		D7A2509020FDB83000E4846D /* GoogleViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleViewModel.m; sourceTree = "<group>"; };
+		D7A2509220FDB85200E4846D /* MRGoogleClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRGoogleClient.h; sourceTree = "<group>"; };
+		D7A2509320FDB85200E4846D /* MRGoogleClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRGoogleClient.m; sourceTree = "<group>"; };
+		D7A2509820FDD0CF00E4846D /* GoogleAuthVerifyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleAuthVerifyVC.h; sourceTree = "<group>"; };
+		D7A2509920FDD0CF00E4846D /* GoogleAuthVerifyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleAuthVerifyVC.m; sourceTree = "<group>"; };
+		D7A2509A20FDD0CF00E4846D /* GoogleAuthVerifyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleAuthVerifyVC.xib; sourceTree = "<group>"; };
 		D7CAB0CC20F3094000B8B99B /* ZYWLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWLineView.h; sourceTree = "<group>"; };
 		D7CAB0CD20F3094000B8B99B /* ZYWLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWLineView.m; sourceTree = "<group>"; };
 		D7CAB0CF20F3094A00B8B99B /* ZYWBaseChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWBaseChartView.h; sourceTree = "<group>"; };
@@ -619,6 +635,12 @@
 				D708218B20F48C80002AEDA2 /* AboutusViewController.h */,
 				D708218C20F48C80002AEDA2 /* AboutusViewController.m */,
 				D708218D20F48C80002AEDA2 /* AboutusViewController.xib */,
+				D7A2508A20FDB81700E4846D /* GoogleAuthViewController.h */,
+				D7A2508B20FDB81700E4846D /* GoogleAuthViewController.m */,
+				D7A2508C20FDB81700E4846D /* GoogleAuthViewController.xib */,
+				D7A2509820FDD0CF00E4846D /* GoogleAuthVerifyVC.h */,
+				D7A2509920FDD0CF00E4846D /* GoogleAuthVerifyVC.m */,
+				D7A2509A20FDD0CF00E4846D /* GoogleAuthVerifyVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -717,6 +739,8 @@
 				D7894B8720F9CA6600BC1703 /* MyOrderViewModel.m */,
 				D773385820FCA2A10039F924 /* MyAssetViewModel.h */,
 				D773385920FCA2A10039F924 /* MyAssetViewModel.m */,
+				D7A2508F20FDB83000E4846D /* GoogleViewModel.h */,
+				D7A2509020FDB83000E4846D /* GoogleViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -734,6 +758,8 @@
 				D745E25A20F750960001EA11 /* MRUserInfoClient.m */,
 				D7894B8320F9C67500BC1703 /* MRMyOrderClient.h */,
 				D7894B8420F9C67500BC1703 /* MRMyOrderClient.m */,
+				D7A2509220FDB85200E4846D /* MRGoogleClient.h */,
+				D7A2509320FDB85200E4846D /* MRGoogleClient.m */,
 			);
 			path = APIManager;
 			sourceTree = "<group>";
@@ -886,6 +912,7 @@
 				9B4F1DA320EF545F00DEF626 /* SetupViewController.xib in Resources */,
 				D735D7B920F0BECC007E2B7C /* BindingMailBoxViewController.xib in Resources */,
 				9B4F1DA820EF57CF00DEF626 /* ChargeViewController.xib in Resources */,
+				D7A2508E20FDB81700E4846D /* GoogleAuthViewController.xib in Resources */,
 				9B7EEEC420EA030A00DF88B4 /* LoginViewController.xib in Resources */,
 				9BB9461A20ECE76700B8D7BE /* MarketViewController.xib in Resources */,
 				9B4F1D7B20EE328B00DEF626 /* MyAssetViewController.xib in Resources */,
@@ -893,6 +920,7 @@
 				9B42212520EDDF20009D5A8A /* TradeView.xib in Resources */,
 				D7D062B520F34D30001ABA16 /* greenGrid.gif in Resources */,
 				9B87074120EB453600156E39 /* HomePageViewController.xib in Resources */,
+				D7A2509C20FDD0CF00E4846D /* GoogleAuthVerifyVC.xib in Resources */,
 				9BB945F920EC7CEE00B8D7BE /* ExponentialView.xib in Resources */,
 				9B4F1D9920EF41D400DEF626 /* UpLoadImagView.xib in Resources */,
 				9B4F1D8020EE32E600DEF626 /* MyAssetTableViewCell.xib in Resources */,
@@ -1048,6 +1076,7 @@
 				9B9DFD3520EF7CA900E56B2F /* CapitalDetailsViewCell.m in Sources */,
 				9BB945DF20EC6B2600B8D7BE /* UINavigationController+JZExtension.m in Sources */,
 				D7CAB0E620F309A800B8B99B /* ZYWLineUntil.m in Sources */,
+				D7A2508D20FDB81700E4846D /* GoogleAuthViewController.m in Sources */,
 				D71F71A720F8B959003513C5 /* UserOrderModel.m in Sources */,
 				D7CAB0D120F3094A00B8B99B /* ZYWBaseChartView.m in Sources */,
 				D7894B8820F9CA6600BC1703 /* MyOrderViewModel.m in Sources */,
@@ -1065,9 +1094,11 @@
 				9BB945F420EC6EE900B8D7BE /* MainPageHeadView.m in Sources */,
 				9BB9461020ECC27D00B8D7BE /* CoinPairModel.m in Sources */,
 				9B4F1D9320EF408900DEF626 /* IdentityViewController.m in Sources */,
+				D7A2509420FDB85200E4846D /* MRGoogleClient.m in Sources */,
 				9BB9460120ECA5FD00B8D7BE /* HighLowLabelView.m in Sources */,
 				9B87073920EB220800156E39 /* Reachability.m in Sources */,
 				9B7EEF1820EA32E400DF88B4 /* UIColor+JKRColor.m in Sources */,
+				D7A2509B20FDD0CF00E4846D /* GoogleAuthVerifyVC.m in Sources */,
 				9B4F1D8920EF0ED600DEF626 /* MyOrderViewController.m in Sources */,
 				D773385320FC6D430039F924 /* ChoseCoinTableViewCell.m in Sources */,
 				9BB9461E20ECE85F00B8D7BE /* MarketTableViewCell.m in Sources */,
@@ -1090,6 +1121,7 @@
 				D7820BA920F4C11200B01F05 /* MRHomePageClient.m in Sources */,
 				9B4F1D9720EF41C300DEF626 /* UpLoadImagView.m in Sources */,
 				D773385A20FCA2A10039F924 /* MyAssetViewModel.m in Sources */,
+				D7A2509120FDB83000E4846D /* GoogleViewModel.m in Sources */,
 				D7CAB0F320F30A1C00B8B99B /* UIBezierPath+Draw.m in Sources */,
 				D7CAB0F120F30A1C00B8B99B /* UIView+Extension.m in Sources */,
 				D7CAB0E820F309A800B8B99B /* ZYWCandlePostionModel.m in Sources */,

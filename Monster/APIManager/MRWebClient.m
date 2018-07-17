@@ -103,6 +103,10 @@ static NSString *sessionId;
             NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.userAccount];
             [[NSUserDefaults standardUserDefaults]setObject:userData forKey:@"userAccount"];
             
+            //save user status
+            [[NSUserDefaults standardUserDefaults]setObject:[dic objectForKey:@"hasGoogleAuth"] forKey:GOOGLE_AUTH_BINDING];
+            [[NSUserDefaults standardUserDefaults]setObject:[dic objectForKey:@"hasTradePassword"] forKey:TRADEPASSWORD];
+            
 #pragma mark
 #pragma mark - 只保存用户信息
             [self saveUserAccount:self.userAccount];
@@ -114,7 +118,6 @@ static NSString *sessionId;
             failureBlock(error);
         }
     }];
-    
 }
 
 

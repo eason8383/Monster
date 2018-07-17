@@ -18,5 +18,7 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>请允许我们将照片存入您的相簿</string>
 </dict>
 </plist>

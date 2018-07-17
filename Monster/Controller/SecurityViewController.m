@@ -10,6 +10,7 @@
 #import "BindingMobileViewController.h"
 #import "BindingMailBoxViewController.h"
 #import "SetFCodeViewController.h"
+#import "GoogleAuthViewController.h"
 
 @interface SecurityViewController ()
 
@@ -34,6 +35,14 @@
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    BOOL googleAuthIsBinding = [[NSUserDefaults standardUserDefaults]boolForKey:GOOGLE_AUTH_BINDING];
+    [_tideGoogleLabel setText:googleAuthIsBinding?@"已绑定":@"未绑定"];
+    
+}
+
 - (IBAction)tapToVerify:(UIButton*)btn{
     UIViewController *cV = [[UIViewController alloc]init];
     switch (btn.tag) {
@@ -43,7 +52,8 @@
         }
             break;
         case 1:{
-            
+            GoogleAuthViewController *googleVc = [[GoogleAuthViewController alloc]initWithNibName:@"GoogleAuthViewController" bundle:nil];
+            cV = googleVc;
         }
             break;
         case 2:{

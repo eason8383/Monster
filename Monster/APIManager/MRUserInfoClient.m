@@ -20,6 +20,12 @@
                                  @"userId":self.userAccount.userId,
                                  @"sessionId":self.userAccount.sessionId
                                  };
+//    {
+//        sessionId = SESSION2018071618493999686927460;
+//        source = 03;
+//        userId = KID2018071014254112526883540120;
+//        version = "1.0";
+//    }
 //    NSDictionary *parameters = @{
 //                                 @"source":@"03",
 //                                 @"version":@"1.0",

@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "GoogleAuthVerifyVC.h"
 
 @interface LoginViewController () <UITextFieldDelegate,UIGestureRecognizerDelegate>
 
@@ -33,6 +34,8 @@
 //    _tapRecognizer.delegate = self;
     _tapRecognizer.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:_tapRecognizer];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(entringMainPage) name:PASSTHEAUTH object:nil];
     
     [self isLoginBtnReadyToGo:NO];
     
@@ -204,7 +207,14 @@
                 if (userInfo.success) {
                     
                     //通知appDelegate登入成功
-                    self.loginHandler(userInfo.sessionId);
+                    BOOL isGoogleBinding = [[NSUserDefaults standardUserDefaults]boolForKey:GOOGLE_AUTH_BINDING];
+                    if (isGoogleBinding) {
+                        GoogleAuthVerifyVC *gVc = [[GoogleAuthVerifyVC alloc]initWithNibName:@"GoogleAuthVerifyVC" bundle:nil];
+//                        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:gVc];
+                        [self presentViewController:gVc animated:YES completion:nil];
+                    } else {
+                        [self entringMainPage];
+                    }
                     
                 } else {
                     [self justShowAlert:@"" message:[userInfo.respCode objectForKey:@"desc"]];
@@ -221,6 +231,25 @@
         
     });
     
+}
+
+- (void)entringMainPage{
+//    [MRWebClient sharedInstance].userAccount =
+//    self.userAccount = [MRUserAccount accountWithDict:dic];
+//    self.userAccount.mobileNo = mobileNo;
+//    sessionId = self.userAccount.sessionId;
+//
+//    //save for auto login
+//    [[NSUserDefaults standardUserDefaults]setObject:sessionId forKey:@"sessionId"];
+//
+//    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.userAccount];
+//    [[NSUserDefaults standardUserDefaults]setObject:userData forKey:@"userAccount"];
+//#pragma mark
+//#pragma mark - 只保存用户信息
+//    [self saveUserAccount:self.userAccount];
+    
+    MRUserAccount *userInfo = [MRWebClient sharedInstance].userAccount;
+    self.loginHandler(userInfo.sessionId);
 }
 
 - (void)setLoginHandler:(LoginHandler)loginHandler{
