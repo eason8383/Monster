@@ -95,6 +95,31 @@
     
 }
 
+- (void)titleDownBtnAnticlockwiseRotation{
+    //arrowLeft 是要旋转的控件
+    //逆时针 旋转180度
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.2]; //动画时长
+    _titleDownBtn.transform = CGAffineTransformMakeRotation(180 *M_PI / 180.0);
+    CGAffineTransform transform = _titleDownBtn.transform;
+    //第二个值表示横向放大的倍数，第三个值表示纵向缩小的程度
+    transform = CGAffineTransformScale(transform, 1,1);
+    _titleDownBtn.transform = transform;
+    [UIView commitAnimations];
+}
+
+- (void)titleDownBtnclockwiseRotation{
+    //顺时针 旋转180度
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.2]; //动画时长
+    _titleDownBtn.transform = CGAffineTransformMakeRotation(0*M_PI/180);
+    CGAffineTransform transform = _titleDownBtn.transform;
+    transform = CGAffineTransformScale(transform, 1,1);
+    _titleDownBtn.transform = transform;
+}
+
 - (IBAction)bringPriceToField:(UIButton*)btn{
 
     [_stepperPriceField setText:btn.titleLabel.text];

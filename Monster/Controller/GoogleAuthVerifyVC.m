@@ -44,7 +44,7 @@
     [self.navigationItem setRightBarButtonItem:cancelBtn];
 }
 
-- (void)confirmSuccess:(NSDictionary *)bindingInfo{
+- (void)identitySuccess:(NSDictionary *)identityInfo{
     [[VWProgressHUD shareInstance]dismiss];
     [[NSNotificationCenter defaultCenter]postNotificationName:PASSTHEAUTH object:nil];
 }
@@ -62,7 +62,7 @@
 
 - (IBAction)submit:(id)sender{
     [[VWProgressHUD shareInstance]showLoading];
-    [_googleViewModel confirmAuthCode:_googleAuth_Field.text verifyCode:@""];
+    [_googleViewModel identityAuthCode:_googleAuth_Field.text];
 }
 
 - (void)didReceiveMemoryWarning {

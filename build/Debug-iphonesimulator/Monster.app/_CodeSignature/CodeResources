@@ -10,7 +10,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		Zo1jKj8HPYAr4FkEcsloya4DQJQ=
+		Di5SPirBAXmzQenxJhIARxo4PRs=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -86,7 +86,7 @@
 		</data>
 		<key>CoinTrendsCell.nib</key>
 		<data>
-		3+u6zSD7+YANBqngjH2SdhE1gGI=
+		+DaiDlQOOljqH5d4DZCswZVfTqY=
 		</data>
 		<key>EntrustNowViewCell.nib</key>
 		<data>
@@ -104,6 +104,47 @@
 		<data>
 		c0nzk+Q84QFPdGzLZXzjwrZHsMA=
 		</data>
+		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
+		<data>
+		8CN5cCzwKl0+7ieNPMN/SawZQA8=
+		</data>
+		<key>Frameworks/IDEBundleInjection.framework/Info.plist</key>
+		<data>
+		Cwsl4MoHt6dTvyYXRy5C2x7Kd88=
+		</data>
+		<key>Frameworks/IDEBundleInjection.framework/_CodeSignature/CodeResources</key>
+		<data>
+		UU+vWjYvpE8lKAxV1lE2tUbIZA0=
+		</data>
+		<key>Frameworks/IDEBundleInjection.framework/version.plist</key>
+		<data>
+		znuKt4UiTOJWwzrlgwaYX94o/a4=
+		</data>
+		<key>Frameworks/XCTest.framework/Info.plist</key>
+		<data>
+		uPxPInP5h9+ERgCm8NCXpuuMEmg=
+		</data>
+		<key>Frameworks/XCTest.framework/XCTest</key>
+		<data>
+		aHoR6mqqp0XWLqiw49+MRuFNQLk=
+		</data>
+		<key>Frameworks/XCTest.framework/_CodeSignature/CodeResources</key>
+		<data>
+		2JoYDV6DTsckEmF+l3Ruo1S1Iqk=
+		</data>
+		<key>Frameworks/XCTest.framework/en.lproj/InfoPlist.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			TuBj57ZP6zBqcL9HttO2Rucaw9E=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/XCTest.framework/version.plist</key>
+		<data>
+		DmGu9k7yBOLSfwtyNbn3zYir630=
+		</data>
 		<key>GoogleAuthVerifyVC.nib/objects-11.0+.nib</key>
 		<data>
 		dPHPhczC6ZFbjAafR8WvueaMKto=
@@ -114,11 +155,11 @@
 		</data>
 		<key>GoogleAuthViewController.nib/objects-11.0+.nib</key>
 		<data>
-		LkRkXiFBKDHQhVUIcEZUfQ0jVGE=
+		Oii68LrQzQp95FT5WkBZNMWn4iE=
 		</data>
 		<key>GoogleAuthViewController.nib/runtime.nib</key>
 		<data>
-		9Lj/Io6MveLhQ9q9Y5wx2ikqjgA=
+		ZLwXV9ubU+g8hSYIf4U+K5tHy2I=
 		</data>
 		<key>HeadTableViewCell.nib</key>
 		<data>
@@ -158,11 +199,11 @@
 		</data>
 		<key>LoginViewController.nib/objects-11.0+.nib</key>
 		<data>
-		PpVJZiILmenD4UaGJjK44MgN6l0=
+		eiDCy2LXWIJQY634Fb+68Sm/5cY=
 		</data>
 		<key>LoginViewController.nib/runtime.nib</key>
 		<data>
-		hw5aPgws57JJcEAo6nub0ODLdBQ=
+		aPVfJ7PP/Ve+R5HcLHZkdzMtpU8=
 		</data>
 		<key>MACDTableViewCell.nib</key>
 		<data>
@@ -211,6 +252,18 @@
 		<key>PkgInfo</key>
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
+		</data>
+		<key>PlugIns/MonsterTests.xctest/Info.plist</key>
+		<data>
+		YCPVHwJ1/V0S0aYA2K9F8g2TMJ8=
+		</data>
+		<key>PlugIns/MonsterTests.xctest/MonsterTests</key>
+		<data>
+		+DQfhTlxo6cPIQR0NaJVRd6agLE=
+		</data>
+		<key>PlugIns/MonsterTests.xctest/_CodeSignature/CodeResources</key>
+		<data>
+		8kPrkpdH0LbpMruQBQ2oTqVEDhM=
 		</data>
 		<key>SecurityViewController.nib/objects-11.0+.nib</key>
 		<data>
@@ -334,11 +387,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Zo1jKj8HPYAr4FkEcsloya4DQJQ=
+			Di5SPirBAXmzQenxJhIARxo4PRs=
 			</data>
 			<key>hash2</key>
 			<data>
-			SKMqhJetDZCImV8XxBX3AuPuIXYn5NJMqUGa+g+y/Ho=
+			PWq3BM/WuEdmtRurpGi3QiVeSXdc26VYNvgAxZE2mCU=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -543,11 +596,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3+u6zSD7+YANBqngjH2SdhE1gGI=
+			+DaiDlQOOljqH5d4DZCswZVfTqY=
 			</data>
 			<key>hash2</key>
 			<data>
-			Kt6+emeZ7MlDQxnhfWBYsJHVsowysMbG3oMnNAYHmDQ=
+			YecTPCHaPp/dXrfy4JZ/ML1Og/urqppq5uLsNy+7tXk=
 			</data>
 		</dict>
 		<key>EntrustNowViewCell.nib</key>
@@ -594,6 +647,107 @@
 			XJ42fDz7gkUGi3JPf20bv3MAvSnCRZ1M+nN0gdcDu/A=
 			</data>
 		</dict>
+		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			8CN5cCzwKl0+7ieNPMN/SawZQA8=
+			</data>
+			<key>hash2</key>
+			<data>
+			/R1Uy1RZ7ljX2V8ZHMhD4g8ieWHns9sj34YDK2McvfY=
+			</data>
+		</dict>
+		<key>Frameworks/IDEBundleInjection.framework/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Cwsl4MoHt6dTvyYXRy5C2x7Kd88=
+			</data>
+			<key>hash2</key>
+			<data>
+			IvG0kD54lYvEZzfjVmXtrtBdydTUy1uFZkZXUddfTzY=
+			</data>
+		</dict>
+		<key>Frameworks/IDEBundleInjection.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			UU+vWjYvpE8lKAxV1lE2tUbIZA0=
+			</data>
+			<key>hash2</key>
+			<data>
+			Ja3vToXIdN/BmsoAh4U4btDVl5lKbzndKf99CyxV6K4=
+			</data>
+		</dict>
+		<key>Frameworks/IDEBundleInjection.framework/version.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			znuKt4UiTOJWwzrlgwaYX94o/a4=
+			</data>
+			<key>hash2</key>
+			<data>
+			napzzKlhgK6Qoqz8QO+9TkyuIsW5V+s6GmClALe2lT4=
+			</data>
+		</dict>
+		<key>Frameworks/XCTest.framework/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			uPxPInP5h9+ERgCm8NCXpuuMEmg=
+			</data>
+			<key>hash2</key>
+			<data>
+			N77/gSJpnPT4ryPaR4IJ55aYyiiMCKjlq79qrCmGxU8=
+			</data>
+		</dict>
+		<key>Frameworks/XCTest.framework/XCTest</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			aHoR6mqqp0XWLqiw49+MRuFNQLk=
+			</data>
+			<key>hash2</key>
+			<data>
+			unqlGEn5cq6B36PWWq/mAoeeub7L9yZ3vWK7mP9EscQ=
+			</data>
+		</dict>
+		<key>Frameworks/XCTest.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			2JoYDV6DTsckEmF+l3Ruo1S1Iqk=
+			</data>
+			<key>hash2</key>
+			<data>
+			OXS9XX1oATlfFoPHZbc7OGt7HUXfXzNrCz28TkkBo/g=
+			</data>
+		</dict>
+		<key>Frameworks/XCTest.framework/en.lproj/InfoPlist.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			TuBj57ZP6zBqcL9HttO2Rucaw9E=
+			</data>
+			<key>hash2</key>
+			<data>
+			89RGkjZaKuewYnjpzwhIswhqfrU8+pcEXqM/DHVrUmo=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/XCTest.framework/version.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			DmGu9k7yBOLSfwtyNbn3zYir630=
+			</data>
+			<key>hash2</key>
+			<data>
+			2hnwNPgdaewT28DbTqe0Gpaccdc2akBF8IjnGtISc58=
+			</data>
+		</dict>
 		<key>GoogleAuthVerifyVC.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
@@ -620,22 +774,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LkRkXiFBKDHQhVUIcEZUfQ0jVGE=
+			Oii68LrQzQp95FT5WkBZNMWn4iE=
 			</data>
 			<key>hash2</key>
 			<data>
-			P7C/HRH4Pk7+VQmnVadFzzc1kYE/BZEWWebEGrbuLNk=
+			o+DRM9/xtfpc7rNAUNDxhrf7IBCB4tK/MPM89crssQU=
 			</data>
 		</dict>
 		<key>GoogleAuthViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9Lj/Io6MveLhQ9q9Y5wx2ikqjgA=
+			ZLwXV9ubU+g8hSYIf4U+K5tHy2I=
 			</data>
 			<key>hash2</key>
 			<data>
-			RMGESuKMZ9edvZP42qQvnUD/qWq2hsr6X4Mr4H7Dcu4=
+			zlVztVmUjsGb4NTTU77Cln1nO02aGEO762KtXcafkW8=
 			</data>
 		</dict>
 		<key>HeadTableViewCell.nib</key>
@@ -730,22 +884,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PpVJZiILmenD4UaGJjK44MgN6l0=
+			eiDCy2LXWIJQY634Fb+68Sm/5cY=
 			</data>
 			<key>hash2</key>
 			<data>
-			ngcCJWQr/E0Jamwsb8M8QZT6SHjthNZpG1mcNE6tk8c=
+			wQMNzbo11E5YuJTCHGSDRlBvY+EMo1YDpN7hBaw1O88=
 			</data>
 		</dict>
 		<key>LoginViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hw5aPgws57JJcEAo6nub0ODLdBQ=
+			aPVfJ7PP/Ve+R5HcLHZkdzMtpU8=
 			</data>
 			<key>hash2</key>
 			<data>
-			hP6SwI0LnD9h9Hksi0lDD8lWH+Thk/juz8UXmhK04+U=
+			yWDNrgj2SQWI9hP1XA56uEhTUi0or18rtkuA2BNBGis=
 			</data>
 		</dict>
 		<key>MACDTableViewCell.nib</key>
@@ -867,6 +1021,39 @@
 			<key>hash2</key>
 			<data>
 			n0U1djwcOTn9AF3qHmV3qVz/8HcSUaEmdKxSlTVWKIM=
+			</data>
+		</dict>
+		<key>PlugIns/MonsterTests.xctest/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YCPVHwJ1/V0S0aYA2K9F8g2TMJ8=
+			</data>
+			<key>hash2</key>
+			<data>
+			e05s6VTmUQyY2Cd4rXlNTkjqlkkRoXKo+Z6jrIY3TMc=
+			</data>
+		</dict>
+		<key>PlugIns/MonsterTests.xctest/MonsterTests</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+DQfhTlxo6cPIQR0NaJVRd6agLE=
+			</data>
+			<key>hash2</key>
+			<data>
+			lRZMbUAB1zGbhwKBPSyZHwLec9X8Jcf2UJpR5S2epDA=
+			</data>
+		</dict>
+		<key>PlugIns/MonsterTests.xctest/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			8kPrkpdH0LbpMruQBQ2oTqVEDhM=
+			</data>
+			<key>hash2</key>
+			<data>
+			KDWw8xrrOji4bPtiVEZnnUVbwqy6wXRjvhDORlMX4Lk=
 			</data>
 		</dict>
 		<key>SecurityViewController.nib/objects-11.0+.nib</key>

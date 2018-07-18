@@ -9,10 +9,12 @@
 #import "MyAssetViewModel.h"
 #import "MRUserInfoClient.h"
 #import "UserCoinQuantity.h"
+#import "UserOrderModel.h"
 
 @interface MyAssetViewModel()
 
 @property(nonatomic,strong)NSMutableArray *userCoinQuantityAry;
+@property(nonatomic,strong)NSMutableArray *userCoinInOutAry;
 
 @end
 
@@ -37,6 +39,11 @@
     });
 }
 
+- (void)getUserCoinInOutInfo{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self getUserCoinInOutInfoAPI];
+    });
+}
 
 - (void)getUserCoinQuantityAPI{
     [[MRUserInfoClient alloc]getUserCoinQuantitySuccess:^(id response) {
@@ -67,6 +74,43 @@
     }];
 }
 
+- (void)getUserCoinInOutInfoAPI{
+    [[MRUserInfoClient alloc]getUserCoinInOutInfo:@"" Success:^(id response) {
+        NSDictionary *dic = response;
+        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            [self.userCoinInOutAry removeAllObjects];
+            for (NSDictionary *info in [dic objectForKey:@"resultList"]) {
+                UserOrderModel *uom = [UserOrderModel userOrderWithDict:info];
+                [self.userCoinInOutAry addObject:uom];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.delegate getUserCoinInOutInfoSucess];
+            });
+            
+        } else {
+            
+        }
+        
+        NSLog(@"response:%@",response);
+        
+    } failure:^(NSError *error) {
+        //失敗
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+        });
+    }];
+}
+
+- (NSInteger)numberOfRowinSectionForCapital{
+    return self.userCoinInOutAry.count;
+}
+
+- (NSArray*)getUserCoinInOutHistory{
+    return self.userCoinInOutAry;
+}
+
 - (NSArray*)getUserCoinQuantity{
     return self.userCoinQuantityAry;
 }
@@ -80,6 +124,13 @@
         _userCoinQuantityAry = [NSMutableArray array];
     }
     return _userCoinQuantityAry;
+}
+
+- (NSMutableArray*)userCoinInOutAry{
+    if(_userCoinInOutAry == nil){
+        _userCoinInOutAry = [NSMutableArray array];
+    }
+    return _userCoinInOutAry;
 }
 
 

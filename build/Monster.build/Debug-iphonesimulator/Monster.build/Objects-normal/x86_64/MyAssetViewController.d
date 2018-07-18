@@ -19,6 +19,7 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MyAssetViewController.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MRBaseTableViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/MyAssetTableViewCell.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/CoinCanUseViewCell.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/ChargeViewController.h \

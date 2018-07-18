@@ -13,4 +13,6 @@
 
 - (void)getUserCoinQuantitySuccess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
+- (void)getUserCoinInOutInfo:(NSString*)inOrOut Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
 @end

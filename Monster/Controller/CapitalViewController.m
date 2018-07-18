@@ -8,14 +8,11 @@
 
 #import "CapitalViewController.h"
 #import "CapitalDetailsViewCell.h"
+#import "MyAssetViewModel.h"
 
-#define NOWCell 2
 
-@interface CapitalViewController ()<UITableViewDelegate,UITableViewDataSource>
-
-@property(nonatomic,strong)UITableView *tableView;
-@property(nonatomic,strong)NSMutableDictionary *heightAtIndexPath;//缓存高度所用字典
-
+@interface CapitalViewController () <MyAssetViewModelDelegate>
+@property(nonatomic,strong)MyAssetViewModel *myAssetViewModel;
 
 @end
 
@@ -27,45 +24,44 @@ static NSString *capitalDetailsCellIdentifier = @"capitalDetailsCell";
     self.title = @"资金纪录";
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
+    [self initial];
+}
+
+- (void)initial{
+    _myAssetViewModel = [MyAssetViewModel sharedInstance];
+    _myAssetViewModel.delegate = self;
+    [_myAssetViewModel getUserCoinInOutInfo];
     [self registerCells];
 }
 
 - (void)loadView{
     [super loadView];
-    [self.view addSubview:self.tableView];
+    
+}
+
+- (void)getUserCoinInOutInfoSucess{
+    [self.tableView reloadData];
+}
+
+- (void)getDataFalid:(NSError *)error{
+    [self dealWithErrorMsg:error];
 }
 
 - (void)registerCells{
-    [_tableView registerNib:[UINib nibWithNibName:@"CapitalDetailsViewCell" bundle:nil] forCellReuseIdentifier:capitalDetailsCellIdentifier];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    [self.tableView registerNib:[UINib nibWithNibName:@"CapitalDetailsViewCell" bundle:nil] forCellReuseIdentifier:capitalDetailsCellIdentifier];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return NOWCell;
+    return [_myAssetViewModel numberOfRowinSectionForCapital];
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
-    if (height) {
-        return height.floatValue;
-    } else {
-        return 100;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSNumber *height = @(cell.frame.size.height);
-    [self.heightAtIndexPath setObject:height forKey:indexPath];
-}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CapitalDetailsViewCell *cdCell = (CapitalDetailsViewCell *)[tableView dequeueReusableCellWithIdentifier:capitalDetailsCellIdentifier];
-    
+    NSArray *hisAry = [_myAssetViewModel getUserCoinInOutHistory];
+    UserOrderModel *order = [hisAry objectAtIndex:indexPath.row];
+    [cdCell setContent:order];
     return cdCell;
 }
 
@@ -79,7 +75,7 @@ static NSString *capitalDetailsCellIdentifier = @"capitalDetailsCell";
     UIView *noBillView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 89)];
 
     noBillView.backgroundColor = [UIColor colorWithHexString:@"212025"];
-    if (NOWCell < 1) {
+    if ([_myAssetViewModel numberOfRowinSectionForCapital] < 1) {
         UILabel *noBillLabel = [[UILabel alloc]initWithFrame:noBillView.frame];
         [noBillLabel setText:@"暂无纪录"];
         [noBillLabel setTextAlignment:NSTextAlignmentCenter];
@@ -89,24 +85,4 @@ static NSString *capitalDetailsCellIdentifier = @"capitalDetailsCell";
     }
     return noBillView;
 }
-
-- (UITableView *)tableView{
-    if (_tableView == nil) {
-        
-        CGRect frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-        _tableView = [[UITableView alloc] initWithFrame:frame
-                                                  style:UITableViewStylePlain];
-        //        _tableView.contentInset = UIEdgeInsetsMake(isiPhoneX?-44:-20, 0, 0, 0);
-        //        _tableView.backgroundColor = [UIColor colorWithHexString:@"5E2DCD"];
-        _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.rowHeight = UITableViewAutomaticDimension;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.estimatedRowHeight = 100;
-        
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-    }
-    return _tableView;
-}
-
 @end

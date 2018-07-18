@@ -21,4 +21,5 @@ dependencies: /Users/chenhaoli/WorkPlace/Monster/Monster/AppDelegate.m \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/LoginViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/HomePageViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/RNFrostedSidebar.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/View/SliderMenuView.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/SliderMenuView.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MRBaseTableViewController.h

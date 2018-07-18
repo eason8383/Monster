@@ -14,12 +14,8 @@
 #import "TradeViewModel.h"
 #import "UserOrderModel.h"
 
-#define NOWCell 2
+@interface MyOrderViewController ()<MyOrderViewModelDelegate,TradeViewModelDelegate>
 
-@interface MyOrderViewController ()<UITableViewDelegate,UITableViewDataSource,MyOrderViewModelDelegate,TradeViewModelDelegate>
-
-@property(nonatomic,strong)UITableView *tableView;
-@property(nonatomic,strong)NSMutableDictionary *heightAtIndexPath;//缓存高度所用字典
 @property(nonatomic,strong)MyOrderViewModel *myOrderViewModel;
 @property(nonatomic,strong)TradeViewModel *tradeViewModel;
 
@@ -39,7 +35,8 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-//    UIBarButtonItem *timeFilterBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"watch"] style:UIBarButtonItemStylePlain target:self action:@selector(showFilter:)];
+    [super viewWillAppear:animated];
+
     UIBarButtonItem *timeFilterBtn = [[UIBarButtonItem alloc]initWithTitle:@"历史委托>" style:UIBarButtonItemStylePlain target:self action:@selector(showHistory:)];
     timeFilterBtn.tintColor = [UIColor whiteColor];
     
@@ -62,18 +59,17 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (void)getDataSucess{
     [[VWProgressHUD shareInstance]dismiss];
-    [_tableView reloadData];
+    [self.tableView reloadData];
+}
+
+- (void)getDataFalid:(NSError *)error{
+    [[VWProgressHUD shareInstance]dismiss];
+    [self dealWithErrorMsg:error];
 }
 
 - (void)orderCancelSucess:(NSDictionary*)res{
     [[VWProgressHUD shareInstance]showLoading];
     [_myOrderViewModel getData];
-}
-
-- (void)loadView{
-    [super loadView];
-    
-    [self.view addSubview:self.tableView];
 }
 
 - (void)initial{
@@ -92,16 +88,12 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 }
 
 - (void)getUserOrderSucess{
-    
+    [[VWProgressHUD shareInstance]dismiss];
 }
 
 - (void)registerCells{
     
-    [_tableView registerNib:[UINib nibWithNibName:@"EntrustNowViewCell" bundle:nil] forCellReuseIdentifier:entrustNowViewCellIdentifier];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    [self.tableView registerNib:[UINib nibWithNibName:@"EntrustNowViewCell" bundle:nil] forCellReuseIdentifier:entrustNowViewCellIdentifier];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -110,20 +102,6 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
-    if (height) {
-        return height.floatValue;
-    } else {
-        return 100;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSNumber *height = @(cell.frame.size.height);
-    [self.heightAtIndexPath setObject:height forKey:indexPath];
-}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     EntrustNowViewCell *enCell = (EntrustNowViewCell *)[tableView dequeueReusableCellWithIdentifier:entrustNowViewCellIdentifier];
@@ -164,7 +142,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     NSMutableArray *actions = [NSMutableArray array];
     
     UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//        [[VWProgressHUD shareInstance]showLoading];
+        [[VWProgressHUD shareInstance]showLoading];
         NSArray *orderAry = [self.myOrderViewModel getOrderAry];
         UserOrderModel *orderModel = [orderAry objectAtIndex:btn.tag];
         [self.tradeViewModel cancelOder:orderModel.orderId coinPair:orderModel.coinPairId];
@@ -177,25 +155,6 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     [actions addObject:cancelBtn];
     
     [self showAlert:@"" withMsg:@"你确定要撤销此笔订单吗?" withActions:actions];
-}
-
-- (UITableView *)tableView{
-    if (_tableView == nil) {
-        
-        CGRect frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-        _tableView = [[UITableView alloc] initWithFrame:frame
-                                                  style:UITableViewStylePlain];
-        //        _tableView.contentInset = UIEdgeInsetsMake(isiPhoneX?-44:-20, 0, 0, 0);
-        //        _tableView.backgroundColor = [UIColor colorWithHexString:@"5E2DCD"];
-        _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.rowHeight = UITableViewAutomaticDimension;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.estimatedRowHeight = 100;
-        
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-    }
-    return _tableView;
 }
 
 @end

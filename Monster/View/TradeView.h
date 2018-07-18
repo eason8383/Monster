@@ -27,6 +27,8 @@
 
 - (void)setUerCoinQuantity:(NSArray*)userCoinAry;
 
+- (void)titleDownBtnAnticlockwiseRotation;
+- (void)titleDownBtnclockwiseRotation;
 
 
 @end

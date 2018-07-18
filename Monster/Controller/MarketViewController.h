@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MRBaseTableViewController.h"
 
-@interface MarketViewController : UIViewController
+@interface MarketViewController : MRBaseTableViewController
 
 
 @end

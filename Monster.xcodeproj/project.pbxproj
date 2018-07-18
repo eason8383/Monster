@@ -108,6 +108,7 @@
 		D745E25820F74EE40001EA11 /* MRTradeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25720F74EE40001EA11 /* MRTradeClient.m */; };
 		D745E25B20F750960001EA11 /* MRUserInfoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25A20F750960001EA11 /* MRUserInfoClient.m */; };
 		D745E25E20F757D20001EA11 /* TrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25D20F757D20001EA11 /* TrandModel.m */; };
+		D759EE6E20FF2131001A2871 /* MRBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D759EE6D20FF2131001A2871 /* MRBaseTableViewController.m */; };
 		D773385320FC6D430039F924 /* ChoseCoinTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D773385120FC6D430039F924 /* ChoseCoinTableViewCell.m */; };
 		D773385420FC6D430039F924 /* ChoseCoinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D773385220FC6D430039F924 /* ChoseCoinTableViewCell.xib */; };
 		D773385720FC90EE0039F924 /* UserCoinQuantity.m in Sources */ = {isa = PBXBuildFile; fileRef = D773385620FC90EE0039F924 /* UserCoinQuantity.m */; };
@@ -337,6 +338,8 @@
 		D745E25A20F750960001EA11 /* MRUserInfoClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRUserInfoClient.m; sourceTree = "<group>"; };
 		D745E25C20F757D20001EA11 /* TrandModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrandModel.h; sourceTree = "<group>"; };
 		D745E25D20F757D20001EA11 /* TrandModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrandModel.m; sourceTree = "<group>"; };
+		D759EE6C20FF2131001A2871 /* MRBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRBaseTableViewController.h; sourceTree = "<group>"; };
+		D759EE6D20FF2131001A2871 /* MRBaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRBaseTableViewController.m; sourceTree = "<group>"; };
 		D773385020FC6D430039F924 /* ChoseCoinTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoseCoinTableViewCell.h; sourceTree = "<group>"; };
 		D773385120FC6D430039F924 /* ChoseCoinTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoseCoinTableViewCell.m; sourceTree = "<group>"; };
 		D773385220FC6D430039F924 /* ChoseCoinTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoseCoinTableViewCell.xib; sourceTree = "<group>"; };
@@ -641,6 +644,8 @@
 				D7A2509820FDD0CF00E4846D /* GoogleAuthVerifyVC.h */,
 				D7A2509920FDD0CF00E4846D /* GoogleAuthVerifyVC.m */,
 				D7A2509A20FDD0CF00E4846D /* GoogleAuthVerifyVC.xib */,
+				D759EE6C20FF2131001A2871 /* MRBaseTableViewController.h */,
+				D759EE6D20FF2131001A2871 /* MRBaseTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1092,6 +1097,7 @@
 				9B42212920EDE944009D5A8A /* EntrustNowViewCell.m in Sources */,
 				9B4F1DB120EF583E00DEF626 /* CapitalViewController.m in Sources */,
 				9BB945F420EC6EE900B8D7BE /* MainPageHeadView.m in Sources */,
+				D759EE6E20FF2131001A2871 /* MRBaseTableViewController.m in Sources */,
 				9BB9461020ECC27D00B8D7BE /* CoinPairModel.m in Sources */,
 				9B4F1D9320EF408900DEF626 /* IdentityViewController.m in Sources */,
 				D7A2509420FDB85200E4846D /* MRGoogleClient.m in Sources */,
@@ -1350,6 +1356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4CA9RGENWW;
 				INFOPLIST_FILE = MonsterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1370,6 +1377,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4CA9RGENWW;
 				INFOPLIST_FILE = MonsterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1389,6 +1397,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4CA9RGENWW;
 				INFOPLIST_FILE = MonsterUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1408,6 +1417,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4CA9RGENWW;
 				INFOPLIST_FILE = MonsterUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

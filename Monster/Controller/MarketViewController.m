@@ -13,9 +13,8 @@
 #import "HomeViewModel.h"
 #import "CoinPairModel.h"
 
-@interface MarketViewController () <UITableViewDelegate,UITableViewDataSource,HomeModelDelegate>
-@property(nonatomic,strong)UITableView *tableView;
-@property(nonatomic,strong)NSMutableDictionary *heightAtIndexPath;//缓存高度所用字典
+@interface MarketViewController () <HomeModelDelegate>
+
 @property(nonatomic,strong)HomeViewModel *homeModel;
 @property(nonatomic,strong)NSTimer *updatTimer;
 
@@ -57,21 +56,16 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
 
 - (void)loadView{
     [super loadView];
-    [self.view addSubview:self.tableView];
     
     [UINavigationBar appearance].translucent = NO;
     [UINavigationBar appearance].barTintColor = [UIColor colorWithHexString:@"1E1D21"];
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
-    
-//    UIBarButtonItem *backHomeBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Fill_Copy"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBackToHome:)];
-//    backHomeBtn.tintColor = [UIColor whiteColor];
-//    
-//    [self.navigationItem setLeftBarButtonItem:backHomeBtn];
+
 }
 
 - (void)getDataSucess{
-    [_tableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)dismissBackToHome:(id)sender{
@@ -80,7 +74,7 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
 
 - (void)registerCells{
     
-    [_tableView registerNib:[UINib nibWithNibName:@"MarketTableViewCell" bundle:nil] forCellReuseIdentifier:marketTableViewCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MarketTableViewCell" bundle:nil] forCellReuseIdentifier:marketTableViewCellIdentifier];
 }
 
 
@@ -89,19 +83,6 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
-    if (height) {
-        return height.floatValue;
-    } else {
-        return 40;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSNumber *height = @(cell.frame.size.height);
-    [self.heightAtIndexPath setObject:height forKey:indexPath];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -130,21 +111,4 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
     
 }
 
-- (UITableView *)tableView{
-    if (_tableView == nil) {
-        
-        CGRect frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-        _tableView = [[UITableView alloc] initWithFrame:frame
-                                                  style:UITableViewStylePlain];
-        //        _tableView.contentInset = UIEdgeInsetsMake(isiPhoneX?-44:-20, 0, 0, 0);
-        _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.rowHeight = UITableViewAutomaticDimension;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.estimatedRowHeight = 100;
-        
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-    }
-    return _tableView;
-}
 @end

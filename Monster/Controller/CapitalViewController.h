@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MRBaseTableViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface CapitalViewController : UIViewController
+@interface CapitalViewController : MRBaseTableViewController
 
 @end
 
-NS_ASSUME_NONNULL_END

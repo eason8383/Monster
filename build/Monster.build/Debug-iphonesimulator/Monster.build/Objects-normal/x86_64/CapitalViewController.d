@@ -19,4 +19,6 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/CapitalViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/View/CapitalDetailsViewCell.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MRBaseTableViewController.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/CapitalDetailsViewCell.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/MyAssetViewModel.h

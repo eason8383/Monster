@@ -12,6 +12,7 @@
 @optional
 
 - (void)getDataSucess;
+- (void)getUserCoinInOutInfoSucess;
 - (void)getDataFalid:(NSError*)error;
 
 @end
@@ -22,9 +23,12 @@
 + (instancetype)sharedInstance;
 
 - (void)getData;
+- (void)getUserCoinInOutInfo;
+- (NSInteger)numberOfRowinSectionForCapital;
 
 - (NSInteger)numberOfRowinSection;
 
 - (NSArray*)getUserCoinQuantity;
+- (NSArray*)getUserCoinInOutHistory;
 
 @end

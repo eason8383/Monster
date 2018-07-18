@@ -12,13 +12,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoogleAuthViewController">
             <connections>
-                <outlet property="authCodeField" destination="vsJ-Xz-USf" id="lzc-b8-h2Y"/>
+                <outlet property="authCodeField" destination="wXO-Ml-OCB" id="kCM-pW-UeH"/>
                 <outlet property="authCodeLabel" destination="CJA-7u-Wd0" id="WVF-QF-1Rc"/>
                 <outlet property="commitBtn" destination="bHS-pS-Dfo" id="Ol9-Y1-mQr"/>
                 <outlet property="coppyBtn" destination="kV6-5l-r7v" id="j7l-wX-cA8"/>
                 <outlet property="gainVerifyBtn" destination="SBe-7E-Yf6" id="2Pz-fZ-aCQ"/>
                 <outlet property="qRImgView" destination="tHq-UI-xG5" id="JBZ-l4-sFR"/>
-                <outlet property="verifyField" destination="wXO-Ml-OCB" id="oDR-Mr-McQ"/>
+                <outlet property="verifyField" destination="vsJ-Xz-USf" id="CHa-mC-BUg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,7 +37,7 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="谷歌验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag5-5q-hwR">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sms验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag5-5q-hwR">
                     <rect key="frame" x="10" y="253" width="63" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="OcL-WW-gwr"/>
@@ -47,7 +47,7 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sms验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XF-2b-Mxq">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="谷歌验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XF-2b-Mxq">
                     <rect key="frame" x="10" y="349" width="63" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="63" id="0ay-2y-yv5"/>
@@ -73,7 +73,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBe-7E-Yf6">
-                    <rect key="frame" x="274" y="383" width="90" height="30"/>
+                    <rect key="frame" x="274" y="292" width="90" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="YbW-6R-Wwl"/>
                         <constraint firstAttribute="height" constant="30" id="zUF-Fe-otp"/>
@@ -136,7 +136,7 @@
                 <constraint firstItem="Ag5-5q-hwR" firstAttribute="top" secondItem="tHq-UI-xG5" secondAttribute="bottom" constant="59" id="LbS-ah-7ZW"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="bHS-pS-Dfo" secondAttribute="trailing" constant="10" id="ROM-22-gl8"/>
                 <constraint firstItem="wXO-Ml-OCB" firstAttribute="leading" secondItem="2XF-2b-Mxq" secondAttribute="leading" id="Sow-xG-L3R"/>
-                <constraint firstItem="SBe-7E-Yf6" firstAttribute="centerY" secondItem="wXO-Ml-OCB" secondAttribute="centerY" id="TT0-Is-myL"/>
+                <constraint firstItem="SBe-7E-Yf6" firstAttribute="centerY" secondItem="vsJ-Xz-USf" secondAttribute="centerY" id="TJW-LT-3aS"/>
                 <constraint firstItem="bHS-pS-Dfo" firstAttribute="top" secondItem="wXO-Ml-OCB" secondAttribute="bottom" constant="34" id="Unq-62-c6X"/>
                 <constraint firstItem="wXO-Ml-OCB" firstAttribute="top" secondItem="2XF-2b-Mxq" secondAttribute="bottom" constant="22" id="arB-cS-C8V"/>
                 <constraint firstItem="kV6-5l-r7v" firstAttribute="centerX" secondItem="CJA-7u-Wd0" secondAttribute="centerX" id="cfR-g9-W8f"/>

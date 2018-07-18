@@ -12,8 +12,6 @@
 #import "MyOrderViewModel.h"
 #import "SGLoadMoreView.h"
 
-#define NOWCell 8
-
 @interface OrderHistoryViewController () <UITableViewDelegate,UITableViewDataSource,MyOrderViewModelDelegate>
 @property(nonatomic,strong)MyOrderViewModel *myOrderViewModel;
 @property(nonatomic,strong)UITableView *tableView;
@@ -104,7 +102,7 @@ static NSString *capitalViewCellIdentifier = @"capitalDeViewCell";
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
-    if (height) {
+    if (height != nil) {
         return height.floatValue;
     } else {
         return 100;

@@ -90,7 +90,12 @@
     [_highestPriceLabel  setText:[NSString stringWithFormat:@"最高价:$%.2f",coinInfo.maxPrice*self.multiple]];
     [_lowestPriceLabel  setText:[NSString stringWithFormat:@"最低价:$%.2f",coinInfo.minPrice*self.multiple]];
     [_volumLabel  setText:[NSString stringWithFormat:@"24H成交量:%f",coinInfo.totalVolume]];
-    [_coinTypeLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
+    if (coinInfo.mainCoinId) {
+        [_coinTypeLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
+    } else {
+        [_coinTypeLabel setText:@""];
+    }
+    
     [self.local_DataAry removeAllObjects];
     [self.local_DataAry addObjectsFromArray:ary];
     if (self.local_DataAry.count > 0) {

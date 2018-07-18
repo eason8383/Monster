@@ -58,12 +58,12 @@
                                  @"sessionId":self.userAccount.sessionId,
                                  @"sceneCode":@"006"
                                  };
-    //    {
-    //        sessionId = SESSION2018071618493999686927460;
-    //        source = 03;
-    //        userId = KID2018071014254112526883540120;
-    //        version = "1.0";
-    //    }
+//        {
+//            sessionId = SESSION2018071618493999686927460;
+//            source = 03;
+//            userId = KID2018071014254112526883540120;
+//            version = "1.0";
+//        }
     
     NSString *jsonParameter = [parameters JSONString];
     
@@ -87,7 +87,7 @@
     }];
 }
 
-- (void)authMyIdentity:(NSString*)authCode verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
+- (void)authBinding:(NSString*)authCode verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
     
     NSDictionary *parameters = @{
@@ -97,6 +97,39 @@
                                  @"sessionId":self.userAccount.sessionId,
                                  @"authCode":authCode,
                                  @"verifyCode":verifyCode
+                                 };
+    
+    NSString *jsonParameter = [parameters JSONString];
+    
+    [self getResponse:GOOGLEAUTHBIND action:EGUSER parametes:jsonParameter isEncrypt:NO complete:^(NSString *result) {
+        
+        NSDictionary *dic = [self dictionaryWithJsonString:result];
+        NSDictionary *resdic = [dic objectForKey:@"respCode"];
+        if (![[resdic objectForKey:@"code"] isEqualToString:@"00000"]) {
+            NSError *error = [NSError errorWithDomain:@"Auth Binding error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            
+            failureBlock(error);
+            
+        } else {
+            successBlock(dic);
+        }
+        
+    } error:^(NSError *error) {
+        if (error) {
+            failureBlock(error);
+        }
+    }];
+}
+
+- (void)authMyIdentity:(NSString*)authCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
+    self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
+    
+    NSDictionary *parameters = @{
+                                 @"source":@"03",
+                                 @"version":@"1.0",
+                                 @"userId":self.userAccount.userId,
+                                 @"sessionId":self.userAccount.sessionId,
+                                 @"authCode":authCode,
                                  };
     
     NSString *jsonParameter = [parameters JSONString];

@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RNFrostedSidebar.h"
+#import "MRBaseTableViewController.h"
 
-
-
-@interface HomePageViewController : UIViewController <RNFrostedSidebarDelegate>
+@interface HomePageViewController : MRBaseTableViewController <RNFrostedSidebarDelegate>
 
 @end
 

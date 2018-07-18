@@ -14,6 +14,8 @@
 
 - (void)getSmsVerifyCodeBUIdSuccess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
-- (void)authMyIdentity:(NSString*)authCode verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+- (void)authBinding:(NSString*)authCode verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
+- (void)authMyIdentity:(NSString*)authCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
 @end

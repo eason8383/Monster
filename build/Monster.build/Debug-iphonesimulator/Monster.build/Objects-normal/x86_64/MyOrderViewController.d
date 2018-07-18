@@ -19,6 +19,7 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MyOrderViewController.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MRBaseTableViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/EntrustNowViewCell.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/OrderDetailViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/OrderHistoryViewController.h \

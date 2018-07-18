@@ -33,14 +33,12 @@
     [self initial];
 }
 
-
 - (void)initial{
     _googleViewModel = [GoogleViewModel sharedInstance];
     _googleViewModel.delegate = self;
     [[VWProgressHUD shareInstance]showLoading];
     [_googleViewModel getBindingCode];
 }
-
 
 - (void)loadView{
     [super loadView];
@@ -64,7 +62,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)getBindingBack:(NSDictionary*)bindingInfo{
+- (void)getBindingCodeSuccess:(NSDictionary*)bindingInfo{
     NSLog(@"%@",bindingInfo);
     [[VWProgressHUD shareInstance]dismiss];
     [self touchesBegan:[bindingInfo objectForKey:@"oauthUrl"]];
@@ -74,7 +72,7 @@
 - (IBAction)commitiVerifyAuth{
     if (_authCodeField.text.length > 0 && _verifyField.text.length > 0) {
         [[VWProgressHUD shareInstance]showLoading];
-        [_googleViewModel confirmAuthCode:_authCodeField.text verifyCode:_verifyField.text];
+        [_googleViewModel bindingAuthCode:_authCodeField.text verifyCode:_verifyField.text];
     } else {
         [self justShowAlert:@"错误" message:@"请填入正确验证码"];
     }
@@ -90,7 +88,7 @@
     [[VWProgressHUD shareInstance]dismiss];
 }
 
-- (void)confirmSuccess:(NSDictionary *)bindingInfo{
+- (void)bindingSuccess:(NSDictionary *)bindingInfo{
     //Sucess
     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:GOOGLE_AUTH_BINDING];
     [[VWProgressHUD shareInstance]dismiss];

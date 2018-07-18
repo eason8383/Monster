@@ -15,11 +15,10 @@
 #import "MyAssetViewModel.h"
 #import "UserCoinQuantity.h"
 
-@interface MyAssetViewController () <UITableViewDelegate,UITableViewDataSource,MyAssetViewModelDelegate>
+@interface MyAssetViewController () <MyAssetViewModelDelegate>
 
-@property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)MyAssetViewModel *myAssetViewModel;
-@property(nonatomic,strong)NSMutableDictionary *heightAtIndexPath;//缓存高度所用字典
+
 @end
 
 @implementation MyAssetViewController
@@ -43,30 +42,19 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
     [self registerCells];
 }
 
-- (void)loadView{
-    [super loadView];
-    
-    [self.view addSubview:self.tableView];
-}
-
 - (void)registerCells{
     
-    [_tableView registerNib:[UINib nibWithNibName:@"MyAssetTableViewCell" bundle:nil] forCellReuseIdentifier:myassetCellIdentifier];
-    [_tableView registerNib:[UINib nibWithNibName:@"CoinCanUseViewCell" bundle:nil] forCellReuseIdentifier:coinCanUseCellIdentifier];
-    
+    [self.tableView registerNib:[UINib nibWithNibName:@"MyAssetTableViewCell" bundle:nil] forCellReuseIdentifier:myassetCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CoinCanUseViewCell" bundle:nil] forCellReuseIdentifier:coinCanUseCellIdentifier];
+
 }
 
 - (void)getDataSucess{
-    [_tableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)getDataFalid:(NSError *)error{
-    
-}
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    [self dealWithErrorMsg:error];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -74,19 +62,6 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
-    if (height) {
-        return height.floatValue;
-    } else {
-        return 100;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSNumber *height = @(cell.frame.size.height);
-    [self.heightAtIndexPath setObject:height forKey:indexPath];
-}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -99,7 +74,6 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
             [maCell setContent:myAssetDic];
             
             return maCell;
-            
         }
             
         default:{
@@ -149,25 +123,6 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
     [self.navigationItem setBackBarButtonItem:backBtn];
     [self.navigationController pushViewController:cV animated:YES];
     
-}
-
-- (UITableView *)tableView{
-    if (_tableView == nil) {
-        
-        CGRect frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-        _tableView = [[UITableView alloc] initWithFrame:frame
-                                                  style:UITableViewStylePlain];
-        //        _tableView.contentInset = UIEdgeInsetsMake(isiPhoneX?-44:-20, 0, 0, 0);
-        //        _tableView.backgroundColor = [UIColor colorWithHexString:@"5E2DCD"];
-        _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.rowHeight = UITableViewAutomaticDimension;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.estimatedRowHeight = 100;
-        
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-    }
-    return _tableView;
 }
 
 @end

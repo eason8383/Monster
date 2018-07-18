@@ -46,7 +46,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                [self.delegate getBindingBack:dic];
+                [self.delegate getBindingCodeSuccess:dic];
             });
             
         } else {
@@ -99,8 +99,8 @@
     }];
 }
 
-- (void)confirmAuthCode:(NSString*)authCode verifyCode:(NSString*)verifyCode{
-    [[MRGoogleClient alloc]authMyIdentity:authCode verifyCode:verifyCode Success:^(id response) {
+- (void)identityAuthCode:(NSString*)authCode{
+    [[MRGoogleClient alloc]authMyIdentity:authCode Success:^(id response) {
         NSDictionary *dic = response;
         if ([[dic objectForKey:@"success"] integerValue] == 1) {
             
@@ -109,7 +109,39 @@
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate confirmSuccess:dic];
+                [self.delegate identitySuccess:dic];
+                
+            });
+            
+        } else {
+            NSError *error = [NSError errorWithDomain:@"identityAuthCode" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate getDataFalid:error];
+                
+            });
+        }
+        
+        NSLog(@"response:%@",response);
+        
+    } failure:^(NSError *error) {
+        //失敗
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate getDataFalid:error];
+        });
+    }];
+}
+
+- (void)bindingAuthCode:(NSString*)authCode verifyCode:(NSString*)verifyCode{
+    [[MRGoogleClient alloc]authBinding:authCode verifyCode:verifyCode Success:^(id response) {
+        NSDictionary *dic = response;
+        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            
+            for (NSDictionary *info in [dic objectForKey:@"resultList"]) {
+                NSLog(@"%@",info);
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate bindingSuccess:dic];
                
             });
             

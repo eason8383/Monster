@@ -389,9 +389,9 @@ static RNFrostedSidebar *rn_frostedMenu;
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     
     if ([self isViewLoaded] && self.view.window != nil) {
-        self.view.alpha = 0;
-        UIImage *blurImage = [self.parentViewController.view rn_screenshot];
-        blurImage = [blurImage applyBlurWithRadius:5 tintColor:self.tintColor saturationDeltaFactor:1.8 maskImage:nil];
+//        self.view.alpha = 0;
+//        UIImage *blurImage = [self.parentViewController.view rn_screenshot];
+//        blurImage = [blurImage applyBlurWithRadius:5 tintColor:self.tintColor saturationDeltaFactor:1.8 maskImage:nil];
 //        self.blurView.image = blurImage;
         self.view.alpha = 1;
         
@@ -442,8 +442,8 @@ static RNFrostedSidebar *rn_frostedMenu;
     
     rn_frostedMenu = self;
     
-    UIImage *blurImage = [controller.view rn_screenshot];
-    blurImage = [blurImage applyBlurWithRadius:5 tintColor:self.tintColor saturationDeltaFactor:1.8 maskImage:nil];
+//    UIImage *blurImage = [controller.view rn_screenshot];
+//    blurImage = [blurImage applyBlurWithRadius:5 tintColor:self.tintColor saturationDeltaFactor:1.8 maskImage:nil];
     
     [self rn_addToParentViewController:controller callingAppearanceMethods:YES];
     self.view.frame = controller.view.bounds;

@@ -27,6 +27,8 @@
 
 #define MR_QUERYORDERDEPTH @"queryOrderDepth"
 #define MR_QUERYUSERCOINQUANTITY @"queryUserCoinQuantity"
+#define MR_QUERYUSERCOININOUTINFO @"queryUserCoinInOutInfo"
+
 
 #define MR_ORDERREQUEST @"orderRequest"
 #define MR_ORDERCANCEL @"orderCancelRequest"
@@ -38,7 +40,7 @@
 #define GOOGLEAUTHGEN @"googleAuthGen"
 #define GOOGLESMSVERIFY @"sendSmsVerifyCodeByUserId"
 #define GOOGLEAUTHCHECK @"googleAuthCheck"
-
+#define GOOGLEAUTHBIND @"googleAuthBind"
 
 
 #define DOLOGOUT @"logout"

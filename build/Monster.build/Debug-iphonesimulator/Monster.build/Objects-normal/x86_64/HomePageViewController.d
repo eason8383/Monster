@@ -21,6 +21,7 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/HomePageViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/RNFrostedSidebar.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/SliderMenuView.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MRBaseTableViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/HeadTableViewCell.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/MACDTableViewCell.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ExponentialCell.h \

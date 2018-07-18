@@ -22,16 +22,13 @@
 #import "HomeViewModel.h"
 #import "CoinPairModel.h"
 
-@interface HomePageViewController () <UITableViewDelegate,UITableViewDataSource,RNFrostedSidebarDelegate,HomeModelDelegate>
+@interface HomePageViewController () <RNFrostedSidebarDelegate,HomeModelDelegate>
 
-@property(nonatomic,strong)UITableView *tableView;
-@property(nonatomic,strong)NSMutableDictionary *heightAtIndexPath;//缓存高度所用字典
 @property(nonatomic,strong)MarketViewController *mVC;
 @property(nonatomic,strong)UIView *alphaView;
 @property(nonatomic,strong)HomeViewModel *homeModel;
 
 @property(nonatomic,strong)NSTimer *updatTimer;
-
 
 @end
 
@@ -45,18 +42,14 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    backBtn.tintColor = [UIColor whiteColor];
-    [self.navigationItem setBackBarButtonItem:backBtn];
+
     NSLog(@"Previous visible view controller is %@", self.navigationController.jz_previousVisibleViewController);
     
     [_homeModel getData:100];
     _updatTimer = [NSTimer scheduledTimerWithTimeInterval:60
                                                   repeats:YES block:^(NSTimer *timer){
                                                       [self.homeModel getData:1];
-//                                                      NSLog(@"1");
                                                   }];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -75,8 +68,6 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     
     self.jz_navigationBarHidden = YES;
     
-    self.jz_navigationInteractivePopGestureEnabled = true;
-    
     [self initial];
     
     [[VWProgressHUD shareInstance]showLoading];
@@ -89,7 +80,6 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     _homeModel.delegate = self;
 
     [self registerCells];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     UISwipeGestureRecognizer *swipeLeftToRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     [self.view addGestureRecognizer:swipeLeftToRight];
@@ -103,25 +93,12 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     }
 }
 
-- (void)setStatusBarBackgroundColor:(UIColor *)color {
-    
-    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
-    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
-        statusBar.backgroundColor = color;
-    }
-}
-
 - (void)registerCells{
     
-    [_tableView registerNib:[UINib nibWithNibName:@"HeadTableViewCell" bundle:nil] forCellReuseIdentifier:headTableViewCellIdentifier];
-    [_tableView registerNib:[UINib nibWithNibName:@"MACDTableViewCell" bundle:nil] forCellReuseIdentifier:macdTableViewCellIdentifier];
-    [_tableView registerNib:[UINib nibWithNibName:@"ExponentialCell" bundle:nil] forCellReuseIdentifier:exponentialCellIdentifier];
-    [_tableView registerNib:[UINib nibWithNibName:@"CoinTrendsCell" bundle:nil] forCellReuseIdentifier:coinTrendsCellIdentifier];
-}
-
-- (void)loadView{
-    [super loadView];
-    [self.view addSubview:self.tableView];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HeadTableViewCell" bundle:nil] forCellReuseIdentifier:headTableViewCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MACDTableViewCell" bundle:nil] forCellReuseIdentifier:macdTableViewCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ExponentialCell" bundle:nil] forCellReuseIdentifier:exponentialCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CoinTrendsCell" bundle:nil] forCellReuseIdentifier:coinTrendsCellIdentifier];
 }
 
 #pragma mark - HomeModelDelegate
@@ -129,24 +106,11 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 - (void)getDataSucess{
     [self.tableView reloadData];
     [[VWProgressHUD shareInstance]dismiss];
-    
 }
 
 - (void)getDataFalid:(NSError *)error{
     [[VWProgressHUD shareInstance]dismiss];
-    NSLog(@"Home get data Falid:%@",error.userInfo);
-    NSDictionary *dic = error.userInfo;
-    NSDictionary *respCode = [dic objectForKey:@"respCode"];
-    if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"]) {
-        [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
-    } else {
-        [self justShowAlert:@"错误信息" message:[dic objectForKey:@"respMessage"]];
-    }
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    [self dealWithErrorMsg:error];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -154,19 +118,6 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
-    if (height) {
-        return height.floatValue;
-    } else {
-        return 100;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSNumber *height = @(cell.frame.size.height);
-    [self.heightAtIndexPath setObject:height forKey:indexPath];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -222,12 +173,9 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         coVC.klineDataAry = [[NSMutableArray alloc]initWithArray:klineAry];
         coVC.multiple = [_homeModel getMultipleWithCurrentCoinId:model.subCoinId];
         coVC.isHighLowKLine = (indexPath.row == 1)?NO:YES;
-        coVC.jz_navigationBarHidden = NO;
+        
         coVC.jz_navigationBarBackgroundHidden = true;
-        UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:[NSString stringWithFormat:@"%@/%@",model.mainCoinId,model.subCoinId] style:UIBarButtonItemStylePlain target:nil action:nil];
-        backBtn.tintColor = [UIColor whiteColor];
-        [self.navigationItem setBackBarButtonItem:backBtn];
-        [self.navigationController pushViewController:coVC animated:YES];
+        [self homeDefaultPushController:coVC withBackTitle:[NSString stringWithFormat:@"%@/%@",model.mainCoinId,model.subCoinId]];
     }
 }
 
@@ -241,7 +189,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 }
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar willShowOnScreenAnimated:(BOOL)animatedYesOrNo{
-    NSLog(@"willShowOnScreenAnimated");
+
     if (_alphaView == nil) {
         _alphaView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         [_alphaView setBackgroundColor:[UIColor blackColor]];
@@ -252,7 +200,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 }
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar willDismissFromScreenAnimated:(BOOL)animatedYesOrNo{
-    NSLog(@"willDismissFromScreenAnimated");
+
     [_alphaView removeFromSuperview];
 }
 
@@ -300,21 +248,19 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         default:{
             break;
         }
-
     };
-    [self homeDefaultPushController:cV];
+    [self homeDefaultPushController:cV withBackTitle:@""];
 
 }
 
-- (void)homeDefaultPushController:(UIViewController*)cV{
+- (void)homeDefaultPushController:(UIViewController*)cV withBackTitle:(NSString*)title{
     cV.jz_navigationBarHidden = NO;
     [cV setJz_navigationBarTintColor:[UIColor blackColor]];
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:title style:UIBarButtonItemStylePlain target:nil action:nil];
     backBtn.tintColor = [UIColor whiteColor];
     [self.navigationItem setBackBarButtonItem:backBtn];
     [self.navigationController pushViewController:cV animated:YES];
 }
-
 
 - (void)callMenu:(id)sender{
     RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithSliderMenu];
@@ -329,40 +275,13 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 }
 
 - (void)moreDetail:(id)sender{
-//    if (_mVC == nil) {
+
     _mVC = [[MarketViewController alloc]initWithNibName:@"MarketViewController" bundle:nil];
-//    }
-//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:_mVC];
-//    UIBarButtonItem *backHomeBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Fill_Copy"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBackToHome:)];
-//    backHomeBtn.tintColor = [UIColor whiteColor];
-//    [_mVC.navigationItem setLeftBarButtonItem:backHomeBtn];
-//    [self presentViewController:nav animated:YES completion:nil];
-//    [self.navigationController pushViewController:_mVC animated:YES];
-    
-    [self homeDefaultPushController:_mVC];
+    [self homeDefaultPushController:_mVC withBackTitle:@""];
 }
 
 - (void)dismissBackToHome:(id)sender{
     [_mVC dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (UITableView *)tableView{
-    if (_tableView == nil) {
-        
-        CGRect frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-        _tableView = [[UITableView alloc] initWithFrame:frame
-                                                  style:UITableViewStylePlain];
-//        _tableView.contentInset = UIEdgeInsetsMake(isiPhoneX?-44:-20, 0, 0, 0);
-//        _tableView.backgroundColor = [UIColor colorWithHexString:@"5E2DCD"];
-        _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.rowHeight = UITableViewAutomaticDimension;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.estimatedRowHeight = 100;
-        
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-    }
-    return _tableView;
 }
 
 @end

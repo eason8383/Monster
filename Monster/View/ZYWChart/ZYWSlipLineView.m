@@ -69,7 +69,7 @@
 {
     __weak typeof(self) this = self;
     [_dataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        CGFloat value = [_dataArray[idx] floatValue];
+        CGFloat value = [self.dataArray[idx] floatValue];
         CGFloat xPostion = this.lineSpace*idx + this.leftMargin;
         CGFloat yPostion = (this.maxY - value)*this.scaleY + this.topMargin;
         ZYWLineModel *lineModel = [ZYWLineModel initPositon:xPostion yPosition:yPostion color:this.lineColor];

@@ -46,7 +46,7 @@
     
     NSString *sessionId = [[NSUserDefaults standardUserDefaults]objectForKey:@"sessionId"];
     id userAccountObject = [[NSUserDefaults standardUserDefaults]objectForKey:@"userAccount"];
-    if (userAccountObject && [userAccountObject isKindOfClass:[NSData class]]) {
+    if (userAccountObject && [userAccountObject isKindOfClass:[NSData class]] && sessionId) {
         NSData *userData = [[NSUserDefaults standardUserDefaults]objectForKey:@"userAccount"];
         MRUserAccount *account = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
         [MRWebClient sharedInstance].userAccount = account;

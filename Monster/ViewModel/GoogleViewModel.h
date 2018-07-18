@@ -12,9 +12,10 @@
 
 @optional
 
-- (void)getBindingBack:(NSDictionary*)bindingInfo;
+- (void)getBindingCodeSuccess:(NSDictionary*)bindingInfo;
 - (void)getSmsVerifyCode:(NSDictionary*)verifyInfo;
-- (void)confirmSuccess:(NSDictionary*)bindingInfo;
+- (void)bindingSuccess:(NSDictionary*)bindingInfo;
+- (void)identitySuccess:(NSDictionary*)identityInfo;
 
 - (void)getDataFalid:(NSError*)error;
 @end
@@ -28,6 +29,8 @@
 
 - (void)getSmsVerifyCode;
 
-- (void)confirmAuthCode:(NSString*)authCode verifyCode:(NSString*)verifyCode;
+- (void)identityAuthCode:(NSString*)authCode;
+
+- (void)bindingAuthCode:(NSString*)authCode verifyCode:(NSString*)verifyCode;
 
 @end
