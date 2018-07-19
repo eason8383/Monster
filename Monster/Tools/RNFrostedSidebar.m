@@ -370,7 +370,7 @@ static RNFrostedSidebar *rn_frostedMenu;
     float asset = [[assetInfo objectForKey:@"myAsset"] floatValue];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.contentView.asset_Label setText:[NSString stringWithFormat:@"%.8f",asset]];
+        [self.contentView.asset_Label setText:[NSString stringWithFormat:@"%.4f",asset]];
         
         [self.contentView.subAsset_Label setText:[NSString stringWithFormat:@"≈$%@",[assetInfo objectForKey:@"result"]]];
     });

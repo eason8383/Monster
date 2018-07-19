@@ -67,6 +67,38 @@
     if (_useAnimation) {
         [self startAnimation];
     }
+    
+    if (self.hasDraggableLine) {
+        [self adddraggerableView];
+    }
+}
+
+- (void)adddraggerableView{
+    UIView *draggableObj = [[UIView alloc] initWithFrame:CGRectMake(20, 0,2,100)];
+    [draggableObj setBackgroundColor:[UIColor redColor]];
+    //创建手势
+    UIPanGestureRecognizer *panGR =
+    [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(objectDidDragged:)];
+    //限定操作的触点数
+    [panGR setMaximumNumberOfTouches:1];
+    [panGR setMinimumNumberOfTouches:1];
+    //将手势添加到draggableObj里
+    [draggableObj addGestureRecognizer:panGR];
+    [draggableObj setTag:100];
+    [self addSubview:draggableObj];
+}
+
+- (void)objectDidDragged:(UIPanGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateChanged ||
+        sender.state == UIGestureRecognizerStateEnded) {
+        //注意，这里取得的参照坐标系是该对象的上层View的坐标。
+        CGPoint offset = [sender translationInView:self];
+        UIView *draggableObj = [self viewWithTag:100];
+        //通过计算偏移量来设定draggableObj的新坐标
+        [draggableObj setCenter:CGPointMake(draggableObj.center.x + offset.x, draggableObj.center.y + offset.y)];
+        //初始化sender中的坐标位置。如果不初始化，移动坐标会一直积累起来。
+        [sender setTranslation:CGPointMake(0, 0) inView:self];
+    }
 }
 
 - (void)startAnimation
@@ -92,7 +124,7 @@
     }];
 }
 
--(void)initConfig
+- (void)initConfig
 {
     self.lineSpace = (self.frame.size.width - self.leftMargin - self.rightMargin)/(_dataArray.count-1) ;
     NSNumber *min  = [_dataArray valueForKeyPath:@"@min.floatValue"];

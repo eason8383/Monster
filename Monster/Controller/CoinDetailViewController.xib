@@ -150,7 +150,7 @@
                         <action selector="selectTimeInteval:" destination="-1" eventType="touchUpInside" id="SpR-s8-XE1"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hre-zd-UGx">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hre-zd-UGx">
                     <rect key="frame" x="67" y="560" width="38.5" height="17"/>
                     <color key="backgroundColor" red="0.31764705882352939" green="0.0" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -164,7 +164,7 @@
                         <action selector="selectTimeInteval:" destination="-1" eventType="touchUpInside" id="zhn-jz-cRO"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S8-6l-DNE">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S8-6l-DNE">
                     <rect key="frame" x="127.5" y="560" width="39" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="tSL-q3-5Hl"/>
@@ -177,7 +177,7 @@
                         <action selector="selectTimeInteval:" destination="-1" eventType="touchUpInside" id="qLb-8n-UcH"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWm-zr-4eD">
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWm-zr-4eD">
                     <rect key="frame" x="189.5" y="560" width="39" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="g2p-Nz-TSa"/>
@@ -190,7 +190,7 @@
                         <action selector="selectTimeInteval:" destination="-1" eventType="touchUpInside" id="w4A-Lo-o4Q"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVu-9L-waL">
+                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVu-9L-waL">
                     <rect key="frame" x="305" y="560" width="48" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="KIm-Up-0JG"/>
@@ -229,7 +229,7 @@
                         <action selector="openTrade:" destination="-1" eventType="touchUpInside" id="tA9-Pr-2JS"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeG-Dn-ceL">
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeG-Dn-ceL">
                     <rect key="frame" x="252.5" y="560" width="38.5" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="ll9-De-rNI"/>

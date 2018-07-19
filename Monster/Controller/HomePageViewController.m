@@ -46,6 +46,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     NSLog(@"Previous visible view controller is %@", self.navigationController.jz_previousVisibleViewController);
     
     [_homeModel getData:100];
+    
     _updatTimer = [NSTimer scheduledTimerWithTimeInterval:60
                                                   repeats:YES block:^(NSTimer *timer){
                                                       [self.homeModel getData:1];
@@ -124,8 +125,8 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     switch (indexPath.row) {
         case 0: {
             HeadTableViewCell *hdCell = (HeadTableViewCell *)[tableView dequeueReusableCellWithIdentifier:headTableViewCellIdentifier];
-                [hdCell.callMenuBtn addTarget:self action:@selector(callMenu:) forControlEvents:UIControlEventTouchUpInside];
-                [hdCell.audioViewBtn addTarget:self action:@selector(pushSome:) forControlEvents:UIControlEventTouchUpInside];
+            [hdCell.callMenuBtn addTarget:self action:@selector(callMenu:) forControlEvents:UIControlEventTouchUpInside];
+            [hdCell.audioViewBtn addTarget:self action:@selector(pushSome:) forControlEvents:UIControlEventTouchUpInside];
             [hdCell.mobileNo_Label setText:[MRWebClient sharedInstance].userAccount.mobileNo];
             
             return hdCell;
@@ -183,6 +184,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
     NSLog(@"Tapped item at index %lu",(unsigned long)index);
+    
     [sidebar dismissAnimated:YES completion:^(BOOL animation) {
         [self pushController:[NSNumber numberWithInteger:index]];
     }];

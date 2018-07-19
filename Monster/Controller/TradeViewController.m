@@ -102,7 +102,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 //        [self.tradeView titleDownBtnclockwiseRotation];
 //    }
     
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:1.0
                           delay:0.1
                         options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
                      animations:^{

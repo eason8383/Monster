@@ -21,4 +21,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/CoinDetailViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/TradeViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWLineView.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/CoinPairModel.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/CoinPairModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/CoinDetailViewModel.h

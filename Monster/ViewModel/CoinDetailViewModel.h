@@ -22,8 +22,9 @@
 
 + (instancetype)sharedInstance;
 
-- (void)getData;
+- (void)getKlineList:(NSString*)klineType withLimit:(NSInteger)limit;
 
+- (NSArray*)getDrawKLineInfoArray:(NSString*)coinPairId;
 
 
 @end

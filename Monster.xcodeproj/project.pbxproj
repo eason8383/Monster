@@ -93,6 +93,8 @@
 		9BB9461F20ECE85F00B8D7BE /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9461D20ECE85F00B8D7BE /* MarketTableViewCell.xib */; };
 		D708218E20F48C80002AEDA2 /* AboutusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D708218C20F48C80002AEDA2 /* AboutusViewController.m */; };
 		D708218F20F48C80002AEDA2 /* AboutusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D708218D20F48C80002AEDA2 /* AboutusViewController.xib */; };
+		D71643AD2100A57B0060AB6C /* PointOutLine.m in Sources */ = {isa = PBXBuildFile; fileRef = D71643AC2100A57B0060AB6C /* PointOutLine.m */; };
+		D71643AF2100A5CB0060AB6C /* PointOutLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71643AE2100A5CB0060AB6C /* PointOutLine.xib */; };
 		D71F719C20F84FF9003513C5 /* UCoinQuantity.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F719B20F84FF9003513C5 /* UCoinQuantity.m */; };
 		D71F719E20F8736E003513C5 /* HighLowLabelViewForTrade.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71F719D20F8736E003513C5 /* HighLowLabelViewForTrade.xib */; };
 		D71F71A720F8B959003513C5 /* UserOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F71A620F8B959003513C5 /* UserOrderModel.m */; };
@@ -313,6 +315,9 @@
 		D708218B20F48C80002AEDA2 /* AboutusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutusViewController.h; sourceTree = "<group>"; };
 		D708218C20F48C80002AEDA2 /* AboutusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutusViewController.m; sourceTree = "<group>"; };
 		D708218D20F48C80002AEDA2 /* AboutusViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutusViewController.xib; sourceTree = "<group>"; };
+		D71643AB2100A57B0060AB6C /* PointOutLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointOutLine.h; sourceTree = "<group>"; };
+		D71643AC2100A57B0060AB6C /* PointOutLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointOutLine.m; sourceTree = "<group>"; };
+		D71643AE2100A5CB0060AB6C /* PointOutLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointOutLine.xib; sourceTree = "<group>"; };
 		D71F719A20F84FF9003513C5 /* UCoinQuantity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UCoinQuantity.h; sourceTree = "<group>"; };
 		D71F719B20F84FF9003513C5 /* UCoinQuantity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UCoinQuantity.m; sourceTree = "<group>"; };
 		D71F719D20F8736E003513C5 /* HighLowLabelViewForTrade.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighLowLabelViewForTrade.xib; sourceTree = "<group>"; };
@@ -572,6 +577,9 @@
 				D773385020FC6D430039F924 /* ChoseCoinTableViewCell.h */,
 				D773385120FC6D430039F924 /* ChoseCoinTableViewCell.m */,
 				D773385220FC6D430039F924 /* ChoseCoinTableViewCell.xib */,
+				D71643AB2100A57B0060AB6C /* PointOutLine.h */,
+				D71643AC2100A57B0060AB6C /* PointOutLine.m */,
+				D71643AE2100A5CB0060AB6C /* PointOutLine.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -913,6 +921,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D71643AF2100A5CB0060AB6C /* PointOutLine.xib in Resources */,
 				9B42212020EDB9BD009D5A8A /* TradeViewController.xib in Resources */,
 				9B4F1DA320EF545F00DEF626 /* SetupViewController.xib in Resources */,
 				D735D7B920F0BECC007E2B7C /* BindingMailBoxViewController.xib in Resources */,
@@ -1076,6 +1085,7 @@
 				9B87074B20EB639900156E39 /* SliderMenuView.m in Sources */,
 				9B42212320EDDE3D009D5A8A /* TradeView.m in Sources */,
 				9B7EEE8A20E9C39000DF88B4 /* ViewController.m in Sources */,
+				D71643AD2100A57B0060AB6C /* PointOutLine.m in Sources */,
 				9B87074720EB60AA00156E39 /* RNFrostedSidebar.m in Sources */,
 				D7820BAF20F5E1B200B01F05 /* CoinDetailViewModel.m in Sources */,
 				9B9DFD3520EF7CA900E56B2F /* CapitalDetailsViewCell.m in Sources */,

@@ -7,12 +7,13 @@
 //
 
 #import "CoinDetailViewController.h"
-#import "TradeViewController.h"
 #import <FLAnimatedImage/FLAnimatedImage.h>
+#import "TradeViewController.h"
 #import "ZYWLineView.h"
 #import "CoinPairModel.h"
+#import "CoinDetailViewModel.h"
 
-@interface CoinDetailViewController ()
+@interface CoinDetailViewController () <CoinDetailVMDelegate>
 
 @property(nonatomic,strong)IBOutlet UIView *kLineView;
 @property(nonatomic,strong)IBOutlet UIImageView *gridImag;
@@ -35,14 +36,14 @@
 @property(nonatomic,strong)IBOutlet UIButton *timeBtn_day;
 @property(nonatomic,strong)IBOutlet UIButton *timeBtn_week;
 @property(nonatomic,strong)IBOutlet UIButton *timeBtn_month;
-
-
 @property(nonatomic,strong)NSString *gridString;
 @property(nonatomic,strong)NSString *klineColorString;
 
 @property(nonatomic,strong)FLAnimatedImageView *imageView1;
 
 @property(nonatomic,strong)ZYWLineView *lineView;
+
+@property(nonatomic,strong)CoinDetailViewModel *coinDetailViewModel;
 
 @end
 
@@ -59,6 +60,20 @@
     _timeBtn_day.layer.cornerRadius = 4;
     _timeBtn_week.layer.cornerRadius = 4;
     _timeBtn_month.layer.cornerRadius = 4;
+    
+    [self initial];
+}
+
+- (void)initial{
+    _coinDetailViewModel = [CoinDetailViewModel sharedInstance];
+    _coinDetailViewModel.delegate = self;
+}
+
+- (void)getDataSucess{
+    NSArray *info = [_coinDetailViewModel getDrawKLineInfoArray:self.model.coinPairId];
+    [self.klineDataAry removeAllObjects];
+    [self.klineDataAry addObjectsFromArray:info];
+    [_lineView stockFill];
 }
 
 - (void)setStyle{
@@ -138,7 +153,7 @@
 //    _lineView.fillColor = [UIColor colorWithHexString:@"6241D1"];
     _lineView.isFillColor = NO;
     _lineView.useAnimation = YES;
-    
+    _lineView.hasDraggableLine = YES;
     [_kLineView addSubview:_lineView];
     _lineView.translatesAutoresizingMaskIntoConstraints = NO;
     [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -184,6 +199,31 @@
 - (IBAction)selectTimeInteval:(UIButton*)btn{
     [self cleanAlltimeBtn];
     [btn setBackgroundColor:[UIColor colorWithHexString:_klineColorString]];
+    NSString *klineType;
+    switch (btn.tag) {
+        case 0:
+            klineType = @"0";
+            break;
+        case 1:
+            klineType = @"2";
+            break;
+        case 2:
+            klineType = @"4";
+            break;
+        case 3:
+            klineType = @"5";
+            break;
+        case 4:
+            klineType = @"6";
+            break;
+        case 5:
+            klineType = @"7";
+            break;
+        default:
+            klineType = @"0";
+            break;
+    }
+    [_coinDetailViewModel getKlineList:klineType withLimit:100];
 }
 
 - (void)cleanAlltimeBtn{

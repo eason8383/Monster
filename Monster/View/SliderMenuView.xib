@@ -60,12 +60,12 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的资产" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQb-sh-IL7">
-                    <rect key="frame" x="53" y="244" width="50" height="15"/>
+                    <rect key="frame" x="53" y="244" width="70" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="gcd-d5-RLH"/>
-                        <constraint firstAttribute="width" constant="50" id="oVp-Ee-hlZ"/>
+                        <constraint firstAttribute="width" constant="70" id="oVp-Ee-hlZ"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -77,12 +77,12 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的订单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfo-sr-FY1">
-                    <rect key="frame" x="53" y="277.5" width="50" height="15"/>
+                    <rect key="frame" x="53" y="277.5" width="70" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="LZ4-q3-vac"/>
-                        <constraint firstAttribute="width" constant="50" id="m4t-sj-jIp"/>
+                        <constraint firstAttribute="width" constant="70" id="m4t-sj-jIp"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -94,12 +94,12 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPD-n4-bjm">
-                    <rect key="frame" x="53" y="309.5" width="50" height="15"/>
+                    <rect key="frame" x="53" y="309.5" width="60" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="97l-wp-hX7"/>
+                        <constraint firstAttribute="width" constant="60" id="97l-wp-hX7"/>
                         <constraint firstAttribute="height" constant="15" id="Vrf-0o-W35"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -111,12 +111,12 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安全认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGL-wO-mf7">
-                    <rect key="frame" x="52" y="344.5" width="50" height="15"/>
+                    <rect key="frame" x="52" y="344.5" width="60" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="BV3-RL-BM1"/>
-                        <constraint firstAttribute="width" constant="50" id="ClI-3P-jD4"/>
+                        <constraint firstAttribute="width" constant="60" id="ClI-3P-jD4"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -136,12 +136,12 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退出账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Me2-pA-HTd">
-                    <rect key="frame" x="52" y="445" width="50" height="15"/>
+                    <rect key="frame" x="52" y="445" width="60" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="8rS-nF-JWp"/>
-                        <constraint firstAttribute="width" constant="50" id="Wbg-zM-6kt"/>
+                        <constraint firstAttribute="width" constant="60" id="Wbg-zM-6kt"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -153,12 +153,12 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6k-7t-YZE">
-                    <rect key="frame" x="52" y="411" width="50" height="15"/>
+                    <rect key="frame" x="52" y="411" width="60" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="Ifa-wU-xVz"/>
+                        <constraint firstAttribute="width" constant="60" id="Ifa-wU-xVz"/>
                         <constraint firstAttribute="height" constant="15" id="qHA-8K-4Tx"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -170,12 +170,12 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于我们" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anL-Ef-9HH">
-                    <rect key="frame" x="53" y="378" width="50" height="15"/>
+                    <rect key="frame" x="53" y="378" width="82" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="Jhb-A7-jWd"/>
-                        <constraint firstAttribute="width" constant="50" id="PGs-XF-WQ7"/>
+                        <constraint firstAttribute="width" constant="82" id="PGs-XF-WQ7"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>

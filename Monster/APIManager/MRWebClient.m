@@ -167,6 +167,7 @@ static NSString *sessionId;
                 NSInteger code = [res statusCode];
                 NSError *error = [NSError errorWithDomain:[NSString stringWithFormat:@"%ld", (long)code] code:401 userInfo:nil];
                 errorBlock(error);
+                [session invalidateAndCancel];
             }else {
                 NSString* dataStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
 
@@ -178,12 +179,15 @@ static NSString *sessionId;
                 
                 if (complete) {
                     complete(dataStr);
+                    [session invalidateAndCancel];
                 }
             }
         } else {
             errorBlock(error);
+            [session invalidateAndCancel];
         }
     }]resume];
+    
 }
 
 - (void)requestPrepares:(NSString*)controller action:(NSString*)action withURL:(NSString*)urlStr parametes:(NSString*)parameters isEncrypt:(BOOL)isEncrypt{

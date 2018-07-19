@@ -14,6 +14,7 @@
 @property (nonatomic,strong) UIColor *fillColor;
 @property (nonatomic,assign) BOOL isFillColor;
 @property (nonatomic,assign) BOOL useAnimation;
+@property (nonatomic,assign) BOOL hasDraggableLine;
 
 - (void)stockFill;
 
