@@ -13,7 +13,7 @@
 #import "CoinPairModel.h"
 #import "CoinDetailViewModel.h"
 
-@interface CoinDetailViewController () <CoinDetailVMDelegate>
+@interface CoinDetailViewController () <CoinDetailVMDelegate,ZYWLineViewDelegate>
 
 @property(nonatomic,strong)IBOutlet UIView *kLineView;
 @property(nonatomic,strong)IBOutlet UIImageView *gridImag;
@@ -60,7 +60,7 @@
     _timeBtn_day.layer.cornerRadius = 4;
     _timeBtn_week.layer.cornerRadius = 4;
     _timeBtn_month.layer.cornerRadius = 4;
-    
+    self.jz_navigationInteractivePopGestureEnabled = false;
     [self initial];
 }
 
@@ -117,17 +117,21 @@
     if (isnan(result)) {      //isnan为系统函数
         result = 0.0;
     }
-    NSString *priceStr = [NSString stringWithFormat:@"%f",_model.lastPrice];
-    NSArray *priceAry = [priceStr componentsSeparatedByString:@"."];
-    [_latestPriceLabel setText: [NSString stringWithFormat:@"%@.",[priceAry objectAtIndex:0]]];
-    [_pricePointLabel setText:[priceAry objectAtIndex:1]];
+    
+    [self setTitlePrice:[NSString stringWithFormat:@"%f",_model.lastPrice]];
+    
     [_subPrice_Label  setText:[NSString stringWithFormat:@"≈$%.2f",_model.lastPrice*self.multiple]];
     [_height_Label setText:[NSString stringWithFormat:@"$%.2f",_model.maxPrice*self.multiple]];
     [_low_Label  setText:[NSString stringWithFormat:@"$%.2f",_model.minPrice*self.multiple]];
     [_oneDay_Label  setText:[NSString stringWithFormat:@"$%.2f",_model.endPrice*self.multiple]];
     
     [_pesent_Label setText:[NSString stringWithFormat:@"%.2f",result]];
-    
+}
+
+- (void)setTitlePrice:(NSString*)priceString{
+    NSArray *priceAry = [priceString componentsSeparatedByString:@"."];
+    [_latestPriceLabel setText: [NSString stringWithFormat:@"%@.",[priceAry objectAtIndex:0]]];
+    [_pricePointLabel setText:[priceAry objectAtIndex:1]];
 }
 
 - (void)setBottomGrid{
@@ -146,6 +150,7 @@
 
 - (void)setKLine{
     _lineView = [[ZYWLineView alloc] initWithFrame:CGRectMake(0, 0, _kLineView.width, _kLineView.height)];
+    _lineView.delegate = self;
     _lineView.lineWidth = 2;
     _lineView.backgroundColor = [UIColor clearColor];
     _lineView.lineColor = [UIColor colorWithHexString:_klineColorString];
@@ -162,14 +167,19 @@
         make.height.equalTo(@(self.kLineView.height));
     }];
 //    [_lineView layoutIfNeeded];
-//        _dataArray = @[@"12",@"33",@"26",@"10",@"7",@"30",@"21"];
+//    _lineView.dataArray = @[@"12",@"23",@"26",@"27",@"28",@"30",@"31",@"32",@"33",@"36",@"39",@"41",@"43",@"44",@"42",@"43",@"46",@"40",@"47",@"49",@"52",@"53",@"54",@"52",@"53",@"56",@"50",@"57",@"59",@"52",@"59",@"64",@"60",@"54",@"53",@"52",@"51",@"50",@"48",@"43",@"42",@"39",@"36",@"34",@"30",@"37",@"39",@"32",@"37",@"30",@"29",@"23",@"26",@"20",@"17",@"19",@"12"];
     
-    _lineView.dataArray = [self generateDataArray:self.klineDataAry];
+//    _lineView.dataArray = [self generateDataArray:self.klineDataAry];
+    _lineView.dataArray = self.klineDataAry;
     _lineView.leftMargin = 0;
     _lineView.rightMargin = 0;
     _lineView.topMargin = 0;
     _lineView.bottomMargin = 0;
     [_lineView stockFill];
+}
+
+- (void)returnPrice:(double)price{
+    [self setTitlePrice:[NSString stringWithFormat:@"%f",price]];
 }
 
 - (NSArray*)generateDataArray:(NSArray*)ary{
@@ -193,7 +203,6 @@
     tdVC.multiple = self.multiple;
     tdVC.model = self.model;
     [self presentViewController:nav animated:YES completion:nil];
-    
 }
 
 - (IBAction)selectTimeInteval:(UIButton*)btn{

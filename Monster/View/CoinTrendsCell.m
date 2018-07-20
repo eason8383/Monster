@@ -70,7 +70,8 @@
     [_coinTitleLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
     [self.local_DataAry removeAllObjects];
     [self.local_DataAry addObjectsFromArray:ary];
-    _lineView.dataArray = [self generateDataArray:self.local_DataAry];
+//    _lineView.dataArray = [self generateDataArray:self.local_DataAry];
+    _lineView.dataArray = self.local_DataAry;
     [_lineView stockFill];
     
     BOOL isGoingHigher = [self isEndPriceHigher:coinInfo];

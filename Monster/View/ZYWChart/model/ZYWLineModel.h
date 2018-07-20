@@ -13,7 +13,9 @@
 @property (nonatomic,assign) CGFloat xPosition;
 @property (nonatomic,assign) CGFloat yPosition;
 @property (nonatomic,strong) UIColor *lineColor;
+@property (nonatomic,assign) long barTimeLong;
+@property (nonatomic,assign) double endPrice;
 
-+ (instancetype)initPositon:(CGFloat)xPositon yPosition:(CGFloat)yPosition color:(UIColor*)color;
++(instancetype)initPositon:(CGFloat)xPositon yPosition:(CGFloat)yPosition barTime:(long)barTime price:(double)price color:(UIColor*)color;
 
 @end

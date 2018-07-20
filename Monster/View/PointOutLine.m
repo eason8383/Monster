@@ -14,7 +14,7 @@
 @end
 
 @implementation PointOutLine
-@synthesize  dragEnable;
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -24,31 +24,36 @@
     }
     return self;
 }
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (!dragEnable) {
-        return;
-    }
-    UITouch *touch = [touches anyObject];
-    
-    beginPoint = [touch locationInView:self];
-    
+
+- (void)setValue:(NSString*)value{
+    [_pointLabel setText:value];
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (!dragEnable) {
-        return;
-    }
-    UITouch *touch = [touches anyObject];
-    
-    CGPoint nowPoint = [touch locationInView:self];
-    
-    float offsetX = nowPoint.x - beginPoint.x;
-    float offsetY = nowPoint.y - beginPoint.y;
-    
-    self.center = CGPointMake(self.center.x + offsetX, self.center.y + offsetY);
-}
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    if (!dragEnable) {
+//        return;
+//    }
+//    UITouch *touch = [touches anyObject];
+//
+//    beginPoint = [touch locationInView:self];
+//
+//}
+//
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    if (!dragEnable) {
+//        return;
+//    }
+//    UITouch *touch = [touches anyObject];
+//
+//    CGPoint nowPoint = [touch locationInView:self];
+//
+//    float offsetX = nowPoint.x - beginPoint.x;
+//    float offsetY = nowPoint.y - beginPoint.y;
+//
+//    self.center = CGPointMake(self.center.x + offsetX, self.center.y + offsetY);
+//}
 
 
 @end

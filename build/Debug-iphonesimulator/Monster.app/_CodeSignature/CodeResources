@@ -10,7 +10,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		JJ4+ViEQJl98yWOn+9EEoN4B5k8=
+		TL8WRDcBU+jY0O89+b25oNDk5Oo=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -78,11 +78,11 @@
 		</data>
 		<key>CoinDetailViewController.nib/objects-11.0+.nib</key>
 		<data>
-		PY9dlHR6ccwi4/odO6X8agKABYQ=
+		I4gdO5htomHo4LMETR0lxeR28Rs=
 		</data>
 		<key>CoinDetailViewController.nib/runtime.nib</key>
 		<data>
-		NUZibpzyeR+B6l7kfPzm1YOR2dQ=
+		E4LzbOY3VkOwvIjUgoMpuph5RKY=
 		</data>
 		<key>CoinTrendsCell.nib</key>
 		<data>
@@ -214,7 +214,7 @@
 		</data>
 		<key>PointOutLine.nib</key>
 		<data>
-		kRAmO+p9gt/CmVa0rmgAHFxhmsQ=
+		ak1SVGjA3f7x3TbFrlYZRggvOKs=
 		</data>
 		<key>SecurityViewController.nib/objects-11.0+.nib</key>
 		<data>
@@ -338,11 +338,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JJ4+ViEQJl98yWOn+9EEoN4B5k8=
+			TL8WRDcBU+jY0O89+b25oNDk5Oo=
 			</data>
 			<key>hash2</key>
 			<data>
-			fsjWuH5k1EZRrUtqy95pRurq/D8zSM5zTccu7hGUdRI=
+			plmi5mDZWDxIIAUpiJ2X1LDQnJCJ9nnrhxLkAU3dRVQ=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -525,22 +525,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PY9dlHR6ccwi4/odO6X8agKABYQ=
+			I4gdO5htomHo4LMETR0lxeR28Rs=
 			</data>
 			<key>hash2</key>
 			<data>
-			ek+STQSo08jLxRgEs3k3TvN7QHB871Z3sEQ5HcFIIK0=
+			Yhisr+sUl38BByv0GQZtTpVfsq8nETyyAmiRXXTgpDs=
 			</data>
 		</dict>
 		<key>CoinDetailViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NUZibpzyeR+B6l7kfPzm1YOR2dQ=
+			E4LzbOY3VkOwvIjUgoMpuph5RKY=
 			</data>
 			<key>hash2</key>
 			<data>
-			D5axjSEDc5YAWghOwvsa3V+55+Q+s9d61oG+yvCCiBE=
+			nBsCSHHx+/wWMICb9RUdoYyC4WjVVbEDmQa4FYqOT2Y=
 			</data>
 		</dict>
 		<key>CoinTrendsCell.nib</key>
@@ -877,11 +877,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			kRAmO+p9gt/CmVa0rmgAHFxhmsQ=
+			ak1SVGjA3f7x3TbFrlYZRggvOKs=
 			</data>
 			<key>hash2</key>
 			<data>
-			xVjPSzQhyzxXVG2BGNjyObDf0yUj/F3R+BSwXBVsFFg=
+			26QLWNvKdaQ6K1NyPnlM818FrFdaGGcQKxJts2UrvPQ=
 			</data>
 		</dict>
 		<key>SecurityViewController.nib/objects-11.0+.nib</key>

@@ -93,6 +93,7 @@
 		9BB9461F20ECE85F00B8D7BE /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9461D20ECE85F00B8D7BE /* MarketTableViewCell.xib */; };
 		D708218E20F48C80002AEDA2 /* AboutusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D708218C20F48C80002AEDA2 /* AboutusViewController.m */; };
 		D708218F20F48C80002AEDA2 /* AboutusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D708218D20F48C80002AEDA2 /* AboutusViewController.xib */; };
+		D70FC5DC2101BFFC00462BFB /* UIImage+GradientColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D70FC5DB2101BFFC00462BFB /* UIImage+GradientColor.m */; };
 		D71643AD2100A57B0060AB6C /* PointOutLine.m in Sources */ = {isa = PBXBuildFile; fileRef = D71643AC2100A57B0060AB6C /* PointOutLine.m */; };
 		D71643AF2100A5CB0060AB6C /* PointOutLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71643AE2100A5CB0060AB6C /* PointOutLine.xib */; };
 		D71F719C20F84FF9003513C5 /* UCoinQuantity.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F719B20F84FF9003513C5 /* UCoinQuantity.m */; };
@@ -315,6 +316,8 @@
 		D708218B20F48C80002AEDA2 /* AboutusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutusViewController.h; sourceTree = "<group>"; };
 		D708218C20F48C80002AEDA2 /* AboutusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutusViewController.m; sourceTree = "<group>"; };
 		D708218D20F48C80002AEDA2 /* AboutusViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutusViewController.xib; sourceTree = "<group>"; };
+		D70FC5DA2101BFFC00462BFB /* UIImage+GradientColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+GradientColor.h"; sourceTree = "<group>"; };
+		D70FC5DB2101BFFC00462BFB /* UIImage+GradientColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GradientColor.m"; sourceTree = "<group>"; };
 		D71643AB2100A57B0060AB6C /* PointOutLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointOutLine.h; sourceTree = "<group>"; };
 		D71643AC2100A57B0060AB6C /* PointOutLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointOutLine.m; sourceTree = "<group>"; };
 		D71643AE2100A5CB0060AB6C /* PointOutLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointOutLine.xib; sourceTree = "<group>"; };
@@ -700,6 +703,8 @@
 				D7CAB0EE20F30A1C00B8B99B /* UIBezierPath+Draw.m */,
 				D7CAB0ED20F30A1C00B8B99B /* UIView+Extension.h */,
 				D7CAB0EB20F30A1B00B8B99B /* UIView+Extension.m */,
+				D70FC5DA2101BFFC00462BFB /* UIImage+GradientColor.h */,
+				D70FC5DB2101BFFC00462BFB /* UIImage+GradientColor.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1112,6 +1117,7 @@
 				9B4F1D9320EF408900DEF626 /* IdentityViewController.m in Sources */,
 				D7A2509420FDB85200E4846D /* MRGoogleClient.m in Sources */,
 				9BB9460120ECA5FD00B8D7BE /* HighLowLabelView.m in Sources */,
+				D70FC5DC2101BFFC00462BFB /* UIImage+GradientColor.m in Sources */,
 				9B87073920EB220800156E39 /* Reachability.m in Sources */,
 				9B7EEF1820EA32E400DF88B4 /* UIColor+JKRColor.m in Sources */,
 				D7A2509B20FDD0CF00E4846D /* GoogleAuthVerifyVC.m in Sources */,

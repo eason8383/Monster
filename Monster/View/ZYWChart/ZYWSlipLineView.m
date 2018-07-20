@@ -72,7 +72,7 @@
         CGFloat value = [self.dataArray[idx] floatValue];
         CGFloat xPostion = this.lineSpace*idx + this.leftMargin;
         CGFloat yPostion = (this.maxY - value)*this.scaleY + this.topMargin;
-        ZYWLineModel *lineModel = [ZYWLineModel initPositon:xPostion yPosition:yPostion color:this.lineColor];
+        ZYWLineModel *lineModel = [ZYWLineModel initPositon:xPostion yPosition:yPostion barTime:41412414 price:231 color:this.lineColor];
         [this.modelPostionArray addObject:lineModel];
     }];
 }

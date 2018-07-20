@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface PointOutLine : UIView{
-    CGPoint beginPoint;
+   
 }
-@property (nonatomic) BOOL dragEnable;
+
+- (void)setValue:(NSString*)value;
 
 @end

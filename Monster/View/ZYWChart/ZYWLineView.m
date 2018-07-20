@@ -7,11 +7,15 @@
 //
 
 #import "ZYWLineView.h"
+#import "PointOutLine.h"
+#import "UIImage+GradientColor.h"
+#import "CoinPairModel.h"
 
 @interface ZYWLineView ()
 
 @property (nonatomic,strong) NSMutableArray *modelPostionArray;
 @property (nonatomic,strong) CAShapeLayer *lineChartLayer;
+@property (nonatomic,strong) PointOutLine *poLine;
 
 @end
 
@@ -43,13 +47,20 @@
     UIBezierPath *path = [UIBezierPath drawLine:self.modelPostionArray];
     self.lineChartLayer = [CAShapeLayer layer];
     self.lineChartLayer.path = path.CGPath;
-    self.lineChartLayer.strokeColor = self.lineColor.CGColor;
+//    self.lineChartLayer.strokeColor = self.lineColor.CGColor;
     self.lineChartLayer.fillColor = [[UIColor clearColor] CGColor];
-
+    
+    self.lineChartLayer.strokeColor = [UIColor whiteColor].CGColor;
+    self.lineChartLayer.shadowColor = self.lineColor.CGColor;
+    self.lineChartLayer.shadowOffset = CGSizeMake(0, 0);
+    self.lineChartLayer.shadowOpacity = 1;
+    
+//    self.lineChartLayer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 10, 10) cornerRadius:4].CGPath;
     self.lineChartLayer.lineWidth = self.lineWidth;
     self.lineChartLayer.lineCap = kCALineCapRound;
     self.lineChartLayer.lineJoin = kCALineJoinRound;
     self.lineChartLayer.contentsScale = [UIScreen mainScreen].scale;
+    
     [self.layer addSublayer:self.lineChartLayer];
  
     if (_isFillColor)
@@ -68,37 +79,8 @@
         [self startAnimation];
     }
     
-    if (self.hasDraggableLine) {
-        [self adddraggerableView];
-    }
-}
-
-- (void)adddraggerableView{
-    UIView *draggableObj = [[UIView alloc] initWithFrame:CGRectMake(20, 0,2,100)];
-    [draggableObj setBackgroundColor:[UIColor redColor]];
-    //创建手势
-    UIPanGestureRecognizer *panGR =
-    [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(objectDidDragged:)];
-    //限定操作的触点数
-    [panGR setMaximumNumberOfTouches:1];
-    [panGR setMinimumNumberOfTouches:1];
-    //将手势添加到draggableObj里
-    [draggableObj addGestureRecognizer:panGR];
-    [draggableObj setTag:100];
-    [self addSubview:draggableObj];
-}
-
-- (void)objectDidDragged:(UIPanGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateChanged ||
-        sender.state == UIGestureRecognizerStateEnded) {
-        //注意，这里取得的参照坐标系是该对象的上层View的坐标。
-        CGPoint offset = [sender translationInView:self];
-        UIView *draggableObj = [self viewWithTag:100];
-        //通过计算偏移量来设定draggableObj的新坐标
-        [draggableObj setCenter:CGPointMake(draggableObj.center.x + offset.x, draggableObj.center.y + offset.y)];
-        //初始化sender中的坐标位置。如果不初始化，移动坐标会一直积累起来。
-        [sender setTranslation:CGPointMake(0, 0) inView:self];
-    }
+    self.userInteractionEnabled = self.hasDraggableLine?YES:NO;
+    
 }
 
 - (void)startAnimation
@@ -116,10 +98,11 @@
     [_modelPostionArray removeAllObjects];
     __weak typeof(self) this = self;
     [_dataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        CGFloat value = [self.dataArray[idx] floatValue];
+        CoinPairModel *coinPair = self.dataArray[idx];
+        CGFloat value = coinPair.endPrice;
         CGFloat xPostion = this.lineSpace*idx + this.leftMargin;
         CGFloat yPostion = (this.maxY - value)*this.scaleY + this.topMargin;
-        ZYWLineModel *lineModel = [ZYWLineModel initPositon:xPostion yPosition:yPostion color:this.lineColor];
+        ZYWLineModel *lineModel = [ZYWLineModel initPositon:xPostion yPosition:yPostion barTime:coinPair.barTimeLong price:coinPair.endPrice color:this.lineColor];
         [this.modelPostionArray addObject:lineModel];
     }];
 }
@@ -127,10 +110,15 @@
 - (void)initConfig
 {
     self.lineSpace = (self.frame.size.width - self.leftMargin - self.rightMargin)/(_dataArray.count-1) ;
-    NSNumber *min  = [_dataArray valueForKeyPath:@"@min.floatValue"];
-    NSNumber *max = [_dataArray valueForKeyPath:@"@max.floatValue"];
-    self.maxY = [max floatValue];
-    self.minY  = [min floatValue];
+    NSMutableArray *ary = [NSMutableArray array];
+    for (CoinPairModel *model in _dataArray) {
+        NSString *str = [NSString stringWithFormat:@"%f",model.endPrice];
+        [ary addObject:str];
+    }
+    NSNumber *min  = [ary valueForKeyPath:@"@min.floatValue"];
+    NSNumber *max = [ary valueForKeyPath:@"@max.floatValue"];
+    self.maxY = [max floatValue] * 1.1;
+    self.minY  = [min floatValue] * 0.9;
     self.scaleY = (self.height - self.topMargin - self.bottomMargin)/(self.maxY-self.minY);
 }
 
@@ -146,6 +134,78 @@
 - (void)stockFill
 {
     [self setNeedsDisplay];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if (_poLine == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PointOutLine" owner:self options:nil];
+        _poLine = [nib objectAtIndex:0];
+    }
+    
+    UITouch *touch = [touches anyObject];
+    //    // 取得触摸点在当前视图中的位置
+    CGPoint current = [touch locationInView:self];
+    [_poLine setFrame:CGRectMake(current.x - 22, -44, 44, self.frame.size.height)];
+    
+    
+    [self addSubview:_poLine];
+    
+    int index = (current.x - self.leftMargin)/self.lineSpace;
+    if (index > 0 && index < self.modelPostionArray.count) {
+        ZYWLineModel *lineModel = [self.modelPostionArray objectAtIndex:index];
+        [_poLine setValue:[self converTimeFormat:lineModel.barTimeLong]];
+        [self.delegate returnPrice:lineModel.endPrice];
+    }
+    
+    NSLog(@"bounds:%@ \n nowPoint:%@",NSStringFromCGRect(self.bounds),NSStringFromCGPoint(current));
+    NSLog(@"poLine.frame %@ \n %@",NSStringFromCGRect(_poLine.frame),NSStringFromCGPoint(current));
+}
+
+- (NSString*)converTimeFormat:(long)barTime{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/China"]];
+    [formatter setDateFormat:@"hh:mm MM/dd"];
+    // Date to string
+    NSDate *now = [NSDate dateWithTimeIntervalSince1970:barTime/1000];
+    NSString *currentDateString = [formatter stringFromDate:now];
+    return currentDateString;
+}
+
+
+// 触摸结束
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    NSLog(@"RedView:touchesEnded");
+    [_poLine removeFromSuperview];
+}
+
+// 触摸移动中（随着手指的移动，会多次调用该方法）
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    NSLog(@"RedView:touchesMoved");
+    
+//    /* 设置当前view随手指移动 */
+//    // 取得一个触摸对象（对于多点触摸可能有多个对象）
+    UITouch *touch = [touches anyObject];
+//    // 取得触摸点在当前视图中的位置
+    CGPoint current = [touch locationInView:self];
+//    // 取得前一个触摸点位置
+    CGPoint previous = [touch previousLocationInView:self];
+//    // 触摸点移动偏移量
+    CGPoint offset = CGPointMake(current.x-previous.x, current.y-previous.y);
+//    // 当前视图移动前的中点位置（相对于父视图）
+    CGPoint center = _poLine.center;
+//    // 重新设置当前视图新位置
+    _poLine.center = CGPointMake(center.x+offset.x, center.y);
+    
+    int index = (center.x+offset.x - self.leftMargin)/self.lineSpace;
+    
+    if (index > 0 && index < self.modelPostionArray.count) {
+        ZYWLineModel *lineModel = [self.modelPostionArray objectAtIndex:index];
+        [_poLine setValue:[self converTimeFormat:lineModel.barTimeLong]];
+        [self.delegate returnPrice:lineModel.endPrice];
+    }
 }
 
 @end

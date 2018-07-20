@@ -70,7 +70,8 @@
             //        make.center.equalTo(self.kLineView);
             //        make.height.equalTo(@(63));
         }];
-        _lineView.dataArray = [self generateDataArray:self.local_DataAry];
+//        _lineView.dataArray = [self generateDataArray:self.local_DataAry];
+        _lineView.dataArray = self.local_DataAry;
         
         _lineView.leftMargin = 0;
         _lineView.rightMargin = 0;
@@ -78,7 +79,8 @@
         _lineView.bottomMargin = 0;
         
     } else {
-        _lineView.dataArray = [self generateDataArray:self.local_DataAry];
+//        _lineView.dataArray = [self generateDataArray:self.local_DataAry];
+        _lineView.dataArray = self.local_DataAry;
     }
     [_lineView stockFill];
 }
