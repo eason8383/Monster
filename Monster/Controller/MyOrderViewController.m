@@ -13,6 +13,7 @@
 #import "MyOrderViewModel.h"
 #import "TradeViewModel.h"
 #import "UserOrderModel.h"
+//#import "JZNavigationExtension.h"
 
 @interface MyOrderViewController ()<MyOrderViewModelDelegate,TradeViewModelDelegate>
 
@@ -39,8 +40,12 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
     UIBarButtonItem *timeFilterBtn = [[UIBarButtonItem alloc]initWithTitle:@"历史委托>" style:UIBarButtonItemStylePlain target:self action:@selector(showHistory:)];
     timeFilterBtn.tintColor = [UIColor whiteColor];
-    
+    self.navigationController.navigationBar.hidden = NO;
     [self.navigationItem setRightBarButtonItem:timeFilterBtn];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
 }
 
 - (void)showHistory:(id)sender{
@@ -49,8 +54,8 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 }
 
 - (void)homeDefaultPushController:(UIViewController*)cV{
-    cV.jz_navigationBarHidden = NO;
-    [cV setJz_navigationBarTintColor:[UIColor blackColor]];
+//    cV.jz_navigationBarHidden = NO;
+//    [cV setJz_navigationBarTintColor:[UIColor blackColor]];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     backBtn.tintColor = [UIColor whiteColor];
     [self.navigationItem setBackBarButtonItem:backBtn];
@@ -82,6 +87,8 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
+    
+    [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
     
     [self registerCells];
     

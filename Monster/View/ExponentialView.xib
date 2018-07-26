@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,12 +17,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24H涨跌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toL-hz-aAD">
-                    <rect key="frame" x="323" y="14" width="48" height="17"/>
+                    <rect key="frame" x="313" y="14" width="57" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="48" id="N06-Je-NpZ"/>
+                        <constraint firstAttribute="width" constant="57" id="N06-Je-NpZ"/>
                         <constraint firstAttribute="height" constant="17" id="Sle-PL-8Jl"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -31,29 +32,29 @@
                         <constraint firstAttribute="height" constant="15" id="FgT-Pz-d2W"/>
                         <constraint firstAttribute="width" constant="30" id="V2k-bf-81D"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMT-E8-MaC">
-                    <rect key="frame" x="232" y="14" width="36" height="17"/>
+                    <rect key="frame" x="222" y="14" width="45" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="36" id="4Zs-Md-Pyj"/>
+                        <constraint firstAttribute="width" constant="45" id="4Zs-Md-Pyj"/>
                         <constraint firstAttribute="height" constant="17" id="EkK-no-OVw"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.18823529411764706" green="0.18431372549019609" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="toL-hz-aAD" secondAttribute="trailing" constant="9" id="1gn-Lv-qBm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="toL-hz-aAD" secondAttribute="trailing" constant="10" id="1gn-Lv-qBm"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="OBI-4C-Ned" secondAttribute="bottom" constant="15" id="Cdq-tw-OSE"/>
                 <constraint firstItem="AMT-E8-MaC" firstAttribute="centerY" secondItem="toL-hz-aAD" secondAttribute="centerY" id="GwJ-Dd-Cvh"/>
                 <constraint firstItem="OBI-4C-Ned" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="KuM-OO-9dI"/>
                 <constraint firstItem="OBI-4C-Ned" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="P5L-fG-Il6"/>
-                <constraint firstItem="toL-hz-aAD" firstAttribute="leading" secondItem="AMT-E8-MaC" secondAttribute="trailing" constant="55" id="gUB-dh-AE2"/>
+                <constraint firstItem="toL-hz-aAD" firstAttribute="leading" secondItem="AMT-E8-MaC" secondAttribute="trailing" constant="46" id="gUB-dh-AE2"/>
                 <constraint firstItem="toL-hz-aAD" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="iUY-lw-IGD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -164,7 +164,7 @@
     if ([InputVerifyTool verifyMobileNo:mobNo]) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
-            [[MRWebClient sharedInstance]getVerifyCode:mobNo success:^(id response) {
+            [[MRWebClient sharedInstance]getVerifyCode:mobNo sceneCode:@"001" success:^(id response) {
                 NSDictionary *dic = response;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if ([dic objectForKey:@"success"]) {

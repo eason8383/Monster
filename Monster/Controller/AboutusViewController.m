@@ -22,7 +22,7 @@
     self.title = @"关于我们";
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
-//    [self setJz_navigationBarTintColor:[UIColor colorWithHexString:@"5040C8"]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"5543CC"]];
 }
 
 - (void)loadView{
@@ -45,10 +45,16 @@
     [_scrollView setContentSize:CGSizeMake(kScreenWidth, _height)];
 }
 
-//- (void)viewDidLayoutSubviews{
-//    [super viewDidLayoutSubviews];
-//
-//}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"212025"]];
+
+}
 
 - (void)setupImgs:(UIImageView*)img{
     [img setFrame:CGRectMake(0, _height, kScreenWidth, img.height)];

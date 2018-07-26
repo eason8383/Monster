@@ -24,12 +24,12 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+121.17%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYn-dd-g7B">
-                    <rect key="frame" x="2" y="2" width="51" height="17"/>
+                    <rect key="frame" x="2" y="2" width="52" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="51" id="Px0-4a-AoD"/>
+                        <constraint firstAttribute="width" constant="52" id="Px0-4a-AoD"/>
                         <constraint firstAttribute="height" constant="17" id="qQP-uS-tlM"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>

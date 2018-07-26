@@ -7,6 +7,7 @@
 //
 
 #import "MRBaseTableViewController.h"
+//#import "JZNavigationExtension.h"
 
 @interface MRBaseTableViewController ()
 
@@ -23,7 +24,7 @@
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
-    self.jz_navigationInteractivePopGestureEnabled = true;
+//    self.jz_navigationInteractivePopGestureEnabled = true;
     
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     backBtn.tintColor = [UIColor whiteColor];

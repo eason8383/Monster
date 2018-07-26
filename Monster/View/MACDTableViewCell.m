@@ -56,10 +56,11 @@
         _lineView.backgroundColor = [UIColor clearColor];
         _lineView.lineColor = [UIColor clearColor];
         
+//        _lineView.fillColor = [UIColor clearColor];
         _lineView.fillColor = [UIColor colorWithHexString:@"6241D1"];
         _lineView.isFillColor = YES;
         _lineView.useAnimation = NO;
-        
+//        [_lineView setBackgroundColor:[UIColor blackColor]];
         [_kLineView addSubview:_lineView];
         _lineView.translatesAutoresizingMaskIntoConstraints = NO;
         [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {

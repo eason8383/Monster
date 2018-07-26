@@ -9,7 +9,7 @@
 #import "GoogleAuthVerifyVC.h"
 #import "GoogleViewModel.h"
 
-@interface GoogleAuthVerifyVC () <GoogleViewModelDelegate>
+@interface GoogleAuthVerifyVC () <GoogleViewModelDelegate,UITextFieldDelegate>
 
 @property(nonatomic,strong)GoogleViewModel *googleViewModel;
 @property(nonatomic,strong)IBOutlet UITextField *googleAuth_Field;
@@ -46,6 +46,8 @@
 
 - (void)identitySuccess:(NSDictionary *)identityInfo{
     [[VWProgressHUD shareInstance]dismiss];
+    
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGINVERIFYWITHGOOGLEAUTH];
     [[NSNotificationCenter defaultCenter]postNotificationName:PASSTHEAUTH object:nil];
 }
 
@@ -62,12 +64,43 @@
 
 - (IBAction)submit:(id)sender{
     [[VWProgressHUD shareInstance]showLoading];
+    
     [_googleViewModel identityAuthCode:_googleAuth_Field.text];
+    [_googleAuth_Field resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    [textField setText:text];
+    
+    if (_googleAuth_Field.text.length > 0) {
+        [self isAuthReadyToGo:YES];
+    } else {
+        [self isAuthReadyToGo:NO];
+    }
+    
+    return NO;
+}
+
+- (void)isAuthReadyToGo:(BOOL)isGoodToGo{
+    
+    if (isGoodToGo) {
+        
+        _commit_Btn.backgroundColor = [UIColor colorWithHexString:@"402DDB"];
+        _commit_Btn.alpha = 1.0;
+        _commit_Btn.layer.borderColor = [UIColor colorWithHexString:@"402DDB"].CGColor;
+    } else {
+        _commit_Btn.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.6].CGColor;;
+        _commit_Btn.backgroundColor = [UIColor clearColor];
+        _commit_Btn.alpha = 0.6;
+    }
+    _commit_Btn.enabled = isGoodToGo;
 }
 
 

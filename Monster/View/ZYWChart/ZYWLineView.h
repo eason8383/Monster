@@ -12,6 +12,11 @@
 
 - (void)returnPrice:(double)price;
 
+- (void)touchesBegen;
+- (void)touchesEnd;
+
+- (void)dragingWithDuration:(float)duration;
+
 @end
 
 @interface ZYWLineView : ZYWBaseChartView
@@ -23,6 +28,7 @@
 @property (nonatomic,assign) BOOL isFillColor;
 @property (nonatomic,assign) BOOL useAnimation;
 @property (nonatomic,assign) BOOL hasDraggableLine;
+@property (nonatomic,assign) BOOL lightEffect;
 
 
 - (void)stockFill;

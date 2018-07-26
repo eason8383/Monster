@@ -13,61 +13,61 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CoinTrendsCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="46.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="66.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MON/ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eB0-oP-AIa">
-                        <rect key="frame" x="19" y="14" width="60" height="17"/>
+                        <rect key="frame" x="12" y="23.5" width="68" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="97v-Hj-Zup"/>
-                            <constraint firstAttribute="height" constant="17" id="JLQ-xU-rcA"/>
+                            <constraint firstAttribute="height" constant="20" id="das-7g-BOs"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
+                        <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9o1-zC-Wy1">
-                        <rect key="frame" x="124" y="12.5" width="57" height="20"/>
+                        <rect key="frame" x="95" y="16" width="130" height="35"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="2q3-p1-TaE"/>
+                            <constraint firstAttribute="height" constant="35" id="9eH-Rl-MlT"/>
+                            <constraint firstAttribute="width" constant="130" id="OdN-Ce-inp"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fya-1U-30e">
-                        <rect key="frame" x="0.0" y="45.5" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="65.5" width="320" height="1"/>
                         <color key="backgroundColor" red="0.18823529411764706" green="0.18431372549019609" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="3kC-m4-Pgx"/>
+                            <constraint firstAttribute="height" constant="1" id="2G6-FW-gFA"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ME-MN-g4h">
-                        <rect key="frame" x="240" y="13.5" width="60" height="20"/>
+                        <rect key="frame" x="248" y="22.5" width="60" height="20"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="QKA-5c-UkU"/>
-                            <constraint firstAttribute="height" constant="20" id="peZ-cP-bLA"/>
+                            <constraint firstAttribute="height" constant="20" id="ACD-0H-SSK"/>
+                            <constraint firstAttribute="width" constant="60" id="dmb-wh-m0z"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="0.12941176470588237" green="0.12549019607843137" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="9o1-zC-Wy1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12.5" id="8aa-u7-MHn"/>
-                    <constraint firstItem="3ME-MN-g4h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13.5" id="9Th-pc-M5r"/>
-                    <constraint firstItem="3ME-MN-g4h" firstAttribute="leading" secondItem="9o1-zC-Wy1" secondAttribute="trailing" constant="59" id="A0m-i3-OLI"/>
-                    <constraint firstItem="9o1-zC-Wy1" firstAttribute="leading" secondItem="eB0-oP-AIa" secondAttribute="trailing" constant="45" id="Jra-ad-MDm"/>
-                    <constraint firstItem="fya-1U-30e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KQS-Kw-qUM"/>
-                    <constraint firstAttribute="bottom" secondItem="fya-1U-30e" secondAttribute="bottom" id="TJp-50-WW9"/>
-                    <constraint firstAttribute="trailing" secondItem="fya-1U-30e" secondAttribute="trailing" id="dmS-Fe-m3z"/>
-                    <constraint firstItem="fya-1U-30e" firstAttribute="top" secondItem="eB0-oP-AIa" secondAttribute="bottom" constant="14.5" id="hzn-ye-nz3"/>
-                    <constraint firstItem="eB0-oP-AIa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="19" id="inc-cu-lpg"/>
-                    <constraint firstItem="eB0-oP-AIa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="udn-G5-LSt"/>
-                    <constraint firstAttribute="trailing" secondItem="3ME-MN-g4h" secondAttribute="trailing" constant="20" id="vLP-hD-3mQ"/>
+                    <constraint firstAttribute="bottom" secondItem="eB0-oP-AIa" secondAttribute="bottom" constant="23" id="6JR-bx-lly"/>
+                    <constraint firstItem="eB0-oP-AIa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23.5" id="F2E-UF-kbK"/>
+                    <constraint firstItem="eB0-oP-AIa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kx3-tr-FEF"/>
+                    <constraint firstItem="9o1-zC-Wy1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NaH-7g-01i"/>
+                    <constraint firstItem="9o1-zC-Wy1" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="PcH-wk-5hm"/>
+                    <constraint firstItem="eB0-oP-AIa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="V0I-2L-OgN"/>
+                    <constraint firstItem="fya-1U-30e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aKq-58-MPI"/>
+                    <constraint firstAttribute="trailing" secondItem="fya-1U-30e" secondAttribute="trailing" id="lMC-cd-Qyp"/>
+                    <constraint firstAttribute="bottom" secondItem="fya-1U-30e" secondAttribute="bottom" id="r3a-Xo-nPA"/>
+                    <constraint firstAttribute="trailing" secondItem="3ME-MN-g4h" secondAttribute="trailing" constant="12" id="vUc-wP-1W1"/>
+                    <constraint firstItem="3ME-MN-g4h" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ziR-1E-xIr"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="LTf-rT-ClG"/>
             <connections>
                 <outlet property="coinTitleLabel" destination="eB0-oP-AIa" id="0sm-xz-FwH"/>
                 <outlet property="highLowView" destination="3ME-MN-g4h" id="PGW-sC-Kv3"/>

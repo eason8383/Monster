@@ -19,9 +19,10 @@
 #import "SecurityViewController.h"
 #import "SetupViewController.h"
 #import "AboutusViewController.h"
+#import "ReflectionViewController.h"
 #import "HomeViewModel.h"
 #import "CoinPairModel.h"
-
+//#import "JZNavigationExtension.h"
 @interface HomePageViewController () <RNFrostedSidebarDelegate,HomeModelDelegate>
 
 @property(nonatomic,strong)MarketViewController *mVC;
@@ -43,10 +44,10 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     
     [super viewWillAppear:animated];
 
-    NSLog(@"Previous visible view controller is %@", self.navigationController.jz_previousVisibleViewController);
+//    NSLog(@"Previous visible view controller is %@", self.navigationController.jz_previousVisibleViewController);
     
     [_homeModel getData:100];
-    
+    self.navigationController.navigationBar.hidden = YES;
     _updatTimer = [NSTimer scheduledTimerWithTimeInterval:60
                                                   repeats:YES block:^(NSTimer *timer){
                                                       [self.homeModel getData:1];
@@ -55,11 +56,12 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (self.navigationController.jz_operation == UINavigationControllerOperationPop) {
-        NSLog(@"Controller will be poped.");
-    } else if (self.navigationController.jz_operation == UINavigationControllerOperationPush) {
-        NSLog(@"Controller will push to another.");
-    }
+//    if (self.navigationController.jz_operation == UINavigationControllerOperationPop) {
+//        NSLog(@"Controller will be poped.");
+//    } else if (self.navigationController.jz_operation == UINavigationControllerOperationPush) {
+//        NSLog(@"Controller will push to another.");
+//    }
+    NSLog(@"看看吧");
     [_updatTimer invalidate];
     _updatTimer = nil;
 }
@@ -67,11 +69,11 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.jz_navigationBarHidden = YES;
-    
     [self initial];
     
     [[VWProgressHUD shareInstance]showLoading];
+    
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"212025"]];
     
 }
 
@@ -175,7 +177,6 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         coVC.multiple = [_homeModel getMultipleWithCurrentCoinId:model.subCoinId];
         coVC.isHighLowKLine = (indexPath.row == 1)?NO:YES;
         
-        coVC.jz_navigationBarBackgroundHidden = true;
         [self homeDefaultPushController:coVC withBackTitle:[NSString stringWithFormat:@"%@/%@",model.mainCoinId,model.subCoinId]];
     }
 }
@@ -222,6 +223,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         case 2: {
             IdentityViewController *idVc = [[IdentityViewController alloc]initWithNibName:@"IdentityViewController" bundle:nil];
             cV = idVc;
+            
             break;
         }
         case 3: {
@@ -231,17 +233,22 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         }
         case 4: {
             AboutusViewController *abVc= [[AboutusViewController alloc]initWithNibName:@"AboutusViewController" bundle:nil];
-            abVc.jz_navigationBarBackgroundHidden = YES;
+
             cV = abVc;
             
             break;
         }
         case 5: {
+            ReflectionViewController *reVc = [[ReflectionViewController alloc]initWithNibName:@"ReflectionViewController" bundle:nil];
+            cV = reVc;
+        }
+            break;
+        case 6: {
             SetupViewController *siVc = [[SetupViewController alloc]initWithNibName:@"SetupViewController" bundle:nil];
             cV = siVc;
             break;
         }
-        case 6: {
+        case 7:{
             //Logout
             [[NSNotificationCenter defaultCenter] postNotificationName:DOLOGOUT object:nil];
             return;
@@ -256,11 +263,12 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 }
 
 - (void)homeDefaultPushController:(UIViewController*)cV withBackTitle:(NSString*)title{
-    cV.jz_navigationBarHidden = NO;
-    [cV setJz_navigationBarTintColor:[UIColor blackColor]];
+//    cV.jz_navigationBarHidden = NO;
+//    [cV setJz_navigationBarTintColor:[UIColor blackColor]];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:title style:UIBarButtonItemStylePlain target:nil action:nil];
     backBtn.tintColor = [UIColor whiteColor];
     [self.navigationItem setBackBarButtonItem:backBtn];
+    self.navigationController.navigationBar.hidden = NO;
     [self.navigationController pushViewController:cV animated:YES];
 }
 

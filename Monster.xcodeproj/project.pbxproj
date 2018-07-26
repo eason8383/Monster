@@ -38,6 +38,8 @@
 		9B4F1DB220EF583E00DEF626 /* CapitalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F1DB020EF583E00DEF626 /* CapitalViewController.xib */; };
 		9B4F1DB620EF6B9700DEF626 /* WithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1DB420EF6B9700DEF626 /* WithdrawViewController.m */; };
 		9B4F1DB720EF6B9700DEF626 /* WithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F1DB520EF6B9700DEF626 /* WithdrawViewController.xib */; };
+		9B7703422102C47D00F64E85 /* IdentityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7703412102C47D00F64E85 /* IdentityViewModel.m */; };
+		9B7703452102D91F00F64E85 /* updatePswViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7703442102D91F00F64E85 /* updatePswViewModel.m */; };
 		9B7EEE8720E9C39000DF88B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EEE8620E9C39000DF88B4 /* AppDelegate.m */; };
 		9B7EEE8A20E9C39000DF88B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EEE8920E9C39000DF88B4 /* ViewController.m */; };
 		9B7EEE8D20E9C39000DF88B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EEE8B20E9C39000DF88B4 /* Main.storyboard */; };
@@ -66,10 +68,6 @@
 		9BA85A9820F0AC3F00C096B0 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA85A9620F0AC3F00C096B0 /* OrderDetailViewController.m */; };
 		9BA85A9920F0AC3F00C096B0 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA85A9720F0AC3F00C096B0 /* OrderDetailViewController.xib */; };
 		9BB945D820EC63C400B8D7BE /* NavigtionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB945D720EC63C400B8D7BE /* NavigtionController.m */; };
-		9BB945DF20EC6B2600B8D7BE /* UINavigationController+JZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB945DA20EC6B2500B8D7BE /* UINavigationController+JZExtension.m */; };
-		9BB945E020EC6B2600B8D7BE /* UIViewController+JZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB945DD20EC6B2600B8D7BE /* UIViewController+JZExtension.m */; };
-		9BB945E620EC6B5300B8D7BE /* _JZ-objc-internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB945E320EC6B5300B8D7BE /* _JZ-objc-internal.m */; };
-		9BB945E720EC6B5300B8D7BE /* _JZNavigationDelegating.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB945E420EC6B5300B8D7BE /* _JZNavigationDelegating.m */; };
 		9BB945EB20EC6E8300B8D7BE /* HeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB945E920EC6E8300B8D7BE /* HeadTableViewCell.m */; };
 		9BB945EC20EC6E8300B8D7BE /* HeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB945EA20EC6E8300B8D7BE /* HeadTableViewCell.xib */; };
 		9BB945F120EC6ED200B8D7BE /* MainPageHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB945F020EC6ED200B8D7BE /* MainPageHeadView.xib */; };
@@ -107,10 +105,20 @@
 		D735D7B920F0BECC007E2B7C /* BindingMailBoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7B720F0BECC007E2B7C /* BindingMailBoxViewController.xib */; };
 		D735D7BD20F0C17D007E2B7C /* SetFCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D735D7BB20F0C17D007E2B7C /* SetFCodeViewController.m */; };
 		D735D7BE20F0C17D007E2B7C /* SetFCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D735D7BC20F0C17D007E2B7C /* SetFCodeViewController.xib */; };
+		D73B24E5210818A50045E77B /* ReflectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73B24E3210818A50045E77B /* ReflectionViewController.m */; };
+		D73B24E6210818A50045E77B /* ReflectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73B24E4210818A50045E77B /* ReflectionViewController.xib */; };
+		D73B24E9210823F00045E77B /* UITextView+ZWPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = D73B24E8210823F00045E77B /* UITextView+ZWPlaceHolder.m */; };
+		D741B5592109BB4C00451FF0 /* FeedbackViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D741B5582109BB4C00451FF0 /* FeedbackViewModel.m */; };
 		D745E25520F74E9B0001EA11 /* TradeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25420F74E9B0001EA11 /* TradeViewModel.m */; };
 		D745E25820F74EE40001EA11 /* MRTradeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25720F74EE40001EA11 /* MRTradeClient.m */; };
 		D745E25B20F750960001EA11 /* MRUserInfoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25A20F750960001EA11 /* MRUserInfoClient.m */; };
 		D745E25E20F757D20001EA11 /* TrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25D20F757D20001EA11 /* TrandModel.m */; };
+		D75939192106E256004E75FF /* CAWViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D75939182106E256004E75FF /* CAWViewModel.m */; };
+		D759391D21072938004E75FF /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D759391A21072935004E75FF /* ScanViewController.xib */; };
+		D759391E21072938004E75FF /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D759391B21072936004E75FF /* ScanViewController.m */; };
+		D7593921210729D9004E75FF /* SDScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7593920210729D9004E75FF /* SDScanView.m */; };
+		D75939252107358B004E75FF /* InstructionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75939232107358B004E75FF /* InstructionViewController.m */; };
+		D75939262107358B004E75FF /* InstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D75939242107358B004E75FF /* InstructionViewController.xib */; };
 		D759EE6E20FF2131001A2871 /* MRBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D759EE6D20FF2131001A2871 /* MRBaseTableViewController.m */; };
 		D773385320FC6D430039F924 /* ChoseCoinTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D773385120FC6D430039F924 /* ChoseCoinTableViewCell.m */; };
 		D773385420FC6D430039F924 /* ChoseCoinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D773385220FC6D430039F924 /* ChoseCoinTableViewCell.xib */; };
@@ -122,6 +130,8 @@
 		D7894B8520F9C67500BC1703 /* MRMyOrderClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D7894B8420F9C67500BC1703 /* MRMyOrderClient.m */; };
 		D7894B8820F9CA6600BC1703 /* MyOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7894B8720F9CA6600BC1703 /* MyOrderViewModel.m */; };
 		D7894B8B20F9F3AA00BC1703 /* SGLoadMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7894B8920F9F3A900BC1703 /* SGLoadMoreView.m */; };
+		D79E764421023FDE00EB3399 /* MRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D79E764321023FDE00EB3399 /* MRImagePickerController.m */; };
+		D79E76472105C7AE00EB3399 /* fifawelcome1.3.woff.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D79E76462105C7AE00EB3399 /* fifawelcome1.3.woff.ttf */; };
 		D7A2508D20FDB81700E4846D /* GoogleAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A2508B20FDB81700E4846D /* GoogleAuthViewController.m */; };
 		D7A2508E20FDB81700E4846D /* GoogleAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A2508C20FDB81700E4846D /* GoogleAuthViewController.xib */; };
 		D7A2509120FDB83000E4846D /* GoogleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A2509020FDB83000E4846D /* GoogleViewModel.m */; };
@@ -215,6 +225,10 @@
 		9B4F1DB320EF6B9700DEF626 /* WithdrawViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawViewController.h; sourceTree = "<group>"; };
 		9B4F1DB420EF6B9700DEF626 /* WithdrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawViewController.m; sourceTree = "<group>"; };
 		9B4F1DB520EF6B9700DEF626 /* WithdrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawViewController.xib; sourceTree = "<group>"; };
+		9B7703402102C47D00F64E85 /* IdentityViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdentityViewModel.h; sourceTree = "<group>"; };
+		9B7703412102C47D00F64E85 /* IdentityViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IdentityViewModel.m; sourceTree = "<group>"; };
+		9B7703432102D91F00F64E85 /* updatePswViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = updatePswViewModel.h; sourceTree = "<group>"; };
+		9B7703442102D91F00F64E85 /* updatePswViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = updatePswViewModel.m; sourceTree = "<group>"; };
 		9B7EEE8220E9C39000DF88B4 /* Monster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7EEE8520E9C39000DF88B4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9B7EEE8620E9C39000DF88B4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -269,15 +283,6 @@
 		9BA85A9720F0AC3F00C096B0 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
 		9BB945D620EC63C400B8D7BE /* NavigtionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigtionController.h; sourceTree = "<group>"; };
 		9BB945D720EC63C400B8D7BE /* NavigtionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigtionController.m; sourceTree = "<group>"; };
-		9BB945DA20EC6B2500B8D7BE /* UINavigationController+JZExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+JZExtension.m"; sourceTree = "<group>"; };
-		9BB945DB20EC6B2600B8D7BE /* UIViewController+JZExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JZExtension.h"; sourceTree = "<group>"; };
-		9BB945DC20EC6B2600B8D7BE /* JZNavigationExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZNavigationExtension.h; sourceTree = "<group>"; };
-		9BB945DD20EC6B2600B8D7BE /* UIViewController+JZExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JZExtension.m"; sourceTree = "<group>"; };
-		9BB945DE20EC6B2600B8D7BE /* UINavigationController+JZExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+JZExtension.h"; sourceTree = "<group>"; };
-		9BB945E220EC6B5300B8D7BE /* _JZNavigationDelegating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _JZNavigationDelegating.h; sourceTree = "<group>"; };
-		9BB945E320EC6B5300B8D7BE /* _JZ-objc-internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_JZ-objc-internal.m"; sourceTree = "<group>"; };
-		9BB945E420EC6B5300B8D7BE /* _JZNavigationDelegating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _JZNavigationDelegating.m; sourceTree = "<group>"; };
-		9BB945E520EC6B5300B8D7BE /* _JZ-objc-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_JZ-objc-internal.h"; sourceTree = "<group>"; };
 		9BB945E820EC6E8300B8D7BE /* HeadTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadTableViewCell.h; sourceTree = "<group>"; };
 		9BB945E920EC6E8300B8D7BE /* HeadTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadTableViewCell.m; sourceTree = "<group>"; };
 		9BB945EA20EC6E8300B8D7BE /* HeadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadTableViewCell.xib; sourceTree = "<group>"; };
@@ -338,6 +343,13 @@
 		D735D7BA20F0C17D007E2B7C /* SetFCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetFCodeViewController.h; sourceTree = "<group>"; };
 		D735D7BB20F0C17D007E2B7C /* SetFCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetFCodeViewController.m; sourceTree = "<group>"; };
 		D735D7BC20F0C17D007E2B7C /* SetFCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetFCodeViewController.xib; sourceTree = "<group>"; };
+		D73B24E2210818A50045E77B /* ReflectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReflectionViewController.h; sourceTree = "<group>"; };
+		D73B24E3210818A50045E77B /* ReflectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReflectionViewController.m; sourceTree = "<group>"; };
+		D73B24E4210818A50045E77B /* ReflectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReflectionViewController.xib; sourceTree = "<group>"; };
+		D73B24E7210823EF0045E77B /* UITextView+ZWPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+ZWPlaceHolder.h"; sourceTree = "<group>"; };
+		D73B24E8210823F00045E77B /* UITextView+ZWPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+ZWPlaceHolder.m"; sourceTree = "<group>"; };
+		D741B5572109BB4C00451FF0 /* FeedbackViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackViewModel.h; sourceTree = "<group>"; };
+		D741B5582109BB4C00451FF0 /* FeedbackViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewModel.m; sourceTree = "<group>"; };
 		D745E25320F74E9B0001EA11 /* TradeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TradeViewModel.h; sourceTree = "<group>"; };
 		D745E25420F74E9B0001EA11 /* TradeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TradeViewModel.m; sourceTree = "<group>"; };
 		D745E25620F74EE40001EA11 /* MRTradeClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRTradeClient.h; sourceTree = "<group>"; };
@@ -346,6 +358,16 @@
 		D745E25A20F750960001EA11 /* MRUserInfoClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRUserInfoClient.m; sourceTree = "<group>"; };
 		D745E25C20F757D20001EA11 /* TrandModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrandModel.h; sourceTree = "<group>"; };
 		D745E25D20F757D20001EA11 /* TrandModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrandModel.m; sourceTree = "<group>"; };
+		D75939172106E256004E75FF /* CAWViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAWViewModel.h; sourceTree = "<group>"; };
+		D75939182106E256004E75FF /* CAWViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAWViewModel.m; sourceTree = "<group>"; };
+		D759391A21072935004E75FF /* ScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
+		D759391B21072936004E75FF /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		D759391C21072938004E75FF /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		D759391F210729D8004E75FF /* SDScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDScanView.h; sourceTree = "<group>"; };
+		D7593920210729D9004E75FF /* SDScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDScanView.m; sourceTree = "<group>"; };
+		D75939222107358B004E75FF /* InstructionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstructionViewController.h; sourceTree = "<group>"; };
+		D75939232107358B004E75FF /* InstructionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstructionViewController.m; sourceTree = "<group>"; };
+		D75939242107358B004E75FF /* InstructionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstructionViewController.xib; sourceTree = "<group>"; };
 		D759EE6C20FF2131001A2871 /* MRBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRBaseTableViewController.h; sourceTree = "<group>"; };
 		D759EE6D20FF2131001A2871 /* MRBaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRBaseTableViewController.m; sourceTree = "<group>"; };
 		D773385020FC6D430039F924 /* ChoseCoinTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoseCoinTableViewCell.h; sourceTree = "<group>"; };
@@ -367,6 +389,9 @@
 		D7894B8720F9CA6600BC1703 /* MyOrderViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewModel.m; sourceTree = "<group>"; };
 		D7894B8920F9F3A900BC1703 /* SGLoadMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoadMoreView.m; sourceTree = "<group>"; };
 		D7894B8A20F9F3AA00BC1703 /* SGLoadMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoadMoreView.h; sourceTree = "<group>"; };
+		D79E764221023FDE00EB3399 /* MRImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRImagePickerController.h; sourceTree = "<group>"; };
+		D79E764321023FDE00EB3399 /* MRImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRImagePickerController.m; sourceTree = "<group>"; };
+		D79E76462105C7AE00EB3399 /* fifawelcome1.3.woff.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fifawelcome1.3.woff.ttf; sourceTree = "<group>"; };
 		D7A2508A20FDB81700E4846D /* GoogleAuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleAuthViewController.h; sourceTree = "<group>"; };
 		D7A2508B20FDB81700E4846D /* GoogleAuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleAuthViewController.m; sourceTree = "<group>"; };
 		D7A2508C20FDB81700E4846D /* GoogleAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleAuthViewController.xib; sourceTree = "<group>"; };
@@ -529,6 +554,8 @@
 			isa = PBXGroup;
 			children = (
 				D7CAB0CB20F308FB00B8B99B /* ZYWChart */,
+				D759391F210729D8004E75FF /* SDScanView.h */,
+				D7593920210729D9004E75FF /* SDScanView.m */,
 				9B87074820EB639800156E39 /* SliderMenuView.h */,
 				9B87074920EB639900156E39 /* SliderMenuView.m */,
 				9B87074A20EB639900156E39 /* SliderMenuView.xib */,
@@ -625,6 +652,9 @@
 				9B4F1DA420EF57CF00DEF626 /* ChargeViewController.h */,
 				9B4F1DA520EF57CF00DEF626 /* ChargeViewController.m */,
 				9B4F1DA620EF57CF00DEF626 /* ChargeViewController.xib */,
+				D759391C21072938004E75FF /* ScanViewController.h */,
+				D759391B21072936004E75FF /* ScanViewController.m */,
+				D759391A21072935004E75FF /* ScanViewController.xib */,
 				9B4F1DAE20EF583E00DEF626 /* CapitalViewController.h */,
 				9B4F1DAF20EF583E00DEF626 /* CapitalViewController.m */,
 				9B4F1DB020EF583E00DEF626 /* CapitalViewController.xib */,
@@ -657,6 +687,14 @@
 				D7A2509A20FDD0CF00E4846D /* GoogleAuthVerifyVC.xib */,
 				D759EE6C20FF2131001A2871 /* MRBaseTableViewController.h */,
 				D759EE6D20FF2131001A2871 /* MRBaseTableViewController.m */,
+				D79E764221023FDE00EB3399 /* MRImagePickerController.h */,
+				D79E764321023FDE00EB3399 /* MRImagePickerController.m */,
+				D75939222107358B004E75FF /* InstructionViewController.h */,
+				D75939232107358B004E75FF /* InstructionViewController.m */,
+				D75939242107358B004E75FF /* InstructionViewController.xib */,
+				D73B24E2210818A50045E77B /* ReflectionViewController.h */,
+				D73B24E3210818A50045E77B /* ReflectionViewController.m */,
+				D73B24E4210818A50045E77B /* ReflectionViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -685,7 +723,6 @@
 		9B7EEEC520EA27A300DF88B4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				9BB945D920EC6AFB00B8D7BE /* JZNavigationExtension */,
 				9BD78A1320EB1859005CB088 /* Common.h */,
 				9B7EEF1220EA322E00DF88B4 /* JSONKit.h */,
 				9B7EEF1120EA322E00DF88B4 /* JSONKit.m */,
@@ -699,6 +736,8 @@
 				9B87074320EB4BAC00156E39 /* InputVerifyTool.m */,
 				9B87074520EB60A900156E39 /* RNFrostedSidebar.h */,
 				9B87074620EB60AA00156E39 /* RNFrostedSidebar.m */,
+				D73B24E7210823EF0045E77B /* UITextView+ZWPlaceHolder.h */,
+				D73B24E8210823F00045E77B /* UITextView+ZWPlaceHolder.m */,
 				D7CAB0F020F30A1C00B8B99B /* UIBezierPath+Draw.h */,
 				D7CAB0EE20F30A1C00B8B99B /* UIBezierPath+Draw.m */,
 				D7CAB0ED20F30A1C00B8B99B /* UIView+Extension.h */,
@@ -716,32 +755,9 @@
 				D7D062B220F34D2F001ABA16 /* greenGrid.gif */,
 				D7D062B320F34D30001ABA16 /* purpleGrid.gif */,
 				D7D062B420F34D30001ABA16 /* redGrid.gif */,
+				D79E76462105C7AE00EB3399 /* fifawelcome1.3.woff.ttf */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9BB945D920EC6AFB00B8D7BE /* JZNavigationExtension */ = {
-			isa = PBXGroup;
-			children = (
-				9BB945E120EC6B3F00B8D7BE /* Private */,
-				9BB945DC20EC6B2600B8D7BE /* JZNavigationExtension.h */,
-				9BB945DE20EC6B2600B8D7BE /* UINavigationController+JZExtension.h */,
-				9BB945DA20EC6B2500B8D7BE /* UINavigationController+JZExtension.m */,
-				9BB945DB20EC6B2600B8D7BE /* UIViewController+JZExtension.h */,
-				9BB945DD20EC6B2600B8D7BE /* UIViewController+JZExtension.m */,
-			);
-			path = JZNavigationExtension;
-			sourceTree = "<group>";
-		};
-		9BB945E120EC6B3F00B8D7BE /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				9BB945E220EC6B5300B8D7BE /* _JZNavigationDelegating.h */,
-				9BB945E420EC6B5300B8D7BE /* _JZNavigationDelegating.m */,
-				9BB945E520EC6B5300B8D7BE /* _JZ-objc-internal.h */,
-				9BB945E320EC6B5300B8D7BE /* _JZ-objc-internal.m */,
-			);
-			path = Private;
 			sourceTree = "<group>";
 		};
 		D7820BA520F4BBA100B01F05 /* ViewModel */ = {
@@ -759,6 +775,14 @@
 				D773385920FCA2A10039F924 /* MyAssetViewModel.m */,
 				D7A2508F20FDB83000E4846D /* GoogleViewModel.h */,
 				D7A2509020FDB83000E4846D /* GoogleViewModel.m */,
+				9B7703402102C47D00F64E85 /* IdentityViewModel.h */,
+				9B7703412102C47D00F64E85 /* IdentityViewModel.m */,
+				9B7703432102D91F00F64E85 /* updatePswViewModel.h */,
+				9B7703442102D91F00F64E85 /* updatePswViewModel.m */,
+				D75939172106E256004E75FF /* CAWViewModel.h */,
+				D75939182106E256004E75FF /* CAWViewModel.m */,
+				D741B5572109BB4C00451FF0 /* FeedbackViewModel.h */,
+				D741B5582109BB4C00451FF0 /* FeedbackViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -929,6 +953,7 @@
 				D71643AF2100A5CB0060AB6C /* PointOutLine.xib in Resources */,
 				9B42212020EDB9BD009D5A8A /* TradeViewController.xib in Resources */,
 				9B4F1DA320EF545F00DEF626 /* SetupViewController.xib in Resources */,
+				D73B24E6210818A50045E77B /* ReflectionViewController.xib in Resources */,
 				D735D7B920F0BECC007E2B7C /* BindingMailBoxViewController.xib in Resources */,
 				9B4F1DA820EF57CF00DEF626 /* ChargeViewController.xib in Resources */,
 				D7A2508E20FDB81700E4846D /* GoogleAuthViewController.xib in Resources */,
@@ -937,6 +962,7 @@
 				9B4F1D7B20EE328B00DEF626 /* MyAssetViewController.xib in Resources */,
 				9B4F1D8520EE3E1700DEF626 /* CoinCanUseViewCell.xib in Resources */,
 				9B42212520EDDF20009D5A8A /* TradeView.xib in Resources */,
+				D79E76472105C7AE00EB3399 /* fifawelcome1.3.woff.ttf in Resources */,
 				D7D062B520F34D30001ABA16 /* greenGrid.gif in Resources */,
 				9B87074120EB453600156E39 /* HomePageViewController.xib in Resources */,
 				D7A2509C20FDD0CF00E4846D /* GoogleAuthVerifyVC.xib in Resources */,
@@ -965,12 +991,14 @@
 				9B4F1DB220EF583E00DEF626 /* CapitalViewController.xib in Resources */,
 				9B4F1D8A20EF0ED600DEF626 /* MyOrderViewController.xib in Resources */,
 				9B9DFD3620EF7CA900E56B2F /* CapitalDetailsViewCell.xib in Resources */,
+				D759391D21072938004E75FF /* ScanViewController.xib in Resources */,
 				D71F719E20F8736E003513C5 /* HighLowLabelViewForTrade.xib in Resources */,
 				D735D7AF20F0A696007E2B7C /* OrderHistoryViewController.xib in Resources */,
 				9B42212A20EDE944009D5A8A /* EntrustNowViewCell.xib in Resources */,
 				9B7EEE8D20E9C39000DF88B4 /* Main.storyboard in Resources */,
 				9BB9461F20ECE85F00B8D7BE /* MarketTableViewCell.xib in Resources */,
 				9BA85A9920F0AC3F00C096B0 /* OrderDetailViewController.xib in Resources */,
+				D75939262107358B004E75FF /* InstructionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,14 +1103,16 @@
 			files = (
 				9B7EEEC820EA281D00DF88B4 /* MRWebClient.m in Sources */,
 				9B87074420EB4BAC00156E39 /* InputVerifyTool.m in Sources */,
+				D73B24E9210823F00045E77B /* UITextView+ZWPlaceHolder.m in Sources */,
 				9B4F1DB620EF6B9700DEF626 /* WithdrawViewController.m in Sources */,
 				9B4F1D8420EE3E1700DEF626 /* CoinCanUseViewCell.m in Sources */,
 				D71F719C20F84FF9003513C5 /* UCoinQuantity.m in Sources */,
 				D7CAB0D420F3096B00B8B99B /* ZYWLineModel.m in Sources */,
+				9B7703422102C47D00F64E85 /* IdentityViewModel.m in Sources */,
 				9B4F1D7F20EE32E600DEF626 /* MyAssetTableViewCell.m in Sources */,
-				9BB945E620EC6B5300B8D7BE /* _JZ-objc-internal.m in Sources */,
+				D79E764421023FDE00EB3399 /* MRImagePickerController.m in Sources */,
 				D7894B8B20F9F3AA00BC1703 /* SGLoadMoreView.m in Sources */,
-				9BB945E020EC6B2600B8D7BE /* UIViewController+JZExtension.m in Sources */,
+				9B7703452102D91F00F64E85 /* updatePswViewModel.m in Sources */,
 				9B7EEEC320EA030A00DF88B4 /* LoginViewController.m in Sources */,
 				9BB945D820EC63C400B8D7BE /* NavigtionController.m in Sources */,
 				D7CAB0CE20F3094000B8B99B /* ZYWLineView.m in Sources */,
@@ -1094,12 +1124,12 @@
 				9B87074720EB60AA00156E39 /* RNFrostedSidebar.m in Sources */,
 				D7820BAF20F5E1B200B01F05 /* CoinDetailViewModel.m in Sources */,
 				9B9DFD3520EF7CA900E56B2F /* CapitalDetailsViewCell.m in Sources */,
-				9BB945DF20EC6B2600B8D7BE /* UINavigationController+JZExtension.m in Sources */,
 				D7CAB0E620F309A800B8B99B /* ZYWLineUntil.m in Sources */,
 				D7A2508D20FDB81700E4846D /* GoogleAuthViewController.m in Sources */,
 				D71F71A720F8B959003513C5 /* UserOrderModel.m in Sources */,
 				D7CAB0D120F3094A00B8B99B /* ZYWBaseChartView.m in Sources */,
 				D7894B8820F9CA6600BC1703 /* MyOrderViewModel.m in Sources */,
+				D759391E21072938004E75FF /* ScanViewController.m in Sources */,
 				9B4F1DA720EF57CF00DEF626 /* ChargeViewController.m in Sources */,
 				9B87073620EB1FC700156E39 /* UIViewController+Alert.m in Sources */,
 				9BB945EB20EC6E8300B8D7BE /* HeadTableViewCell.m in Sources */,
@@ -1121,19 +1151,23 @@
 				9B87073920EB220800156E39 /* Reachability.m in Sources */,
 				9B7EEF1820EA32E400DF88B4 /* UIColor+JKRColor.m in Sources */,
 				D7A2509B20FDD0CF00E4846D /* GoogleAuthVerifyVC.m in Sources */,
+				D75939252107358B004E75FF /* InstructionViewController.m in Sources */,
 				9B4F1D8920EF0ED600DEF626 /* MyOrderViewController.m in Sources */,
 				D773385320FC6D430039F924 /* ChoseCoinTableViewCell.m in Sources */,
 				9BB9461E20ECE85F00B8D7BE /* MarketTableViewCell.m in Sources */,
+				D741B5592109BB4C00451FF0 /* FeedbackViewModel.m in Sources */,
 				D773385720FC90EE0039F924 /* UserCoinQuantity.m in Sources */,
 				D7CAB0E720F309A800B8B99B /* ZYWMacdModel.m in Sources */,
 				D745E25E20F757D20001EA11 /* TrandModel.m in Sources */,
 				D7CAB0E420F309A800B8B99B /* ZYWCandleModel.m in Sources */,
 				9B7EEE9520E9C39200DF88B4 /* main.m in Sources */,
+				D75939192106E256004E75FF /* CAWViewModel.m in Sources */,
 				D7CAB0E920F309A800B8B99B /* ZYWLineData.m in Sources */,
 				9B7EEECE20EA288400DF88B4 /* MRUserAccount.m in Sources */,
 				9B87074020EB453600156E39 /* HomePageViewController.m in Sources */,
 				9BA85A9820F0AC3F00C096B0 /* OrderDetailViewController.m in Sources */,
 				D735D7B320F0B531007E2B7C /* BindingMobileViewController.m in Sources */,
+				D7593921210729D9004E75FF /* SDScanView.m in Sources */,
 				9B7EEF1320EA322E00DF88B4 /* JSONKit.m in Sources */,
 				D7CAB0EA20F309A800B8B99B /* ZYWMacdPostionModel.m in Sources */,
 				D708218E20F48C80002AEDA2 /* AboutusViewController.m in Sources */,
@@ -1153,12 +1187,12 @@
 				9BB945F720EC7CD800B8D7BE /* ExponentialView.m in Sources */,
 				9B4F1D9D20EF525F00DEF626 /* SecurityViewController.m in Sources */,
 				D735D7B820F0BECC007E2B7C /* BindingMailBoxViewController.m in Sources */,
+				D73B24E5210818A50045E77B /* ReflectionViewController.m in Sources */,
 				D7894B8520F9C67500BC1703 /* MRMyOrderClient.m in Sources */,
 				9B4F1D7A20EE328B00DEF626 /* MyAssetViewController.m in Sources */,
 				D7820BAC20F4C50C00B01F05 /* HomeViewModel.m in Sources */,
 				9B7EEE8720E9C39000DF88B4 /* AppDelegate.m in Sources */,
 				D735D7BD20F0C17D007E2B7C /* SetFCodeViewController.m in Sources */,
-				9BB945E720EC6B5300B8D7BE /* _JZNavigationDelegating.m in Sources */,
 				9B42211F20EDB9BD009D5A8A /* TradeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

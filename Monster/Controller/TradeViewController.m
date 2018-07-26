@@ -15,6 +15,7 @@
 #import "UserOrderModel.h"
 #import "MyOrderViewController.h"
 #import "ChoseCoinTableViewCell.h"
+//#import "JZNavigationExtension.h"
 
 @interface TradeViewController () <UITableViewDelegate,UITableViewDataSource,TradeViewModelDelegate>
 
@@ -48,6 +49,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     [_tradeView addGestureRecognizer:_tapRecognizer];
     
     
+    
     [self registerCells];
 }
 
@@ -62,6 +64,12 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     backHomeBtn.tintColor = [UIColor whiteColor];
     
     [self.navigationItem setLeftBarButtonItem:backHomeBtn];
+    
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Quotation"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBack:)];
+    backBtn.tintColor = [UIColor whiteColor];
+    
+    [self.navigationItem setRightBarButtonItem:backBtn];
+    
     _tradeViewModel.delegate = self;
     [_tradeViewModel getData:_model.coinPairId];
 }
@@ -69,8 +77,8 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 - (void)loadView{
     [super loadView];
     
-    [UINavigationBar appearance].translucent = NO;
-    [UINavigationBar appearance].barTintColor = [UIColor blackColor];
+    [UINavigationBar appearance].translucent = YES;
+    [UINavigationBar appearance].barTintColor = [UIColor colorWithHexString:@"212025"];
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
@@ -91,10 +99,10 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     CGRect frame;
     float bottomFix = isiPhoneX?88:44;
     if (_coinTableView.height == 0) {
-        frame = CGRectMake(0, 54, kScreenWidth, kScreenHeight - 50 + 5 - bottomFix);
+        frame = CGRectMake(0, bottomFix + 50 +20, kScreenWidth, kScreenHeight - 50 + 5 - bottomFix);
     } else {
         
-        frame = CGRectMake(0, 54, kScreenWidth, 0);
+        frame = CGRectMake(0, bottomFix + 50 +20, kScreenWidth, 0);
     }
 //    if (self.coinTableView.height == 0) {
 //        [self.tradeView titleDownBtnAnticlockwiseRotation];
@@ -110,23 +118,23 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
                      }
                      completion:^(BOOL finished) {
                          [UIView animateWithDuration:0.1 animations:^{
-                             if (self.coinTableView.height == 0) {
-                                 [self.tradeView titleDownBtnclockwiseRotation];
-                             } else {
-                                 [self.tradeView titleDownBtnAnticlockwiseRotation];
-                             }
+                             
                          }];
                      }];
-    
 }
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    [_tradeView setFrame:CGRectMake(0, 0, kScreenWidth, 396)];
+    [_tradeView setFrame:CGRectMake(0, 60, kScreenWidth, 396)];
 }
 
 - (void)dismissBackToHome:(id)sender{
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)dismissBack:(id)sender{
+   [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)registerCells{
@@ -145,13 +153,10 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     
     MyOrderViewController *moVc = [[MyOrderViewController alloc]initWithNibName:@"MyOrderViewController" bundle:nil];
     
-    moVc.jz_navigationBarHidden = NO;
-    [moVc setJz_navigationBarTintColor:[UIColor blackColor]];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     backBtn.tintColor = [UIColor whiteColor];
     [self.navigationItem setBackBarButtonItem:backBtn];
     [self.navigationController pushViewController:moVc animated:YES];
-    
 }
 
 - (void)getDataSucess{
@@ -179,7 +184,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
         [self justShowAlert:@"信息不完整" message:@"请将价格以及数量填写完成"];
     } else {
         [[VWProgressHUD shareInstance]showLoading];
-        BOOL isBuy = _tradeView.isHighMode?YES:NO; //isHighMode = YES 就是买入
+        BOOL isBuy = _tradeView.isBuyMode?YES:NO; //isHighMode = YES 就是买入
         float coinQuantity = [_tradeView.stepperVolumField.text floatValue];
         float orderPrice = [_tradeView.stepperPriceField.text floatValue];
         
@@ -218,7 +223,6 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
         [self.tradeViewModel cancelOder:model.orderId coinPair:self.model.coinPairId];
     }];
     UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
        
     }];
     [actions addObject:okBtn];
@@ -240,8 +244,6 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    
     if (tableView == _tableView) {
         return [_tradeViewModel numberOfRowsInSection] + 1;
     } else {
@@ -260,7 +262,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
             return 100;
         }
     } else {
-        return 42;
+        return 60;
     }
 }
 
@@ -292,9 +294,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
         UIView *viewe = [[UIView alloc]init];
         return viewe;
     }
-    
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == _tableView) {
@@ -313,6 +313,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
                 enCell.cancelBtn.tag = indexPath.row - 1;
                 [enCell.cancelBtn addTarget:self action:@selector(cancelOrder:) forControlEvents:UIControlEventTouchUpInside];
                 NSArray *modelAry = [_tradeViewModel getUserOrderAry];
+                enCell.selectionStyle = UITableViewCellSelectionStyleNone;
                 UserOrderModel *tModel = [modelAry objectAtIndex:indexPath.row - 1];
                 [enCell setContent:tModel];
                 return enCell;
@@ -346,7 +347,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     if (_tableView == nil) {
         
         float bottomFix = isiPhoneX?88:44;
-        CGRect frame = CGRectMake(0, _tradeView.frame.size.height + 5, kScreenWidth, kScreenHeight - _tradeView.frame.size.height + 5 - bottomFix);
+        CGRect frame = CGRectMake(0, bottomFix + _tradeView.frame.size.height + 25, kScreenWidth, kScreenHeight - _tradeView.frame.size.height + 5 - bottomFix);
         _tableView = [[UITableView alloc] initWithFrame:frame
                                                   style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
@@ -363,8 +364,8 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 - (UITableView *)coinTableView{
     if (_coinTableView == nil) {
         
-//        float bottomFix = isiPhoneX?88:44;
-        CGRect frame = CGRectMake(0, 50, kScreenWidth, 0);
+        float bottomFix = isiPhoneX?88:44;
+        CGRect frame = CGRectMake(0, bottomFix + 50 +20, kScreenWidth, 0);
         _coinTableView = [[UITableView alloc] initWithFrame:frame
                                                   style:UITableViewStylePlain];
         _coinTableView.backgroundColor = [UIColor colorWithHexString:@"212025"];

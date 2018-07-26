@@ -22,6 +22,7 @@
 @property(nonatomic,strong)IBOutlet UIButton *aboutus_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *setup_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *logout_Btn;
+@property(nonatomic,strong)IBOutlet UIButton *reflect_Btn;
 
 
 @end

@@ -10,9 +10,6 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIViewController+Alert.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/Reachability.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/InputVerifyTool.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/JZNavigationExtension.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/UINavigationController+JZExtension.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JZNavigationExtension/UIViewController+JZExtension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWLineModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIBezierPath+Draw.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIView+Extension.h \
@@ -22,4 +19,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/TradeViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWLineView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Model/CoinPairModel.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/CoinDetailViewModel.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/CoinDetailViewModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/InstructionViewController.h

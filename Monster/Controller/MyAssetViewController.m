@@ -38,8 +38,19 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
     _myAssetViewModel = [MyAssetViewModel sharedInstance];
     _myAssetViewModel.delegate = self;
     [_myAssetViewModel getData];
-    
+    [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
     [self registerCells];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+//    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"212025"]];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+    
 }
 
 - (void)registerCells{

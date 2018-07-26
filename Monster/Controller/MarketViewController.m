@@ -34,6 +34,7 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
 - (void)initial{
     _homeModel = [HomeViewModel sharedInstance];
     _homeModel.delegate = self;
+    [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
     [self registerCells];
 }
 
@@ -45,11 +46,13 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
                                                   repeats:YES block:^(NSTimer *timer){
                                                       [self.homeModel getData:1];
                                                   }];
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [UINavigationBar appearance].translucent = YES;
+    
     [_updatTimer invalidate];
     _updatTimer = nil;
 }

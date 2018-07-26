@@ -29,6 +29,12 @@
 	</dict>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>请允许我们将照片存入您的相簿</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>请允许我们使用您的相簿照片来选取照片</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>fifawelcome1.3.woff.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

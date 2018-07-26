@@ -98,9 +98,6 @@
                         <constraint firstAttribute="width" constant="123" id="JSm-lr-S1s"/>
                         <constraint firstAttribute="height" constant="30" id="VJ0-x0-Mez"/>
                     </constraints>
-                    <connections>
-                        <action selector="tapToVerify:" destination="-1" eventType="touchUpInside" id="08l-OR-C0K"/>
-                    </connections>
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JG6-Zc-B0d">
                     <rect key="frame" x="242" y="158.5" width="123" height="30"/>

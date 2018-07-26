@@ -16,7 +16,12 @@
 @property(nonatomic,strong)IBOutlet UIButton *titleDownBtn;
 @property(nonatomic,strong)IBOutlet UITextField *stepperPriceField;
 @property(nonatomic,strong)IBOutlet UITextField *stepperVolumField;
-@property(nonatomic,assign)BOOL isHighMode;
+@property(nonatomic,strong)IBOutlet UIButton *add_stepper1Btn;
+@property(nonatomic,strong)IBOutlet UIButton *add_stepper2Btn;
+@property(nonatomic,strong)IBOutlet UIButton *minus_stepper1Btn;
+@property(nonatomic,strong)IBOutlet UIButton *minus_stepper2Btn;
+
+@property(nonatomic,assign)BOOL isBuyMode;
 @property(nonatomic,assign)float multiple;
 
 - (void)setMode:(BOOL)isHigh;

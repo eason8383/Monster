@@ -15,4 +15,20 @@
 
 - (void)getUserCoinInOutInfo:(NSString*)inOrOut Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
+- (void)updateUserPsw:(NSString*)newPsw verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
+- (void)saveUserIdentity:(NSString*)frontId backId:(NSString*)backId withId:(NSString*)withId Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
+- (void)saveEmailIdentity:(NSString*)emailAdds verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
+- (void)queryUserCoinWalletSuccess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
+- (void)monitorCoinRecharge:(NSString*)walletId coinId:(NSString*)coinId Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
+- (void)withdrawApply:(NSDictionary*)parameters Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
+- (void)queryUserInfoSuccess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
+- (void)userFeedback:(NSString*)content uploadPic:(NSString*)path Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
 @end

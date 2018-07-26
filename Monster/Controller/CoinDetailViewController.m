@@ -12,6 +12,9 @@
 #import "ZYWLineView.h"
 #import "CoinPairModel.h"
 #import "CoinDetailViewModel.h"
+//#import "JZNavigationExtension.h"
+#import "InstructionViewController.h"
+#define ANGLE_TO_RADIAN(angle) ((angle)/180.0 * M_PI)
 
 @interface CoinDetailViewController () <CoinDetailVMDelegate,ZYWLineViewDelegate>
 
@@ -45,6 +48,8 @@
 
 @property(nonatomic,strong)CoinDetailViewModel *coinDetailViewModel;
 
+@property(nonatomic,strong)CAKeyframeAnimation *anim;
+
 @end
 
 @implementation CoinDetailViewController
@@ -60,13 +65,62 @@
     _timeBtn_day.layer.cornerRadius = 4;
     _timeBtn_week.layer.cornerRadius = 4;
     _timeBtn_month.layer.cornerRadius = 4;
-    self.jz_navigationInteractivePopGestureEnabled = false;
+
     [self initial];
+    
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    // 禁用返回手势
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"212025"]];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    // 开启返回手势
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
+     self.navigationController.navigationBar.translucent = YES;
+}
+
+
 
 - (void)initial{
     _coinDetailViewModel = [CoinDetailViewModel sharedInstance];
     _coinDetailViewModel.delegate = self;
+    
+    _latestPriceLabel.layer.shadowOffset=CGSizeMake(0,0);//往x方向偏移0，y方向偏移0
+    _latestPriceLabel.layer.shadowOpacity = 0.5;//设置阴影透明度
+    _latestPriceLabel.layer.shadowColor = [UIColor colorWithHexString:_klineColorString].CGColor;//设置阴影颜色
+    _latestPriceLabel.layer.shadowRadius = 5;//设置阴影半径
+    
+    _pricePointLabel.layer.shadowOffset=CGSizeMake(0,0);//往x方向偏移0，y方向偏移0
+    _pricePointLabel.layer.shadowOpacity = 0.5;//设置阴影透明度
+    _pricePointLabel.layer.shadowColor = [UIColor colorWithHexString:_klineColorString].CGColor;//设置阴影颜色
+    _pricePointLabel.layer.shadowRadius = 5;//设置阴影半径
+    
+//    UIBarButtonItem *InfoBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(infoMemo)];
+    UIBarButtonItem *InfoBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@""] style:UIBarButtonItemStylePlain target:self action:@selector(infoMemo)];
+    [InfoBtn setTintColor:[UIColor whiteColor]];
+    [self.navigationItem setRightBarButtonItem:InfoBtn];
+}
+
+- (void)infoMemo{
+    InstructionViewController *inVc = [[InstructionViewController alloc]initWithNibName:@"InstructionViewController" bundle:nil];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:[NSString stringWithFormat:@"%@/%@",_model.mainCoinId,_model.subCoinId] style:UIBarButtonItemStylePlain target:nil action:nil];
+    backBtn.tintColor = [UIColor whiteColor];
+    [self.navigationItem setBackBarButtonItem:backBtn];
+    self.navigationController.navigationBar.hidden = NO;
+    [self.navigationController pushViewController:inVc animated:YES];
 }
 
 - (void)getDataSucess{
@@ -92,7 +146,8 @@
         [_saleBtn setBackgroundColor:[UIColor colorWithHexString:@"5100E3"]];
         
         _gridString = @"purpleGrid";
-        _klineColorString = @"6241D1";
+//        _klineColorString = @"6241D1";
+        _klineColorString = @"5100E3";
     }
     
     [self cleanAlltimeBtn];
@@ -110,6 +165,7 @@
     [self setContent];
     [self setKLine];
     [self setBottomGrid];
+    
 }
 
 - (void)setContent{
@@ -137,11 +193,11 @@
 - (void)setBottomGrid{
     if (!self.imageView1) {
         self.imageView1 = [[FLAnimatedImageView alloc] init];
-        self.imageView1.contentMode = UIViewContentModeScaleAspectFill;
+        self.imageView1.contentMode = UIViewContentModeScaleToFill;
         self.imageView1.clipsToBounds = YES;
     }
     [self.gridImag addSubview:_imageView1];
-    self.imageView1.frame = self.gridImag.bounds;
+    self.imageView1.frame = CGRectMake(0, 0, kScreenWidth, self.gridImag.bounds.size.height);
     NSURL *url1 = [[NSBundle mainBundle] URLForResource:_gridString withExtension:@"gif"];
     NSData *data1 = [NSData dataWithContentsOfURL:url1];
     FLAnimatedImage *animatedImage1 = [FLAnimatedImage animatedImageWithGIFData:data1];
@@ -154,10 +210,11 @@
     _lineView.lineWidth = 2;
     _lineView.backgroundColor = [UIColor clearColor];
     _lineView.lineColor = [UIColor colorWithHexString:_klineColorString];
-    
+
 //    _lineView.fillColor = [UIColor colorWithHexString:@"6241D1"];
     _lineView.isFillColor = NO;
-    _lineView.useAnimation = YES;
+    _lineView.lightEffect = YES;
+    _lineView.useAnimation = NO;
     _lineView.hasDraggableLine = YES;
     [_kLineView addSubview:_lineView];
     _lineView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -199,10 +256,11 @@
     TradeViewController *tdVC = [[TradeViewController alloc]initWithNibName:@"TradeViewController" bundle:nil];
     tdVC.isHigh = (btn.tag == 1)?YES:NO;
     tdVC.title = @"交易";
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tdVC];
+//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tdVC];
     tdVC.multiple = self.multiple;
     tdVC.model = self.model;
-    [self presentViewController:nav animated:YES completion:nil];
+//    [self presentViewController:nav animated:YES completion:nil];
+    [self.navigationController pushViewController:tdVC animated:YES];
 }
 
 - (IBAction)selectTimeInteval:(UIButton*)btn{
@@ -233,6 +291,84 @@
             break;
     }
     [_coinDetailViewModel getKlineList:klineType withLimit:100];
+}
+
+- (void)touchesBegen{
+    [self start];
+}
+
+- (void)touchesEnd{
+    [self end];
+}
+
+//- (void)shackDurtion:(float)durtionTime{
+//    _anim.duration = durtionTime;
+//}
+
+- (void)dragingWithDuration:(float)duration{
+    
+    NSLog(@"看這 %f",duration);
+    
+    [_latestPriceLabel.layer removeAnimationForKey:@"shake"];
+    [_pricePointLabel.layer removeAnimationForKey:@"shake"];
+    
+    _anim.duration = duration;
+    
+    [_latestPriceLabel.layer addAnimation:_anim forKey:@"shake"];
+    [_pricePointLabel.layer addAnimation:_anim forKey:@"shake"];
+        
+}
+
+- (void)start{
+    
+    //实例化
+    _anim = [CAKeyframeAnimation animation];
+    
+    //拿到动画 key
+    
+    _anim.keyPath =@"transform.rotation";
+    
+    // 动画时间
+    
+    _anim.duration = 5;
+    
+    
+    // 重复的次数
+    
+    //anim.repeatCount = 16;
+    
+    //无限次重复
+    
+    _anim.repeatCount =MAXFLOAT;
+    
+    
+    //设置抖动数值
+    
+    _anim.values =@[@(ANGLE_TO_RADIAN(1)),@(ANGLE_TO_RADIAN(4)),@(ANGLE_TO_RADIAN(1))];
+    
+    
+    // 保持最后的状态
+    
+    _anim.removedOnCompletion =NO;
+    
+    //动画的填充模式
+    
+    _anim.fillMode =kCAFillModeForwards;
+    
+    //layer层实现动画
+    
+    [_latestPriceLabel.layer addAnimation:_anim forKey:@"shake"];
+    [_pricePointLabel.layer addAnimation:_anim forKey:@"shake"];
+    
+}
+
+- (void)end {
+    
+    //图标
+    
+    [_latestPriceLabel.layer removeAnimationForKey:@"shake"];
+    [_pricePointLabel.layer removeAnimationForKey:@"shake"];
+    
 }
 
 - (void)cleanAlltimeBtn{

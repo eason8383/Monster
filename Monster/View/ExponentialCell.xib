@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,22 +20,22 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多行情&gt;&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esg-e8-O9K">
-                        <rect key="frame" x="255" y="16" width="55" height="12"/>
+                        <rect key="frame" x="243" y="16" width="69" height="12"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="55" id="j2O-uJ-auv"/>
+                            <constraint firstAttribute="width" constant="69" id="j2O-uJ-auv"/>
                             <constraint firstAttribute="height" constant="12" id="ncp-ZO-TLN"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MONSTER指数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVW-c1-mp1">
-                        <rect key="frame" x="9" y="14.5" width="84" height="15"/>
+                        <rect key="frame" x="9" y="14.5" width="102" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="84" id="EnV-LD-Rbf"/>
+                            <constraint firstAttribute="width" constant="102" id="EnV-LD-Rbf"/>
                             <constraint firstAttribute="height" constant="15" id="d41-eD-H68"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -54,7 +55,7 @@
                     <constraint firstAttribute="bottom" secondItem="uVW-c1-mp1" secondAttribute="bottom" constant="14" id="gSY-a0-SMH"/>
                     <constraint firstAttribute="trailing" secondItem="uQ0-bD-tCR" secondAttribute="trailing" id="oeT-DE-HOh"/>
                     <constraint firstItem="uVW-c1-mp1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="p3F-h8-g72"/>
-                    <constraint firstAttribute="trailing" secondItem="esg-e8-O9K" secondAttribute="trailing" constant="10" id="tqP-px-VO5"/>
+                    <constraint firstAttribute="trailing" secondItem="esg-e8-O9K" secondAttribute="trailing" constant="8" id="tqP-px-VO5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>

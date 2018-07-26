@@ -31,7 +31,7 @@
     [self initScreen];
     //默认人民币汇率
     [[NSUserDefaults standardUserDefaults]setObject:CNY forKey:DEFAULTCURRENCY];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doLogout) name:DOLOGOUT object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(doLogout) name:DOLOGOUT object:nil];
     
     return YES;
 }
@@ -46,28 +46,45 @@
     
     NSString *sessionId = [[NSUserDefaults standardUserDefaults]objectForKey:@"sessionId"];
     id userAccountObject = [[NSUserDefaults standardUserDefaults]objectForKey:@"userAccount"];
+    BOOL isGoogleAuth = [[NSUserDefaults standardUserDefaults]boolForKey:LOGINVERIFYWITHGOOGLEAUTH];
+    
     if (userAccountObject && [userAccountObject isKindOfClass:[NSData class]] && sessionId) {
-        NSData *userData = [[NSUserDefaults standardUserDefaults]objectForKey:@"userAccount"];
-        MRUserAccount *account = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-        [MRWebClient sharedInstance].userAccount = account;
-        
-        [self readyToShowMainController];
-    } else {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userAccount"];
-        sessionId = nil;
-        
-        LoginViewController *loginController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-        
-        [loginController setLoginHandler:^(NSString *clientId) {
+        MRUserAccount *userAccount = [NSKeyedUnarchiver unarchiveObjectWithData:userAccountObject];
+        if (userAccount.hasGoogleAuth) {
             
+            if (isGoogleAuth) {
+                
+                [MRWebClient sharedInstance].userAccount = userAccount;
+                [self readyToShowMainController];
+            } else {
+                [self goToLogin];
+            }
+            
+        } else {
+            [MRWebClient sharedInstance].userAccount = userAccount;
             [self readyToShowMainController];
-            
-            NSLog(@"So you get message from Login Handler:%@",clientId);
-        }];
-        _window.rootViewController = loginController;
+        }
+        
+    } else {
+        [self goToLogin];
     }
     //jump over login
 //    [self readyToShowMainController];
+}
+
+- (void)goToLogin{
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userAccount"];
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"sessionId"];
+    
+    LoginViewController *loginController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+    
+    [loginController setLoginHandler:^(NSString *clientId) {
+        
+        [self readyToShowMainController];
+        
+        NSLog(@"So you get message from Login Handler:%@",clientId);
+    }];
+    _window.rootViewController = loginController;
 }
 
 - (void)readyToShowMainController{

@@ -12,7 +12,7 @@
 #import "UCoinQuantity.h"
 #import "HighLowLabelView.h"
 
-@interface TradeView ()
+@interface TradeView () <UITextFieldDelegate>
 @property(nonatomic,strong)IBOutlet UILabel *titleLabel;
 @property(nonatomic,strong)IBOutlet UILabel *priceLabel;
 @property(nonatomic,strong)IBOutlet UILabel *subPriceLabel;
@@ -31,12 +31,6 @@
 @property(nonatomic,strong)IBOutlet UIButton *buyBtn;
 @property(nonatomic,strong)IBOutlet UIButton *saleBtn;
 
-
-
-@property(nonatomic,strong)IBOutlet UIButton *add_stepper1Btn;
-@property(nonatomic,strong)IBOutlet UIButton *add_stepper2Btn;
-@property(nonatomic,strong)IBOutlet UIButton *minus_stepper1Btn;
-@property(nonatomic,strong)IBOutlet UIButton *minus_stepper2Btn;
 @property(nonatomic,strong)IBOutlet UIButton *limitPriceBtn;
 
 @property(nonatomic,strong)IBOutlet UIButton *upBtn_price1;
@@ -60,9 +54,19 @@
 @property(nonatomic,strong)IBOutlet UILabel *down_unit4Label;
 @property(nonatomic,strong)IBOutlet UILabel *down_unit5Label;
 
+@property(nonatomic,strong)IBOutlet UIButton *quickDividBtn1;
+@property(nonatomic,strong)IBOutlet UIButton *quickDividBtn2;
+@property(nonatomic,strong)IBOutlet UIButton *quickDividBtn3;
+@property(nonatomic,strong)IBOutlet UIButton *quickDividBtn4;
+@property(nonatomic,strong)IBOutlet UIButton *quickDividBtn5;
+
+@property(nonatomic,strong)NSArray *userCoinAry;
+
 @property UITapGestureRecognizer *tapRecognizer;
 
 @property(nonatomic,strong)CoinPairModel *model;
+
+@property(nonatomic,strong)NSString *nowRate;
 
 @end
 
@@ -76,15 +80,15 @@
     _comfirmBtn.layer.cornerRadius = 4;
     
     _tagView.layer.borderWidth = 1;
-    _tagView.layer.borderColor = [UIColor whiteColor].CGColor;
+    _tagView.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.8].CGColor;
     _tagView.layer.cornerRadius = 4;
     
     _steppView1.layer.borderWidth = 1;
-    _steppView1.layer.borderColor = [UIColor whiteColor].CGColor;
+    _steppView1.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.8].CGColor;
     _steppView1.layer.cornerRadius = 4;
     
     _steppView2.layer.borderWidth = 1;
-    _steppView2.layer.borderColor = [UIColor whiteColor].CGColor;
+    _steppView2.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.8].CGColor;
     _steppView2.layer.cornerRadius = 4;
     [_stepperVolumField setValue:[UIColor colorWithWhite:1 alpha:0.6] forKeyPath:@"_placeholderLabel.textColor"];
     
@@ -93,6 +97,133 @@
     [_hlView setValue:@"+22.2%" withHigh:HighLowType_High];
     [_highLowViewBack addSubview:_hlView];
     
+    _quickDividBtn1.layer.cornerRadius = 6;
+    _quickDividBtn2.layer.cornerRadius = 6;
+    _quickDividBtn3.layer.cornerRadius = 6;
+    _quickDividBtn4.layer.cornerRadius = 6;
+    _quickDividBtn5.layer.cornerRadius = 6;
+    
+    _nowRate = @"0";
+}
+
+- (IBAction)addOrMinesPrice:(UIButton*)btn{
+    
+    float price = 0;
+    if (_stepperPriceField.text.length > 0) {
+        price = [_stepperPriceField.text floatValue];
+    }
+
+    if (btn.tag == 1) { //add;
+        price += 0.000001;
+    } else { //mines
+        price -= 0.000001;
+    }
+    
+    [_stepperPriceField setText:[NSString stringWithFormat:@"%f",price]];
+    if (self.isBuyMode) {
+        [self setUerCoinQuantity:_userCoinAry];
+        [self resetVolumField];
+    }
+}
+
+- (IBAction)addOrMinesNum:(UIButton*)btn{
+    
+    float num = 0;
+    
+    if (_stepperVolumField.text.length > 0) {
+        num = [_stepperVolumField.text floatValue];
+    }
+    
+    if (btn.tag == 1) { //add
+        
+        NSArray *tampAry = [_valueLabel.text componentsSeparatedByString:@" "];
+        NSString *result = [self decimalSubtracting:[tampAry objectAtIndex:0] with:_stepperVolumField.text];
+        if ([result floatValue] > 1) {
+            num += 1;
+            [_stepperVolumField setText:[NSString stringWithFormat:@"%f",num]];
+        }
+        _add_stepper2Btn.enabled = ([result floatValue] > 1)?YES:NO;
+        _minus_stepper2Btn.enabled = YES;
+    } else { //mines
+        if (num > 0) {
+            num -= 1;
+            [_stepperVolumField setText:[NSString stringWithFormat:@"%f",num]];
+        }
+        _add_stepper2Btn.enabled = YES;
+        _minus_stepper2Btn.enabled = (num > 0)?YES:NO;
+        
+    }
+}
+
+- (void)setDividBtns:(UIButton*)btn{
+    [btn setImage:[UIImage imageNamed:self.isBuyMode?@"btn_green":@"btn_red"] forState:UIControlStateSelected];
+    [btn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(handleButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)handleButtonPress:(UIButton*)btn{
+
+    [self setAllQuickDividBtnUnselect:_quickDividBtn1];
+    [self setAllQuickDividBtnUnselect:_quickDividBtn2];
+    [self setAllQuickDividBtnUnselect:_quickDividBtn3];
+    [self setAllQuickDividBtnUnselect:_quickDividBtn4];
+    [self setAllQuickDividBtnUnselect:_quickDividBtn5];
+    
+    if (btn.selected == NO) {
+        CGRect frame = btn.frame;
+        frame.origin.x -= 2;
+        frame.origin.y -= 2;
+        frame.size.width = 14;
+        frame.size.height = 14;
+        [btn setFrame:frame];
+        [btn setBackgroundColor:[UIColor clearColor]];
+    }
+    btn.selected = YES;
+    
+    switch (btn.tag) {
+        case 1:
+            _nowRate = @"0";
+            break;
+        case 2:
+            _nowRate = @"0.25";
+            break;
+        case 3:
+            _nowRate = @"0.5";
+            break;
+        case 4:
+            _nowRate = @"0.75";
+            break;
+        case 5:
+            _nowRate = @"1";
+            break;
+        default:
+            _nowRate = @"0";
+            break;
+    }
+    
+    _add_stepper2Btn.enabled = btn.tag == 5?NO:YES;
+    _minus_stepper2Btn.enabled = btn.tag == 1?NO:YES;
+    
+    [self resetVolumField];
+}
+
+- (void)resetVolumField{
+    NSArray *tampAry = [_valueLabel.text componentsSeparatedByString:@" "];
+    NSString *result = [self decimalMultiply:[tampAry objectAtIndex:0] with:_nowRate];
+    [_stepperVolumField setText:result];
+}
+
+- (void)setAllQuickDividBtnUnselect:(UIButton*)btn{
+    if (btn.selected == YES) {
+        CGRect frame = btn.frame;
+        frame.origin.x += 2;
+        frame.origin.y += 2;
+        frame.size.width = 12;
+        frame.size.height = 12;
+        [btn setFrame:frame];
+        [btn setBackgroundColor:[UIColor colorWithHexString:@"A9A9A9"]];
+        btn.selected = NO;
+    }
 }
 
 - (void)titleDownBtnAnticlockwiseRotation{
@@ -100,7 +231,7 @@
     //逆时针 旋转180度
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.2]; //动画时长
+    [UIView setAnimationDuration:0.5]; //动画时长
     _titleDownBtn.transform = CGAffineTransformMakeRotation(180 *M_PI / 180.0);
     CGAffineTransform transform = _titleDownBtn.transform;
     //第二个值表示横向放大的倍数，第三个值表示纵向缩小的程度
@@ -113,7 +244,7 @@
     //顺时针 旋转180度
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.2]; //动画时长
+    [UIView setAnimationDuration:0.5]; //动画时长
     _titleDownBtn.transform = CGAffineTransformMakeRotation(0*M_PI/180);
     CGAffineTransform transform = _titleDownBtn.transform;
     transform = CGAffineTransformScale(transform, 1,1);
@@ -123,6 +254,10 @@
 - (IBAction)bringPriceToField:(UIButton*)btn{
 
     [_stepperPriceField setText:btn.titleLabel.text];
+    if (self.isBuyMode) {
+        [self setUerCoinQuantity:_userCoinAry];
+        [self resetVolumField];
+    }
 }
 
 - (void)highMode{
@@ -149,31 +284,40 @@
 }
 
 - (void)setMode:(BOOL)isHigh{
-    self.isHighMode = isHigh;
-    if (self.isHighMode) {
+    self.isBuyMode = isHigh;
+    if (self.isBuyMode) {
         [self highMode];
     } else {
         [self lowMode];
     }
+    [self setDividBtns:_quickDividBtn1];
+    [self setDividBtns:_quickDividBtn2];
+    [self setDividBtns:_quickDividBtn3];
+    [self setDividBtns:_quickDividBtn4];
+    [self setDividBtns:_quickDividBtn5];
 }
 
 - (void)setContent:(CoinPairModel*)coinInfo{
     _model = coinInfo;
     [_titleLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
     [_priceLabel setText:[NSString stringWithFormat:@"%f",coinInfo.lastPrice]];
-    [_subPriceLabel setText:[NSString stringWithFormat:@"%f",coinInfo.lastPrice*self.multiple]];
+    [_subPriceLabel setText:[NSString stringWithFormat:@"≈$%f",coinInfo.lastPrice*self.multiple]];
     BOOL isGoingHigher = [self isEndPriceHigher:coinInfo];
     double result = (coinInfo.endPrice - coinInfo.beginPrice)/coinInfo.beginPrice * 100;
     if (isnan(result)) {      //isnan为系统函数
         result = 0.0;
     }
+    [_stepperVolumField setText:[NSString stringWithFormat:@"数量(%@)",coinInfo.mainCoinId]];
     [_hlView setValue:[NSString stringWithFormat:@"%@%.2f%@",isGoingHigher?@"+":@"",result,@"%"] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
     
-    if (self.isHighMode) {
+    if (self.isBuyMode) {
         [self highMode];
     } else {
         [self lowMode];
     }
+    UIButton *fBtn = [[UIButton alloc]init];
+    fBtn.tag = 0;
+    [self handleButtonPress:fBtn];
 }
 
 - (void)setPriceCrew:(NSArray*)buyAry saleAry:(NSArray*)saleAry{
@@ -248,14 +392,99 @@
 }
 
 - (void)setUerCoinQuantity:(NSArray*)userCoinAry{
-    for (UCoinQuantity *uCoin in userCoinAry) {
-        if ([uCoin.coinId isEqualToString:@"ETH"]) {
-            [_canBuyLabel setText: [NSString stringWithFormat:@"%.2f ETH",uCoin.coinQuantity]];
-        } else if ([uCoin.coinId isEqualToString:@"MR"]) {
-            [_canUseLabel setText: [NSString stringWithFormat:@"%.2f MR",uCoin.coinQuantity]];
+    _userCoinAry = [NSArray array];
+    _userCoinAry = userCoinAry;
+    if (self.isBuyMode) {
+        for (UCoinQuantity *uCoin in _userCoinAry) {
+            if ([uCoin.coinId isEqualToString:@"ETH"] && [uCoin.quantityStatusName isEqualToString:@"普通"]) {
+                [_canUseLabel setText:[NSString stringWithFormat:@"%.2f ETH",uCoin.coinQuantity]];
+                
+                NSString *canBuyResult = [self decimalDividing:[NSString stringWithFormat:@"%.6f",uCoin.coinQuantity] with:_stepperPriceField.text];
+                [_canBuyLabel setText:[NSString stringWithFormat:@"%@ %@",canBuyResult,self.model.mainCoinId]];
+                [_valueLabel setText:[NSString stringWithFormat:@"%@ %@",canBuyResult,self.model.mainCoinId]];
+            }
+        }
+        
+    } else {
+        for (UCoinQuantity *uCoin in _userCoinAry) {
+            if ([uCoin.coinId isEqualToString:@"MR"] && [uCoin.quantityStatusName isEqualToString:@"普通"]) {
+                
+                [_canBuyLabel setText:[NSString stringWithFormat:@"%.2f MR",uCoin.coinQuantity]];
+                [_valueLabel setText:[NSString stringWithFormat:@"%.2f MR",uCoin.coinQuantity]];
+            }
         }
     }
 }
+
+- (NSString*)decimalAdding:(NSString*)numStr1 with:(NSString*)numStr2{
+    NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:numStr1];
+    NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:numStr2];
+    
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+                                       decimalNumberHandlerWithRoundingMode:NSRoundUp
+                                       scale:2
+                                       raiseOnExactness:NO
+                                       raiseOnOverflow:NO
+                                       raiseOnUnderflow:NO
+                                       raiseOnDivideByZero:NO];
+    
+    NSDecimalNumber *result = [num1 decimalNumberByAdding:num2 withBehavior:roundUp];
+    
+    return [result stringValue];
+}
+
+- (NSString*)decimalSubtracting:(NSString*)numStr1 with:(NSString*)numStr2{
+    NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:numStr1];
+    NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:numStr2];
+    
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+                                       decimalNumberHandlerWithRoundingMode:NSRoundUp
+                                       scale:2
+                                       raiseOnExactness:NO
+                                       raiseOnOverflow:NO
+                                       raiseOnUnderflow:NO
+                                       raiseOnDivideByZero:NO];
+    
+    NSDecimalNumber *result = [num1 decimalNumberBySubtracting:num2 withBehavior:roundUp];
+    
+    return [result stringValue];
+}
+
+- (NSString*)decimalDividing:(NSString*)numStr1 with:(NSString*)numStr2{
+    NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:numStr1];
+    NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:numStr2];
+    
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+                                       decimalNumberHandlerWithRoundingMode:NSRoundUp
+                                       scale:2
+                                       raiseOnExactness:NO
+                                       raiseOnOverflow:NO
+                                       raiseOnUnderflow:NO
+                                       raiseOnDivideByZero:NO];
+    
+    NSDecimalNumber *result = [num1 decimalNumberByDividingBy:num2 withBehavior:roundUp];
+    
+    return [result stringValue];
+}
+
+- (NSString*)decimalMultiply:(NSString*)numStr1 with:(NSString*)numStr2{
+    NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:numStr1];
+    NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:numStr2];
+    
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+                                       decimalNumberHandlerWithRoundingMode:NSRoundUp
+                                       scale:2
+                                       raiseOnExactness:NO
+                                       raiseOnOverflow:NO
+                                       raiseOnUnderflow:NO
+                                       raiseOnDivideByZero:NO];
+    
+    NSDecimalNumber *result = [num1 decimalNumberByMultiplyingBy:num2 withBehavior:roundUp];
+    
+    return [result stringValue];
+}
+
+
 
 - (BOOL)isEndPriceHigher:(CoinPairModel*)coinInfo{
     double priceGap = coinInfo.endPrice - coinInfo.beginPrice;
@@ -267,11 +496,25 @@
     
     if (btn.tag == 1) {
         [self highMode];
-        self.isHighMode = YES;
+        self.isBuyMode = YES;
     } else {
         [self lowMode];
-        self.isHighMode = NO;
+        self.isBuyMode = NO;
     }
+    
+    [self setUerCoinQuantity:_userCoinAry];
+    [self resetVolumField];
+    [self setDividBtns:_quickDividBtn1];
+    [self setDividBtns:_quickDividBtn2];
+    [self setDividBtns:_quickDividBtn3];
+    [self setDividBtns:_quickDividBtn4];
+    [self setDividBtns:_quickDividBtn5];
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    [self setUerCoinQuantity:_userCoinAry];
+    [self resetVolumField];
+    return YES;
 }
 
 @end

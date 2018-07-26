@@ -47,15 +47,26 @@
     UIBezierPath *path = [UIBezierPath drawLine:self.modelPostionArray];
     self.lineChartLayer = [CAShapeLayer layer];
     self.lineChartLayer.path = path.CGPath;
-//    self.lineChartLayer.strokeColor = self.lineColor.CGColor;
+    
+    self.lineChartLayer.strokeColor = self.lightEffect?[UIColor whiteColor].CGColor: self.lineColor.CGColor;
     self.lineChartLayer.fillColor = [[UIColor clearColor] CGColor];
     
-    self.lineChartLayer.strokeColor = [UIColor whiteColor].CGColor;
     self.lineChartLayer.shadowColor = self.lineColor.CGColor;
     self.lineChartLayer.shadowOffset = CGSizeMake(0, 0);
     self.lineChartLayer.shadowOpacity = 1;
     
-//    self.lineChartLayer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 10, 10) cornerRadius:4].CGPath;
+    //设置阴影路径
+//    CGMutablePathRef circlePath = CGPathCreateMutable();
+//    CGPathAddEllipseInRect(circlePath, NULL, self.lineChartLayer.bounds);
+////    self.layerView2.layer.shadowPath = circlePath;
+//
+//    CGMutablePathRef squarePath = CGPathCreateMutable();
+//    CGPathAddRect(squarePath, NULL, self.lineChartLayer.bounds);
+//
+//    self.lineChartLayer.shadowPath = squarePath;
+//    CGPathRelease(circlePath);
+//    CGPathRelease(squarePath);
+    
     self.lineChartLayer.lineWidth = self.lineWidth;
     self.lineChartLayer.lineCap = kCALineCapRound;
     self.lineChartLayer.lineJoin = kCALineJoinRound;
@@ -141,12 +152,11 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PointOutLine" owner:self options:nil];
         _poLine = [nib objectAtIndex:0];
     }
-    
+    [self.delegate touchesBegen];
     UITouch *touch = [touches anyObject];
     //    // 取得触摸点在当前视图中的位置
     CGPoint current = [touch locationInView:self];
-    [_poLine setFrame:CGRectMake(current.x - 22, -44, 44, self.frame.size.height)];
-    
+    [_poLine setFrame:CGRectMake(current.x - 22, -30, 44, self.frame.size.height - 80)];
     
     [self addSubview:_poLine];
     
@@ -172,10 +182,9 @@
     return currentDateString;
 }
 
-
 // 触摸结束
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
+    [self.delegate touchesEnd];
     NSLog(@"RedView:touchesEnded");
     [_poLine removeFromSuperview];
 }
@@ -183,7 +192,7 @@
 // 触摸移动中（随着手指的移动，会多次调用该方法）
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    NSLog(@"RedView:touchesMoved");
+//    NSLog(@"RedView:touchesMoved");
     
 //    /* 设置当前view随手指移动 */
 //    // 取得一个触摸对象（对于多点触摸可能有多个对象）
@@ -206,6 +215,8 @@
         [_poLine setValue:[self converTimeFormat:lineModel.barTimeLong]];
         [self.delegate returnPrice:lineModel.endPrice];
     }
+    [self.delegate dragingWithDuration:5/offset.x];
+    
 }
 
 @end

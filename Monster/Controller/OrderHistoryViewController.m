@@ -11,6 +11,7 @@
 #import "OrderDetailViewController.h"
 #import "MyOrderViewModel.h"
 #import "SGLoadMoreView.h"
+//#import "JZNavigationExtension.h"
 
 @interface OrderHistoryViewController () <UITableViewDelegate,UITableViewDataSource,MyOrderViewModelDelegate>
 @property(nonatomic,strong)MyOrderViewModel *myOrderViewModel;
@@ -34,6 +35,9 @@ static NSString *capitalViewCellIdentifier = @"capitalDeViewCell";
 }
 
 - (void)initial{
+    
+    [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
+    
     _myOrderViewModel = [MyOrderViewModel sharedInstance];
     _myOrderViewModel.delegate = self;
     
@@ -133,8 +137,8 @@ static NSString *capitalViewCellIdentifier = @"capitalDeViewCell";
 }
 
 - (void)homeDefaultPushController:(UIViewController*)cV{
-    cV.jz_navigationBarHidden = NO;
-    [cV setJz_navigationBarTintColor:[UIColor blackColor]];
+//    cV.jz_navigationBarHidden = NO;
+//    [cV setJz_navigationBarTintColor:[UIColor blackColor]];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     backBtn.tintColor = [UIColor whiteColor];
     [self.navigationItem setBackBarButtonItem:backBtn];

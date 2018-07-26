@@ -45,18 +45,18 @@
 
 - (BOOL)jz_navigationBarHiddenWithNavigationController:(UINavigationController *)navigationController {
     
-    id jz_navigationBarHidden = objc_getAssociatedObject(self, @selector(jz_navigationBarHidden));
-    if (jz_navigationBarHidden) {
-        return [jz_navigationBarHidden boolValue];
-    }
-    
-    jz_navigationBarHidden = objc_getAssociatedObject(navigationController, @selector(jz_navigationBarHidden));
-    if (jz_navigationBarHidden) {
-        return [jz_navigationBarHidden boolValue];
-    }
-    
-    return navigationController.isNavigationBarHidden;
-    
+//    id jz_navigationBarHidden = objc_getAssociatedObject(self, @selector(jz_navigationBarHidden));
+//    if (jz_navigationBarHidden) {
+//        return [jz_navigationBarHidden boolValue];
+//    }
+//
+//    jz_navigationBarHidden = objc_getAssociatedObject(navigationController, @selector(jz_navigationBarHidden));
+//    if (jz_navigationBarHidden) {
+//        return [jz_navigationBarHidden boolValue];
+//    }
+//
+//    return navigationController.isNavigationBarHidden;
+    return YES;
 }
 
 - (void)setJz_navigationBarBackgroundAlpha:(CGFloat)jz_navigationBarBackgroundAlpha {

@@ -29,27 +29,47 @@
 #define MR_QUERYUSERCOINQUANTITY @"queryUserCoinQuantity"
 #define MR_QUERYUSERCOININOUTINFO @"queryUserCoinInOutInfo"
 
-
 #define MR_ORDERREQUEST @"orderRequest"
 #define MR_ORDERCANCEL @"orderCancelRequest"
 
 #define MR_QUERYUSERORDER @"queryUserOrder"
 
 #define MR_QUERYUSERORDERDEAL @"queryUserOrderDeal"
+#define MR_QUERYUSERINFO @"queryUserInfo"
+
 
 #define GOOGLEAUTHGEN @"googleAuthGen"
 #define GOOGLESMSVERIFY @"sendSmsVerifyCodeByUserId"
 #define GOOGLEAUTHCHECK @"googleAuthCheck"
 #define GOOGLEAUTHBIND @"googleAuthBind"
 
+#define MR_UPLOADPIC @"uploadPicture"
+
+#define MR_RESETUSERPASSWORD @"resetUserPassword"
+#define MR_TESTSMSVERIFYCODE @"testSmsVerifyCode"
+
+#define MR_SAVEIDIDENTITY @"saveUserIdentity"
+
+#define MR_QUERYUSERCOINWALLET @"queryUserCoinWallet"
+#define MR_MONITORCOINRECHARGE @"monitorCoinRecharge"
+#define MR_WITHDREWAPPLY @"withdrawApply"
 
 #define DOLOGOUT @"logout"
 
+#define LOGINVERIFYWITHGOOGLEAUTH @"loginWithGoogleAuth"
 #define PASSTHEAUTH @"passTheAuth"
+
+#define CHARGENOWCOIN @"chargeNowCoin"
+#define CHARGENOWCOIN_WITHDREW @"chargeNowCoin_withdrew"
+#define FILLWALLETADDRESS @"fillWalletAddress"
+
+#define MR_SUBMITUSERFEEDBACK @"submitUserFeedback"
 
 //保存account路径
 
 #define FilePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingString:@"userAccount.archiver"]
+
+#define FilePathOS12 @"userAccountArchiver"
 
 #define isiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
@@ -68,6 +88,7 @@
 #define MYETH @"MyAsset_myETH"
 
 #define GOOGLE_AUTH_BINDING @"googleAuthIsBinding"
+#define EMAIL_BINDING @"userEmailBinding"
 #define TRADEPASSWORD  @"hasTradePassword"
 
 

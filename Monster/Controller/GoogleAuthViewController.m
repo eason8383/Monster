@@ -9,7 +9,7 @@
 #import "GoogleAuthViewController.h"
 #import "GoogleViewModel.h"
 
-@interface GoogleAuthViewController () <GoogleViewModelDelegate>
+@interface GoogleAuthViewController () <GoogleViewModelDelegate,UITextFieldDelegate>
 
 @property (nonatomic,strong)GoogleViewModel *googleViewModel;
 
@@ -189,6 +189,34 @@
     UIImage * customScreenShot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return customScreenShot;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    [textField setText:text];
+    
+    if (_authCodeField.text.length > 0 && _verifyField.text.length > 0) {
+        [self isAuthReadyToGo:YES];
+    } else {
+        [self isAuthReadyToGo:NO];
+    }
+    
+    return NO;
+}
+
+- (void)isAuthReadyToGo:(BOOL)isGoodToGo{
+    
+    if (isGoodToGo) {
+        
+        _commitBtn.backgroundColor = [UIColor colorWithHexString:@"402DDB"];
+        _commitBtn.alpha = 1.0;
+    } else {
+        
+        _commitBtn.backgroundColor = [UIColor clearColor];
+        _commitBtn.alpha = 0.6;
+    }
+    _commitBtn.enabled = isGoodToGo;
 }
 
 @end

@@ -353,6 +353,7 @@ static RNFrostedSidebar *rn_frostedMenu;
     [self.contentView.security_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView.aboutus_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView.setup_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView.reflect_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView.logout_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView.close_Btn addTarget:self action:@selector(tapCloseBtn:) forControlEvents:UIControlEventTouchUpInside];
     

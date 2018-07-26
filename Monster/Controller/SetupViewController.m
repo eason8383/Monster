@@ -32,6 +32,11 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 - (IBAction)setDafaultCurrency:(id)sender{
     
     NSMutableArray *actions = [NSMutableArray array];

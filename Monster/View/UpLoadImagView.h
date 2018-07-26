@@ -15,7 +15,7 @@ typedef enum : NSInteger{
 } IdentityType;
 
 @interface UpLoadImagView : UIView
-
+@property(nonatomic,strong)IBOutlet UIImageView *picImgView;
 @property(nonatomic,strong)IBOutlet UIButton *uploadBtn;
 - (void)setIdentityType:(IdentityType)idType;
 
