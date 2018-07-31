@@ -10,7 +10,7 @@
 #import "CoinPairModel.h"
 #import "TrandModel.h"
 #import "UCoinQuantity.h"
-#import "HighLowLabelView.h"
+#import "MRButton.h"
 
 @interface TradeView () <UITextFieldDelegate>
 @property(nonatomic,strong)IBOutlet UILabel *titleLabel;
@@ -22,8 +22,6 @@
 @property(nonatomic,strong)IBOutlet UILabel *canBuyLabel;
 @property(nonatomic,strong)IBOutlet UILabel *valueLabel;
 
-@property(nonatomic,strong)HighLowLabelView *hlView;
-@property(nonatomic,strong)IBOutlet UIView *highLowViewBack;
 @property(nonatomic,strong)IBOutlet UIView *tagView;
 @property(nonatomic,strong)IBOutlet UIView *steppView1;
 @property(nonatomic,strong)IBOutlet UIView *steppView2;
@@ -54,11 +52,11 @@
 @property(nonatomic,strong)IBOutlet UILabel *down_unit4Label;
 @property(nonatomic,strong)IBOutlet UILabel *down_unit5Label;
 
-@property(nonatomic,strong)IBOutlet UIButton *quickDividBtn1;
-@property(nonatomic,strong)IBOutlet UIButton *quickDividBtn2;
-@property(nonatomic,strong)IBOutlet UIButton *quickDividBtn3;
-@property(nonatomic,strong)IBOutlet UIButton *quickDividBtn4;
-@property(nonatomic,strong)IBOutlet UIButton *quickDividBtn5;
+@property(nonatomic,strong)IBOutlet MRButton *quickDividBtn1;
+@property(nonatomic,strong)IBOutlet MRButton *quickDividBtn2;
+@property(nonatomic,strong)IBOutlet MRButton *quickDividBtn3;
+@property(nonatomic,strong)IBOutlet MRButton *quickDividBtn4;
+@property(nonatomic,strong)IBOutlet MRButton *quickDividBtn5;
 
 @property(nonatomic,strong)NSArray *userCoinAry;
 
@@ -92,7 +90,7 @@
     _steppView2.layer.cornerRadius = 4;
     [_stepperVolumField setValue:[UIColor colorWithWhite:1 alpha:0.6] forKeyPath:@"_placeholderLabel.textColor"];
     
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HighLowLabelViewForTrade" owner:self options:nil];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HighLowLabelView" owner:self options:nil];
     _hlView = [nib objectAtIndex:0];
     [_hlView setValue:@"+22.2%" withHigh:HighLowType_High];
     [_highLowViewBack addSubview:_hlView];
@@ -138,16 +136,18 @@
         
         NSArray *tampAry = [_valueLabel.text componentsSeparatedByString:@" "];
         NSString *result = [self decimalSubtracting:[tampAry objectAtIndex:0] with:_stepperVolumField.text];
-        if ([result floatValue] > 1) {
-            num += 1;
-            [_stepperVolumField setText:[NSString stringWithFormat:@"%f",num]];
+        if ([result floatValue] > 1) { //确认总数够1
+            
+            NSString *result = [self decimalAdding:_stepperVolumField.text with:@"1"];
+            [_stepperVolumField setText:[NSString stringWithFormat:@"%@",result]];
         }
         _add_stepper2Btn.enabled = ([result floatValue] > 1)?YES:NO;
         _minus_stepper2Btn.enabled = YES;
     } else { //mines
         if (num > 0) {
             num -= 1;
-            [_stepperVolumField setText:[NSString stringWithFormat:@"%f",num]];
+            NSString *result = [self decimalSubtracting:_stepperVolumField.text with:@"1"];
+            [_stepperVolumField setText:[NSString stringWithFormat:@"%@",result]];
         }
         _add_stepper2Btn.enabled = YES;
         _minus_stepper2Btn.enabled = (num > 0)?YES:NO;
@@ -156,9 +156,14 @@
 }
 
 - (void)setDividBtns:(UIButton*)btn{
-    [btn setImage:[UIImage imageNamed:self.isBuyMode?@"btn_green":@"btn_red"] forState:UIControlStateSelected];
-    [btn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self changImag:btn];
+//    [btn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(handleButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)changImag:(UIButton*)btn{
+    
+    [btn setImage:[UIImage imageNamed:self.isBuyMode?@"btn_green":@"btn_red"] forState:UIControlStateSelected];
 }
 
 - (void)handleButtonPress:(UIButton*)btn{
@@ -170,15 +175,15 @@
     [self setAllQuickDividBtnUnselect:_quickDividBtn5];
     
     if (btn.selected == NO) {
+        btn.selected = YES;
         CGRect frame = btn.frame;
-        frame.origin.x -= 2;
-        frame.origin.y -= 2;
-        frame.size.width = 14;
-        frame.size.height = 14;
+        frame.origin.x -= 2.5;
+        frame.origin.y -= 2.5;
+        frame.size.width = 17;
+        frame.size.height = 17;
         [btn setFrame:frame];
         [btn setBackgroundColor:[UIColor clearColor]];
     }
-    btn.selected = YES;
     
     switch (btn.tag) {
         case 1:
@@ -215,14 +220,14 @@
 
 - (void)setAllQuickDividBtnUnselect:(UIButton*)btn{
     if (btn.selected == YES) {
+        btn.selected = NO;
         CGRect frame = btn.frame;
-        frame.origin.x += 2;
-        frame.origin.y += 2;
+        frame.origin.x += 2.5;
+        frame.origin.y += 2.5;
         frame.size.width = 12;
         frame.size.height = 12;
         [btn setFrame:frame];
         [btn setBackgroundColor:[UIColor colorWithHexString:@"A9A9A9"]];
-        btn.selected = NO;
     }
 }
 
@@ -301,7 +306,11 @@
     _model = coinInfo;
     [_titleLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
     [_priceLabel setText:[NSString stringWithFormat:@"%f",coinInfo.lastPrice]];
-    [_subPriceLabel setText:[NSString stringWithFormat:@"≈$%f",coinInfo.lastPrice*self.multiple]];
+    
+    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
+    
+    [_subPriceLabel setText:[NSString stringWithFormat:@"≈%@%f",dollarSign,coinInfo.lastPrice*self.multiple]];
     BOOL isGoingHigher = [self isEndPriceHigher:coinInfo];
     double result = (coinInfo.endPrice - coinInfo.beginPrice)/coinInfo.beginPrice * 100;
     if (isnan(result)) {      //isnan为系统函数
@@ -502,13 +511,16 @@
         self.isBuyMode = NO;
     }
     
+    //重新計算
     [self setUerCoinQuantity:_userCoinAry];
     [self resetVolumField];
-    [self setDividBtns:_quickDividBtn1];
-    [self setDividBtns:_quickDividBtn2];
-    [self setDividBtns:_quickDividBtn3];
-    [self setDividBtns:_quickDividBtn4];
-    [self setDividBtns:_quickDividBtn5];
+    
+    //換Btn圖片
+    [self changImag:_quickDividBtn1];
+    [self changImag:_quickDividBtn2];
+    [self changImag:_quickDividBtn3];
+    [self changImag:_quickDividBtn4];
+    [self changImag:_quickDividBtn5];
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{

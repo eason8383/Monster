@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"安全验证";
+    self.title = @"安全认证";
     
     [self initial];
 }
@@ -46,7 +46,7 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
     BOOL googleAuthIsBinding = [[NSUserDefaults standardUserDefaults]boolForKey:GOOGLE_AUTH_BINDING];
-    [_tideGoogleLabel setText:googleAuthIsBinding?@"已绑定":@"未绑定"];
+    [_tideGoogleLabel setText:googleAuthIsBinding?@"已绑定":@"未绑定>"];
     if (googleAuthIsBinding) {
         _tideGoogleBtn.enabled = NO;
     }
@@ -54,6 +54,7 @@
     NSString *email = [[NSUserDefaults standardUserDefaults]objectForKey:EMAIL_BINDING];
     if (email.length > 0) {
         [_tideMailBoxLabel setText:email];
+        _tideMailBoxBtn.enabled = NO; //绑定后不能更改
     }
 }
 

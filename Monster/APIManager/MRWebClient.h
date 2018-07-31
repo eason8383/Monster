@@ -26,7 +26,7 @@ typedef void(^loginCompleteBlock)(NSString*result);
 //异步请求
 - (void)getResponse:(NSString*)controller action:(NSString*)action parametes:(NSString*)parameters isEncrypt:(BOOL)isEncrypt complete:(loginCompleteBlock)complete error:(void(^)(NSError*error))errorBlock;
 
-- (void)upload:(NSString*)controller action:(NSString*)action parametes:(NSString*)parametes withData:(NSData*)data complete:(loginCompleteBlock)complete error:(void(^)(NSError*error))errorBlock;
+//- (void)upload:(NSString*)controller action:(NSString*)action parametes:(NSString*)parametes withData:(NSData*)data complete:(loginCompleteBlock)complete error:(void(^)(NSError*error))errorBlock;
 
 - (void)upload:(NSString*)controller action:(NSString*)action parametes:(NSString*)parametes withPath:(NSURL*)path complete:(loginCompleteBlock)complete error:(void(^)(NSError*error))errorBlock;
 

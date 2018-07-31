@@ -19,6 +19,8 @@
 @property(nonatomic,strong)IBOutlet UIButton *coAddressBtn;
 @property(nonatomic,strong)IBOutlet UILabel *addressLabel;
 
+@property(nonatomic,strong)IBOutlet UIButton *confirmBtn;
+
 @property(nonatomic,strong)UITableView *coinTableView;
 
 @property(nonatomic,strong)NSString *walletAddress;
@@ -39,14 +41,19 @@
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
-    _saveQrPicBtn.layer.cornerRadius = 4;
-    _coAddressBtn.layer.cornerRadius = 4;
-    
     [self initial];
     
 }
 
 - (void)initial{
+    
+    _saveQrPicBtn.layer.cornerRadius = 4;
+    _coAddressBtn.layer.cornerRadius = 4;
+    _confirmBtn.layer.cornerRadius = 4;
+    
+    _qrBackView.layer.borderWidth = 1;
+    _qrBackView.layer.borderColor = [UIColor colorWithHexString:@"3F2DDD"].CGColor;
+    
     _cawViewModel = [CAWViewModel sharedInstance];
     _cawViewModel.delegate = self;
     

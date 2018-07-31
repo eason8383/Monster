@@ -15,7 +15,7 @@
 @property(nonatomic,assign)BOOL isHighLowKLine;
 @property(nonatomic,strong)CoinPairModel *model;
 @property(nonatomic,strong)NSMutableArray *klineDataAry;
-@property(nonatomic,assign)float multiple;
+@property(nonatomic,strong)NSString *multiple;
 
 @end
 

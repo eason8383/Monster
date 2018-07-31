@@ -20,4 +20,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ExponentialView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/MarketTableViewCell.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/HomeViewModel.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/CoinPairModel.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/CoinPairModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/CoinDetailViewController.h

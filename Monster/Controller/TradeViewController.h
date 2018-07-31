@@ -14,7 +14,7 @@
 
 @property(nonatomic,assign)BOOL isHigh;
 @property(nonatomic,strong)CoinPairModel *model;
-@property(nonatomic,assign)float multiple;
+@property(nonatomic,strong)NSString *multiple;
 
 @end
 

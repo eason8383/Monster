@@ -49,15 +49,17 @@
     [[MRUserInfoClient alloc]getUserCoinQuantitySuccess:^(id response) {
         NSDictionary *dic = response;
         if ([[dic objectForKey:@"success"] integerValue] == 1) {
-            [self.userCoinQuantityAry removeAllObjects];
-            for (NSDictionary *info in [dic objectForKey:@"resultList"]) {
-                UserCoinQuantity *ucq = [UserCoinQuantity userCoinQuantityWithDict:info];
-                [self.userCoinQuantityAry addObject:ucq];
-            }
             
+            NSMutableArray *tampAry = [NSMutableArray array];
+            for (NSDictionary *info in [dic objectForKey:@"resultList"]) {
+                NSLog(@"%@",info);
+                [tampAry addObject:info];
+            }
+            [self combineDatas:tampAry];
+            NSDictionary *assetInfo = [self getAssetInfo:tampAry];
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                [self.delegate getDataSucess];
+                [self.delegate getDataSucess:assetInfo];
             });
             
         } else {
@@ -72,6 +74,54 @@
             
         });
     }];
+}
+
+- (NSDictionary*)getAssetInfo:(NSArray*)ary{
+    NSMutableDictionary *asstInfo = [NSMutableDictionary dictionary];
+    [ary enumerateObjectsUsingBlock:^(NSDictionary *info, NSUInteger idx, BOOL *stop) {
+        
+        if ([[info objectForKey:@"quantityStatus"] isEqualToString:@"0"]) {
+            [asstInfo setObject:[info objectForKey:@"coinQuantity"] forKey:[info objectForKey:@"coinId"]];
+        }
+    }];
+    NSLog(@"getAssetInfo:%@",asstInfo);
+    return asstInfo;
+}
+
+- (void)combineDatas:(NSArray*)dataAry{
+    [self.userCoinQuantityAry removeAllObjects];
+    
+    
+    [dataAry enumerateObjectsUsingBlock:^(NSDictionary *info, NSUInteger idx, BOOL *stop) {
+        
+        if (idx == 0) {
+            NSMutableArray *objAry = [NSMutableArray array];
+            UserCoinQuantity *ucq = [UserCoinQuantity userCoinQuantityWithDict:info];
+            [objAry addObject:ucq];
+            [self.userCoinQuantityAry addObject:objAry];
+        } else {
+            NSMutableArray *objAry = [self.userCoinQuantityAry lastObject];
+            UserCoinQuantity *exUcq = [objAry objectAtIndex:0];
+            UserCoinQuantity *ucq = [UserCoinQuantity userCoinQuantityWithDict:info];
+            if ([exUcq.coinId isEqualToString:ucq.coinId]) {
+                [objAry addObject:ucq];
+            } else {
+                NSMutableArray *newObjAry = [NSMutableArray array];
+                [newObjAry addObject:ucq];
+                [self.userCoinQuantityAry addObject:newObjAry];
+            }
+        }
+        
+    }];
+    NSLog(@"%@",self.userCoinQuantityAry);
+//    for (NSDictionary *dic in dataAry) {
+//        NSMutableDictionary *finalDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
+//
+//        CoinPairModel *coModel = [CoinPairModel coinPairWithDict:finalDic];
+//        [self.homeDataAry addObject:coModel];
+//    }
+
+    
 }
 
 - (void)getUserCoinInOutInfoAPI{

@@ -16,8 +16,8 @@
             <rect key="frame" x="0.0" y="0.0" width="60" height="20"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+121.17%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-7A-Grj">
-                    <rect key="frame" x="4" y="0.0" width="52" height="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1231.17%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-7A-Grj">
+                    <rect key="frame" x="3" y="0.0" width="54" height="20"/>
                     <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -25,9 +25,9 @@
             </subviews>
             <color key="backgroundColor" red="0.99607843137254903" green="0.0" blue="0.3843137254901961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="RUg-7A-Grj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="4" id="MEl-xp-VTl"/>
+                <constraint firstItem="RUg-7A-Grj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="3" id="MEl-xp-VTl"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RUg-7A-Grj" secondAttribute="bottom" id="gL6-QP-aMy"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RUg-7A-Grj" secondAttribute="trailing" constant="4" id="qwk-Dl-9uq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RUg-7A-Grj" secondAttribute="trailing" constant="3" id="qwk-Dl-9uq"/>
                 <constraint firstItem="RUg-7A-Grj" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="vQB-GO-3lf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

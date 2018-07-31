@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WithdrawViewController : UIViewController
 
+@property(nonatomic,strong)NSDictionary *assetInfo;
+
 @end
 
 NS_ASSUME_NONNULL_END

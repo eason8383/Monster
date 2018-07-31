@@ -20,7 +20,10 @@
 @property (nonatomic,strong)IBOutlet UIButton *coppyBtn;
 @property (nonatomic,strong)IBOutlet UIButton *gainVerifyBtn;
 @property (nonatomic,strong)IBOutlet UIButton *commitBtn;
+@property (nonatomic,strong)IBOutlet NSLayoutConstraint *top_distance;
 
+@property(nonatomic,assign)float keyboardHeight;
+@property UITapGestureRecognizer *tapRecognizer;
 
 @end
 
@@ -34,10 +37,18 @@
 }
 
 - (void)initial{
+    
+    _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(firstResponder:)];
+    //    _tapRecognizer.delegate = self;
+    _tapRecognizer.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:_tapRecognizer];
+    
     _googleViewModel = [GoogleViewModel sharedInstance];
     _googleViewModel.delegate = self;
     [[VWProgressHUD shareInstance]showLoading];
     [_googleViewModel getBindingCode];
+    
+    [self registNotifications];
 }
 
 - (void)loadView{
@@ -57,9 +68,69 @@
     
 }
 
+- (void)registNotifications{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillhide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification{
+    
+    //取得鍵盤高度
+    //    NSValue * value = [[notification userInfo] valueForKey:UIKeyboardFrameBeginUserInfoKey];
+    //    _keyboardHeight = [value CGRectValue].size.height - 36;//36 是與底部距離
+    
+    CGRect keyboardFrameBeginRect = [[[notification userInfo] valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    _keyboardHeight = keyboardFrameBeginRect.size.height - 50;//36 是與底部距離
+    
+    NSLog(@"keyboardWillShow %f",_keyboardHeight);
+    
+}
+
+- (void)keyboardWillhide:(NSNotification*)notification{
+    NSLog(@"keyboardWillhide");
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    [UIView animateWithDuration:2 animations:^{
+//        self.top_distance.constant += kScreenHeight==568?180:self.keyboardHeight;
+        self.top_distance.constant += self.keyboardHeight;
+    }];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    [self performSelector:@selector(move) withObject:nil afterDelay:0.2];
+    return YES;
+}
+
+- (void)move{
+    [UIView animateWithDuration:2 animations:^{
+//        self.top_distance.constant -= kScreenHeight==568?180:self.keyboardHeight;
+        self.top_distance.constant -= self.keyboardHeight;
+    }];
+}
+
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+//    if (textField.tag == 11) {
+//        [_verifyField resignFirstResponder];
+//        [_authCodeField becomeFirstResponder];
+//    } else {
+//        if (_commitBtn.enabled) {
+//            [self commitiVerifyAuth];
+//        }
+//    }
+//    return YES;
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)firstResponder:(id)sender{
+    [_verifyField resignFirstResponder];
+    [_authCodeField resignFirstResponder];
 }
 
 - (void)getBindingCodeSuccess:(NSDictionary*)bindingInfo{
@@ -86,22 +157,16 @@
 - (void)getSmsVerifyCode:(NSDictionary *)verifyInfo{
     NSLog(@"%@",verifyInfo);
     [[VWProgressHUD shareInstance]dismiss];
+    [self receiveCheckNumButton:[NSNumber numberWithInt:60]];
 }
 
 - (void)bindingSuccess:(NSDictionary *)bindingInfo{
     //Sucess
     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:GOOGLE_AUTH_BINDING];
     [[VWProgressHUD shareInstance]dismiss];
-    
-    NSMutableArray *actions = [NSMutableArray array];
-    
-    UIAlertAction *comfirmAction = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [self justShowAlert:@"谷歌认证" message:@"绑定成功" handler:^(UIAlertAction *action){
         [self.navigationController popViewControllerAnimated:YES];
-        
     }];
-    
-    [actions addObject:comfirmAction];
-    [self showAlert:@"谷歌认证" withMsg:@"绑定成功" withActions:actions];
     
 }
 
@@ -168,11 +233,14 @@
 }
 
 
-- (IBAction)savePicture{
+- (IBAction)copyCode{
     
-    UIImageWriteToSavedPhotosAlbum([self captureScreen:self.qRImgView], nil, nil, nil);
-    [self justShowAlert:@"储存照片" message:@"已储存"];
-    
+//    UIImageWriteToSavedPhotosAlbum([self captureScreen:self.qRImgView], nil, nil, nil);
+//    [self justShowAlert:@"储存照片" message:@"已储存"];
+    UIPasteboard *pab = [UIPasteboard generalPasteboard];
+    NSString *string = _authCodeLabel.text;
+    [pab setString:string];
+    [self justShowAlert:@"" message:@"已复制"];
 }
 
 - (UIImage *)captureScreen:(UIView*)targetView
@@ -205,14 +273,33 @@
     return NO;
 }
 
+- (void)receiveCheckNumButton:(NSNumber*)second{
+    
+    if ([second integerValue] == 0) {
+        
+        _gainVerifyBtn.userInteractionEnabled=YES;
+        
+        [_gainVerifyBtn setTitle:@"重新获取" forState:UIControlStateNormal];
+    } else {
+        
+        _gainVerifyBtn.userInteractionEnabled = NO;
+        
+        int i = [second intValue];
+        
+        [_gainVerifyBtn setTitle:[NSString stringWithFormat:@"%is后获取",i] forState:UIControlStateNormal];
+        
+        [self performSelector:@selector(receiveCheckNumButton:)withObject:[NSNumber numberWithInt:i-1] afterDelay:1];
+    }
+}
+
 - (void)isAuthReadyToGo:(BOOL)isGoodToGo{
     
     if (isGoodToGo) {
-        
+        _commitBtn.layer.borderColor = [UIColor clearColor].CGColor;
         _commitBtn.backgroundColor = [UIColor colorWithHexString:@"402DDB"];
         _commitBtn.alpha = 1.0;
     } else {
-        
+        _commitBtn.layer.borderColor = [UIColor whiteColor].CGColor;
         _commitBtn.backgroundColor = [UIColor clearColor];
         _commitBtn.alpha = 0.6;
     }

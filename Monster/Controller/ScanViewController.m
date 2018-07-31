@@ -120,10 +120,11 @@
             //         隐藏遮盖
             [[VWProgressHUD shareInstance] dismiss];
             
-            [self justShowAlert:@"網頁地址" message:@"not complete yet"];
+            [self justShowAlert:@"此处不支持开启网页" message:@""];
 
         });
     } else {
+        [[VWProgressHUD shareInstance] dismiss];
         [[NSNotificationCenter defaultCenter]postNotificationName:FILLWALLETADDRESS object:stringValue];
         [self.navigationController popViewControllerAnimated:YES];
         
@@ -145,7 +146,7 @@
 - (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
-    [[VWProgressHUD shareInstance]showLoading];
+//    [[VWProgressHUD shareInstance]showLoading];
     
     NSString *content = @"" ;
     //取出选中的图片
@@ -165,8 +166,15 @@
          [[NSNotificationCenter defaultCenter]postNotificationName:FILLWALLETADDRESS object:content];
     }];
     
+    NSLog(@"%@",content);
+    if (content.length > 0) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:FILLWALLETADDRESS object:content];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self justShowAlert:@"没有数据" message:@"此照片没有数据"];
+    }
     //进行处理(音效、网址分析、页面跳转等)
-    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 @end

@@ -143,7 +143,7 @@
     });
 }
 
-- (void)oderRequest:(CoinPairModel*)model coinQuantity:(float)coinQuantity orderPrice:(float)orderPrice buyOrSale:(BOOL)isBuy{
+- (void)oderRequest:(CoinPairModel*)model coinQuantity:(NSString*)coinQuantity orderPrice:(NSString*)orderPrice buyOrSale:(BOOL)isBuy{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [[MRTradeClient alloc]oderRequest:model.coinPairId withCoinId:model.mainCoinId coinQuantity:coinQuantity orderPrice:orderPrice buyOrSale:isBuy Success:^(id response) {
             NSDictionary *dic = response;

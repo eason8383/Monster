@@ -12,6 +12,7 @@
 @interface CoinCanUseViewCell : UITableViewCell
 
 - (void)setContent:(UserCoinQuantity*)coinInfo;
+- (void)setContentWithAry:(NSArray*)coinAry;
 
 @end
 

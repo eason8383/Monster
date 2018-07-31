@@ -10,7 +10,7 @@
 
 @interface MRMyOrderClient : MRWebClient
 
-- (void)getMyOrderSuccess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+- (void)getMyOrderSuccess:(NSInteger)page sucess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
 - (void)getOrderHistoryWithPage:(NSInteger)page Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 

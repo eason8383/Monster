@@ -160,37 +160,37 @@ static NSString *sessionId;
 #pragma mark
 #pragma mark - 上传资料
 
-- (void)upLoadImageData:(NSData*)data success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
-    self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
-    
-    NSDictionary *parameters = @{
-                                 @"source":@"03",
-                                 @"version":@"1.0",
-                                 @"userId":self.userAccount.userId,
-                                 @"sessionId":self.userAccount.sessionId
-                                 };
-    
-    NSString *jsonParameter = [parameters JSONString];
-    
-    [self upload:MR_UPLOADPIC action:EGUSER parametes:jsonParameter withData:data complete:^(NSString *result) {
-        
-        NSDictionary *dic = [self dictionaryWithJsonString:result];
-        
-        if ([[dic objectForKey:@"ErrorCode"] intValue] != 0){
-            NSError *error = [NSError errorWithDomain:@"Get model data error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
-            
-            failureBlock(error);
-            
-        } else {
-            successBlock(dic);
-        }
-        
-    } error:^(NSError *error) {
-        if (error) {
-            failureBlock(error);
-        }
-    }];
-}
+//- (void)upLoadImageData:(NSData*)data success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
+//    self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
+//
+//    NSDictionary *parameters = @{
+//                                 @"source":@"03",
+//                                 @"version":@"1.0",
+//                                 @"userId":self.userAccount.userId,
+//                                 @"sessionId":self.userAccount.sessionId
+//                                 };
+//
+//    NSString *jsonParameter = [parameters JSONString];
+//
+//    [self upload:MR_UPLOADPIC action:EGUSER parametes:jsonParameter withData:data complete:^(NSString *result) {
+//
+//        NSDictionary *dic = [self dictionaryWithJsonString:result];
+//
+//        if ([[dic objectForKey:@"ErrorCode"] intValue] != 0){
+//            NSError *error = [NSError errorWithDomain:@"Get model data error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+//
+//            failureBlock(error);
+//
+//        } else {
+//            successBlock(dic);
+//        }
+//
+//    } error:^(NSError *error) {
+//        if (error) {
+//            failureBlock(error);
+//        }
+//    }];
+//}
 
 - (void)upLoadImagePath:(NSURL*)path success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
@@ -471,7 +471,7 @@ static NSString *sessionId;
     
     baseUrlString = [[AppDelegate environment] isEqualToString:MREnvironment_TEST]?TEST_URL:PUBLIC_URL;
 
-    urlStr = [NSString stringWithFormat:@"http://%@/%@/%@",baseUrlString,action,controller];
+    urlStr = [NSString stringWithFormat:@"%@/%@/%@",baseUrlString,action,controller];
     
     NSLog(@"URL:%@",urlStr);
     return urlStr;

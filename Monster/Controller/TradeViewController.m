@@ -48,8 +48,6 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     _tapRecognizer.numberOfTapsRequired = 1;
     [_tradeView addGestureRecognizer:_tapRecognizer];
     
-    
-    
     [self registerCells];
 }
 
@@ -60,12 +58,12 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    UIBarButtonItem *backHomeBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"home"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBackToHome:)];
+    UIBarButtonItem *backHomeBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Quotation"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBack:)];
     backHomeBtn.tintColor = [UIColor whiteColor];
     
     [self.navigationItem setLeftBarButtonItem:backHomeBtn];
     
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Quotation"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBack:)];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"home"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBackToHome:)];
     backBtn.tintColor = [UIColor whiteColor];
     
     [self.navigationItem setRightBarButtonItem:backBtn];
@@ -125,7 +123,12 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    [_tradeView setFrame:CGRectMake(0, 60, kScreenWidth, 396)];
+    if (isiPhoneX) {
+        [_tradeView setFrame:CGRectMake(0, 102, kScreenWidth, 396)];
+    } else {
+        [_tradeView setFrame:CGRectMake(0, 60, kScreenWidth, 396)];
+    }
+    [_tradeView.hlView setFrame:_tradeView.highLowViewBack.bounds];
 }
 
 - (void)dismissBackToHome:(id)sender{
@@ -185,10 +188,10 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     } else {
         [[VWProgressHUD shareInstance]showLoading];
         BOOL isBuy = _tradeView.isBuyMode?YES:NO; //isHighMode = YES 就是买入
-        float coinQuantity = [_tradeView.stepperVolumField.text floatValue];
-        float orderPrice = [_tradeView.stepperPriceField.text floatValue];
+//        float coinQuantity = [_tradeView.stepperVolumField.text floatValue];
+//        float orderPrice = [_tradeView.stepperPriceField.text floatValue];
         
-        [_tradeViewModel oderRequest:self.model coinQuantity:coinQuantity orderPrice:orderPrice buyOrSale:isBuy];
+        [_tradeViewModel oderRequest:self.model coinQuantity:_tradeView.stepperVolumField.text orderPrice:_tradeView.stepperPriceField.text buyOrSale:isBuy];
     }
 }
 

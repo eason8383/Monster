@@ -19,7 +19,7 @@
 @property(nonatomic,strong)IBOutlet UIView *verifyCode_udLine;
 @property(nonatomic,strong)IBOutlet NSLayoutConstraint *bottom_distance;
 
-@property(nonatomic,assign)CGFloat keyboardHeight;
+@property(nonatomic,assign)float keyboardHeight;
 @property(nonatomic, copy) LoginHandler loginHandler;
 @property UITapGestureRecognizer *tapRecognizer;
 
@@ -70,20 +70,20 @@
 - (void)keyboardWillShow:(NSNotification*)notification{
     
     //取得鍵盤高度
-    NSValue * value = [[notification userInfo] valueForKey:UIKeyboardFrameBeginUserInfoKey];
-    _keyboardHeight = [value CGRectValue].size.height - 36;//36 是與底部距離
+//    NSValue * value = [[notification userInfo] valueForKey:UIKeyboardFrameBeginUserInfoKey];
+//    _keyboardHeight = [value CGRectValue].size.height - 36;//36 是與底部距離
     
-    //在这里调整UI位置
-    [UIView animateWithDuration:2 animations:^{
-        self.bottom_distance.constant += self.keyboardHeight;
-    }];
+    CGRect keyboardFrameBeginRect = [[[notification userInfo] valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    _keyboardHeight = keyboardFrameBeginRect.size.height - 50;//36 是與底部距離
+    
+    NSLog(@"keyboardWillShow %f",_keyboardHeight);
+    
 }
 
 - (void)keyboardWillhide:(NSNotification*)notification{
+    NSLog(@"keyboardWillhide");
     
-    [UIView animateWithDuration:2 animations:^{
-        self.bottom_distance.constant -= self.keyboardHeight;
-    }];
 }
 
 - (void)mobileNoGetResponder:(BOOL)isBecomeRp{
@@ -115,7 +115,23 @@
     _login_btn.enabled = isGoodToGo;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    [UIView animateWithDuration:2 animations:^{
+        if (kScreenHeight == 568) {
+            self.bottom_distance.constant -= 120;
+        } else {
+           self.bottom_distance.constant = 58;
+        }
+    }];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    [self performSelector:@selector(move) withObject:nil afterDelay:0.2];
+    return YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
     if (textField.tag == 11) { //11 is mobileNo_field
         [self mobileNoGetResponder:YES];
         [self verifyCodeGetResponder:NO];
@@ -123,6 +139,12 @@
         [self mobileNoGetResponder:NO];
         [self verifyCodeGetResponder:YES];
     }
+}
+
+- (void)move{
+    [UIView animateWithDuration:2 animations:^{
+        self.bottom_distance.constant += kScreenHeight==568?120:self.keyboardHeight;
+    }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -217,7 +239,10 @@
                     }
                     
                 } else {
-                    [self justShowAlert:@"" message:[userInfo.respCode objectForKey:@"desc"]];
+                    
+                    NSString *errorMsg = [userInfo.respCode objectForKey:@"respMessage"];
+                    NSArray *errorAry = [errorMsg componentsSeparatedByString:@","];
+                    [self justShowAlert:@"" message:[errorAry objectAtIndex:0]];
                 }
             });
             NSLog(@"response:%@",response);
@@ -269,7 +294,7 @@
         
         int i = [second intValue];
         
-        [_verify_btn setTitle:[NSString stringWithFormat:@"再获取(%is)",i] forState:UIControlStateNormal];
+        [_verify_btn setTitle:[NSString stringWithFormat:@"%is后获取",i] forState:UIControlStateNormal];
         
         [self performSelector:@selector(receiveCheckNumButton:)withObject:[NSNumber numberWithInt:i-1] afterDelay:1];
     }

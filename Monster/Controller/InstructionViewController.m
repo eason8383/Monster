@@ -9,6 +9,7 @@
 #import "InstructionViewController.h"
 
 @interface InstructionViewController ()
+@property (nonatomic,strong)IBOutlet UITextView *textView;
 
 @end
 
@@ -16,6 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"1E222C"]];
+    self.navigationController.navigationBar.translucent = NO;
+    
+    [_textView setContentOffset:CGPointMake(0, 0)];
     // Do any additional setup after loading the view from its nib.
 }
 

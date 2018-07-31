@@ -79,7 +79,11 @@
     if (isnan(result)) {      //isnan为系统函数
         result = 0.0;
     }
-    [_hlView setValue:[NSString stringWithFormat:@"$%.2f",result] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
+    
+    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
+    
+    [_hlView setValue:[NSString stringWithFormat:@"%@%.2f",dollarSign,result] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
     
     _klineColorString = isGoingHigher?MRCOLORHEX_HIGH:MRCOLORHEX_LOW;
     _lineView.lineColor = [UIColor colorWithHexString:_klineColorString];

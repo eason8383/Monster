@@ -8,6 +8,7 @@
 
 #import "MRUserInfoClient.h"
 #import "MRWebClient.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation MRUserInfoClient
 
@@ -17,8 +18,8 @@
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"userId":self.userAccount.userId,
-                                 @"sessionId":self.userAccount.sessionId
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@""
                                  };
 //    {
 //        sessionId = SESSION2018071618493999686927460;
@@ -55,8 +56,8 @@
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"userId":self.userAccount.userId,
-                                 @"sessionId":self.userAccount.sessionId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  @"inOut":inOrOut,
                                  @"lastInOutId":@""
                                  };
@@ -86,14 +87,15 @@
 - (void)updateUserPsw:(NSString*)newPsw verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
     
+    NSString *md5Psw = [self md5:newPsw];
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
                                  @"mobileNo":self.userAccount.mobileNo,
-                                 @"sessionId":self.userAccount.sessionId,
-                                 @"userId":self.userAccount.userId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  @"verifyCode":verifyCode,
-                                 @"newPassword":newPsw,
+                                 @"newPassword":md5Psw,
                                  @"passwordType":@"T"
                                  };
     
@@ -125,8 +127,8 @@
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"sessionId":self.userAccount.sessionId,
-                                 @"userId":self.userAccount.userId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  @"frontIdCard":frontId,
                                  @"backIdCard":backId,
                                  @"userWithIdCard":withId,
@@ -154,14 +156,27 @@
     }];
 }
 
+- (NSString *)md5:(NSString *)input {
+    const char *cStr = [input UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return  output;
+}
+
 - (void)saveEmailIdentity:(NSString*)emailAdds verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
     
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"sessionId":self.userAccount.sessionId,
-                                 @"userId":self.userAccount.userId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  @"userEmail":emailAdds,
                                  @"verifyCode":verifyCode
                                  };
@@ -194,8 +209,8 @@
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"sessionId":self.userAccount.sessionId,
-                                 @"userId":self.userAccount.userId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  @"blockChainType":@"1"
                                  };
     
@@ -227,8 +242,8 @@
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"sessionId":self.userAccount.sessionId,
-                                 @"userId":self.userAccount.userId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  @"coinId":coinId,
                                  @"walletId":walletId
                                  };
@@ -262,9 +277,9 @@
     [[NSMutableDictionary alloc]initWithDictionary:@{
                                                      @"source":@"03",
                                                      @"version":@"1.0",
-                                                     @"sessionId":self.userAccount.sessionId,
-                                                     @"userId":self.userAccount.userId,
-                                                     @"mobileNo":self.userAccount.mobileNo
+                                                     @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                                     @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
+                                                     @"mobileNo":self.userAccount.mobileNo?self.userAccount.mobileNo:@""
                                                     }];
     [parames addEntriesFromDictionary:parameters];
     
@@ -296,8 +311,9 @@
     NSDictionary *parames = @{
                              @"source":@"03",
                              @"version":@"1.0",
-                             @"sessionId":self.userAccount.sessionId,
-                             @"userId":self.userAccount.userId,
+                             @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                             @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
+                             @"needTotalBalance":@true
                              };
     
     NSString *jsonParameter = [parames JSONString];
@@ -334,8 +350,8 @@
     NSDictionary *parames = @{
                               @"source":@"03",
                               @"version":@"1.0",
-                              @"sessionId":self.userAccount.sessionId,
-                              @"userId":self.userAccount.userId,
+                              @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                              @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                               @"feedbackContent":content,
                               @"uploadPicList":path
                               };

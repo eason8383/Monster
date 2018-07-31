@@ -47,8 +47,8 @@
     NSDictionary *parameter = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"userId":self.userAccount.userId,
-                                 @"sessionId":self.userAccount.sessionId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  @"orderId":orderId,
                                  @"coinPairId":coinPairId,
                                  @"orderStatus":@"1"
@@ -86,19 +86,19 @@
 
 
 
-- (void)oderRequest:(NSString*)coinPairId withCoinId:(NSString*)coinId coinQuantity:(float)coinQuantity orderPrice:(float)orderPrice buyOrSale:(BOOL)isBuy Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
+- (void)oderRequest:(NSString*)coinPairId withCoinId:(NSString*)coinId coinQuantity:(NSString*)coinQuantity orderPrice:(NSString*)orderPrice buyOrSale:(BOOL)isBuy Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     
     self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
     NSDictionary *parameters = @{
                                         @"source":@"03",
                                         @"version":@"1.0",
-                                        @"userId":self.userAccount.userId,
-                                        @"sessionId":self.userAccount.sessionId,
+                                        @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                        @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                         @"coinPairId":coinPairId,
                                         @"buySell":isBuy?@"B":@"S",
                                         @"coinId":coinId,
-                                        @"coinQuantity":[NSNumber numberWithFloat:coinQuantity],
-                                        @"orderPrice":[NSNumber numberWithFloat:orderPrice]
+                                        @"coinQuantity":coinQuantity,
+                                        @"orderPrice":orderPrice
                                         };
     
     NSString *jsonParameter = [parameters JSONString];
@@ -130,8 +130,8 @@
                                  @"version":@"1.0",
                                  @"coinPairId":coinPairId,
                                  @"orderId":orderId,
-                                 @"userId":self.userAccount.userId,
-                                 @"sessionId":self.userAccount.sessionId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@""
                                  };
     
     NSString *jsonParameter = [parameters JSONString];

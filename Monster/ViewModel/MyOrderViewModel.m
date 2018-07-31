@@ -32,14 +32,14 @@
     return instance;
 }
 
-- (void)getData{
+- (void)getData:(NSInteger)page{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self getMyOrderDeal];
+        [self getMyOrderDeal:page];
     });
 }
 
-- (void)getMyOrderDeal{
-    [[MRMyOrderClient alloc]getMyOrderSuccess:^(id response) {
+- (void)getMyOrderDeal:(NSInteger)page{
+    [[MRMyOrderClient alloc]getMyOrderSuccess:page sucess:^(id response) {
         NSDictionary *dic = response;
         
         if ([[dic objectForKey:@"success"] integerValue] == 1) {

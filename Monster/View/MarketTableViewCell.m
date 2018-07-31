@@ -33,15 +33,38 @@
 
 - (void)setContent:(CoinPairModel*)coinInfo{
     [_coninLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
-    [_latestPriceLabel setText:[NSString stringWithFormat:@"%f",coinInfo.lastPrice]];
-    [_nowPriceLabel setText:[NSString stringWithFormat:@"$%.2f",coinInfo.lastPrice*self.multiple]];
+    [_latestPriceLabel setText:[NSString stringWithFormat:@"%.8f",coinInfo.lastPrice]];
+    
+    NSString *resultStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",coinInfo.lastPrice] with:self.multiple];
+    [_nowPriceLabel setText:resultStr];
+    
     BOOL isGoingHigher = [self isEndPriceHigher:coinInfo];
     double result = (coinInfo.endPrice - coinInfo.beginPrice)/coinInfo.beginPrice * 100;
     if (isnan(result)) {      //isnan为系统函数
         result = 0.0;
     }
-    [_hlView setValue:[NSString stringWithFormat:@"$%.2f",result] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
-    [_volumLabel  setText:[NSString stringWithFormat:@"成交量:%f",coinInfo.totalVolume]];
+    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
+    
+    [_hlView setValue:[NSString stringWithFormat:@"%@%.2f",dollarSign,result] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
+    [_volumLabel  setText:[NSString stringWithFormat:@"成交量:%.4f",coinInfo.totalVolume]];
+}
+
+- (NSString*)decimalMultiply:(NSString*)numStr1 with:(NSString*)numStr2{
+    NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:numStr1];
+    NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:numStr2];
+    
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+                                       decimalNumberHandlerWithRoundingMode:NSRoundUp
+                                       scale:4
+                                       raiseOnExactness:NO
+                                       raiseOnOverflow:NO
+                                       raiseOnUnderflow:NO
+                                       raiseOnDivideByZero:NO];
+    
+    NSDecimalNumber *result = [num1 decimalNumberByMultiplyingBy:num2 withBehavior:roundUp];
+    
+    return [result stringValue];
 }
 
 - (BOOL)isEndPriceHigher:(CoinPairModel*)coinInfo{

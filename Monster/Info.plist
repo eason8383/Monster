@@ -27,6 +27,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>请允许我们使用您的相机来扫描QR Code</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>请允许我们将照片存入您的相簿</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -35,8 +37,6 @@
 	<array>
 		<string>fifawelcome1.3.woff.ttf</string>
 	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

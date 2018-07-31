@@ -15,4 +15,6 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIView+Extension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SetupViewController.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SetupViewController.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SelectViewController.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MRBaseTableViewController.h

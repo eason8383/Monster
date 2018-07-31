@@ -17,6 +17,7 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/TradeViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/TradeView.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/HighLowLabelView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ExponentialCell.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/EntrustNowViewCell.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/TradeViewModel.h \

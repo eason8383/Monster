@@ -173,8 +173,8 @@ static NSString *capitalViewCellIdentifier = @"capitalDeViewCell";
 
 - (UITableView *)tableView{
     if (_tableView == nil) {
-        float bottonFix = isiPhoneX?88:64;
-        CGRect frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-bottonFix);
+//        float bottonFix = isiPhoneX?88:64;
+        CGRect frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
         _tableView = [[UITableView alloc] initWithFrame:frame
                                                   style:UITableViewStylePlain];
         //        _tableView.contentInset = UIEdgeInsetsMake(isiPhoneX?-44:-20, 0, 0, 0);

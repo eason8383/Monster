@@ -48,8 +48,13 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     
     [_homeModel getData:100];
     self.navigationController.navigationBar.hidden = YES;
+    BOOL needReloadShow = [[NSUserDefaults standardUserDefaults]boolForKey:RELOAD_AFTERSETTING];
+    if (needReloadShow) {
+        [[VWProgressHUD shareInstance]showLoading];
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:RELOAD_AFTERSETTING];
+    }
     _updatTimer = [NSTimer scheduledTimerWithTimeInterval:60
-                                                  repeats:YES block:^(NSTimer *timer){
+                                                  repeats:YES block:^(NSTimer *timer) {
                                                       [self.homeModel getData:1];
                                                   }];
 }
@@ -84,6 +89,8 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 
     [self registerCells];
     
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
     UISwipeGestureRecognizer *swipeLeftToRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     [self.view addGestureRecognizer:swipeLeftToRight];
     
@@ -113,6 +120,8 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 
 - (void)getDataFalid:(NSError *)error{
     [[VWProgressHUD shareInstance]dismiss];
+    [_updatTimer invalidate];
+    _updatTimer = nil;
     [self dealWithErrorMsg:error];
 }
 
@@ -130,7 +139,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
             [hdCell.callMenuBtn addTarget:self action:@selector(callMenu:) forControlEvents:UIControlEventTouchUpInside];
             [hdCell.audioViewBtn addTarget:self action:@selector(pushSome:) forControlEvents:UIControlEventTouchUpInside];
             [hdCell.mobileNo_Label setText:[MRWebClient sharedInstance].userAccount.mobileNo];
-            
+            [hdCell setFilpLabelInfos:@[@"成為史上最強大交易家",@"蔡依林親臨怪獸市場",@"吳亦凡最sker的四哥",@"註冊就送MON 10,0000!!!"]];
             return hdCell;
         }
         case 1: {

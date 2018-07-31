@@ -16,8 +16,8 @@
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"userId":self.userAccount.userId,
-                                 @"sessionId":self.userAccount.sessionId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  };
 //    {
 //        sessionId = SESSION2018071618493999686927460;
@@ -54,8 +54,8 @@
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"userId":self.userAccount.userId,
-                                 @"sessionId":self.userAccount.sessionId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  @"sceneCode":@"006"
                                  };
 //        {
@@ -93,8 +93,8 @@
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"userId":self.userAccount.userId,
-                                 @"sessionId":self.userAccount.sessionId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  @"authCode":authCode,
                                  @"verifyCode":verifyCode,
                                  @"mobileNo":self.userAccount.mobileNo
@@ -128,8 +128,8 @@
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"userId":self.userAccount.userId,
-                                 @"sessionId":self.userAccount.sessionId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  @"authCode":authCode,
                                  };
     

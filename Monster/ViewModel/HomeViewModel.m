@@ -81,7 +81,7 @@
 
 - (void)getKlineLastBar{
     
-    [[MRHomePageClient alloc]getKlineLastBar:@"1" success:^(id response) {
+    [[MRHomePageClient alloc]getKlineLastBar:@"5" success:^(id response) {
         NSDictionary *dic = response;
         
         if ([[dic objectForKey:@"success"] integerValue] == 1) {
@@ -158,25 +158,27 @@
 }
 
 - (void)getUserInfo{
-    [[MRUserInfoClient alloc]getUserCoinQuantitySuccess:^(id response) {
+    [[MRUserInfoClient alloc]queryUserInfoSuccess:^(id response) {
         NSDictionary *dic = response;
         if ([[dic objectForKey:@"success"] integerValue] == 1) {
-            [self.userCoinQuantityAry removeAllObjects];
-            for (NSDictionary *info in [dic objectForKey:@"resultList"]) {
-                UserCoinQuantity *ucq = [UserCoinQuantity userCoinQuantityWithDict:info];
-                [self.userCoinQuantityAry addObject:ucq];
-            }
-            float result = 0;
-            double myAsset = 0;
-            for (UserCoinQuantity *ucq in self.userCoinQuantityAry) {
-                
-                if ([ucq.coinId isEqualToString:@"ETH"]) {
-                    float multiple = [self getMultipleWithCurrentCoinId:@"ETH"];
-                    myAsset = ucq.coinQuantity;
-                    result = myAsset * multiple;
-                }
-            }
-            NSDictionary *dic = @{@"myAsset":[NSNumber numberWithDouble:myAsset],@"result":[NSNumber numberWithFloat:result]};
+//            [self.userCoinQuantityAry removeAllObjects];
+//            for (NSDictionary *info in [dic objectForKey:@"resultList"]) {
+//                UserCoinQuantity *ucq = [UserCoinQuantity userCoinQuantityWithDict:info];
+//                [self.userCoinQuantityAry addObject:ucq];
+//            }
+            NSString *result = @"0";
+            NSString *myAsset = [NSString stringWithFormat:@"%@",[dic objectForKey:@"totalBalanceETH"]];
+            NSString *multiple = [self getMultipleWithCurrentCoinId:@"ETH"];
+            result = [self decimalMultiply:myAsset with:multiple];
+//            for (UserCoinQuantity *ucq in self.userCoinQuantityAry) {
+//
+//                if ([ucq.coinId isEqualToString:@"ETH"]) {
+//
+//                    myAsset = [NSString stringWithFormat:@"%.8f",ucq.coinQuantity];
+//                    result = [self decimalMultiply:myAsset with:multiple];
+//                }
+//            }
+            NSDictionary *dic = @{@"myAsset":myAsset,@"result":result};
             
             [[NSUserDefaults standardUserDefaults]setObject:dic forKey:MYETH];
             
@@ -200,6 +202,23 @@
             [self.delegate getDataFalid:error];
         });
     }];
+}
+
+- (NSString*)decimalMultiply:(NSString*)numStr1 with:(NSString*)numStr2{
+    NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:numStr1];
+    NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:numStr2];
+    
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+                                       decimalNumberHandlerWithRoundingMode:NSRoundUp
+                                       scale:2
+                                       raiseOnExactness:NO
+                                       raiseOnOverflow:NO
+                                       raiseOnUnderflow:NO
+                                       raiseOnDivideByZero:NO];
+    
+    NSDecimalNumber *result = [num1 decimalNumberByMultiplyingBy:num2 withBehavior:roundUp];
+    
+    return [result stringValue];
 }
 
 - (void)addLatestKLineInfofrom:(NSDictionary*)newDic{
@@ -256,6 +275,7 @@
     
     for (NSDictionary *dic in ary) {
         CoinPairModel *coModel = [CoinPairModel coinPairWithDict:dic];
+        NSLog(@"%f",coModel.endPrice);
         [resultAry addObject:coModel];
     }
     return resultAry;
@@ -276,15 +296,15 @@
     return resultDic;
 }
 
-- (float)getMultipleWithCurrentCoinId:(NSString*)coinId{
-    float result = 0;
+- (NSString*)getMultipleWithCurrentCoinId:(NSString*)coinId{
+    NSString *resultStr = @"0";
     NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
     for (NSDictionary *dic in self.externalMarketAry) {
         if ([[dic objectForKey:@"coinId"]isEqualToString:coinId]) {
-            result = [[dic objectForKey:currencyStr] floatValue];
+            resultStr = [NSString stringWithFormat:@"%@",[dic objectForKey:currencyStr]];
         }
     }
-    return result;
+    return resultStr;
 }
 
 - (NSInteger)numberOfRowsInSection{

@@ -88,11 +88,22 @@
 
 - (void)setContent:(CoinPairModel*)coinInfo dataArray:(NSArray*)ary{
     
-    [_latestPriceLabel setText:[NSString stringWithFormat:@"%f",coinInfo.lastPrice]];
-    [_nowPriceLabel setText:[NSString stringWithFormat:@"$%.2f",coinInfo.lastPrice*self.multiple]];
-    [_highestPriceLabel  setText:[NSString stringWithFormat:@"最高价:$%.2f",coinInfo.maxPrice*self.multiple]];
-    [_lowestPriceLabel  setText:[NSString stringWithFormat:@"最低价:$%.2f",coinInfo.minPrice*self.multiple]];
-    [_volumLabel  setText:[NSString stringWithFormat:@"24H成交量:%f",coinInfo.totalVolume]];
+    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
+    
+    [_latestPriceLabel setText:[NSString stringWithFormat:@"%.8f",coinInfo.lastPrice]];
+    
+    NSString *nowStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",coinInfo.lastPrice] with:self.multiple];
+    [_nowPriceLabel setText:[NSString stringWithFormat:@"%@%@",dollarSign,nowStr]];
+    
+    NSString *highStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",coinInfo.maxPrice] with:self.multiple];
+    [_highestPriceLabel  setText:[NSString stringWithFormat:@"最高价:%@%@",dollarSign,highStr]];
+    
+    NSString *lowStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",coinInfo.minPrice] with:self.multiple];
+    [_lowestPriceLabel  setText:[NSString stringWithFormat:@"最低价:%@%@",dollarSign,lowStr]];
+    
+    
+    [_volumLabel  setText:[NSString stringWithFormat:@"24H成交量:%.4f",coinInfo.totalVolume]];
     if (coinInfo.mainCoinId) {
         [_coinTypeLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
     } else {
@@ -111,6 +122,23 @@
         result = 0.0;
     }
     [_hlView setValue:[NSString stringWithFormat:@"%@%.2f%@",isGoingHigher?@"+":@"",result,@"%"] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
+}
+
+- (NSString*)decimalMultiply:(NSString*)numStr1 with:(NSString*)numStr2{
+    NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:numStr1];
+    NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:numStr2];
+    
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+                                       decimalNumberHandlerWithRoundingMode:NSRoundUp
+                                       scale:2
+                                       raiseOnExactness:NO
+                                       raiseOnOverflow:NO
+                                       raiseOnUnderflow:NO
+                                       raiseOnDivideByZero:NO];
+    
+    NSDecimalNumber *result = [num1 decimalNumberByMultiplyingBy:num2 withBehavior:roundUp];
+    
+    return [result stringValue];
 }
 
 - (NSArray*)generateDataArray:(NSArray*)ary{

@@ -18,6 +18,7 @@
 @interface MyAssetViewController () <MyAssetViewModelDelegate>
 
 @property(nonatomic,strong)MyAssetViewModel *myAssetViewModel;
+@property(nonatomic,strong)NSDictionary *assetInfo;
 
 @end
 
@@ -60,7 +61,8 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
 
 }
 
-- (void)getDataSucess{
+- (void)getDataSucess:(NSDictionary*)info{
+    _assetInfo = info;
     [self.tableView reloadData];
 }
 
@@ -90,8 +92,8 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
         default:{
             CoinCanUseViewCell *ccCell = (CoinCanUseViewCell *)[tableView dequeueReusableCellWithIdentifier:coinCanUseCellIdentifier];
             NSArray *ary = [_myAssetViewModel getUserCoinQuantity];
-            UserCoinQuantity *model = [ary objectAtIndex:indexPath.row - 1];
-            [ccCell setContent:model];
+            
+            [ccCell setContentWithAry:[ary objectAtIndex:indexPath.row - 1]];
             return ccCell;
         }
     }
@@ -115,6 +117,7 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
         case 2:{
             
             WithdrawViewController *wdVc = [[WithdrawViewController alloc]initWithNibName:@"WithdrawViewController" bundle:nil];
+            wdVc.assetInfo = _assetInfo;
             cV = wdVc;
         }
             break;

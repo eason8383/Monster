@@ -344,7 +344,9 @@ static RNFrostedSidebar *rn_frostedMenu;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getMyAssetUpdate:) name:MYETH object:nil];
     
     NSDictionary *myAssetDic = [[NSUserDefaults standardUserDefaults]objectForKey:MYETH];
-    
+    MRUserAccount *account = [[MRWebClient sharedInstance]getUserAccount];
+//    NSString* smobileNo = [NSString stringWithFormat:@"%@****%@",[account.mobileNo substringToIndex:3],[account.mobileNo substringFromIndex:7] ];
+    [self.contentView.mobile_Label setText:account.mobileNo];
     [self setMyAsset:myAssetDic];
     
     [self.contentView.myAsset_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -371,9 +373,12 @@ static RNFrostedSidebar *rn_frostedMenu;
     float asset = [[assetInfo objectForKey:@"myAsset"] floatValue];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.contentView.asset_Label setText:[NSString stringWithFormat:@"%.4f",asset]];
+        [self.contentView.asset_Label setText:[NSString stringWithFormat:@"%.8f",asset]];
         
-        [self.contentView.subAsset_Label setText:[NSString stringWithFormat:@"≈$%@",[assetInfo objectForKey:@"result"]]];
+        NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+        NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
+        
+        [self.contentView.subAsset_Label setText:[NSString stringWithFormat:@"≈%@%@",dollarSign,[assetInfo objectForKey:@"result"]]];
     });
     
 }

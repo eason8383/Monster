@@ -8,19 +8,28 @@
 
 #import "WithdrawViewController.h"
 #import "CAWViewModel.h"
+#import "ScanViewController.h"
 
 @interface WithdrawViewController () <CAWViewModelDelegate,UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
+
+@property(nonatomic,strong)IBOutlet UIScrollView *scrollView;
 @property(nonatomic,strong)IBOutlet UITextField *units_Field;
 @property(nonatomic,strong)IBOutlet UITextField *walletAdds_Field;
 @property(nonatomic,strong)IBOutlet UITextField *verify_Field;
 @property(nonatomic,strong)IBOutlet UITextField *tradePsw_Field;
 @property(nonatomic,strong)IBOutlet UILabel *currencyLabel;
 
+@property(nonatomic,strong)IBOutlet UILabel *unit_Label;
+@property(nonatomic,strong)IBOutlet UILabel *wFeeExplain_Label;
+@property(nonatomic,strong)IBOutlet UIButton *helf_Btn;
+@property(nonatomic,strong)IBOutlet UIButton *whole_Btn;
+
 @property(nonatomic,strong)IBOutlet UIButton *currency_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *scan_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *verify_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *confirm_Btn;
 @property(nonatomic,strong)IBOutlet UILabel *googleLabel;
+@property(nonatomic,strong)IBOutlet UILabel *withdrewFeeLabel;
 @property(nonatomic,strong)IBOutlet UITextField *googleField;
 @property(nonatomic,assign)BOOL hasGoogleAuth;
 @property(nonatomic,strong)UITableView *coinTableView;
@@ -29,6 +38,9 @@
 @property UITapGestureRecognizer *tapRecognizer;
 @property(nonatomic,strong)NSArray *coinArray;
 @property(nonatomic,strong)NSString *nowCoin;
+@property(nonatomic,strong)NSString *nowQuantity;
+
+
 //@"005"
 @end
 
@@ -62,6 +74,14 @@
     _confirm_Btn.layer.borderWidth = 1;
     _confirm_Btn.layer.cornerRadius = 4;
     
+    _helf_Btn.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.4].CGColor;
+    _helf_Btn.layer.borderWidth = 1;
+    _helf_Btn.layer.cornerRadius = 4;
+    
+    _whole_Btn.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.4].CGColor;
+    _whole_Btn.layer.borderWidth = 1;
+    _whole_Btn.layer.cornerRadius = 4;
+    
     _hasGoogleAuth = [[NSUserDefaults standardUserDefaults]boolForKey:GOOGLE_AUTH_BINDING];
     
     _googleField.hidden = !_hasGoogleAuth;
@@ -79,11 +99,108 @@
     } else {
         _nowCoin = @"ETH";
     }
+    [self setWithdrewFee:_nowCoin];
     [_currencyLabel setText:_nowCoin];
     [_currency_Btn addTarget:self action:@selector(coinTableView:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.coinTableView];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fillWalletAddress:) name:FILLWALLETADDRESS object:nil];
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    [_scrollView setContentSize:CGSizeMake(kScreenWidth, 570)];
+}
+
+- (void)setWithdrewFee:(NSString*)nowCoin{
+    
+    if ([nowCoin isEqualToString:@"ETH"]) {
+        [_withdrewFeeLabel setText:@"0.01"];
+        [_wFeeExplain_Label setText:[NSString stringWithFormat:@"(单笔提现手续费为0.01%@)",nowCoin]];
+        NSString *coinStr = [_assetInfo objectForKey:@"ETH"]?[_assetInfo objectForKey:@"ETH"]:@"0";
+        _nowQuantity = [NSString stringWithFormat:@"%@",coinStr];
+        [_unit_Label setText:[NSString stringWithFormat:@"(0.01个起提，当前最多可提取%@个ETH)",coinStr]];
+    } else if ([nowCoin isEqualToString:@"MR"]) {
+        [_withdrewFeeLabel setText:@"10"];
+        [_wFeeExplain_Label setText:[NSString stringWithFormat:@"(单笔提现手续费为10%@)",nowCoin]];
+        NSString *coinStr = [_assetInfo objectForKey:@"MR"]?[_assetInfo objectForKey:@"MR"]:@"0";
+        _nowQuantity = [NSString stringWithFormat:@"%@",coinStr];
+        [_unit_Label setText:[NSString stringWithFormat:@"(100个起提，当前最多可提取%@个MR)",coinStr]];
+    } else if ([nowCoin isEqualToString:@"MON"]) {
+        [_withdrewFeeLabel setText:@"500"];
+        [_wFeeExplain_Label setText:[NSString stringWithFormat:@"(单笔提现手续费为500%@)",nowCoin]];
+        NSString *coinStr = [_assetInfo objectForKey:@"MON"]?[_assetInfo objectForKey:@"MON"]:@"0";
+        _nowQuantity = [NSString stringWithFormat:@"%@",coinStr];
+        [_unit_Label setText:[NSString stringWithFormat:@"(1000个起提，当前最多可提取%@个MON)",coinStr]];
+    }
+    
+    if (_helf_Btn.selected == YES) {
+        [_units_Field setText:[self decimalDividing:_nowQuantity with:@"2"]];
+    }
+    if (_whole_Btn.selected == YES) {
+        [_units_Field setText:_nowQuantity];
+    }
+}
+
+- (IBAction)tapHelfOrwholeBtn:(UIButton*)btn{
+    btn.selected = !btn.selected;
+    
+    if (btn.tag == 12) {
+        [self isBtnSelect:_helf_Btn isSelect:btn.selected];
+        if (_whole_Btn.selected == YES) {
+            [self isBtnSelect:_whole_Btn isSelect:NO];
+        }
+        if(_helf_Btn.selected == YES) {
+            [_units_Field setText:[self decimalDividing:_nowQuantity with:@"2"]];
+        }
+        
+    } else {
+        
+        [self isBtnSelect:_whole_Btn isSelect:btn.selected];
+        if (_helf_Btn.selected == YES) {
+            [self isBtnSelect:_helf_Btn isSelect:NO];
+        }
+        
+        if (_whole_Btn.selected == YES) {
+            [_units_Field setText:_nowQuantity];
+        }
+    }
+    
+    if (_helf_Btn.selected == NO && _whole_Btn.selected == NO) {
+        [_units_Field setText:@""];
+    }
+}
+
+- (NSString*)decimalDividing:(NSString*)numStr1 with:(NSString*)numStr2{
+    NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:numStr1];
+    NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:numStr2];
+    
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+                                       decimalNumberHandlerWithRoundingMode:NSRoundUp
+                                       scale:8
+                                       raiseOnExactness:NO
+                                       raiseOnOverflow:NO
+                                       raiseOnUnderflow:NO
+                                       raiseOnDivideByZero:NO];
+    
+    NSDecimalNumber *result = [num1 decimalNumberByDividingBy:num2 withBehavior:roundUp];
+    
+    return [result stringValue];
+}
+
+- (void)isBtnSelect:(UIButton*)btn isSelect:(BOOL)isSelect{
+    if (isSelect) {
+        [btn setBackgroundColor:[UIColor colorWithHexString:@"3A29AD"]];
+        btn.layer.borderColor = [UIColor clearColor].CGColor;
+        
+        btn.alpha = 1;
+    } else {
+        btn.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.4].CGColor;
+        [btn setBackgroundColor:[UIColor clearColor]];
+        
+        btn.alpha = 0.4;
+    }
+    btn.selected = isSelect;
 }
 
 - (void)fillWalletAddress:(NSNotification*)noti{
@@ -107,7 +224,7 @@
     NSDictionary *commitInfo = @{
                                  @"verifyCode":_verify_Field.text,
                                  @"tradePassword":_tradePsw_Field.text,
-                                 @"blockChainType":@1,
+                                 @"blockChainType":@"1",
                                  @"CoinId":_nowCoin,
                                  @"coinQuantity":_units_Field.text,
                                  @"toAddress":_walletAdds_Field.text,
@@ -252,6 +369,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *coinStr = [_coinArray objectAtIndex:indexPath.row];
     [_currencyLabel setText:coinStr];
+    _nowCoin = coinStr;
+    [self setWithdrewFee:_nowCoin];
     [[NSUserDefaults standardUserDefaults]setObject:coinStr forKey:CHARGENOWCOIN_WITHDREW];
     [self coinTableView:nil];
 }
@@ -283,6 +402,11 @@
                              
                          }];
                      }];
+}
+
+- (IBAction)callScanView:(id)sender{
+    ScanViewController *scanView = [[ScanViewController alloc]initWithNibName:@"ScanViewController" bundle:nil];
+    [self.navigationController pushViewController:scanView animated:YES];
 }
 
 - (UITableView *)coinTableView{

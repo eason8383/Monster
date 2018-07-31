@@ -13,5 +13,11 @@
 @property(nonatomic,strong)IBOutlet UILabel *mobileNo_Label;
 @property(nonatomic,strong)IBOutlet UIButton *callMenuBtn;
 @property(nonatomic,strong)IBOutlet UIButton *audioViewBtn;
+
+
+- (void)setFilpLabelInfos:(NSArray*)infos;
+
+
+
 @end
 

@@ -32,6 +32,6 @@
 
 - (NSArray*)getExternalMarketInfo;
 - (NSDictionary*)getExternalMarketInfoWithCoinId:(NSString*)coinId;
-- (float)getMultipleWithCurrentCoinId:(NSString*)coinId;
+- (NSString*)getMultipleWithCurrentCoinId:(NSString*)coinId;
 
 @end

@@ -41,9 +41,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH/MR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdm-mB-AeO">
-                    <rect key="frame" x="57" y="43" width="60" height="20"/>
+                    <rect key="frame" x="57" y="43" width="70" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="8Nb-07-Tfh"/>
+                        <constraint firstAttribute="width" constant="70" id="8Nb-07-Tfh"/>
                         <constraint firstAttribute="height" constant="20" id="AX6-IP-kLq"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>

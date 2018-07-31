@@ -113,6 +113,7 @@
         CGFloat value = coinPair.endPrice;
         CGFloat xPostion = this.lineSpace*idx + this.leftMargin;
         CGFloat yPostion = (this.maxY - value)*this.scaleY + this.topMargin;
+        NSLog(@"%.8f",coinPair.endPrice);
         ZYWLineModel *lineModel = [ZYWLineModel initPositon:xPostion yPosition:yPostion barTime:coinPair.barTimeLong price:coinPair.endPrice color:this.lineColor];
         [this.modelPostionArray addObject:lineModel];
     }];
@@ -150,13 +151,27 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if (_poLine == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PointOutLine" owner:self options:nil];
-        _poLine = [nib objectAtIndex:0];
+        if(kScreenHeight == 568){
+            _poLine = [nib objectAtIndex:1];
+        } else {
+            _poLine = [nib objectAtIndex:0];
+        }
+        
     }
+    
     [self.delegate touchesBegen];
     UITouch *touch = [touches anyObject];
     //    // 取得触摸点在当前视图中的位置
     CGPoint current = [touch locationInView:self];
-    [_poLine setFrame:CGRectMake(current.x - 22, -30, 44, self.frame.size.height - 80)];
+    
+    if(kScreenHeight == 568){
+        [_poLine setFrame:CGRectMake(current.x - 22, 20, 44, self.frame.size.height - 80)];
+    } else {
+        
+        [_poLine setFrame:CGRectMake(current.x - 22, -30, 44, self.frame.size.height - 80)];
+    }
+    
+    
     
     [self addSubview:_poLine];
     

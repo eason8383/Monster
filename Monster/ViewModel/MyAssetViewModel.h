@@ -11,7 +11,7 @@
 
 @optional
 
-- (void)getDataSucess;
+- (void)getDataSucess:(NSDictionary*)info;
 - (void)getUserCoinInOutInfoSucess;
 - (void)getDataFalid:(NSError*)error;
 

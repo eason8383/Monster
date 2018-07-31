@@ -35,7 +35,7 @@
 - (void)getKlineList:(NSString*)klineType withLimit:(NSInteger)limit{
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[MRHomePageClient alloc]getKlienList:@"" withKLineType:@"1" withLimit:limit withBeginBarTimeLong:@"" success:^(id response) {
+        [[MRHomePageClient alloc]getKlienList:@"" withKLineType:klineType withLimit:limit withBeginBarTimeLong:@"" success:^(id response) {
             NSDictionary *dic = response;
             if ([[dic objectForKey:@"success"] integerValue] == 1) {
                 self.drawKLineInfo = [dic objectForKey:@"klineBarListMap"];

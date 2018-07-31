@@ -10,15 +10,16 @@
 
 @implementation MRMyOrderClient
 
-- (void)getMyOrderSuccess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
+- (void)getMyOrderSuccess:(NSInteger)page sucess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
 
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"userId":self.userAccount.userId,
-                                 @"sessionId":self.userAccount.sessionId,
-                                 @"orderStatus":@"1"
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
+                                 @"orderStatus":@"1",
+                                 @"pageNo":[NSNumber numberWithInteger:page]
                                  };
 
     NSString *jsonParameter = [parameters JSONString];
@@ -49,8 +50,8 @@
     NSDictionary *parameters = @{
                                  @"source":@"03",
                                  @"version":@"1.0",
-                                 @"userId":self.userAccount.userId,
-                                 @"sessionId":self.userAccount.sessionId,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
                                  @"orderStatus":@"",
                                  @"pageNo":[NSNumber numberWithInteger:page]
                                  

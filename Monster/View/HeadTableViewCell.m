@@ -10,6 +10,10 @@
 
 @interface HeadTableViewCell()
 @property(nonatomic,strong)IBOutlet UIImageView *bannerBallImgView;
+@property(nonatomic,strong)IBOutlet UILabel *filpLabel;
+@property(nonatomic,assign)NSInteger currentIndex;
+@property(nonatomic,strong)NSString *nowTitle;
+@property(nonatomic,strong)NSArray *infoArray;
 @end
 
 @implementation HeadTableViewCell
@@ -38,7 +42,53 @@
 //    border.lineDashPattern = @[@4, @2];
 //    
 //    [_bannerBallImgView.layer addSublayer:border];
+    
+    _infoArray = [NSArray array];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSTimer *updatTimer = [NSTimer scheduledTimerWithTimeInterval:5
+                                                  repeats:YES block:^(NSTimer *timer){
+                                                      [self.filpLabel setText:[self filpInfos]];
+                                                      [self filpAnimation];
+                                                  }];
+    [updatTimer fire];
+}
+
+- (NSString*)filpInfos{
+    if(_infoArray.count > 0){
+        if (_infoArray.count > 1) {
+            if (_currentIndex + 1 < _infoArray.count) {
+                return [_infoArray objectAtIndex:_currentIndex += 1];
+            } else {
+                return [_infoArray objectAtIndex:0];
+            }
+        } else {
+            return [_infoArray objectAtIndex:0];
+        }
+    }
+    return @"";
+}
+
+- (void)filpAnimation{
+    
+    CATransition *animation = [CATransition animation];
+    
+    [animation setDuration:1.25f];
+    
+    [animation setTimingFunction:[CAMediaTimingFunction
+                                  
+                                  functionWithName:kCAMediaTimingFunctionEaseIn]];
+    
+    animation.type     =   @"cube";
+    
+    animation.subtype  =   kCATransitionFromTop;
+    
+    [_filpLabel.layer addAnimation:animation forKey:@"cube"];
+}
+
+- (void)setFilpLabelInfos:(NSArray*)infos{
+    _infoArray = infos;
+    _currentIndex = 0;
+    _filpLabel.text = [infos objectAtIndex:_currentIndex];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

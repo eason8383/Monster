@@ -12,6 +12,7 @@
 #import "ExponentialView.h"
 #import "HomeViewModel.h"
 #import "CoinPairModel.h"
+#import "CoinDetailViewController.h"
 
 @interface MarketViewController () <HomeModelDelegate>
 
@@ -112,6 +113,22 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
+    CoinDetailViewController *coVC = [[CoinDetailViewController alloc]initWithNibName:@"CoinDetailViewController" bundle:nil];
+    
+    NSArray *ary = [_homeModel getHomeDataArray];
+
+    CoinPairModel *model = [ary objectAtIndex:indexPath.row];
+    NSArray *klineAry = [_homeModel getDrawKLineInfoArray:model.coinPairId];
+    coVC.model = model;
+    coVC.klineDataAry = [[NSMutableArray alloc]initWithArray:klineAry];
+    coVC.multiple = [_homeModel getMultipleWithCurrentCoinId:model.subCoinId];
+    coVC.isHighLowKLine = YES;
+    
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:[NSString stringWithFormat:@"%@/%@",model.mainCoinId,model.subCoinId] style:UIBarButtonItemStylePlain target:nil action:nil];
+    backBtn.tintColor = [UIColor whiteColor];
+    [self.navigationItem setBackBarButtonItem:backBtn];
+    self.navigationController.navigationBar.hidden = NO;
+    [self.navigationController pushViewController:coVC animated:YES];
 }
 
 @end

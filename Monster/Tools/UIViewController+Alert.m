@@ -38,6 +38,15 @@
     [self presentViewController:alertController animated:YES completion:^(){}];
 }
 
+- (void)justShowAlert:(NSString*)title message:(NSString*)message handler:(void (^ __nullable)(UIAlertAction *action))handler{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle: UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleCancel handler:handler];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:^(){}];
+}
+
 - (void)showActionSheet:(NSString*)title message:(NSString*)msg withActions:(NSArray*)actionArray{
     
     UIAlertController *alertActionSheet = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleActionSheet];

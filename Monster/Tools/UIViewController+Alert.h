@@ -11,8 +11,9 @@
 @interface UIViewController (Alert)
 
 - (void)showAlert:(NSString*)title withMsg:(NSString*)msg withActions:(NSArray*)actionArray;
-- (void)justShowAlert:(NSString*)title message:(NSString*)message;
-
 - (void)showActionSheet:(NSString*)title message:(NSString*)msg withActions:(NSArray*)actionArray;
+
+- (void)justShowAlert:(NSString*)title message:(NSString*)message;
+- (void)justShowAlert:(NSString*)title message:(NSString*)message handler:(void (^ __nullable)(UIAlertAction *action))handler;
 
 @end

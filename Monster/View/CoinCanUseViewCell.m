@@ -25,6 +25,8 @@
 }
 
 - (void)setContent:(UserCoinQuantity*)coinInfo{
+    
+    
 //    NSNumber *number = coinInfo.coinQuantity;
 //    float coin = [coinInfo.coinQuantity floatValue];
     [_coinLabel setText:coinInfo.coinId];
@@ -38,6 +40,24 @@
     
     
 //    [_cannotLabel setText:[NSString stringWithFormat:@"%.8f",coinInfo.coinQuantity]];
+}
+
+- (void)setContentWithAry:(NSArray*)coinAry{
+    
+    for (UserCoinQuantity *cInfo in coinAry) {
+        [_coinLabel setText:cInfo.coinId];
+        if ([cInfo.quantityStatusName isEqualToString:@"冻结"]) {
+            [_cannotLabel setText:[NSString stringWithFormat:@"%.8f",cInfo.coinQuantity]];
+            if (coinAry.count == 1) {
+                [_canUseLabel setText:@"0"];
+            }
+        } else {
+            [_canUseLabel setText:[NSString stringWithFormat:@"%.8f",cInfo.coinQuantity]];
+            if (coinAry.count == 1) {
+                [_cannotLabel setText:@"0"];
+            }
+        }
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HighLowLabelView.h"
 
 @class CoinPairModel;
 
@@ -20,6 +21,8 @@
 @property(nonatomic,strong)IBOutlet UIButton *add_stepper2Btn;
 @property(nonatomic,strong)IBOutlet UIButton *minus_stepper1Btn;
 @property(nonatomic,strong)IBOutlet UIButton *minus_stepper2Btn;
+@property(nonatomic,strong)HighLowLabelView *hlView;
+@property(nonatomic,strong)IBOutlet UIView *highLowViewBack;
 
 @property(nonatomic,assign)BOOL isBuyMode;
 @property(nonatomic,assign)float multiple;

@@ -32,7 +32,10 @@
     if (isnan(result)) {      //isnan为系统函数
         result = 0.0;
     }
-    [_upDownLabel setText:[NSString stringWithFormat:@"$%.2f",result]];
+    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
+    
+    [_upDownLabel setText:[NSString stringWithFormat:@"%@%.2f",dollarSign,result]];
     
     [_upDownLabel setTextColor:[UIColor colorWithHexString:isGoingHigher?MRCOLORHEX_HIGH:MRCOLORHEX_LOW]];
 }

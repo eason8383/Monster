@@ -71,6 +71,16 @@
     _picPath = @"";
 }
 
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    if (kScreenHeight == 568) {
+        CGRect frame = _uploadPicView.frame;
+        frame.origin.y = _uploadBtn.frame.origin.y;
+        _uploadPicView.frame = frame;
+    }
+    
+}
+
 - (IBAction)uploadPics:(id)sender{
    
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
@@ -106,6 +116,7 @@
     [self upvAnimation];
     
     [[VWProgressHUD shareInstance]dismiss];
+    
 }
 
 - (IBAction)commitFeedback:(id)sender{
@@ -115,6 +126,9 @@
 
 - (void)feedBackSuccess:(NSDictionary *)udInfo{
      [[VWProgressHUD shareInstance]dismiss];
+    [self justShowAlert:@"提交成功" message:@"感谢您的反馈，我们会尽快处理" handler:^(UIAlertAction *action){
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 - (void)feedbackFalid:(NSError *)error{

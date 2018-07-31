@@ -81,6 +81,7 @@
 #define CNY @"priceCNY"
 #define USD @"priceUSD"
 
+#define RELOAD_AFTERSETTING @"reload_afterSetting"
 
 //#define FilePath @"userAccount.archiver"
 

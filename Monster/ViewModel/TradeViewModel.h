@@ -31,7 +31,7 @@
 - (void)getData:(NSString*)coinPairId;
 - (void)getUserOrder:(NSString*)coinPairId;
 
-- (void)oderRequest:(CoinPairModel*)model coinQuantity:(float)coinQuantity orderPrice:(float)orderPrice buyOrSale:(BOOL)isBuy;
+- (void)oderRequest:(CoinPairModel*)model coinQuantity:(NSString*)coinQuantity orderPrice:(NSString*)orderPrice buyOrSale:(BOOL)isBuy;
 
 - (void)cancelOder:(NSString*)orderId coinPair:(NSString*)coinPairId;
 

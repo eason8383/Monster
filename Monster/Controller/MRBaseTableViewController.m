@@ -50,6 +50,7 @@
     } else {
         [self justShowAlert:@"错误信息" message:[dic objectForKey:@"respMessage"]];
     }
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

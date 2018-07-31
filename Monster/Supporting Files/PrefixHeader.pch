@@ -28,14 +28,13 @@
 #define MREnvironment_TEST      @"TEST"
 #define MREnvironment_Public    @"PUBLIC"
 
-
 #define printf_console printf
 
 //Test
-#define TEST_URL @"testapi.monstermarket.cn"
+#define TEST_URL @"http://testapi.monstermarket.cn"
 
 //poblic
-#define PUBLIC_URL @"www.monster.one"
+#define PUBLIC_URL @"https://api.monster.one"
 
 
 //ScreenSize

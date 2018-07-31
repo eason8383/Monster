@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanViewController">
             <connections>
-                <outlet property="bottonView" destination="6aR-n4-zUs" id="csI-kd-tXy"/>
-                <outlet property="flasherBtn" destination="5kN-DK-pYd" id="L91-YI-PWS"/>
-                <outlet property="flasherLabel" destination="c8L-wC-2Us" id="cdu-Fy-q2L"/>
-                <outlet property="picsBtn" destination="zRp-Qh-CoV" id="nMq-F7-dbm"/>
+                <outlet property="bottonView" destination="6aR-n4-zUs" id="PCf-rU-u5T"/>
+                <outlet property="flasherBtn" destination="5kN-DK-pYd" id="dSJ-Jg-Wwr"/>
+                <outlet property="flasherLabel" destination="c8L-wC-2Us" id="cBI-L1-gdw"/>
+                <outlet property="picsBtn" destination="zRp-Qh-CoV" id="L1T-dW-hST"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,26 +27,38 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6aR-n4-zUs">
                     <rect key="frame" x="0.0" y="567" width="375" height="100"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRp-Qh-CoV">
-                            <rect key="frame" x="82.5" y="23" width="38" height="38"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="btn_dcim"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRp-Qh-CoV">
+                            <rect key="frame" x="90" y="31" width="29" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="8fa-Rn-Sn7"/>
+                                <constraint firstAttribute="width" constant="29" id="dM6-c8-ksK"/>
+                            </constraints>
+                            <state key="normal" image="album"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kN-DK-pYd">
-                            <rect key="frame" x="262" y="23" width="38" height="38"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="btn_dcim"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kN-DK-pYd">
+                            <rect key="frame" x="269" y="28" width="16" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="OKh-fD-aJW"/>
+                                <constraint firstAttribute="height" constant="28" id="zNK-xg-NOU"/>
+                            </constraints>
+                            <state key="normal" image="flashlight"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="相簿选取" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAt-ue-Tjt">
-                            <rect key="frame" x="73.5" y="72" width="56" height="12"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相簿选取" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAt-ue-Tjt">
+                            <rect key="frame" x="76.5" y="72" width="56" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="56" id="Ghy-hc-gJK"/>
+                                <constraint firstAttribute="height" constant="12" id="oI7-yP-hLx"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.5568627451" green="0.59607843140000005" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="打开手电筒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8L-wC-2Us">
-                            <rect key="frame" x="250" y="72" width="62" height="12"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="打开手电筒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8L-wC-2Us">
+                            <rect key="frame" x="246" y="74" width="62" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="cUi-dU-aev"/>
+                                <constraint firstAttribute="width" constant="62" id="q2H-YC-3Vd"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.5568627451" green="0.59607843140000005" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -54,7 +66,15 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="c8L-wC-2Us" firstAttribute="centerX" secondItem="5kN-DK-pYd" secondAttribute="centerX" id="AAd-17-3LM"/>
                         <constraint firstAttribute="height" constant="100" id="EGo-1p-D91"/>
+                        <constraint firstItem="FAt-ue-Tjt" firstAttribute="top" secondItem="zRp-Qh-CoV" secondAttribute="bottom" constant="19" id="FG4-a8-sL0"/>
+                        <constraint firstItem="zRp-Qh-CoV" firstAttribute="leading" secondItem="6aR-n4-zUs" secondAttribute="leading" constant="90" id="IZm-4P-Hno"/>
+                        <constraint firstItem="FAt-ue-Tjt" firstAttribute="centerX" secondItem="zRp-Qh-CoV" secondAttribute="centerX" id="OUC-ml-NhG"/>
+                        <constraint firstAttribute="trailing" secondItem="5kN-DK-pYd" secondAttribute="trailing" constant="90" id="SsC-qA-6uc"/>
+                        <constraint firstItem="5kN-DK-pYd" firstAttribute="centerY" secondItem="zRp-Qh-CoV" secondAttribute="centerY" id="awv-9z-3HI"/>
+                        <constraint firstItem="c8L-wC-2Us" firstAttribute="top" secondItem="5kN-DK-pYd" secondAttribute="bottom" constant="18" id="gaQ-ub-6OL"/>
+                        <constraint firstItem="zRp-Qh-CoV" firstAttribute="top" secondItem="6aR-n4-zUs" secondAttribute="top" constant="31" id="uJg-ry-aDD"/>
                     </constraints>
                 </view>
             </subviews>
@@ -69,6 +89,7 @@
         </view>
     </objects>
     <resources>
-        <image name="btn_dcim" width="38" height="38"/>
+        <image name="album" width="29" height="22"/>
+        <image name="flashlight" width="16" height="28"/>
     </resources>
 </document>

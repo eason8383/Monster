@@ -13,12 +13,16 @@
 #import "MyOrderViewModel.h"
 #import "TradeViewModel.h"
 #import "UserOrderModel.h"
+#import "SGLoadMoreView.h"
 //#import "JZNavigationExtension.h"
 
 @interface MyOrderViewController ()<MyOrderViewModelDelegate,TradeViewModelDelegate>
 
 @property(nonatomic,strong)MyOrderViewModel *myOrderViewModel;
 @property(nonatomic,strong)TradeViewModel *tradeViewModel;
+@property(nonatomic,assign)int currentPage;
+@property(nonatomic,strong)SGLoadMoreView *loadMoreView;
+@property (strong,nonatomic)NSMutableArray *orderAry;
 
 @end
 
@@ -31,8 +35,6 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     self.title = @"当前委托";
     
     [self initial];
-    [[VWProgressHUD shareInstance]showLoading];
-    [_myOrderViewModel getData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -63,8 +65,25 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 }
 
 - (void)getDataSucess{
+    NSArray *ary = [_myOrderViewModel getOrderAry];
+    if (ary.count > 0) {
+        if (_currentPage == 1) { //因為是refresh
+            
+            [_orderAry removeAllObjects];
+            [_loadMoreView restartLoadData];
+        }
+        [self.orderAry addObjectsFromArray:[_myOrderViewModel getOrderAry]];
+        [_loadMoreView stopAnimation];
+        [self.tableView reloadData];
+    } else {
+        [_loadMoreView noMoreData];
+    }
+    [self.tableView.refreshControl endRefreshing];
+    
+    //    [_orderAry addObject:[_myOrderViewModel getOrderAry]];
     [[VWProgressHUD shareInstance]dismiss];
-    [self.tableView reloadData];
+    
+    
 }
 
 - (void)getDataFalid:(NSError *)error{
@@ -73,11 +92,14 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 }
 
 - (void)orderCancelSucess:(NSDictionary*)res{
-    [[VWProgressHUD shareInstance]showLoading];
-    [_myOrderViewModel getData];
+    [[VWProgressHUD shareInstance]dismiss];
+    _currentPage = 1;
+    [_myOrderViewModel getData:_currentPage];
 }
 
 - (void)initial{
+    
+    _currentPage = 1;
     
     _myOrderViewModel = [MyOrderViewModel sharedInstance];
     _myOrderViewModel.delegate = self;
@@ -92,10 +114,35 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     
     [self registerCells];
     
+    //refresh 下拉更新View
+    UIRefreshControl *control = [[UIRefreshControl alloc]init];
+    
+    [control addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    self.tableView.refreshControl = control;
+    
+    //上推更新View
+    _loadMoreView = [[SGLoadMoreView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
+    self.tableView.tableFooterView = self.loadMoreView;
+    [self registerCells];
+    
+    [[VWProgressHUD shareInstance]showLoading];
+    [_myOrderViewModel getData:_currentPage];
+    
 }
 
-- (void)getUserOrderSucess{
-    [[VWProgressHUD shareInstance]dismiss];
+- (void)refresh:(id)sender{
+    NSLog(@"reload oh");
+    
+    _currentPage = 1;
+    [self.orderAry removeAllObjects];
+    [_myOrderViewModel getData:_currentPage];
+}
+
+- (void)loadMore{
+    //add load more
+    
+    _currentPage += 1;
+    [_myOrderViewModel getData:_currentPage];
 }
 
 - (void)registerCells{
@@ -104,16 +151,17 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"94 here :%ld",(long)[_myOrderViewModel numberOfRowsInSection]);
-    return [_myOrderViewModel numberOfRowsInSection];
+//    NSLog(@"94 here :%ld",(long)[_myOrderViewModel numberOfRowsInSection]);
+//    return [_myOrderViewModel numberOfRowsInSection];
+    return self.orderAry.count;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     EntrustNowViewCell *enCell = (EntrustNowViewCell *)[tableView dequeueReusableCellWithIdentifier:entrustNowViewCellIdentifier];
-    NSArray *orderAry = [_myOrderViewModel getOrderAry];
-    UserOrderModel *model = [orderAry objectAtIndex:indexPath.row];
+//    NSArray *orderAry = [_myOrderViewModel getOrderAry];
+    UserOrderModel *model = [self.orderAry objectAtIndex:indexPath.row];
     enCell.cancelBtn.tag = indexPath.row;
     [enCell.cancelBtn addTarget:self action:@selector(cancelOrder:) forControlEvents:UIControlEventTouchUpInside];
     [enCell setContent:model];
@@ -124,8 +172,8 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     OrderDetailViewController *odVc = [[OrderDetailViewController alloc]initWithNibName:@"OrderDetailViewController" bundle:nil];
-    NSArray *orderAry = [_myOrderViewModel getOrderAry];
-    odVc.userOrderInfo = [orderAry objectAtIndex:indexPath.row];
+//    NSArray *orderAry = [_myOrderViewModel getOrderAry];
+    odVc.userOrderInfo = [self.orderAry objectAtIndex:indexPath.row];
     [self homeDefaultPushController:odVc];
 }
 
@@ -140,9 +188,24 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
         [noBillLabel setTextAlignment:NSTextAlignmentCenter];
         [noBillLabel setTextColor:[UIColor whiteColor]];
         [noBillView addSubview:noBillLabel];
-        
+        _loadMoreView.hidden = YES;
+    } else {
+        _loadMoreView.hidden = NO;
     }
     return noBillView;
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    CGFloat currentOffsetY = scrollView.contentOffset.y;
+    /*self.refreshControl.isRefreshing == NO加这个条件是为了防止下面的情况发生：
+     每次进入UITableView，表格都会沉降一段距离，这个时候就会导致currentOffsetY + scrollView.frame.size.height   > scrollView.contentSize.height 被触发，从而触发loadMore方法，而不会触发refresh方法。
+     */
+    NSLog(@"currentOffsetY:%f ,_tableView.contentSize.height:%f ",currentOffsetY,self.tableView.contentSize.height);
+    if ( currentOffsetY + self.tableView.frame.size.height  > self.tableView.contentSize.height - 50 &&  self.tableView.refreshControl.isRefreshing == NO  && self.loadMoreView.isAnimating == NO && self.loadMoreView.tipsLabel.isHidden && self.orderAry.count > 0) {
+        [self.loadMoreView startAnimation];//开始旋转菊花
+        [self loadMore];
+    }
+    NSLog(@"%@ ---%f----%f",NSStringFromCGRect(scrollView.frame),currentOffsetY,scrollView.contentSize.height);
 }
 
 - (void)cancelOrder:(UIButton*)btn{
@@ -150,8 +213,8 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     
     UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [[VWProgressHUD shareInstance]showLoading];
-        NSArray *orderAry = [self.myOrderViewModel getOrderAry];
-        UserOrderModel *orderModel = [orderAry objectAtIndex:btn.tag];
+//        NSArray *orderAry = [self.myOrderViewModel getOrderAry];
+        UserOrderModel *orderModel = [self.orderAry objectAtIndex:btn.tag];
         [self.tradeViewModel cancelOder:orderModel.orderId coinPair:orderModel.coinPairId];
     }];
     UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -162,6 +225,13 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     [actions addObject:cancelBtn];
     
     [self showAlert:@"" withMsg:@"你确定要撤销此笔订单吗?" withActions:actions];
+}
+
+- (NSMutableArray*)orderAry{
+    if (_orderAry == nil) {
+        _orderAry = [NSMutableArray array];
+    }
+    return _orderAry;
 }
 
 @end

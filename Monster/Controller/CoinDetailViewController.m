@@ -79,7 +79,7 @@
     }
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"212025"]];
-    
+//    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -109,7 +109,7 @@
     _pricePointLabel.layer.shadowRadius = 5;//设置阴影半径
     
 //    UIBarButtonItem *InfoBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(infoMemo)];
-    UIBarButtonItem *InfoBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@""] style:UIBarButtonItemStylePlain target:self action:@selector(infoMemo)];
+    UIBarButtonItem *InfoBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"introduce"] style:UIBarButtonItemStylePlain target:self action:@selector(infoMemo)];
     [InfoBtn setTintColor:[UIColor whiteColor]];
     [self.navigationItem setRightBarButtonItem:InfoBtn];
 }
@@ -174,14 +174,42 @@
         result = 0.0;
     }
     
-    [self setTitlePrice:[NSString stringWithFormat:@"%f",_model.lastPrice]];
+    [self setTitlePrice:[NSString stringWithFormat:@"%.8f",_model.lastPrice]];
     
-    [_subPrice_Label  setText:[NSString stringWithFormat:@"≈$%.2f",_model.lastPrice*self.multiple]];
-    [_height_Label setText:[NSString stringWithFormat:@"$%.2f",_model.maxPrice*self.multiple]];
-    [_low_Label  setText:[NSString stringWithFormat:@"$%.2f",_model.minPrice*self.multiple]];
-    [_oneDay_Label  setText:[NSString stringWithFormat:@"$%.2f",_model.endPrice*self.multiple]];
+    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
+    
+    NSString *subpStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",_model.lastPrice] with:self.multiple];
+    [_subPrice_Label  setText: [NSString stringWithFormat:@"≈%@%@",dollarSign,subpStr]];
+    
+    
+    NSString *heightStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",_model.maxPrice] with:self.multiple];
+    [_height_Label setText:heightStr];
+    
+    NSString *lowStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",_model.minPrice] with:self.multiple];
+    [_low_Label  setText:lowStr];
+    
+//    NSString *oneDayStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",_model.totalVolume] with:self.multiple];
+    [_oneDay_Label  setText:[NSString stringWithFormat:@"%.4f",_model.totalVolume]];
     
     [_pesent_Label setText:[NSString stringWithFormat:@"%.2f",result]];
+}
+
+- (NSString*)decimalMultiply:(NSString*)numStr1 with:(NSString*)numStr2{
+    NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:numStr1];
+    NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:numStr2];
+    
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+                                       decimalNumberHandlerWithRoundingMode:NSRoundUp
+                                       scale:2
+                                       raiseOnExactness:NO
+                                       raiseOnOverflow:NO
+                                       raiseOnUnderflow:NO
+                                       raiseOnDivideByZero:NO];
+    
+    NSDecimalNumber *result = [num1 decimalNumberByMultiplyingBy:num2 withBehavior:roundUp];
+    
+    return [result stringValue];
 }
 
 - (void)setTitlePrice:(NSString*)priceString{
@@ -236,7 +264,7 @@
 }
 
 - (void)returnPrice:(double)price{
-    [self setTitlePrice:[NSString stringWithFormat:@"%f",price]];
+    [self setTitlePrice:[NSString stringWithFormat:@"%.8f",price]];
 }
 
 - (NSArray*)generateDataArray:(NSArray*)ary{

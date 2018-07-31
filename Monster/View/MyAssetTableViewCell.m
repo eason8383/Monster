@@ -33,11 +33,12 @@
 }
 
 - (void)setContent:(NSDictionary *)info{
-    float asset = [[info objectForKey:@"myAsset"] floatValue];
+//    float asset = [[info objectForKey:@"myAsset"] floatValue];
     
-    [_myAssetLabel setText:[NSString stringWithFormat:@"%.8f",asset]];
-    
-    [_subAssetLabel setText:[NSString stringWithFormat:@"≈$%@",[info objectForKey:@"result"]]];
+    [_myAssetLabel setText:[info objectForKey:@"myAsset"]];
+    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
+    [_subAssetLabel setText:[NSString stringWithFormat:@"≈%@%@",dollarSign,[info objectForKey:@"result"]]];
 }
 
 - (void)setBtnTarget:(id)target select:(SEL)select{

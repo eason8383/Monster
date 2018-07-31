@@ -16,4 +16,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/WithdrawViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/CAWViewModel.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/CAWViewModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/ScanViewController.h

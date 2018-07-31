@@ -22,4 +22,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/OrderHistoryViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/MyOrderViewModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/TradeViewModel.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/UserOrderModel.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/UserOrderModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/SGLoadMoreView.h

@@ -100,8 +100,22 @@
 }
 
 - (IBAction)commitUpdate:(id)sender{
-    [[VWProgressHUD shareInstance]showLoading];
-    [_udPswViewModel updatePsw:_foundPsw_Field.text verifyCode:_smsVerify_Field.text];
+    if (![self checkPswForm:_foundPsw_Field.text]) {
+        [self justShowAlert:@"密码格式有误" message:@"请输入6-12位的数字字母组合"];
+//    } else if(![_foundPsw_Field.text isEqualToString:_conFirmCode_Field.text]){
+//        [self justShowAlert:@"确认密码" message:@"请再次输入相同密码"];
+    } else {
+        [[VWProgressHUD shareInstance]showLoading];
+        [_udPswViewModel updatePsw:_foundPsw_Field.text verifyCode:_smsVerify_Field.text];
+    }
+}
+
+- (BOOL)checkPswForm:(NSString*)psw{
+    NSString *phoneRegex = @"/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/";
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    BOOL matches = [test evaluateWithObject:psw];
+
+    return matches;
 }
 
 - (void)updateSuccess:(NSDictionary *)udInfo{

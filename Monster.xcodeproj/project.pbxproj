@@ -124,6 +124,11 @@
 		D773385420FC6D430039F924 /* ChoseCoinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D773385220FC6D430039F924 /* ChoseCoinTableViewCell.xib */; };
 		D773385720FC90EE0039F924 /* UserCoinQuantity.m in Sources */ = {isa = PBXBuildFile; fileRef = D773385620FC90EE0039F924 /* UserCoinQuantity.m */; };
 		D773385A20FCA2A10039F924 /* MyAssetViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D773385920FCA2A10039F924 /* MyAssetViewModel.m */; };
+		D779B876210ABB910031BCC1 /* MRButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D779B875210ABB910031BCC1 /* MRButton.m */; };
+		D779B87F210AC48E0031BCC1 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D779B87D210AC48E0031BCC1 /* SelectViewController.m */; };
+		D779B880210AC48E0031BCC1 /* SelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D779B87E210AC48E0031BCC1 /* SelectViewController.xib */; };
+		D779B884210AC64B0031BCC1 /* CounterPriceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D779B882210AC64B0031BCC1 /* CounterPriceViewCell.m */; };
+		D779B885210AC64B0031BCC1 /* CounterPriceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D779B883210AC64B0031BCC1 /* CounterPriceViewCell.xib */; };
 		D7820BA920F4C11200B01F05 /* MRHomePageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BA820F4C11200B01F05 /* MRHomePageClient.m */; };
 		D7820BAC20F4C50C00B01F05 /* HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BAB20F4C50C00B01F05 /* HomeViewModel.m */; };
 		D7820BAF20F5E1B200B01F05 /* CoinDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7820BAE20F5E1B200B01F05 /* CoinDetailViewModel.m */; };
@@ -377,6 +382,14 @@
 		D773385620FC90EE0039F924 /* UserCoinQuantity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCoinQuantity.m; sourceTree = "<group>"; };
 		D773385820FCA2A10039F924 /* MyAssetViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAssetViewModel.h; sourceTree = "<group>"; };
 		D773385920FCA2A10039F924 /* MyAssetViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAssetViewModel.m; sourceTree = "<group>"; };
+		D779B874210ABB910031BCC1 /* MRButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRButton.h; sourceTree = "<group>"; };
+		D779B875210ABB910031BCC1 /* MRButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRButton.m; sourceTree = "<group>"; };
+		D779B87C210AC48E0031BCC1 /* SelectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
+		D779B87D210AC48E0031BCC1 /* SelectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
+		D779B87E210AC48E0031BCC1 /* SelectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectViewController.xib; sourceTree = "<group>"; };
+		D779B881210AC64B0031BCC1 /* CounterPriceViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CounterPriceViewCell.h; sourceTree = "<group>"; };
+		D779B882210AC64B0031BCC1 /* CounterPriceViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CounterPriceViewCell.m; sourceTree = "<group>"; };
+		D779B883210AC64B0031BCC1 /* CounterPriceViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CounterPriceViewCell.xib; sourceTree = "<group>"; };
 		D7820BA720F4C11200B01F05 /* MRHomePageClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRHomePageClient.h; sourceTree = "<group>"; };
 		D7820BA820F4C11200B01F05 /* MRHomePageClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRHomePageClient.m; sourceTree = "<group>"; };
 		D7820BAA20F4C50C00B01F05 /* HomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewModel.h; sourceTree = "<group>"; };
@@ -610,6 +623,11 @@
 				D71643AB2100A57B0060AB6C /* PointOutLine.h */,
 				D71643AC2100A57B0060AB6C /* PointOutLine.m */,
 				D71643AE2100A5CB0060AB6C /* PointOutLine.xib */,
+				D779B874210ABB910031BCC1 /* MRButton.h */,
+				D779B875210ABB910031BCC1 /* MRButton.m */,
+				D779B881210AC64B0031BCC1 /* CounterPriceViewCell.h */,
+				D779B882210AC64B0031BCC1 /* CounterPriceViewCell.m */,
+				D779B883210AC64B0031BCC1 /* CounterPriceViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -640,6 +658,9 @@
 				9B4F1D8620EF0ED600DEF626 /* MyOrderViewController.h */,
 				9B4F1D8720EF0ED600DEF626 /* MyOrderViewController.m */,
 				9B4F1D8820EF0ED600DEF626 /* MyOrderViewController.xib */,
+				D735D7AB20F0A696007E2B7C /* OrderHistoryViewController.h */,
+				D735D7AC20F0A696007E2B7C /* OrderHistoryViewController.m */,
+				D735D7AD20F0A696007E2B7C /* OrderHistoryViewController.xib */,
 				9B4F1D9020EF408900DEF626 /* IdentityViewController.h */,
 				9B4F1D9120EF408900DEF626 /* IdentityViewController.m */,
 				9B4F1D9220EF408900DEF626 /* IdentityViewController.xib */,
@@ -661,9 +682,6 @@
 				9B4F1DB320EF6B9700DEF626 /* WithdrawViewController.h */,
 				9B4F1DB420EF6B9700DEF626 /* WithdrawViewController.m */,
 				9B4F1DB520EF6B9700DEF626 /* WithdrawViewController.xib */,
-				D735D7AB20F0A696007E2B7C /* OrderHistoryViewController.h */,
-				D735D7AC20F0A696007E2B7C /* OrderHistoryViewController.m */,
-				D735D7AD20F0A696007E2B7C /* OrderHistoryViewController.xib */,
 				9BA85A9520F0AC3F00C096B0 /* OrderDetailViewController.h */,
 				9BA85A9620F0AC3F00C096B0 /* OrderDetailViewController.m */,
 				9BA85A9720F0AC3F00C096B0 /* OrderDetailViewController.xib */,
@@ -695,6 +713,9 @@
 				D73B24E2210818A50045E77B /* ReflectionViewController.h */,
 				D73B24E3210818A50045E77B /* ReflectionViewController.m */,
 				D73B24E4210818A50045E77B /* ReflectionViewController.xib */,
+				D779B87C210AC48E0031BCC1 /* SelectViewController.h */,
+				D779B87D210AC48E0031BCC1 /* SelectViewController.m */,
+				D779B87E210AC48E0031BCC1 /* SelectViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -950,6 +971,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D779B880210AC48E0031BCC1 /* SelectViewController.xib in Resources */,
 				D71643AF2100A5CB0060AB6C /* PointOutLine.xib in Resources */,
 				9B42212020EDB9BD009D5A8A /* TradeViewController.xib in Resources */,
 				9B4F1DA320EF545F00DEF626 /* SetupViewController.xib in Resources */,
@@ -988,6 +1010,7 @@
 				9B7EEE8F20E9C39200DF88B4 /* Assets.xcassets in Resources */,
 				9B87074C20EB639900156E39 /* SliderMenuView.xib in Resources */,
 				9B4F1DB720EF6B9700DEF626 /* WithdrawViewController.xib in Resources */,
+				D779B885210AC64B0031BCC1 /* CounterPriceViewCell.xib in Resources */,
 				9B4F1DB220EF583E00DEF626 /* CapitalViewController.xib in Resources */,
 				9B4F1D8A20EF0ED600DEF626 /* MyOrderViewController.xib in Resources */,
 				9B9DFD3620EF7CA900E56B2F /* CapitalDetailsViewCell.xib in Resources */,
@@ -1132,6 +1155,7 @@
 				D759391E21072938004E75FF /* ScanViewController.m in Sources */,
 				9B4F1DA720EF57CF00DEF626 /* ChargeViewController.m in Sources */,
 				9B87073620EB1FC700156E39 /* UIViewController+Alert.m in Sources */,
+				D779B884210AC64B0031BCC1 /* CounterPriceViewCell.m in Sources */,
 				9BB945EB20EC6E8300B8D7BE /* HeadTableViewCell.m in Sources */,
 				9B4F1DA220EF545F00DEF626 /* SetupViewController.m in Sources */,
 				9BB9461420ECD90600B8D7BE /* CoinDetailViewController.m in Sources */,
@@ -1164,6 +1188,7 @@
 				D75939192106E256004E75FF /* CAWViewModel.m in Sources */,
 				D7CAB0E920F309A800B8B99B /* ZYWLineData.m in Sources */,
 				9B7EEECE20EA288400DF88B4 /* MRUserAccount.m in Sources */,
+				D779B87F210AC48E0031BCC1 /* SelectViewController.m in Sources */,
 				9B87074020EB453600156E39 /* HomePageViewController.m in Sources */,
 				9BA85A9820F0AC3F00C096B0 /* OrderDetailViewController.m in Sources */,
 				D735D7B320F0B531007E2B7C /* BindingMobileViewController.m in Sources */,
@@ -1173,6 +1198,7 @@
 				D708218E20F48C80002AEDA2 /* AboutusViewController.m in Sources */,
 				9B87073C20EB3B3600156E39 /* MRBaseModel.m in Sources */,
 				D735D7AE20F0A696007E2B7C /* OrderHistoryViewController.m in Sources */,
+				D779B876210ABB910031BCC1 /* MRButton.m in Sources */,
 				D7CAB0F620F30AF400B8B99B /* ZYWSlipLineView.m in Sources */,
 				D7820BA920F4C11200B01F05 /* MRHomePageClient.m in Sources */,
 				9B4F1D9720EF41C300DEF626 /* UpLoadImagView.m in Sources */,
@@ -1363,8 +1389,9 @@
 			baseConfigurationReference = 3FB4002AB6E63E36F9134BE2 /* Pods-Monster.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4CA9RGENWW;
+				DEVELOPMENT_TEAM = T7R8WQXWCU;
 				GCC_PREFIX_HEADER = "Monster/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = Monster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -1372,7 +1399,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Tigerrose.cn.Monster;
+				PRODUCT_BUNDLE_IDENTIFIER = one.monster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1383,8 +1410,9 @@
 			baseConfigurationReference = 552E33478F0F89114C82E004 /* Pods-Monster.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4CA9RGENWW;
+				DEVELOPMENT_TEAM = T7R8WQXWCU;
 				GCC_PREFIX_HEADER = "Monster/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = Monster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -1392,7 +1420,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Tigerrose.cn.Monster;
+				PRODUCT_BUNDLE_IDENTIFIER = one.monster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
