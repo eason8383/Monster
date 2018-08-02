@@ -11,7 +11,6 @@
 
 @interface BindingMailBoxViewController ()<UITextFieldDelegate,IdentityViewModelDelegate>
 
-
 @property(nonatomic,strong)IBOutlet UITextField *mailBox_Field;
 @property(nonatomic,strong)IBOutlet UITextField *mailVerify_Field;
 
@@ -134,8 +133,12 @@
 }
 
 - (void)userEmailIdentitySuccess:(NSDictionary*)verifyInfo;{
-    //Sucess
-    [[NSUserDefaults standardUserDefaults]setObject:_mailBox_Field.text forKey:EMAIL_BINDING];
+    //Success
+    
+    MRUserAccount *userAccount = [MRWebClient sharedInstance].userAccount;
+    userAccount.userEmail = _mailBox_Field.text;
+    [[MRWebClient sharedInstance]saveUserAccount:userAccount];
+//    [[NSUserDefaults standardUserDefaults]setObject:_mailBox_Field.text forKey:EMAIL_BINDING];
     [[VWProgressHUD shareInstance]dismiss];
     
     NSMutableArray *actions = [NSMutableArray array];

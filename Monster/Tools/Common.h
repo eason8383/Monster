@@ -15,6 +15,10 @@
 #define ERQUERY @"egQuery"
 #define ERORDER @"egOrder"
 
+#define EGQUERYFORPAGE @"egQueryForPage"
+
+#define MR_HOMEPAGEINFO @"queryHomePage"
+
 #define MR_SMSVERIFYCODE @"sendSmsVerifyCode"
 #define MR_SMSLOGIN @"smsLogin"
 

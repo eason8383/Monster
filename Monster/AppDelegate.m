@@ -21,8 +21,9 @@
 
 + (NSString *)environment{
     
-    return MREnvironment_TEST;
+//    return MREnvironment_TEST;
 //    return MREnvironment_Public;
+    return MREnvironment_PRE;
 }
 
 
@@ -46,24 +47,24 @@
     
     NSString *sessionId = [[NSUserDefaults standardUserDefaults]objectForKey:@"sessionId"];
     id userAccountObject = [[NSUserDefaults standardUserDefaults]objectForKey:@"userAccount"];
-    BOOL isGoogleAuth = [[NSUserDefaults standardUserDefaults]boolForKey:LOGINVERIFYWITHGOOGLEAUTH];
+//    BOOL isGoogleAuth = [[NSUserDefaults standardUserDefaults]boolForKey:LOGINVERIFYWITHGOOGLEAUTH];
     
     if (userAccountObject && [userAccountObject isKindOfClass:[NSData class]] && sessionId) {
         MRUserAccount *userAccount = [NSKeyedUnarchiver unarchiveObjectWithData:userAccountObject];
-        if (userAccount.hasGoogleAuth) {
-            
-            if (isGoogleAuth) {
-                
-                [MRWebClient sharedInstance].userAccount = userAccount;
-                [self readyToShowMainController];
-            } else {
-                [self goToLogin];
-            }
-            
-        } else {
+//        if (userAccount.hasGoogleAuth) {
+//
+//            if (isGoogleAuth) {
+//
+//                [MRWebClient sharedInstance].userAccount = userAccount;
+//                [self readyToShowMainController];
+//            } else {
+//                [self goToLogin];
+//            }
+//
+//        } else {
             [MRWebClient sharedInstance].userAccount = userAccount;
             [self readyToShowMainController];
-        }
+//        }
         
     } else {
         [self goToLogin];

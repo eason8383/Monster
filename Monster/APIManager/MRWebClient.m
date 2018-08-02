@@ -469,7 +469,14 @@ static NSString *sessionId;
     NSString *urlStr;
     NSString *baseUrlString;
     
-    baseUrlString = [[AppDelegate environment] isEqualToString:MREnvironment_TEST]?TEST_URL:PUBLIC_URL;
+    if ([[AppDelegate environment] isEqualToString:MREnvironment_TEST]) {
+        baseUrlString = TEST_URL;
+    } else if ([[AppDelegate environment] isEqualToString:MREnvironment_Public]) {
+        baseUrlString = PUBLIC_URL;
+    } else {
+        baseUrlString = PRE_URL;
+    }
+//    baseUrlString = [[AppDelegate environment] isEqualToString:MREnvironment_TEST]?TEST_URL:PUBLIC_URL;
 
     urlStr = [NSString stringWithFormat:@"%@/%@/%@",baseUrlString,action,controller];
     

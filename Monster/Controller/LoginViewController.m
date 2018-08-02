@@ -229,20 +229,18 @@
                 if (userInfo.success) {
                     
                     //通知appDelegate登入成功
-                    BOOL isGoogleBinding = [[NSUserDefaults standardUserDefaults]boolForKey:GOOGLE_AUTH_BINDING];
-                    if (isGoogleBinding) {
-                        GoogleAuthVerifyVC *gVc = [[GoogleAuthVerifyVC alloc]initWithNibName:@"GoogleAuthVerifyVC" bundle:nil];
-//                        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:gVc];
-                        [self presentViewController:gVc animated:YES completion:nil];
-                    } else {
+//                    BOOL isGoogleBinding = [[NSUserDefaults standardUserDefaults]boolForKey:GOOGLE_AUTH_BINDING];
+//                    if (isGoogleBinding) {
+//                        GoogleAuthVerifyVC *gVc = [[GoogleAuthVerifyVC alloc]initWithNibName:@"GoogleAuthVerifyVC" bundle:nil];
+////                        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:gVc];
+//                        [self presentViewController:gVc animated:YES completion:nil];
+//                    } else {
                         [self entringMainPage];
-                    }
+//                    }
                     
                 } else {
                     
-                    NSString *errorMsg = [userInfo.respCode objectForKey:@"respMessage"];
-                    NSArray *errorAry = [errorMsg componentsSeparatedByString:@","];
-                    [self justShowAlert:@"" message:[errorAry objectAtIndex:0]];
+                    [self justShowAlert:@"" message:userInfo.respMessage];
                 }
             });
             NSLog(@"response:%@",response);

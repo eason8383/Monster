@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="≈$0.18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVq-HJ-gDH">
-                                <rect key="frame" x="115.5" y="47" width="45.5" height="20"/>
+                                <rect key="frame" x="109.5" y="47" width="45.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qas-by-w8m"/>
                                 </constraints>
@@ -43,7 +43,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21,111.73" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wy3-D8-Mrb">
-                                <rect key="frame" x="14" y="38" width="93.5" height="33"/>
+                                <rect key="frame" x="12" y="38" width="93.5" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="gwM-pb-o36"/>
                                 </constraints>
@@ -128,8 +128,8 @@
                         <constraints>
                             <constraint firstItem="coi-b6-HZk" firstAttribute="centerY" secondItem="Zjy-On-pds" secondAttribute="centerY" id="13e-pT-Nz9"/>
                             <constraint firstItem="Ef3-uN-KDG" firstAttribute="centerY" secondItem="coi-b6-HZk" secondAttribute="centerY" id="14W-hU-ZjV"/>
-                            <constraint firstItem="lVq-HJ-gDH" firstAttribute="leading" secondItem="Wy3-D8-Mrb" secondAttribute="trailing" constant="8" id="3dR-kS-6Jn"/>
-                            <constraint firstItem="Wy3-D8-Mrb" firstAttribute="leading" secondItem="6BO-hW-wTa" secondAttribute="leading" constant="14" id="5r3-Uw-ivQ"/>
+                            <constraint firstItem="lVq-HJ-gDH" firstAttribute="leading" secondItem="Wy3-D8-Mrb" secondAttribute="trailing" constant="4" id="3dR-kS-6Jn"/>
+                            <constraint firstItem="Wy3-D8-Mrb" firstAttribute="leading" secondItem="6BO-hW-wTa" secondAttribute="leading" constant="12" id="5r3-Uw-ivQ"/>
                             <constraint firstItem="1Dl-2b-BA3" firstAttribute="centerY" secondItem="ny4-mw-Qlg" secondAttribute="centerY" id="6dY-my-0iu"/>
                             <constraint firstItem="NfI-Vb-TLG" firstAttribute="leading" secondItem="6BO-hW-wTa" secondAttribute="leading" constant="15" id="Ab3-dm-pSH"/>
                             <constraint firstItem="tCz-Jm-9d8" firstAttribute="leading" secondItem="npj-HQ-fKK" secondAttribute="trailing" constant="3" id="Arv-F8-dCZ"/>

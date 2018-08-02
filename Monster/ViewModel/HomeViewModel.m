@@ -44,76 +44,139 @@
     return instance;
 }
 
-- (void)getData:(NSInteger)limit{
-    _limit = limit;
+- (void)getHomeInfo:(NSInteger)limit{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self getCoinPair];
+        [[MRHomePageClient alloc]getHomePageInfoSuccess:^(id response) {
+            NSDictionary *dic = response;
+            [self.coinPairAry removeAllObjects];
+            if ([[dic objectForKey:@"success"] integerValue] == 1) {
+                for (NSDictionary *coInfo in [dic objectForKey:@"coinPairList"]) {
+                    CoinPairModel *coModel = [CoinPairModel coinPairWithDict:coInfo];
+                    [self.coinPairAry addObject:coModel];
+                }
+                
+                //存起来 Trade的时候用
+                NSData *coinPairData = [NSKeyedArchiver archivedDataWithRootObject:self.coinPairAry];
+                [[NSUserDefaults standardUserDefaults] setObject:coinPairData forKey:COINPAIRMODEL];
+//                {
+//                    fwcJoinFlag = 0;
+//                    hasGoogleAuth = 0;
+//                    hasTradePassword = 1;
+//                    inviteCode = Gaka63XFqX;
+//                    mobileNo = 13918371413;
+//                    success = 0;
+//                    totalBalanceETH = "16.60810551";
+//                    userId = KID2018071014254112526883540120;
+//                };
+                self.externalMarketAry = [dic objectForKey:@"priceInfo"];
+                
+                NSDictionary *userInfo = [dic objectForKey:@"userInfo"];
+                NSString *result = @"0";
+                NSString *myAsset = [NSString stringWithFormat:@"%@",[userInfo objectForKey:@"totalBalanceETH"]];
+                NSString *multiple = [self getMultipleWithCurrentCoinId:@"ETH"];
+                result = [self decimalMultiply:myAsset with:multiple];
+                NSDictionary *myAssetDic = @{@"myAsset":myAsset,@"result":result};
+                
+                [[NSUserDefaults standardUserDefaults]setObject:myAssetDic forKey:MYETH];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    [[NSNotificationCenter defaultCenter]postNotificationName:MYETH object:dic];
+                    
+                });
+               
+                [self getKlineList:limit];
+            } else {
+                NSError *error = [NSError errorWithDomain:@"getHomePageInfo" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.delegate getDataFalid:error];
+                });
+            }
+            
+            NSLog(@"response:%@",response);
+            
+        } failure:^(NSError *error) {
+            //失敗
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate getDataFalid:error];
+            });
+        }];
         
     });
 }
 
-- (void)getCoinPair{
-    [[MRHomePageClient alloc]getCoinPairInfo:@"" withPage:1 success:^(id response) {
-        NSDictionary *dic = response;
+- (void)getData:(NSInteger)limit{
+    _limit = limit;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        [self getCoinPair];
         
-        if ([[dic objectForKey:@"success"] integerValue] == 1) {
-            [self.coinPairAry removeAllObjects];
-            for (NSDictionary *coInfo in [dic objectForKey:@"resultList"]) {
-                [self.coinPairAry addObject:coInfo];
-            }
-            [self getKlineLastBar];
-        } else {
-            NSError *error = [NSError errorWithDomain:@"getCoinPairInfo" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate getDataFalid:error];
-            });
-        }
-        
-        NSLog(@"response:%@",response);
-        
-    } failure:^(NSError *error) {
-        //失敗
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate getDataFalid:error];
-        });
-    }];
+    });
 }
 
-- (void)getKlineLastBar{
-    
-    [[MRHomePageClient alloc]getKlineLastBar:@"5" success:^(id response) {
-        NSDictionary *dic = response;
-        
-        if ([[dic objectForKey:@"success"] integerValue] == 1) {
-            [self.kLineBarAry removeAllObjects];
-            for (NSDictionary *kBarInfo in [dic objectForKey:@"resultList"]) {
-                [self.kLineBarAry addObject:kBarInfo];
-            }
-            [self combinData];
-        } else {
-            NSError *error = [NSError errorWithDomain:@"getKlineLastBar" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate getDataFalid:error];
-            });
-        }
-        
-        NSLog(@"response:%@",response);
-        
-    } failure:^(NSError *error) {
-        //失敗
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate getDataFalid:error];
-        });
-    }];
-}
+//- (void)getCoinPair{
+//    [[MRHomePageClient alloc]getCoinPairInfo:@"" withPage:1 success:^(id response) {
+//        NSDictionary *dic = response;
+//
+//        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+//            [self.coinPairAry removeAllObjects];
+//            for (NSDictionary *coInfo in [dic objectForKey:@"resultList"]) {
+//                [self.coinPairAry addObject:coInfo];
+//            }
+//            [self getKlineLastBar];
+//        } else {
+//            NSError *error = [NSError errorWithDomain:@"getCoinPairInfo" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.delegate getDataFalid:error];
+//            });
+//        }
+//
+//        NSLog(@"response:%@",response);
+//
+//    } failure:^(NSError *error) {
+//        //失敗
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.delegate getDataFalid:error];
+//        });
+//    }];
+//}
 
-- (void)getKlineList{
-    [[MRHomePageClient alloc]getKlienList:@"" withKLineType:@"1" withLimit:_limit withBeginBarTimeLong:@"" success:^(id response) {
+//- (void)getKlineLastBar{
+//
+//    [[MRHomePageClient alloc]getKlineLastBar:@"5" success:^(id response) {
+//        NSDictionary *dic = response;
+//
+//        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+//            [self.kLineBarAry removeAllObjects];
+//            for (NSDictionary *kBarInfo in [dic objectForKey:@"resultList"]) {
+//                [self.kLineBarAry addObject:kBarInfo];
+//            }
+//            [self combinData];
+//        } else {
+//            NSError *error = [NSError errorWithDomain:@"getKlineLastBar" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.delegate getDataFalid:error];
+//            });
+//        }
+//
+//        NSLog(@"response:%@",response);
+//
+//    } failure:^(NSError *error) {
+//        //失敗
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.delegate getDataFalid:error];
+//        });
+//    }];
+//}
+
+- (void)getKlineList:(NSInteger)limit{
+    [[MRHomePageClient alloc]getKlienList:@"" withKLineType:@"1" withLimit:limit withBeginBarTimeLong:@"" success:^(id response) {
         NSDictionary *dic = response;
         if ([[dic objectForKey:@"success"] integerValue] == 1) {
             [self addLatestKLineInfofrom:[dic objectForKey:@"klineBarListMap"]];
             
-            [self getExternalMarket];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.delegate getDataSucess];
+            });
+//            [self getExternalMarket];
         } else {
             NSError *error = [NSError errorWithDomain:@"getKlineLastBar" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -131,78 +194,78 @@
     }];
 }
 
-- (void)getExternalMarket{
-    [[MRHomePageClient alloc]getExternalMarketSuccess:^(id response) {
-        NSDictionary *dic = response;
-        if ([[dic objectForKey:@"success"] integerValue] == 1) {
-            self.externalMarketAry = [dic objectForKey:@"resultList"];
-            
-            [self getUserInfo];
-            
-        } else {
-            NSError *error = [NSError errorWithDomain:@"getExternalMarket" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate getDataFalid:error];
-            });
-        }
-        
-        
-        NSLog(@"response:%@",response);
-        
-    } failure:^(NSError *error) {
-        //失敗
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate getDataFalid:error];
-        });
-    }];
-}
+//- (void)getExternalMarket{
+//    [[MRHomePageClient alloc]getExternalMarketSuccess:^(id response) {
+//        NSDictionary *dic = response;
+//        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+//            self.externalMarketAry = [dic objectForKey:@"resultList"];
+//
+//            [self getUserInfo];
+//
+//        } else {
+//            NSError *error = [NSError errorWithDomain:@"getExternalMarket" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.delegate getDataFalid:error];
+//            });
+//        }
+//
+//
+//        NSLog(@"response:%@",response);
+//
+//    } failure:^(NSError *error) {
+//        //失敗
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.delegate getDataFalid:error];
+//        });
+//    }];
+//}
 
-- (void)getUserInfo{
-    [[MRUserInfoClient alloc]queryUserInfoSuccess:^(id response) {
-        NSDictionary *dic = response;
-        if ([[dic objectForKey:@"success"] integerValue] == 1) {
-//            [self.userCoinQuantityAry removeAllObjects];
-//            for (NSDictionary *info in [dic objectForKey:@"resultList"]) {
-//                UserCoinQuantity *ucq = [UserCoinQuantity userCoinQuantityWithDict:info];
-//                [self.userCoinQuantityAry addObject:ucq];
-//            }
-            NSString *result = @"0";
-            NSString *myAsset = [NSString stringWithFormat:@"%@",[dic objectForKey:@"totalBalanceETH"]];
-            NSString *multiple = [self getMultipleWithCurrentCoinId:@"ETH"];
-            result = [self decimalMultiply:myAsset with:multiple];
-//            for (UserCoinQuantity *ucq in self.userCoinQuantityAry) {
+//- (void)getUserInfo{
+//    [[MRUserInfoClient alloc]queryUserInfoSuccess:^(id response) {
+//        NSDictionary *dic = response;
+//        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+////            [self.userCoinQuantityAry removeAllObjects];
+////            for (NSDictionary *info in [dic objectForKey:@"resultList"]) {
+////                UserCoinQuantity *ucq = [UserCoinQuantity userCoinQuantityWithDict:info];
+////                [self.userCoinQuantityAry addObject:ucq];
+////            }
+//            NSString *result = @"0";
+//            NSString *myAsset = [NSString stringWithFormat:@"%@",[dic objectForKey:@"totalBalanceETH"]];
+//            NSString *multiple = [self getMultipleWithCurrentCoinId:@"ETH"];
+//            result = [self decimalMultiply:myAsset with:multiple];
+////            for (UserCoinQuantity *ucq in self.userCoinQuantityAry) {
+////
+////                if ([ucq.coinId isEqualToString:@"ETH"]) {
+////
+////                    myAsset = [NSString stringWithFormat:@"%.8f",ucq.coinQuantity];
+////                    result = [self decimalMultiply:myAsset with:multiple];
+////                }
+////            }
+//            NSDictionary *dic = @{@"myAsset":myAsset,@"result":result};
 //
-//                if ([ucq.coinId isEqualToString:@"ETH"]) {
+//            [[NSUserDefaults standardUserDefaults]setObject:dic forKey:MYETH];
 //
-//                    myAsset = [NSString stringWithFormat:@"%.8f",ucq.coinQuantity];
-//                    result = [self decimalMultiply:myAsset with:multiple];
-//                }
-//            }
-            NSDictionary *dic = @{@"myAsset":myAsset,@"result":result};
-            
-            [[NSUserDefaults standardUserDefaults]setObject:dic forKey:MYETH];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[NSNotificationCenter defaultCenter]postNotificationName:MYETH object:dic];
-                [self.delegate getDataSucess];
-            });
-            
-        } else {
-            NSError *error = [NSError errorWithDomain:@"getUserInfo" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate getDataFalid:error];
-            });
-        }
-        
-        NSLog(@"response:%@",response);
-        
-    } failure:^(NSError *error) {
-        //失敗
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate getDataFalid:error];
-        });
-    }];
-}
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[NSNotificationCenter defaultCenter]postNotificationName:MYETH object:dic];
+//                [self.delegate getDataSucess];
+//            });
+//
+//        } else {
+//            NSError *error = [NSError errorWithDomain:@"getUserInfo" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.delegate getDataFalid:error];
+//            });
+//        }
+//
+//        NSLog(@"response:%@",response);
+//
+//    } failure:^(NSError *error) {
+//        //失敗
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.delegate getDataFalid:error];
+//        });
+//    }];
+//}
 
 - (NSString*)decimalMultiply:(NSString*)numStr1 with:(NSString*)numStr2{
     NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:numStr1];
@@ -247,27 +310,27 @@
     }
 }
 
-- (void)combinData{
-    [self.homeDataAry removeAllObjects];
-    for (NSDictionary *dic in self.coinPairAry) {
-        NSMutableDictionary *finalDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
-        for (NSDictionary *barDic in self.kLineBarAry) {
-            NSString *coinId1 = [finalDic objectForKey:@"coinPairId"];
-            NSString *coinId2 = [barDic objectForKey:@"coinPairId"];
-            if ([coinId1 isEqualToString:coinId2]) {
-                [finalDic addEntriesFromDictionary:barDic];
-            }
-        }
-        CoinPairModel *coModel = [CoinPairModel coinPairWithDict:finalDic];
-        [self.homeDataAry addObject:coModel];
-    }
-    
-    //存起来 Trade的时候用
-    NSData *coinPairData = [NSKeyedArchiver archivedDataWithRootObject:self.homeDataAry];
-    [[NSUserDefaults standardUserDefaults] setObject:coinPairData forKey:COINPAIRMODEL];
-    
-    [self getKlineList];
-}
+//- (void)combinData{
+//    [self.homeDataAry removeAllObjects];
+//    for (NSDictionary *dic in self.coinPairAry) {
+//        NSMutableDictionary *finalDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
+//        for (NSDictionary *barDic in self.kLineBarAry) {
+//            NSString *coinId1 = [finalDic objectForKey:@"coinPairId"];
+//            NSString *coinId2 = [barDic objectForKey:@"coinPairId"];
+//            if ([coinId1 isEqualToString:coinId2]) {
+//                [finalDic addEntriesFromDictionary:barDic];
+//            }
+//        }
+//        CoinPairModel *coModel = [CoinPairModel coinPairWithDict:finalDic];
+//        [self.homeDataAry addObject:coModel];
+//    }
+//
+//    //存起来 Trade的时候用
+//    NSData *coinPairData = [NSKeyedArchiver archivedDataWithRootObject:self.homeDataAry];
+//    [[NSUserDefaults standardUserDefaults] setObject:coinPairData forKey:COINPAIRMODEL];
+//
+////    [self getKlineList];
+//}
 
 - (NSArray*)getDrawKLineInfoArray:(NSString*)coinPairId{
     NSMutableArray *resultAry = [NSMutableArray array];
@@ -312,7 +375,7 @@
 }
 
 - (NSArray*)getHomeDataArray{
-    return _homeDataAry;
+    return _coinPairAry;
 }
 
 - (NSMutableArray*)homeDataAry{

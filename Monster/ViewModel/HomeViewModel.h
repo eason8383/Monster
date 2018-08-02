@@ -23,6 +23,8 @@
 
 + (instancetype)sharedInstance;
 
+- (void)getHomeInfo:(NSInteger)limit;
+
 - (void)getData:(NSInteger)limit;
 - (NSInteger)numberOfRowsInSection;
 

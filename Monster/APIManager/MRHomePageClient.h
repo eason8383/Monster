@@ -11,6 +11,8 @@
 
 @interface MRHomePageClient : MRWebClient
 
+- (void)getHomePageInfoSuccess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
 - (void)getCoinPairInfo:(NSString*)coinPairId withPage:(NSInteger)page success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
 - (void)getKlineLastBar:(NSString*)klineType success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;

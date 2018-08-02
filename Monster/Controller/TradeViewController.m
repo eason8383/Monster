@@ -102,22 +102,24 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
         
         frame = CGRectMake(0, bottomFix + 50 +20, kScreenWidth, 0);
     }
-//    if (self.coinTableView.height == 0) {
-//        [self.tradeView titleDownBtnAnticlockwiseRotation];
-//    } else {
-//        [self.tradeView titleDownBtnclockwiseRotation];
-//    }
+    if (self.coinTableView.height == 0) {
+        [self.tradeView titleDownBtnAnticlockwiseRotation];
+    } else {
+        [self.tradeView titleDownBtnclockwiseRotation];
+    }
     
-    [UIView animateWithDuration:1.0
+    [UIView animateWithDuration:0.6
                           delay:0.1
                         options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
                      animations:^{
                          self.coinTableView.frame = frame;
                      }
                      completion:^(BOOL finished) {
-                         [UIView animateWithDuration:0.1 animations:^{
-                             
-                         }];
+                         if (self.coinTableView.height == 0) {
+                             [self.tradeView titleDownBtnclockwiseRotation];
+                         } else {
+                             [self.tradeView titleDownBtnAnticlockwiseRotation];
+                         }
                      }];
 }
 

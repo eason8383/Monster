@@ -26,6 +26,8 @@
 @property(nonatomic,strong)NSString *backId;
 @property(nonatomic,strong)NSString *withId;
 
+@property(nonatomic,strong)NSMutableDictionary *checkPicsDic;
+
 @end
 
 @implementation IdentityViewController
@@ -55,6 +57,7 @@
     _idViewModel = [IdentityViewModel sharedInstance];
     _idViewModel.delegate = self;
     
+    _checkPicsDic = [NSMutableDictionary dictionary];
     [[VWProgressHUD shareInstance]showLoading];
     [_idViewModel queryUserInfo];
 }
@@ -68,6 +71,43 @@
 
 - (void)diceidUpload{
     MRUserAccount *accInfo = [[MRWebClient sharedInstance]getUserAccount];
+    
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UpLoadImagView" owner:self options:nil];
+    _aView = [nib objectAtIndex:0];
+    [_aView setIdentityType:UpLoadID_Front];
+    if (accInfo.frontIdCard.length > 0) {
+        [_aView setImageUrl:accInfo.frontIdCard];
+        _frontId = accInfo.frontIdCard;
+    } else {
+        [_aView.uploadBtn addTarget:self action:@selector(toPickAUploadPic:) forControlEvents:UIControlEventTouchUpInside];
+        _aView.uploadBtn.tag = 1;
+    }
+    [_scrollView addSubview:_aView];
+    
+    NSArray *nib2 = [[NSBundle mainBundle] loadNibNamed:@"UpLoadImagView" owner:self options:nil];
+    _bView = [nib2 objectAtIndex:0];
+    [_bView setIdentityType:UpLoadID_Back];
+    
+    if (accInfo.backIdCard.length > 0) {
+        [_bView setImageUrl:accInfo.backIdCard];
+        _backId = accInfo.backIdCard;
+    } else {
+        [_bView.uploadBtn addTarget:self action:@selector(toPickAUploadPic:) forControlEvents:UIControlEventTouchUpInside];
+        _bView.uploadBtn.tag = 2;
+    }
+    [_scrollView addSubview:_bView];
+    
+    NSArray *nib3 = [[NSBundle mainBundle] loadNibNamed:@"UpLoadImagView" owner:self options:nil];
+    _cView = [nib3 objectAtIndex:0];
+    [_cView setIdentityType:UpLoadID_Hold];
+    if (accInfo.userWithIdCard.length > 0) {
+        [_cView setImageUrl:accInfo.userWithIdCard];
+        _withId = accInfo.userWithIdCard;
+    } else {
+        [_cView.uploadBtn addTarget:self action:@selector(toPickAUploadPic:) forControlEvents:UIControlEventTouchUpInside];
+        _cView.uploadBtn.tag = 3;
+    }
+    [_scrollView addSubview:_cView];
     
     if (_confirmBtn == nil) {
         _confirmBtn = [[UIButton alloc]initWithFrame:CGRectMake(24,0,kScreenWidth - 45, 34)];
@@ -83,7 +123,7 @@
         [_scrollView addSubview:_confirmBtn];
     }
     
-    if (accInfo.frontIdCard.length < 1 && accInfo.backIdCard.length < 1 && accInfo.userWithIdCard.length < 1) {
+    if (accInfo.frontIdCard.length > 1 && accInfo.backIdCard.length > 1 && accInfo.userWithIdCard.length > 1) {
         
         if (accInfo.idCardAuditStatus.length > 0 && [accInfo.idCardAuditStatus isEqualToString:@"1"]) {
             [_confirmBtn setFrame:CGRectMake(24, 100, kScreenWidth - 45, 34)];
@@ -94,29 +134,7 @@
         }
         
     } else {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UpLoadImagView" owner:self options:nil];
-        _aView = [nib objectAtIndex:0];
-        [_aView setIdentityType:UpLoadID_Front];
-        [_aView.uploadBtn addTarget:self action:@selector(toPickAUploadPic:) forControlEvents:UIControlEventTouchUpInside];
-        _aView.uploadBtn.tag = 1;
-        [_scrollView addSubview:_aView];
-        
-        NSArray *nib2 = [[NSBundle mainBundle] loadNibNamed:@"UpLoadImagView" owner:self options:nil];
-        _bView = [nib2 objectAtIndex:0];
-        [_bView setIdentityType:UpLoadID_Back];
-        [_bView.uploadBtn addTarget:self action:@selector(toPickAUploadPic:) forControlEvents:UIControlEventTouchUpInside];
-        _bView.uploadBtn.tag = 2;
-        [_scrollView addSubview:_bView];
-        
-        NSArray *nib3 = [[NSBundle mainBundle] loadNibNamed:@"UpLoadImagView" owner:self options:nil];
-        _cView = [nib3 objectAtIndex:0];
-        [_cView setIdentityType:UpLoadID_Hold];
-        [_cView.uploadBtn addTarget:self action:@selector(toPickAUploadPic:) forControlEvents:UIControlEventTouchUpInside];
-        _cView.uploadBtn.tag = 3;
-        [_scrollView addSubview:_cView];
-        
         [_confirmBtn setTitle:@"确认" forState:UIControlStateNormal];
-        
     }
     
     
@@ -203,10 +221,16 @@
     
     //取出选中的图片
     _currentImg = info[UIImagePickerControllerOriginalImage];
+    NSLog(@"取出选中的图片:%@",info);
+    
+    NSString *checkPath = [NSString stringWithFormat:@"%@",[info objectForKey:@"UIImagePickerControllerReferenceURL"]];
+    [_checkPicsDic setObject:checkPath forKey:[NSString stringWithFormat:@"%ld",(long)picker.pickerNo]];
     
     //上傳
     [_idViewModel uploadImageByPath:[info objectForKey:@"UIImagePickerControllerImageURL"] withTag:picker.pickerNo];
     [picker dismissViewControllerAnimated:YES completion:nil];
+    
+//    [info objectForKey:@"UIImagePickerControllerReferenceURL"]
     
 }
 
@@ -241,8 +265,29 @@
 }
 
 - (void)submmitAction:(id)sender{
-    [[VWProgressHUD shareInstance]showLoading];
-    [_idViewModel saveUserIdentity:_frontId back:_backId withId:_withId];
+    
+    if ([self checkIfPicsTheSame]) {
+        [self justShowAlert:@"照片重复" message:@"不能上传一样的图片"];
+    } else{
+        [[VWProgressHUD shareInstance]showLoading];
+        [_idViewModel saveUserIdentity:_frontId back:_backId withId:_withId];
+    }
+}
+
+- (BOOL)checkIfPicsTheSame{
+    NSString *str1 = [self.checkPicsDic objectForKey:@"1"];
+    NSString *str2 = [self.checkPicsDic objectForKey:@"2"];
+    NSString *str3 = [self.checkPicsDic objectForKey:@"3"];
+    
+    if ([str1 isEqualToString:str2]) {
+        return YES;
+    } else if ([str1 isEqualToString:str3]) {
+        return YES;
+    } else if ([str2 isEqualToString:str3]) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (void)saveUserIdentitySuccess:(NSDictionary*)verifyInfo{

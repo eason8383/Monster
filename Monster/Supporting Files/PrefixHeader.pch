@@ -27,6 +27,8 @@
 
 #define MREnvironment_TEST      @"TEST"
 #define MREnvironment_Public    @"PUBLIC"
+#define MREnvironment_PRE       @"PRE"
+
 
 #define printf_console printf
 
@@ -35,6 +37,14 @@
 
 //poblic
 #define PUBLIC_URL @"https://api.monster.one"
+
+//PRE
+#define PRE_URL @"https://preapi.monster.one"
+
+
+#define PRE_STATIC @"http://prestatic.monster.one"
+#define PUBLIC_STATIC @"https://static.monster.one"
+#define TEST_STATIC @"http://teststatic.monstermarket.cn"
 
 
 //ScreenSize

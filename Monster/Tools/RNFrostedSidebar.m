@@ -373,6 +373,9 @@ static RNFrostedSidebar *rn_frostedMenu;
     float asset = [[assetInfo objectForKey:@"myAsset"] floatValue];
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.contentView.asset_Label.adjustsFontSizeToFitWidth = YES;
+        self.contentView.asset_Label.minimumFontSize = 14;
+//        self.contentView.asset_Label.minimumScaleFactor = 14;
         [self.contentView.asset_Label setText:[NSString stringWithFormat:@"%.8f",asset]];
         
         NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];

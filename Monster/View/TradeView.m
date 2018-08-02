@@ -234,26 +234,55 @@
 - (void)titleDownBtnAnticlockwiseRotation{
     //arrowLeft 是要旋转的控件
     //逆时针 旋转180度
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.5]; //动画时长
-    _titleDownBtn.transform = CGAffineTransformMakeRotation(180 *M_PI / 180.0);
-    CGAffineTransform transform = _titleDownBtn.transform;
-    //第二个值表示横向放大的倍数，第三个值表示纵向缩小的程度
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//    [UIView setAnimationDuration:0.5]; //动画时长
+//    _titleDownBtn.transform = CGAffineTransformMakeRotation(180 *M_PI / 180.0);
+//    CGAffineTransform transform = _titleDownBtn.transform;
+//    //第二个值表示横向放大的倍数，第三个值表示纵向缩小的程度
+//    transform = CGAffineTransformScale(transform, 1,1);
+//    _titleDownBtn.transform = transform;
+//    [UIView commitAnimations];
+    
+    self.titleDownBtn.transform = CGAffineTransformMakeRotation(180 *M_PI / 180.0);
+    CGAffineTransform transform = self.titleDownBtn.transform;
     transform = CGAffineTransformScale(transform, 1,1);
-    _titleDownBtn.transform = transform;
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.5
+                          delay:0.1
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         
+                         self.titleDownBtn.transform = transform;
+                     }
+                     completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.1 animations:^{
+                             
+                         }];
+                     }];
+    
 }
 
 - (void)titleDownBtnclockwiseRotation{
     //顺时针 旋转180度
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.5]; //动画时长
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//    [UIView setAnimationDuration:0.5]; //动画时长
     _titleDownBtn.transform = CGAffineTransformMakeRotation(0*M_PI/180);
     CGAffineTransform transform = _titleDownBtn.transform;
     transform = CGAffineTransformScale(transform, 1,1);
-    _titleDownBtn.transform = transform;
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.1
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         
+                         self.titleDownBtn.transform = transform;
+                     }
+                     completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.1 animations:^{
+                             
+                         }];
+                     }];
 }
 
 - (IBAction)bringPriceToField:(UIButton*)btn{

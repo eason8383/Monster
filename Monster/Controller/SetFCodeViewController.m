@@ -111,7 +111,7 @@
 }
 
 - (BOOL)checkPswForm:(NSString*)psw{
-    NSString *phoneRegex = @"/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/";
+    NSString *phoneRegex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$";
     NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     BOOL matches = [test evaluateWithObject:psw];
 

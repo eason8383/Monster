@@ -7,6 +7,7 @@
 //
 
 #import "UpLoadImagView.h"
+#import "AppDelegate.h"
 
 @interface UpLoadImagView()
 
@@ -14,6 +15,8 @@
 @property(nonatomic,strong)IBOutlet UILabel *uploadLabel;
 @property(nonatomic,strong)IBOutlet UILabel *explainLabel;
 @property(nonatomic,strong)IBOutlet UIView *backView;
+@property(nonatomic,strong)IBOutlet UIImageView *uploadImagView;
+@property(nonatomic,strong)IBOutlet UIActivityIndicatorView *loadingView;
 
 
 @end
@@ -43,5 +46,22 @@
     }
 }
 
+- (void)setImageUrl:(NSString*)urlStr{
+    
+    _uploadLabel.hidden = YES;
+    _uploadImagView.hidden = YES;
+    [_loadingView startAnimating];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *baseUrlStr = [[AppDelegate environment] isEqualToString:MREnvironment_TEST]?TEST_STATIC:PUBLIC_STATIC;
+        NSURL *urlstring = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",baseUrlStr,urlStr]];
+        UIImage *imag = [UIImage imageWithData:[NSData dataWithContentsOfURL:urlstring]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.loadingView stopAnimating];
+            [self.picImgView setImage:imag];
+        });
+        
+    });
+}
 
 @end

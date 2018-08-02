@@ -12,6 +12,7 @@
 @interface MRBaseModel : NSObject
 
 @property (nonatomic, copy) NSDictionary *respCode;
+@property (nonatomic, strong)NSString *respMessage;
 @property (nonatomic, assign)BOOL success;
 
 @end

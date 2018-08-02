@@ -56,19 +56,19 @@
     
     NSDictionary *coinPairTable = [[NSUserDefaults standardUserDefaults]objectForKey:COINPAIRTABLE];
     
-    [_coinLabel setText:[NSString stringWithFormat:@"%@/MR",[coinPairTable objectForKey:self.userOrderInfo.coinPairId]]];
-    [_priceLabel setText:[NSString stringWithFormat:@"%f",self.userOrderInfo.dealPrice]];
+    [_coinLabel setText:[NSString stringWithFormat:@"MR/%@",[coinPairTable objectForKey:self.userOrderInfo.coinPairId]]];
+    [_priceLabel setText:[NSString stringWithFormat:@"%.8f",self.userOrderInfo.dealPrice]];
     [_timeLabel setText:[NSString stringWithFormat:@"%@",currentDateString]];
     
-    [_measureLabel setText:[NSString stringWithFormat:@"%f%@",self.userOrderInfo.dealAmount,[coinPairTable objectForKey:self.userOrderInfo.coinPairId]]];
+    [_measureLabel setText:[NSString stringWithFormat:@"%.4f%@",self.userOrderInfo.dealAmount,[coinPairTable objectForKey:self.userOrderInfo.coinPairId]]];
     
-    [_transFeeLabel setText:[NSString stringWithFormat:@"%f",self.userOrderInfo.feeRate]];
+    [_transFeeLabel setText:[NSString stringWithFormat:@"%.2f",self.userOrderInfo.feeRate]];
     
     [_orderStateBtn setTitle:self.userOrderInfo.orderStatusName forState:UIControlStateNormal];
     
-    [_totalDealLabel setText:[NSString stringWithFormat:@"%f",self.userOrderInfo.orderPrice]];
-    [_avegDealLabel setText:[NSString stringWithFormat:@"%f",self.userOrderInfo.orderPrice]];
-    [_meanDealLabel setText:[NSString stringWithFormat:@"%f",self.userOrderInfo.orderQuantity]];
+    [_totalDealLabel setText:[NSString stringWithFormat:@"%.8f",self.userOrderInfo.orderPrice]];
+    [_avegDealLabel setText:[NSString stringWithFormat:@"%.8f",self.userOrderInfo.orderPrice]];
+    [_meanDealLabel setText:[NSString stringWithFormat:@"%.8f",self.userOrderInfo.orderQuantity]];
     
     
 }

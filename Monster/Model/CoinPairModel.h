@@ -34,15 +34,24 @@
 @property(nonatomic,assign)double lastPrice;
 
 +(instancetype)coinPairWithDict:(NSDictionary *)dict;
-//"buyFeeRate": 0.0001,
-//"coinPairId": "10001",
-//"mainCoinId": "ETH",
-//"pairStatus": {
-//    "code": "1",
-//    "desc": "执行中"
-//},
-//"sellFeeRate": 0.0001,
-//"subCoinId": "MR"
+//{
+//    barTime = 20180801000000;
+//    barTimeLong = 1533052800000;
+//    beginPrice = "0.00066";
+//    buyFeeRate = "0.001";
+//    coinPairId = 10001;
+//    endPrice = "0.00066";
+//    klineType = 5;
+//    lastPrice = "0.00066";
+//    mainCoinId = MR;
+//    maxPrice = "0.00066";
+//    minPrice = "0.00066";
+//    pairStatus = 1;
+//    sellFeeRate = "0.001";
+//    subCoinId = ETH;
+//    totalAmount = "0.64086";
+//    totalVolume = 971;
+//}
 
 @end
 

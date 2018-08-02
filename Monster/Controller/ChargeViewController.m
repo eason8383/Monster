@@ -15,6 +15,7 @@
 @property(nonatomic,strong)IBOutlet UIButton *changeCurreyBtn;
 @property(nonatomic,strong)IBOutlet UIView *qrBackView;
 @property(nonatomic,strong)IBOutlet UIImageView *qrCodeView;
+@property(nonatomic,strong)IBOutlet UIImageView *downBtnView;
 @property(nonatomic,strong)IBOutlet UIButton *saveQrPicBtn;
 @property(nonatomic,strong)IBOutlet UIButton *coAddressBtn;
 @property(nonatomic,strong)IBOutlet UILabel *addressLabel;
@@ -97,18 +98,13 @@
 
 - (void)coinTableView:(id)sender{
     CGRect frame;
-    float bottomFix = isiPhoneX?88:44;
+    float bottomFix = isiPhoneX?78:44;
     if (_coinTableView.height == 0) {
         frame = CGRectMake(0, bottomFix + 100, kScreenWidth, kScreenHeight - 50 + 5 - bottomFix);
     } else {
         
         frame = CGRectMake(0, bottomFix + 100, kScreenWidth, 0);
     }
-    //    if (self.coinTableView.height == 0) {
-    //        [self.tradeView titleDownBtnAnticlockwiseRotation];
-    //    } else {
-    //        [self.tradeView titleDownBtnclockwiseRotation];
-    //    }
     
     [UIView animateWithDuration:0.5
                           delay:0.1
@@ -117,9 +113,49 @@
                          self.coinTableView.frame = frame;
                      }
                      completion:^(BOOL finished) {
-                         [UIView animateWithDuration:0.1 animations:^{
-                             
-                         }];
+                         if (self.coinTableView.height == 0) {
+                             [self titleDownBtnclockwiseRotation];
+                         } else {
+                             [self titleDownBtnAnticlockwiseRotation];
+                         }
+                     }];
+}
+
+- (void)titleDownBtnAnticlockwiseRotation{
+    
+    //逆时针 旋转180度
+    _downBtnView.transform = CGAffineTransformMakeRotation(180 *M_PI / 180.0);
+    CGAffineTransform transform = _downBtnView.transform;
+    transform = CGAffineTransformScale(transform, 1,1);
+    [UIView animateWithDuration:0.5
+                          delay:0.1
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         
+                         self.downBtnView.transform = transform;
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }];
+    
+}
+
+- (void)titleDownBtnclockwiseRotation{
+    //顺时针 旋转180度
+    
+    _downBtnView.transform = CGAffineTransformMakeRotation(0*M_PI/180);
+    CGAffineTransform transform = _downBtnView.transform;
+    transform = CGAffineTransformScale(transform, 1,1);
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.1
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         
+                         self.downBtnView.transform = transform;
+                     }
+                     completion:^(BOOL finished) {
+                         
                      }];
 }
 
@@ -257,7 +293,7 @@
 - (UITableView *)coinTableView{
     if (_coinTableView == nil) {
         
-        float bottomFix = isiPhoneX?88:44;
+        float bottomFix = isiPhoneX?78:44;
         CGRect frame = CGRectMake(0, bottomFix + 100, kScreenWidth, 0);
         _coinTableView = [[UITableView alloc] initWithFrame:frame
                                                       style:UITableViewStylePlain];

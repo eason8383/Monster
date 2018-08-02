@@ -43,8 +43,8 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21,111.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGW-EZ-PhT">
-                    <rect key="frame" x="24" y="130" width="140" height="50"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4997.04052743" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGW-EZ-PhT">
+                    <rect key="frame" x="24" y="130" width="236" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="PCS-WI-fd5"/>
                     </constraints>
@@ -229,6 +229,7 @@
                 <constraint firstItem="Me2-pA-HTd" firstAttribute="leading" secondItem="XXe-OC-Iaa" secondAttribute="trailing" constant="10" id="3to-ob-B4k"/>
                 <constraint firstItem="anL-Ef-9HH" firstAttribute="centerY" secondItem="G3J-lR-cmW" secondAttribute="centerY" id="41H-ua-wSe"/>
                 <constraint firstItem="XXe-OC-Iaa" firstAttribute="top" secondItem="s8N-YQ-rND" secondAttribute="bottom" constant="19" id="4k9-F2-B6m"/>
+                <constraint firstAttribute="trailing" secondItem="YGW-EZ-PhT" secondAttribute="trailing" constant="10" id="4nE-G0-dnE"/>
                 <constraint firstItem="G3J-lR-cmW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="28" id="5XN-T1-xcV"/>
                 <constraint firstItem="sfo-sr-FY1" firstAttribute="centerY" secondItem="VVL-ZH-1CK" secondAttribute="centerY" id="6Pz-Kr-D6v"/>
                 <constraint firstItem="bdr-v0-pYj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="85X-hk-Co9"/>

@@ -19,6 +19,7 @@
 @property(nonatomic,strong)IBOutlet UITextField *tradePsw_Field;
 @property(nonatomic,strong)IBOutlet UILabel *currencyLabel;
 
+@property(nonatomic,strong)IBOutlet UIImageView *downBtnView;
 @property(nonatomic,strong)IBOutlet UILabel *unit_Label;
 @property(nonatomic,strong)IBOutlet UILabel *wFeeExplain_Label;
 @property(nonatomic,strong)IBOutlet UIButton *helf_Btn;
@@ -186,6 +187,44 @@
     NSDecimalNumber *result = [num1 decimalNumberByDividingBy:num2 withBehavior:roundUp];
     
     return [result stringValue];
+}
+
+- (void)titleDownBtnAnticlockwiseRotation{
+    
+    //逆时针 旋转180度
+    _downBtnView.transform = CGAffineTransformMakeRotation(180 *M_PI / 180.0);
+    CGAffineTransform transform = _downBtnView.transform;
+    transform = CGAffineTransformScale(transform, 1,1);
+    [UIView animateWithDuration:0.5
+                          delay:0.1
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         
+                         self.downBtnView.transform = transform;
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }];
+    
+}
+
+- (void)titleDownBtnclockwiseRotation{
+    //顺时针 旋转180度
+    
+    _downBtnView.transform = CGAffineTransformMakeRotation(0*M_PI/180);
+    CGAffineTransform transform = _downBtnView.transform;
+    transform = CGAffineTransformScale(transform, 1,1);
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.1
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         
+                         self.downBtnView.transform = transform;
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }];
 }
 
 - (void)isBtnSelect:(UIButton*)btn isSelect:(BOOL)isSelect{
@@ -398,9 +437,11 @@
                          self.coinTableView.frame = frame;
                      }
                      completion:^(BOOL finished) {
-                         [UIView animateWithDuration:0.1 animations:^{
-                             
-                         }];
+                         if (self.coinTableView.height == 0) {
+                             [self titleDownBtnclockwiseRotation];
+                         } else {
+                             [self titleDownBtnAnticlockwiseRotation];
+                         }
                      }];
 }
 

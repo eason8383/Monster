@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,6 +19,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ego-Ym-341">
                     <rect key="frame" x="65.5" y="47" width="244" height="121"/>
                     <subviews>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="gjr-R4-TPf">
+                            <rect key="frame" x="112" y="50.5" width="20" height="20"/>
+                        </activityIndicatorView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload" translatesAutoresizingMaskIntoConstraints="NO" id="tFG-An-SKf">
                             <rect key="frame" x="110.5" y="44" width="23" height="18"/>
                             <constraints>
@@ -30,11 +33,13 @@
                     <color key="backgroundColor" red="0.16470588235294117" green="0.16078431372549021" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="tFG-An-SKf" firstAttribute="centerX" secondItem="ego-Ym-341" secondAttribute="centerX" id="2Ud-SD-p3V"/>
+                        <constraint firstItem="gjr-R4-TPf" firstAttribute="centerX" secondItem="ego-Ym-341" secondAttribute="centerX" id="8UJ-qX-uaN"/>
                         <constraint firstAttribute="width" constant="244" id="aE2-q8-wU4"/>
+                        <constraint firstItem="gjr-R4-TPf" firstAttribute="centerY" secondItem="ego-Ym-341" secondAttribute="centerY" id="sed-1J-ywz"/>
                         <constraint firstItem="tFG-An-SKf" firstAttribute="top" secondItem="ego-Ym-341" secondAttribute="top" constant="44" id="tds-4r-RnO"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUA-zO-9iR">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUA-zO-9iR">
                     <rect key="frame" x="65.5" y="47" width="244" height="121"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2M-Eo-9VY">
@@ -85,8 +90,10 @@
             <connections>
                 <outlet property="backView" destination="ego-Ym-341" id="kGw-He-zos"/>
                 <outlet property="explainLabel" destination="F2M-Eo-9VY" id="pQl-8s-r7U"/>
+                <outlet property="loadingView" destination="gjr-R4-TPf" id="wpZ-St-0ey"/>
                 <outlet property="picImgView" destination="YzD-Kg-u3l" id="Gxn-yq-het"/>
                 <outlet property="uploadBtn" destination="NUA-zO-9iR" id="Ip8-eF-2hD"/>
+                <outlet property="uploadImagView" destination="tFG-An-SKf" id="ZSx-gf-39R"/>
                 <outlet property="uploadLabel" destination="RZg-ix-Ira" id="j0N-IJ-LOo"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="54"/>

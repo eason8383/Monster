@@ -10,6 +10,39 @@
 
 @implementation MRHomePageClient
 
+
+- (void)getHomePageInfoSuccess:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
+    self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
+    NSDictionary *parameters = @{
+                                 @"source":@"99",
+                                 @"version":@"1.0",
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
+                                 };
+    
+    NSString *jsonParameter = [parameters JSONString];
+
+    [self getResponse:MR_HOMEPAGEINFO action:EGQUERYFORPAGE parametes:jsonParameter isEncrypt:NO complete:^(NSString *result) {
+        
+        NSDictionary *dic = [self dictionaryWithJsonString:result];
+        NSDictionary *resdic = [dic objectForKey:@"respCode"];
+        if (![[resdic objectForKey:@"code"] isEqualToString:@"00000"]) {
+            NSError *error = [NSError errorWithDomain:@"Get CoinPair error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            
+            failureBlock(error);
+            
+        } else {
+            [self makeACoinPairTable:[dic objectForKey:@"coinPairList"]];
+            successBlock(dic);
+        }
+        
+    } error:^(NSError *error) {
+        if (error) {
+            failureBlock(error);
+        }
+    }];
+}
+
 - (void)getCoinPairInfo:(NSString*)coinPairId withPage:(NSInteger)page success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     NSDictionary *parameters = @{
                                  @"source":@"03",

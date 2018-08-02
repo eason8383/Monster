@@ -19,6 +19,8 @@ typedef enum : NSInteger{
 @property(nonatomic,strong)IBOutlet UIButton *uploadBtn;
 - (void)setIdentityType:(IdentityType)idType;
 
+- (void)setImageUrl:(NSString*)urlStr;
+
 @end
 
 

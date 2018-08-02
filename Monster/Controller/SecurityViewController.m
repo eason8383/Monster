@@ -51,9 +51,11 @@
         _tideGoogleBtn.enabled = NO;
     }
     [_tideMobileLabel setText:[MRWebClient sharedInstance].userAccount.mobileNo];
-    NSString *email = [[NSUserDefaults standardUserDefaults]objectForKey:EMAIL_BINDING];
-    if (email.length > 0) {
-        [_tideMailBoxLabel setText:email];
+//    NSString *email = [[NSUserDefaults standardUserDefaults]objectForKey:EMAIL_BINDING];
+    
+    MRUserAccount *userAccount = [MRWebClient sharedInstance].userAccount;
+    if (userAccount.userEmail.length > 0) {
+        [_tideMailBoxLabel setText:userAccount.userEmail];
         _tideMailBoxBtn.enabled = NO; //绑定后不能更改
     }
 }

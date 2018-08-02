@@ -58,7 +58,6 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MyAssetTableViewCell" bundle:nil] forCellReuseIdentifier:myassetCellIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:@"CoinCanUseViewCell" bundle:nil] forCellReuseIdentifier:coinCanUseCellIdentifier];
-
 }
 
 - (void)getDataSucess:(NSDictionary*)info{

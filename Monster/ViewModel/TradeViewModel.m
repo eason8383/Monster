@@ -194,7 +194,7 @@
 }
 
 - (NSArray*)getCoinPairAry{
-    NSData *coinPairData = [[NSUserDefaults standardUserDefaults] objectForKey:COINPAIRMODEL    ];
+    NSData *coinPairData = [[NSUserDefaults standardUserDefaults] objectForKey:COINPAIRMODEL];
     if (_coinPairAry == nil) {
         _coinPairAry = [NSArray array];
     }

@@ -58,7 +58,7 @@
     
     NSDictionary *coinPairTable = [[NSUserDefaults standardUserDefaults]objectForKey:COINPAIRTABLE];
     
-    [_coinLabel setText:[NSString stringWithFormat:@"%@/MR",[coinPairTable objectForKey:userOrderInfo.coinPairId]]];
+    [_coinLabel setText:[NSString stringWithFormat:@"MR/%@",[coinPairTable objectForKey:userOrderInfo.coinPairId]]];
     [_priceLabel setText:[NSString stringWithFormat:@"%fMR",userOrderInfo.dealPrice]];
     [_timeLabel setText:[NSString stringWithFormat:@"%@",currentDateString]];
     

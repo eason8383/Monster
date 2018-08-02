@@ -46,7 +46,8 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 
 //    NSLog(@"Previous visible view controller is %@", self.navigationController.jz_previousVisibleViewController);
     
-    [_homeModel getData:100];
+    
+    [_homeModel getHomeInfo:100];
     self.navigationController.navigationBar.hidden = YES;
     BOOL needReloadShow = [[NSUserDefaults standardUserDefaults]boolForKey:RELOAD_AFTERSETTING];
     if (needReloadShow) {
@@ -55,7 +56,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     }
     _updatTimer = [NSTimer scheduledTimerWithTimeInterval:60
                                                   repeats:YES block:^(NSTimer *timer) {
-                                                      [self.homeModel getData:1];
+                                                      [self.homeModel getHomeInfo:1];
                                                   }];
 }
 
@@ -145,11 +146,12 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         case 1: {
             MACDTableViewCell *mcdCell = (MACDTableViewCell *)[tableView dequeueReusableCellWithIdentifier:macdTableViewCellIdentifier];
             NSArray *ary = [_homeModel getHomeDataArray];
-            CoinPairModel *model = [ary objectAtIndex:indexPath.row - 1];
-            NSArray *klineAry = [_homeModel getDrawKLineInfoArray:model.coinPairId];
-            mcdCell.multiple = [_homeModel getMultipleWithCurrentCoinId:model.subCoinId];
-            [mcdCell setContent:model dataArray:klineAry];
-            
+            if (ary.count > 0) {
+                CoinPairModel *model = [ary objectAtIndex:indexPath.row - 1];
+                NSArray *klineAry = [_homeModel getDrawKLineInfoArray:model.coinPairId];
+                mcdCell.multiple = [_homeModel getMultipleWithCurrentCoinId:model.subCoinId];
+                [mcdCell setContent:model dataArray:klineAry];
+            }
             return mcdCell;
         }
         case 2: {

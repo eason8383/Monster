@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +18,7 @@
                 <outlet property="coAddressBtn" destination="Pfa-ls-nez" id="uCX-bv-oZH"/>
                 <outlet property="confirmBtn" destination="9H7-Nt-kyI" id="haR-0Z-f0F"/>
                 <outlet property="currencyLabel" destination="kn3-do-hD3" id="QH7-rp-Bls"/>
+                <outlet property="downBtnView" destination="eeN-Y4-XeR" id="wqI-g8-cqQ"/>
                 <outlet property="qrBackView" destination="5Ct-A5-N3J" id="jY0-1P-NJK"/>
                 <outlet property="qrCodeView" destination="ujl-Us-tpl" id="4hB-hq-Adi"/>
                 <outlet property="saveQrPicBtn" destination="6x0-wt-ZPi" id="SRB-dA-4p8"/>

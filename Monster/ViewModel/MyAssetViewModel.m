@@ -89,10 +89,16 @@
 }
 
 - (void)combineDatas:(NSArray*)dataAry{
-    [self.userCoinQuantityAry removeAllObjects];
     
-    
+    NSMutableArray *newAry = [NSMutableArray array];
     [dataAry enumerateObjectsUsingBlock:^(NSDictionary *info, NSUInteger idx, BOOL *stop) {
+        if ([[info objectForKey:@"quantityStatus"]isEqualToString:@"0"] || [[info objectForKey:@"quantityStatus"]isEqualToString:@"2"]) {
+            [newAry addObject:info];
+        }
+    }];
+    
+    [self.userCoinQuantityAry removeAllObjects];
+    [[self sort:newAry] enumerateObjectsUsingBlock:^(NSDictionary *info, NSUInteger idx, BOOL *stop) {
         
         if (idx == 0) {
             NSMutableArray *objAry = [NSMutableArray array];
@@ -122,6 +128,17 @@
 //    }
 
     
+}
+
+
+- (NSArray*)sort:(NSArray*)dataArray{
+    
+    NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"coinId"
+                                                                    ascending:YES
+                                                                     selector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    
+    return [dataArray sortedArrayUsingDescriptors:@[firstDescriptor]];
 }
 
 - (void)getUserCoinInOutInfoAPI{
