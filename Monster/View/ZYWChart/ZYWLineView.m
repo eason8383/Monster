@@ -113,8 +113,12 @@
         CGFloat value = coinPair.endPrice;
         CGFloat xPostion = this.lineSpace*idx + this.leftMargin;
         CGFloat yPostion = (this.maxY - value)*this.scaleY + this.topMargin;
-        NSLog(@"%.8f",coinPair.endPrice);
+//        NSLog(@"%.8f",coinPair.endPrice);
         ZYWLineModel *lineModel = [ZYWLineModel initPositon:xPostion yPosition:yPostion barTime:coinPair.barTimeLong price:coinPair.endPrice color:this.lineColor];
+        
+        NSLog(@"Price:%f",lineModel.endPrice);
+        NSLog(@"orig:%l  time:%@",lineModel.barTimeLong,[self converTimeFormat:lineModel.barTimeLong]);
+        
         [this.modelPostionArray addObject:lineModel];
     }];
 }
@@ -151,7 +155,7 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if (_poLine == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PointOutLine" owner:self options:nil];
-        if(kScreenHeight == 568){
+        if (kScreenHeight == 568) {
             _poLine = [nib objectAtIndex:1];
         } else {
             _poLine = [nib objectAtIndex:0];
@@ -176,7 +180,7 @@
     [self addSubview:_poLine];
     
     int index = (current.x - self.leftMargin)/self.lineSpace;
-    if (index > 0 && index < self.modelPostionArray.count) {
+    if (index >= 0 && index < self.modelPostionArray.count) {
         ZYWLineModel *lineModel = [self.modelPostionArray objectAtIndex:index];
         [_poLine setValue:[self converTimeFormat:lineModel.barTimeLong]];
         [self.delegate returnPrice:lineModel.endPrice];
@@ -224,11 +228,13 @@
     _poLine.center = CGPointMake(center.x+offset.x, center.y);
     
     int index = (center.x+offset.x - self.leftMargin)/self.lineSpace;
-    
-    if (index > 0 && index < self.modelPostionArray.count) {
+//    NSLog(@"total:%lu index:%d",(unsigned long)self.modelPostionArray.count,index);
+    if (index >= 0 && index < self.modelPostionArray.count) {
         ZYWLineModel *lineModel = [self.modelPostionArray objectAtIndex:index];
         [_poLine setValue:[self converTimeFormat:lineModel.barTimeLong]];
         [self.delegate returnPrice:lineModel.endPrice];
+//        NSLog(@"timeStr:%lu ,time:%@",lineModel.barTimeLong,[self converTimeFormat:lineModel.barTimeLong]);
+//        NSLog(@"Price:%f",lineModel.endPrice);
     }
     [self.delegate dragingWithDuration:5/offset.x];
     

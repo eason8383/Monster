@@ -345,6 +345,7 @@ static RNFrostedSidebar *rn_frostedMenu;
     
     NSDictionary *myAssetDic = [[NSUserDefaults standardUserDefaults]objectForKey:MYETH];
     MRUserAccount *account = [[MRWebClient sharedInstance]getUserAccount];
+    [self.contentView.nowSession setText:account.sessionId];
 //    NSString* smobileNo = [NSString stringWithFormat:@"%@****%@",[account.mobileNo substringToIndex:3],[account.mobileNo substringFromIndex:7] ];
     [self.contentView.mobile_Label setText:account.mobileNo];
     [self setMyAsset:myAssetDic];
@@ -365,7 +366,8 @@ static RNFrostedSidebar *rn_frostedMenu;
 }
 
 - (void)getMyAssetUpdate:(NSNotification*)noti{
-    NSDictionary *myAssetDic = noti.object;
+    NSDictionary *myAssetDic = [[NSUserDefaults standardUserDefaults]objectForKey:MYETH];
+    
     [self setMyAsset:myAssetDic];
 }
 

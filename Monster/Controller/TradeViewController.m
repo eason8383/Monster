@@ -58,17 +58,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    UIBarButtonItem *backHomeBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Quotation"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBack:)];
-    backHomeBtn.tintColor = [UIColor whiteColor];
     
-    [self.navigationItem setLeftBarButtonItem:backHomeBtn];
-    
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"home"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBackToHome:)];
-    backBtn.tintColor = [UIColor whiteColor];
-    
-    [self.navigationItem setRightBarButtonItem:backBtn];
-    
-    _tradeViewModel.delegate = self;
     [_tradeViewModel getData:_model.coinPairId];
 }
 
@@ -80,15 +70,22 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TradeView" owner:self options:nil];
     
-    _tradeView = [nib objectAtIndex:0];
-    [_tradeView setMode:self.isHigh];
-    [_tradeView setContent:self.model];
-    [_tradeView.comfirmBtn addTarget:self action:@selector(orderRequest:) forControlEvents:UIControlEventTouchUpInside];
-    [_tradeView.titleDownBtn addTarget:self action:@selector(coinTableView:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.view addSubview:_tradeView];
+    UIBarButtonItem *backHomeBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Quotation"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBack:)];
+    backHomeBtn.tintColor = [UIColor whiteColor];
+    
+    [self.navigationItem setLeftBarButtonItem:backHomeBtn];
+    
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"home"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBackToHome:)];
+    backBtn.tintColor = [UIColor whiteColor];
+    
+    [self.navigationItem setRightBarButtonItem:backBtn];
+    
+    
+    
+//    _tableView.tableHeaderView = _tableView;
+//    [self.view addSubview:_tradeView];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.coinTableView];
 }
@@ -126,9 +123,9 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     if (isiPhoneX) {
-        [_tradeView setFrame:CGRectMake(0, 102, kScreenWidth, 396)];
+        [_tradeView setFrame:CGRectMake(0, 102, kScreenWidth, 449)];
     } else {
-        [_tradeView setFrame:CGRectMake(0, 60, kScreenWidth, 396)];
+        [_tradeView setFrame:CGRectMake(0, 60, kScreenWidth, 449)];
     }
     [_tradeView.hlView setFrame:_tradeView.highLowViewBack.bounds];
 }
@@ -214,7 +211,9 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
         [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
-        [self justShowAlert:@"错误信息" message:[dic objectForKey:@"respMessage"]];
+        NSString *str = [dic objectForKey:@"respMessage"];
+        NSArray *errorAry = [str componentsSeparatedByString:@","];
+        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
     }
 }
 
@@ -258,6 +257,16 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 }
 
 #pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (tableView == _tableView) {
+        return 449;
+    } else {
+        return 0;
+    }
+}
+
+
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == _tableView) {
         NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
@@ -278,6 +287,23 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
         [self.heightAtIndexPath setObject:height forKey:indexPath];
     } else {
     
+    }
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (tableView == _tableView) {
+        if (_tradeView == nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TradeView" owner:self options:nil];
+            _tradeView = [nib objectAtIndex:0];
+            [_tradeView.comfirmBtn addTarget:self action:@selector(orderRequest:) forControlEvents:UIControlEventTouchUpInside];
+            [_tradeView.titleDownBtn addTarget:self action:@selector(coinTableView:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        [_tradeView setMode:self.isHigh];
+        [_tradeView setContent:self.model];
+        return _tradeView;
+    } else {
+        UIView *viewe = [[UIView alloc]init];
+        return viewe;
     }
 }
 
@@ -351,10 +377,11 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 - (UITableView *)tableView{
     if (_tableView == nil) {
         
-        float bottomFix = isiPhoneX?88:44;
-        CGRect frame = CGRectMake(0, bottomFix + _tradeView.frame.size.height + 25, kScreenWidth, kScreenHeight - _tradeView.frame.size.height + 5 - bottomFix);
+//        float bottomFix = isiPhoneX?88:44;
+//        CGRect frame = CGRectMake(0, bottomFix + _tradeView.frame.size.height + 25, kScreenWidth, kScreenHeight - _tradeView.frame.size.height + 5 - bottomFix);
+        CGRect frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
         _tableView = [[UITableView alloc] initWithFrame:frame
-                                                  style:UITableViewStylePlain];
+                                                  style:UITableViewStyleGrouped];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.rowHeight = UITableViewAutomaticDimension;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

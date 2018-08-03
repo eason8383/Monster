@@ -43,7 +43,6 @@
 		9B7EEE8720E9C39000DF88B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EEE8620E9C39000DF88B4 /* AppDelegate.m */; };
 		9B7EEE8A20E9C39000DF88B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EEE8920E9C39000DF88B4 /* ViewController.m */; };
 		9B7EEE8D20E9C39000DF88B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EEE8B20E9C39000DF88B4 /* Main.storyboard */; };
-		9B7EEE8F20E9C39200DF88B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EEE8E20E9C39200DF88B4 /* Assets.xcassets */; };
 		9B7EEE9220E9C39200DF88B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EEE9020E9C39200DF88B4 /* LaunchScreen.storyboard */; };
 		9B7EEE9520E9C39200DF88B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EEE9420E9C39200DF88B4 /* main.m */; };
 		9B7EEE9F20E9C39200DF88B4 /* MonsterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EEE9E20E9C39200DF88B4 /* MonsterTests.m */; };
@@ -91,6 +90,10 @@
 		9BB9461F20ECE85F00B8D7BE /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9461D20ECE85F00B8D7BE /* MarketTableViewCell.xib */; };
 		D708218E20F48C80002AEDA2 /* AboutusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D708218C20F48C80002AEDA2 /* AboutusViewController.m */; };
 		D708218F20F48C80002AEDA2 /* AboutusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D708218D20F48C80002AEDA2 /* AboutusViewController.xib */; };
+		D70B0E4A2112AA1200CD80CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EEE8E20E9C39200DF88B4 /* Assets.xcassets */; };
+		D70B0E4D2112E79600CD80CB /* UserInOutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D70B0E4C2112E79600CD80CB /* UserInOutModel.m */; };
+		D70B0E512112E99600CD80CB /* OrderHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D70B0E4F2112E99600CD80CB /* OrderHistoryTableViewCell.m */; };
+		D70B0E542112EA7300CD80CB /* OrderHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D70B0E532112EA7300CD80CB /* OrderHistoryTableViewCell.xib */; };
 		D70FC5DC2101BFFC00462BFB /* UIImage+GradientColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D70FC5DB2101BFFC00462BFB /* UIImage+GradientColor.m */; };
 		D71643AD2100A57B0060AB6C /* PointOutLine.m in Sources */ = {isa = PBXBuildFile; fileRef = D71643AC2100A57B0060AB6C /* PointOutLine.m */; };
 		D71643AF2100A5CB0060AB6C /* PointOutLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71643AE2100A5CB0060AB6C /* PointOutLine.xib */; };
@@ -113,6 +116,8 @@
 		D745E25820F74EE40001EA11 /* MRTradeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25720F74EE40001EA11 /* MRTradeClient.m */; };
 		D745E25B20F750960001EA11 /* MRUserInfoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25A20F750960001EA11 /* MRUserInfoClient.m */; };
 		D745E25E20F757D20001EA11 /* TrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25D20F757D20001EA11 /* TrandModel.m */; };
+		D7468C592114340D009C8842 /* IdInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7468C582114340D009C8842 /* IdInputView.m */; };
+		D7468C5B21143420009C8842 /* IdInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7468C5A21143420009C8842 /* IdInputView.xib */; };
 		D75939192106E256004E75FF /* CAWViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D75939182106E256004E75FF /* CAWViewModel.m */; };
 		D759391D21072938004E75FF /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D759391A21072935004E75FF /* ScanViewController.xib */; };
 		D759391E21072938004E75FF /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D759391B21072936004E75FF /* ScanViewController.m */; };
@@ -326,6 +331,11 @@
 		D708218B20F48C80002AEDA2 /* AboutusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutusViewController.h; sourceTree = "<group>"; };
 		D708218C20F48C80002AEDA2 /* AboutusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutusViewController.m; sourceTree = "<group>"; };
 		D708218D20F48C80002AEDA2 /* AboutusViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutusViewController.xib; sourceTree = "<group>"; };
+		D70B0E4B2112E79600CD80CB /* UserInOutModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInOutModel.h; sourceTree = "<group>"; };
+		D70B0E4C2112E79600CD80CB /* UserInOutModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInOutModel.m; sourceTree = "<group>"; };
+		D70B0E4E2112E99600CD80CB /* OrderHistoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderHistoryTableViewCell.h; sourceTree = "<group>"; };
+		D70B0E4F2112E99600CD80CB /* OrderHistoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderHistoryTableViewCell.m; sourceTree = "<group>"; };
+		D70B0E532112EA7300CD80CB /* OrderHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		D70FC5DA2101BFFC00462BFB /* UIImage+GradientColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+GradientColor.h"; sourceTree = "<group>"; };
 		D70FC5DB2101BFFC00462BFB /* UIImage+GradientColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GradientColor.m"; sourceTree = "<group>"; };
 		D71643AB2100A57B0060AB6C /* PointOutLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointOutLine.h; sourceTree = "<group>"; };
@@ -363,6 +373,9 @@
 		D745E25A20F750960001EA11 /* MRUserInfoClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRUserInfoClient.m; sourceTree = "<group>"; };
 		D745E25C20F757D20001EA11 /* TrandModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrandModel.h; sourceTree = "<group>"; };
 		D745E25D20F757D20001EA11 /* TrandModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrandModel.m; sourceTree = "<group>"; };
+		D7468C572114340D009C8842 /* IdInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdInputView.h; sourceTree = "<group>"; };
+		D7468C582114340D009C8842 /* IdInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IdInputView.m; sourceTree = "<group>"; };
+		D7468C5A21143420009C8842 /* IdInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdInputView.xib; sourceTree = "<group>"; };
 		D75939172106E256004E75FF /* CAWViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAWViewModel.h; sourceTree = "<group>"; };
 		D75939182106E256004E75FF /* CAWViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAWViewModel.m; sourceTree = "<group>"; };
 		D759391A21072935004E75FF /* ScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
@@ -617,6 +630,9 @@
 				9B9DFD3220EF7CA900E56B2F /* CapitalDetailsViewCell.h */,
 				9B9DFD3320EF7CA900E56B2F /* CapitalDetailsViewCell.m */,
 				9B9DFD3420EF7CA900E56B2F /* CapitalDetailsViewCell.xib */,
+				D70B0E4E2112E99600CD80CB /* OrderHistoryTableViewCell.h */,
+				D70B0E4F2112E99600CD80CB /* OrderHistoryTableViewCell.m */,
+				D70B0E532112EA7300CD80CB /* OrderHistoryTableViewCell.xib */,
 				D773385020FC6D430039F924 /* ChoseCoinTableViewCell.h */,
 				D773385120FC6D430039F924 /* ChoseCoinTableViewCell.m */,
 				D773385220FC6D430039F924 /* ChoseCoinTableViewCell.xib */,
@@ -628,6 +644,9 @@
 				D779B881210AC64B0031BCC1 /* CounterPriceViewCell.h */,
 				D779B882210AC64B0031BCC1 /* CounterPriceViewCell.m */,
 				D779B883210AC64B0031BCC1 /* CounterPriceViewCell.xib */,
+				D7468C572114340D009C8842 /* IdInputView.h */,
+				D7468C582114340D009C8842 /* IdInputView.m */,
+				D7468C5A21143420009C8842 /* IdInputView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -737,6 +756,8 @@
 				D71F71A620F8B959003513C5 /* UserOrderModel.m */,
 				D773385520FC90EE0039F924 /* UserCoinQuantity.h */,
 				D773385620FC90EE0039F924 /* UserCoinQuantity.m */,
+				D70B0E4B2112E79600CD80CB /* UserInOutModel.h */,
+				D70B0E4C2112E79600CD80CB /* UserInOutModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -996,6 +1017,7 @@
 				9BB945EC20EC6E8300B8D7BE /* HeadTableViewCell.xib in Resources */,
 				D7D062B720F34D30001ABA16 /* redGrid.gif in Resources */,
 				9B7EEE9220E9C39200DF88B4 /* LaunchScreen.storyboard in Resources */,
+				D7468C5B21143420009C8842 /* IdInputView.xib in Resources */,
 				9B4F1D9420EF408900DEF626 /* IdentityViewController.xib in Resources */,
 				D708218F20F48C80002AEDA2 /* AboutusViewController.xib in Resources */,
 				9BB9460D20ECB5C100B8D7BE /* CoinTrendsCell.xib in Resources */,
@@ -1007,17 +1029,18 @@
 				D773385420FC6D430039F924 /* ChoseCoinTableViewCell.xib in Resources */,
 				9BB945FE20ECA2B400B8D7BE /* MACDTableViewCell.xib in Resources */,
 				9BB9461520ECD90600B8D7BE /* CoinDetailViewController.xib in Resources */,
-				9B7EEE8F20E9C39200DF88B4 /* Assets.xcassets in Resources */,
 				9B87074C20EB639900156E39 /* SliderMenuView.xib in Resources */,
 				9B4F1DB720EF6B9700DEF626 /* WithdrawViewController.xib in Resources */,
 				D779B885210AC64B0031BCC1 /* CounterPriceViewCell.xib in Resources */,
 				9B4F1DB220EF583E00DEF626 /* CapitalViewController.xib in Resources */,
+				D70B0E4A2112AA1200CD80CB /* Assets.xcassets in Resources */,
 				9B4F1D8A20EF0ED600DEF626 /* MyOrderViewController.xib in Resources */,
 				9B9DFD3620EF7CA900E56B2F /* CapitalDetailsViewCell.xib in Resources */,
 				D759391D21072938004E75FF /* ScanViewController.xib in Resources */,
 				D71F719E20F8736E003513C5 /* HighLowLabelViewForTrade.xib in Resources */,
 				D735D7AF20F0A696007E2B7C /* OrderHistoryViewController.xib in Resources */,
 				9B42212A20EDE944009D5A8A /* EntrustNowViewCell.xib in Resources */,
+				D70B0E542112EA7300CD80CB /* OrderHistoryTableViewCell.xib in Resources */,
 				9B7EEE8D20E9C39000DF88B4 /* Main.storyboard in Resources */,
 				9BB9461F20ECE85F00B8D7BE /* MarketTableViewCell.xib in Resources */,
 				9BA85A9920F0AC3F00C096B0 /* OrderDetailViewController.xib in Resources */,
@@ -1125,6 +1148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B7EEEC820EA281D00DF88B4 /* MRWebClient.m in Sources */,
+				D70B0E4D2112E79600CD80CB /* UserInOutModel.m in Sources */,
 				9B87074420EB4BAC00156E39 /* InputVerifyTool.m in Sources */,
 				D73B24E9210823F00045E77B /* UITextView+ZWPlaceHolder.m in Sources */,
 				9B4F1DB620EF6B9700DEF626 /* WithdrawViewController.m in Sources */,
@@ -1146,6 +1170,7 @@
 				D71643AD2100A57B0060AB6C /* PointOutLine.m in Sources */,
 				9B87074720EB60AA00156E39 /* RNFrostedSidebar.m in Sources */,
 				D7820BAF20F5E1B200B01F05 /* CoinDetailViewModel.m in Sources */,
+				D70B0E512112E99600CD80CB /* OrderHistoryTableViewCell.m in Sources */,
 				9B9DFD3520EF7CA900E56B2F /* CapitalDetailsViewCell.m in Sources */,
 				D7CAB0E620F309A800B8B99B /* ZYWLineUntil.m in Sources */,
 				D7A2508D20FDB81700E4846D /* GoogleAuthViewController.m in Sources */,
@@ -1164,6 +1189,7 @@
 				D745E25B20F750960001EA11 /* MRUserInfoClient.m in Sources */,
 				9BB9460720ECB19000B8D7BE /* ExponentialCell.m in Sources */,
 				9B42212920EDE944009D5A8A /* EntrustNowViewCell.m in Sources */,
+				D7468C592114340D009C8842 /* IdInputView.m in Sources */,
 				9B4F1DB120EF583E00DEF626 /* CapitalViewController.m in Sources */,
 				9BB945F420EC6EE900B8D7BE /* MainPageHeadView.m in Sources */,
 				D759EE6E20FF2131001A2871 /* MRBaseTableViewController.m in Sources */,

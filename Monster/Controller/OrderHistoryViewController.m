@@ -7,7 +7,8 @@
 //
 
 #import "OrderHistoryViewController.h"
-#import "CapitalDetailsViewCell.h"
+#import "OrderHistoryTableViewCell.h"
+
 #import "OrderDetailViewController.h"
 #import "MyOrderViewModel.h"
 #import "SGLoadMoreView.h"
@@ -24,7 +25,7 @@
 
 @implementation OrderHistoryViewController
 
-static NSString *capitalViewCellIdentifier = @"capitalDeViewCell";
+static NSString *orderHistoryViewCellIdentifier = @"orderHistoryViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,7 +93,7 @@ static NSString *capitalViewCellIdentifier = @"capitalDeViewCell";
 
 - (void)registerCells{
     
-    [_tableView registerNib:[UINib nibWithNibName:@"CapitalDetailsViewCell" bundle:nil] forCellReuseIdentifier:capitalViewCellIdentifier];
+    [_tableView registerNib:[UINib nibWithNibName:@"OrderHistoryTableViewCell" bundle:nil] forCellReuseIdentifier:orderHistoryViewCellIdentifier];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -120,10 +121,10 @@ static NSString *capitalViewCellIdentifier = @"capitalDeViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    CapitalDetailsViewCell *cdCell = (CapitalDetailsViewCell *)[tableView dequeueReusableCellWithIdentifier:capitalViewCellIdentifier];
+    OrderHistoryTableViewCell *ohCell = (OrderHistoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:orderHistoryViewCellIdentifier];
     UserOrderModel *userOrderInfo = [self.orderHistoryAry objectAtIndex:indexPath.row];
-    [cdCell setContent:userOrderInfo];
-    return cdCell;
+    [ohCell setContent:userOrderInfo];
+    return ohCell;
     
 }
 

@@ -67,7 +67,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 //    } else if (self.navigationController.jz_operation == UINavigationControllerOperationPush) {
 //        NSLog(@"Controller will push to another.");
 //    }
-    NSLog(@"看看吧");
+    
     [_updatTimer invalidate];
     _updatTimer = nil;
 }
@@ -121,9 +121,23 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 
 - (void)getDataFalid:(NSError *)error{
     [[VWProgressHUD shareInstance]dismiss];
-    [_updatTimer invalidate];
-    _updatTimer = nil;
-    [self dealWithErrorMsg:error];
+    
+    
+    NSDictionary *dic = error.userInfo;
+    NSDictionary *respCode = [dic objectForKey:@"respCode"];
+    if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"] || [[respCode objectForKey:@"code"]isEqualToString:@"00999"]) {
+        [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
+        [_updatTimer invalidate];
+        _updatTimer = nil;
+    }else{
+        NSString *str = [dic objectForKey:@"respMessage"];
+        NSArray *errorAry = [str componentsSeparatedByString:@","];
+        if (str && str.length > 0) {
+            [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
+        }
+        
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -186,7 +200,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         coVC.model = model;
         coVC.klineDataAry = [[NSMutableArray alloc]initWithArray:klineAry];
         coVC.multiple = [_homeModel getMultipleWithCurrentCoinId:model.subCoinId];
-        coVC.isHighLowKLine = (indexPath.row == 1)?NO:YES;
+        coVC.isMRType = [model.mainCoinId isEqualToString:@"MR"]?YES:NO;
         
         [self homeDefaultPushController:coVC withBackTitle:[NSString stringWithFormat:@"%@/%@",model.mainCoinId,model.subCoinId]];
     }

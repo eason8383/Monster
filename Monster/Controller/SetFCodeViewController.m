@@ -181,7 +181,7 @@
         
         int i = [second intValue];
         
-        [_smsVerify_Btn setTitle:[NSString stringWithFormat:@"再获取(%is)",i] forState:UIControlStateNormal];
+        [_smsVerify_Btn setTitle:[NSString stringWithFormat:@"%is后获取",i] forState:UIControlStateNormal];
         
         [self performSelector:@selector(receiveCheckNumButton:)withObject:[NSNumber numberWithInt:i-1] afterDelay:1];
     }
@@ -194,7 +194,9 @@
         [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
-        [self justShowAlert:@"错误信息" message:[dic objectForKey:@"respMessage"]];
+        NSString *str = [dic objectForKey:@"respMessage"];
+        NSArray *errorAry = [str componentsSeparatedByString:@","];
+        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
     }
 }
 

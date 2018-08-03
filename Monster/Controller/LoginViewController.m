@@ -40,6 +40,7 @@
     [self isLoginBtnReadyToGo:NO];
     
     [self registNotifications];
+    
 }
 
 - (void)loadView{
@@ -77,12 +78,15 @@
     
     _keyboardHeight = keyboardFrameBeginRect.size.height - 50;//36 是與底部距離
     
-    NSLog(@"keyboardWillShow %f",_keyboardHeight);
+//    NSLog(@"keyboardWillShow %f",_keyboardHeight);
     
 }
 
 - (void)keyboardWillhide:(NSNotification*)notification{
-    NSLog(@"keyboardWillhide");
+    [UIView animateWithDuration:2 animations:^{
+        self.bottom_distance.constant = 58;
+    }];
+//    NSLog(@"keyboardWillhide");
     
 }
 
@@ -116,16 +120,11 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    [UIView animateWithDuration:2 animations:^{
-        if (kScreenHeight == 568) {
-            self.bottom_distance.constant -= 120;
-        } else {
-           self.bottom_distance.constant = 58;
-        }
-    }];
+
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
     [self performSelector:@selector(move) withObject:nil afterDelay:0.2];
     return YES;
 }
@@ -142,9 +141,11 @@
 }
 
 - (void)move{
+    
     [UIView animateWithDuration:2 animations:^{
-        self.bottom_distance.constant += kScreenHeight==568?120:self.keyboardHeight;
+        self.bottom_distance.constant = kScreenHeight==568?120 + 58:self.keyboardHeight + 58;
     }];
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

@@ -24,5 +24,7 @@
 @property(nonatomic,strong)IBOutlet UIButton *logout_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *reflect_Btn;
 
+@property(nonatomic,strong)IBOutlet UILabel *nowSession;
+
 
 @end

@@ -20,6 +20,7 @@ typedef enum : NSInteger{
 - (void)setIdentityType:(IdentityType)idType;
 
 - (void)setImageUrl:(NSString*)urlStr;
+- (void)resetUploadView;
 
 @end
 

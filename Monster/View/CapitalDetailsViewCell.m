@@ -7,20 +7,17 @@
 //
 
 #import "CapitalDetailsViewCell.h"
-#import "UserOrderModel.h"
+#import "UserInOutModel.h"
 
 @interface CapitalDetailsViewCell()
 
-@property(nonatomic,strong)IBOutlet UIButton *orderStateBtn;
-@property(nonatomic,strong)IBOutlet UILabel *buySaleLabel;
+@property(nonatomic,strong)IBOutlet UILabel *typeLabel;
 @property(nonatomic,strong)IBOutlet UILabel *coinLabel;
-@property(nonatomic,strong)IBOutlet UILabel *priceLabel;
 @property(nonatomic,strong)IBOutlet UILabel *timeLabel;
 @property(nonatomic,strong)IBOutlet UILabel *measureLabel;
 
-@property(nonatomic,strong)IBOutlet UILabel *totalDealLabel;
-@property(nonatomic,strong)IBOutlet UILabel *avegDealLabel;
-@property(nonatomic,strong)IBOutlet UILabel *meanDealLabel;
+@property(nonatomic,strong)IBOutlet UILabel *feeRateLabel;
+
 
 @end
 
@@ -39,38 +36,32 @@
     // Configure the view for the selected state
 }
 
-- (void)setContent:(UserOrderModel*)userOrderInfo{
-    if ([userOrderInfo.buySell isEqualToString:@"B"]) {
-        [_buySaleLabel setText:@"买入"];
-        [_buySaleLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_HIGH]];
-    } else {
-        [_buySaleLabel setText:@"卖出"];
-        [_buySaleLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_LOW]];
-    }
+- (void)setContent:(UserInOutModel*)userInOutInfo{
+//    if ([userOrderInfo.buySell isEqualToString:@"B"]) {
+//        [_typeLabel setText:@"买入"];
+//        [_typeLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_HIGH]];
+//    } else {
+//        [_typeLabel setText:@"卖出"];
+//        [_typeLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_LOW]];
+//    }
+    
+    [_typeLabel setText:userInOutInfo.inOutName];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
     [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/China"]];
     [formatter setDateFormat:@"hh:mm MM/dd"];
     // Date to string
-    NSDate *now = [NSDate dateWithTimeIntervalSince1970:userOrderInfo.createTime/1000];
+    NSDate *now = [NSDate dateWithTimeIntervalSince1970:userInOutInfo.createTime/1000];
     NSString *currentDateString = [formatter stringFromDate:now];
     
-    NSDictionary *coinPairTable = [[NSUserDefaults standardUserDefaults]objectForKey:COINPAIRTABLE];
+    [_coinLabel setText:userInOutInfo.coinId];
     
-    [_coinLabel setText:[NSString stringWithFormat:@"MR/%@",[coinPairTable objectForKey:userOrderInfo.coinPairId]]];
-    [_priceLabel setText:[NSString stringWithFormat:@"%fMR",userOrderInfo.dealPrice]];
-    [_timeLabel setText:[NSString stringWithFormat:@"%@",currentDateString]];
+    [_timeLabel setText:currentDateString];
     
-    [_measureLabel setText:[NSString stringWithFormat:@"%f",userOrderInfo.dealAmount]];
+    [_measureLabel setText:[NSString stringWithFormat:@"%.4f",userInOutInfo.coinQuantity]];
     
 //    [_transFeeLabel setText:[NSString stringWithFormat:@"%f",userOrderInfo.feeRate]];
-    
-    [_orderStateBtn setTitle:userOrderInfo.orderStatusName forState:UIControlStateNormal];
-    
-    [_totalDealLabel setText:[NSString stringWithFormat:@"%f",userOrderInfo.orderPrice]];
-    [_avegDealLabel setText:[NSString stringWithFormat:@"%f",userOrderInfo.orderPrice]];
-    [_meanDealLabel setText:[NSString stringWithFormat:@"%f",userOrderInfo.orderQuantity]];
 }
 
 @end

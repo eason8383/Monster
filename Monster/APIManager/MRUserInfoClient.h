@@ -17,7 +17,7 @@
 
 - (void)updateUserPsw:(NSString*)newPsw verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
-- (void)saveUserIdentity:(NSString*)frontId backId:(NSString*)backId withId:(NSString*)withId Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+- (void)saveUserIdentity:(NSString*)frontId backId:(NSString*)backId withId:(NSString*)withId withIdNo:(NSString*)idNo Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
 - (void)saveEmailIdentity:(NSString*)emailAdds verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 

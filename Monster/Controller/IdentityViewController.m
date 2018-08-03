@@ -11,14 +11,17 @@
 #import <AVFoundation/AVFoundation.h>
 #import "MRImagePickerController.h"
 #import "IdentityViewModel.h"
+#import "IdInputView.h"
 
 @interface IdentityViewController ()<UIScrollViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,IdentityViewModelDelegate>
 
 @property(nonatomic,strong)UIScrollView *scrollView;
+@property(nonatomic,strong)IdInputView *idView;
 @property(nonatomic,strong)UpLoadImagView *aView;
 @property(nonatomic,strong)UpLoadImagView *bView;
 @property(nonatomic,strong)UpLoadImagView *cView;
 @property(nonatomic,strong)IdentityViewModel *idViewModel;
+
 @property(nonatomic,strong)UIImage *currentImg;
 @property(nonatomic,strong)UIButton *confirmBtn;
 
@@ -26,7 +29,11 @@
 @property(nonatomic,strong)NSString *backId;
 @property(nonatomic,strong)NSString *withId;
 
+@property(nonatomic,assign)BOOL needReset;
+
 @property(nonatomic,strong)NSMutableDictionary *checkPicsDic;
+
+@property UITapGestureRecognizer *tapRecognizer;
 
 @end
 
@@ -46,6 +53,11 @@
     
     [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
     [self.view addSubview:self.scrollView];
+    
+    _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(firstResponder:)];
+    //    _tapRecognizer.delegate = self;
+    _tapRecognizer.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:_tapRecognizer];
 }
 
 - (void)initial{
@@ -53,7 +65,7 @@
     _frontId = @"";
     _backId = @"";
     _withId = @"";
-    
+    _needReset = NO;
     _idViewModel = [IdentityViewModel sharedInstance];
     _idViewModel.delegate = self;
     
@@ -69,8 +81,17 @@
     NSLog(@"%@",userInfo);
 }
 
+- (void)firstResponder:(id)sender{
+    [_idView.id_Field resignFirstResponder];
+}
+
 - (void)diceidUpload{
+    
     MRUserAccount *accInfo = [[MRWebClient sharedInstance]getUserAccount];
+    
+    NSArray *nibv = [[NSBundle mainBundle] loadNibNamed:@"IdInputView" owner:self options:nil];
+    _idView = [nibv objectAtIndex:0];
+    [_scrollView addSubview:_idView];
     
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UpLoadImagView" owner:self options:nil];
     _aView = [nib objectAtIndex:0];
@@ -79,8 +100,7 @@
         [_aView setImageUrl:accInfo.frontIdCard];
         _frontId = accInfo.frontIdCard;
     } else {
-        [_aView.uploadBtn addTarget:self action:@selector(toPickAUploadPic:) forControlEvents:UIControlEventTouchUpInside];
-        _aView.uploadBtn.tag = 1;
+        [self addTargetToButton:_aView setTag:1];
     }
     [_scrollView addSubview:_aView];
     
@@ -92,8 +112,7 @@
         [_bView setImageUrl:accInfo.backIdCard];
         _backId = accInfo.backIdCard;
     } else {
-        [_bView.uploadBtn addTarget:self action:@selector(toPickAUploadPic:) forControlEvents:UIControlEventTouchUpInside];
-        _bView.uploadBtn.tag = 2;
+        [self addTargetToButton:_bView setTag:2];
     }
     [_scrollView addSubview:_bView];
     
@@ -104,15 +123,14 @@
         [_cView setImageUrl:accInfo.userWithIdCard];
         _withId = accInfo.userWithIdCard;
     } else {
-        [_cView.uploadBtn addTarget:self action:@selector(toPickAUploadPic:) forControlEvents:UIControlEventTouchUpInside];
-        _cView.uploadBtn.tag = 3;
+        [self addTargetToButton:_cView setTag:3];
     }
     [_scrollView addSubview:_cView];
     
     if (_confirmBtn == nil) {
         _confirmBtn = [[UIButton alloc]initWithFrame:CGRectMake(24,0,kScreenWidth - 45, 34)];
         [_confirmBtn setTintColor:[UIColor whiteColor]];
-        [_confirmBtn setTitle:@"确认" forState:UIControlStateNormal];
+        [_confirmBtn setTitle:@"提交" forState:UIControlStateNormal];
         _confirmBtn.layer.cornerRadius = 4;
         _confirmBtn.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.4].CGColor;
         _confirmBtn.layer.borderWidth = 1;
@@ -125,16 +143,23 @@
     
     if (accInfo.frontIdCard.length > 1 && accInfo.backIdCard.length > 1 && accInfo.userWithIdCard.length > 1) {
         
-        if (accInfo.idCardAuditStatus.length > 0 && [accInfo.idCardAuditStatus isEqualToString:@"1"]) {
+        if (accInfo.idCardAuditStatus.length > 0 && [accInfo.idCardAuditStatus isEqualToString:@"8"]) {
             [_confirmBtn setFrame:CGRectMake(24, 100, kScreenWidth - 45, 34)];
-            [_confirmBtn setTitle:@"已验证" forState:UIControlStateNormal];
+            [_confirmBtn setTitle:@"成功" forState:UIControlStateNormal];
+        } else if (accInfo.idCardAuditStatus.length > 0 && [accInfo.idCardAuditStatus isEqualToString:@"9"]) {
+            [_confirmBtn setFrame:CGRectMake(24, 100, kScreenWidth - 45, 34)];
+            [_confirmBtn setTitle:@"请点击后重新上传" forState:UIControlStateNormal];
+            _needReset = YES;
+            [self setCommitBtnEnableWhenReady:YES];
         } else {
             [_confirmBtn setFrame:CGRectMake(24, 100, kScreenWidth - 45, 34)];
             [_confirmBtn setTitle:@"审查中" forState:UIControlStateNormal];
         }
+        _idView.id_Field.enabled = NO;
         
     } else {
-        [_confirmBtn setTitle:@"确认" forState:UIControlStateNormal];
+        [_confirmBtn setTitle:@"提交" forState:UIControlStateNormal];
+        _idView.id_Field.enabled = YES;
     }
     
     
@@ -160,6 +185,9 @@
 
 - (void)setPostions{
     float yPos = 28; //起始位置
+    
+    [_idView setFrame:CGRectMake(0, yPos, kScreenWidth, 79)];
+    yPos += _idView.frame.size.height + 11;
     
     [_aView setFrame:CGRectMake(0, yPos, kScreenWidth, 182)];
     yPos += _aView.frame.size.height + 11;
@@ -266,12 +294,40 @@
 
 - (void)submmitAction:(id)sender{
     
-    if ([self checkIfPicsTheSame]) {
-        [self justShowAlert:@"照片重复" message:@"不能上传一样的图片"];
-    } else{
-        [[VWProgressHUD shareInstance]showLoading];
-        [_idViewModel saveUserIdentity:_frontId back:_backId withId:_withId];
+    if (_needReset) {
+        [self reset];
+    } else {
+        
+        if ([self checkIfPicsTheSame]) {
+            [self justShowAlert:@"照片重复" message:@"不能上传一样的图片"];
+        } else if (_idView.id_Field.text.length < 1) {
+           [self justShowAlert:@"信息不完整" message:@"请写入身分证号"];
+        } else {
+            [[VWProgressHUD shareInstance]showLoading];
+            [_idViewModel saveUserIdentity:_frontId back:_backId withId:_withId withIdNo:_idView.id_Field.text];
+        }
     }
+}
+
+- (void)reset{
+    _needReset = NO;
+    _frontId = @"";
+    _backId = @"";
+    _withId = @"";
+    _idView.id_Field.enabled = YES;
+    [_aView resetUploadView];
+    [self addTargetToButton:_aView setTag:1];
+    [_bView resetUploadView];
+    [self addTargetToButton:_bView setTag:2];
+    [_cView resetUploadView];
+    [self addTargetToButton:_cView setTag:3];
+    [self setCommitBtnEnableWhenReady:NO];
+    [_confirmBtn setTitle:@"提交" forState:UIControlStateNormal];
+}
+
+- (void)addTargetToButton:(UpLoadImagView*)uploadView setTag:(NSInteger)tag{
+    [uploadView.uploadBtn addTarget:self action:@selector(toPickAUploadPic:) forControlEvents:UIControlEventTouchUpInside];
+    uploadView.uploadBtn.tag = tag;
 }
 
 - (BOOL)checkIfPicsTheSame{
@@ -310,7 +366,9 @@
         [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
-        [self justShowAlert:@"错误信息" message:[dic objectForKey:@"respMessage"]];
+        NSString *str = [dic objectForKey:@"respMessage"];
+        NSArray *errorAry = [str componentsSeparatedByString:@","];
+        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
     }
 }
 

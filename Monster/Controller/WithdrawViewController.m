@@ -40,6 +40,7 @@
 @property(nonatomic,strong)NSArray *coinArray;
 @property(nonatomic,strong)NSString *nowCoin;
 @property(nonatomic,strong)NSString *nowQuantity;
+@property(nonatomic,assign)float keyboardHeight;
 
 
 //@"005"
@@ -89,7 +90,6 @@
     _googleLabel.hidden = !_hasGoogleAuth;
     
     _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(firstResponder:)];
-    //    _tapRecognizer.delegate = self;
     _tapRecognizer.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:_tapRecognizer];
     
@@ -104,13 +104,38 @@
     [_currencyLabel setText:_nowCoin];
     [_currency_Btn addTarget:self action:@selector(coinTableView:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.coinTableView];
-    
+    [self registNotifications];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fillWalletAddress:) name:FILLWALLETADDRESS object:nil];
+}
+
+- (void)registNotifications{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillhide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification{
+    
+    //取得鍵盤高度
+    //    NSValue * value = [[notification userInfo] valueForKey:UIKeyboardFrameBeginUserInfoKey];
+    //    _keyboardHeight = [value CGRectValue].size.height - 36;//36 是與底部距離
+    
+    CGRect keyboardFrameBeginRect = [[[notification userInfo] valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//    [self.scrollView setContentOffset:CGPointMake(0, keyboardFrameBeginRect.size.height) animated:YES];
+    _keyboardHeight = keyboardFrameBeginRect.size.height;
+    
+    
+}
+
+- (void)keyboardWillhide:(NSNotification*)notification{
+   
+    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+   
 }
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    [_scrollView setContentSize:CGSizeMake(kScreenWidth, 570)];
+
+    [_scrollView setContentSize:CGSizeMake(kScreenWidth-100, 570)];
 }
 
 - (void)setWithdrewFee:(NSString*)nowCoin{
@@ -252,14 +277,13 @@
     [_walletAdds_Field resignFirstResponder];
     [_verify_Field resignFirstResponder];
     [_googleField resignFirstResponder];
+    [_tradePsw_Field resignFirstResponder];
 }
 
 - (IBAction)commitApply:(id)sender{
     [[VWProgressHUD shareInstance]showLoading];
-    NSString *googleAuthCode = @"";
-    if (_hasGoogleAuth) {
-        googleAuthCode = _googleField.text;
-    }
+    NSString *googleAuthCode = _hasGoogleAuth?_googleField.text:@"";
+    
     NSDictionary *commitInfo = @{
                                  @"verifyCode":_verify_Field.text,
                                  @"tradePassword":_tradePsw_Field.text,
@@ -274,7 +298,10 @@
 
 - (void)withdrewApplySuccess:(NSDictionary *)info{
     [[VWProgressHUD shareInstance]dismiss];
-    [self justShowAlert:@"申请成功" message:@"申请提现成功"];
+    
+    [self justShowAlert:@"申请成功" message:@"申请提现成功" handler:^(UIAlertAction *action){
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 - (void)getDataFalid:(NSError *)error{
@@ -289,7 +316,9 @@
         [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
-        [self justShowAlert:@"错误信息" message:[dic objectForKey:@"respMessage"]];
+        NSString *str = [dic objectForKey:@"respMessage"];
+        NSArray *errorAry = [str componentsSeparatedByString:@","];
+        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
     }
 }
 
@@ -339,7 +368,7 @@
         
         int i = [second intValue];
         
-        [_verify_Btn setTitle:[NSString stringWithFormat:@"再获取(%is)",i] forState:UIControlStateNormal];
+        [_verify_Btn setTitle:[NSString stringWithFormat:@"%is后获取",i] forState:UIControlStateNormal];
         
         [self performSelector:@selector(receiveCheckNumButton:)withObject:[NSNumber numberWithInt:i-1] afterDelay:1];
     }
@@ -359,16 +388,26 @@
     return NO;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    float hidePosY = kScreenHeight - _keyboardHeight;
+    
+    float textFieldPosY = textField.frame.origin.y + textField.frame.size.height +_scrollView.frame.origin.y;
+    
+    if (hidePosY - textFieldPosY < 0) { //means擋到
+        [_scrollView setContentOffset:CGPointMake(0, _keyboardHeight)];
+    }
+}
+
 - (void)isAuthReadyToGo:(BOOL)isGoodToGo{
     
     if (isGoodToGo) {
-        
+        _confirm_Btn.layer.borderColor = [UIColor clearColor].CGColor;
         _confirm_Btn.backgroundColor = [UIColor colorWithHexString:@"402DDB"];
         _confirm_Btn.alpha = 1.0;
     } else {
-        
+        _confirm_Btn.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.4].CGColor;
         _confirm_Btn.backgroundColor = [UIColor clearColor];
-        _confirm_Btn.alpha = 0.6;
+        _confirm_Btn.alpha = 0.4;
     }
     _confirm_Btn.enabled = isGoodToGo;
 }

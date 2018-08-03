@@ -121,7 +121,7 @@
     }];
 }
 
-- (void)saveUserIdentity:(NSString*)frontId backId:(NSString*)backId withId:(NSString*)withId Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
+- (void)saveUserIdentity:(NSString*)frontId backId:(NSString*)backId withId:(NSString*)withId withIdNo:(NSString*)idNo Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
     
     NSDictionary *parameters = @{
@@ -132,6 +132,7 @@
                                  @"frontIdCard":frontId,
                                  @"backIdCard":backId,
                                  @"userWithIdCard":withId,
+                                 @"idCardNo":idNo
                                  };
     
     NSString *jsonParameter = [parameters JSONString];
@@ -279,10 +280,12 @@
                                                      @"version":@"1.0",
                                                      @"userId":self.userAccount.userId?self.userAccount.userId:@"",
                                                      @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
-                                                     @"mobileNo":self.userAccount.mobileNo?self.userAccount.mobileNo:@""
+                                                     @"mobileNo":self.userAccount.mobileNo?self.userAccount.mobileNo:@"",
+                                                     @"blockChainFee":@"0",
                                                     }];
     [parames addEntriesFromDictionary:parameters];
-    
+    NSString *psw = [parames objectForKey:@"tradePassword"];
+    [parames setObject:[self md5:psw] forKey:@"tradePassword"];
     NSString *jsonParameter = [parames JSONString];
     
     [self getResponse:MR_WITHDREWAPPLY action:EGUSER parametes:jsonParameter isEncrypt:NO complete:^(NSString *result) {

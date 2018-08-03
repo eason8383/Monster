@@ -12,7 +12,7 @@
 
 @interface CoinDetailViewController : UIViewController
 
-@property(nonatomic,assign)BOOL isHighLowKLine;
+@property(nonatomic,assign)BOOL isMRType;
 @property(nonatomic,strong)CoinPairModel *model;
 @property(nonatomic,strong)NSMutableArray *klineDataAry;
 @property(nonatomic,strong)NSString *multiple;

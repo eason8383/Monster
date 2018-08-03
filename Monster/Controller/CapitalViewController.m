@@ -30,6 +30,7 @@ static NSString *capitalDetailsCellIdentifier = @"capitalDetailsCell";
 - (void)initial{
     _myAssetViewModel = [MyAssetViewModel sharedInstance];
     _myAssetViewModel.delegate = self;
+    [[VWProgressHUD shareInstance]showLoading];
     [_myAssetViewModel getUserCoinInOutInfo];
     [self registerCells];
 }
@@ -40,10 +41,12 @@ static NSString *capitalDetailsCellIdentifier = @"capitalDetailsCell";
 }
 
 - (void)getUserCoinInOutInfoSucess{
+    [[VWProgressHUD shareInstance]dismiss];
     [self.tableView reloadData];
 }
 
 - (void)getDataFalid:(NSError *)error{
+    [[VWProgressHUD shareInstance]dismiss];
     [self dealWithErrorMsg:error];
 }
 
@@ -60,7 +63,7 @@ static NSString *capitalDetailsCellIdentifier = @"capitalDetailsCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CapitalDetailsViewCell *cdCell = (CapitalDetailsViewCell *)[tableView dequeueReusableCellWithIdentifier:capitalDetailsCellIdentifier];
     NSArray *hisAry = [_myAssetViewModel getUserCoinInOutHistory];
-    UserOrderModel *order = [hisAry objectAtIndex:indexPath.row];
+    UserInOutModel *order = [hisAry objectAtIndex:indexPath.row];
     [cdCell setContent:order];
     return cdCell;
 }
@@ -74,7 +77,7 @@ static NSString *capitalDetailsCellIdentifier = @"capitalDetailsCell";
 
     UIView *noBillView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 89)];
 
-    noBillView.backgroundColor = [UIColor colorWithHexString:@"212025"];
+    noBillView.backgroundColor = [UIColor colorWithHexString:@"1E1D21"];
     if ([_myAssetViewModel numberOfRowinSectionForCapital] < 1) {
         UILabel *noBillLabel = [[UILabel alloc]initWithFrame:noBillView.frame];
         [noBillLabel setText:@"暂无纪录"];

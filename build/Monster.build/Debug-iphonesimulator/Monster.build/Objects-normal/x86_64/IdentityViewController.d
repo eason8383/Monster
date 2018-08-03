@@ -18,4 +18,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/IdentityViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/UpLoadImagView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MRImagePickerController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/IdentityViewModel.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/IdentityViewModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/IdInputView.h

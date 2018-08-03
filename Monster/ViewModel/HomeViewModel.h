@@ -25,7 +25,6 @@
 
 - (void)getHomeInfo:(NSInteger)limit;
 
-- (void)getData:(NSInteger)limit;
 - (NSInteger)numberOfRowsInSection;
 
 - (NSArray*)getHomeDataArray;

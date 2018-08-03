@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class UserOrderModel;
+@class UserInOutModel;
 
 @interface CapitalDetailsViewCell : UITableViewCell
 
 
-- (void)setContent:(UserOrderModel*)userOrderInfo;
+- (void)setContent:(UserInOutModel*)userInOutInfo;
 
 @end

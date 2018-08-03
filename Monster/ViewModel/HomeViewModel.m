@@ -45,6 +45,7 @@
 }
 
 - (void)getHomeInfo:(NSInteger)limit{
+    NSLog(@"%ld",(long)limit);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [[MRHomePageClient alloc]getHomePageInfoSuccess:^(id response) {
             NSDictionary *dic = response;
@@ -71,6 +72,11 @@
                 self.externalMarketAry = [dic objectForKey:@"priceInfo"];
                 
                 NSDictionary *userInfo = [dic objectForKey:@"userInfo"];
+                
+                if (!userInfo) {
+                    
+                }
+                
                 NSString *result = @"0";
                 NSString *myAsset = [NSString stringWithFormat:@"%@",[userInfo objectForKey:@"totalBalanceETH"]];
                 NSString *multiple = [self getMultipleWithCurrentCoinId:@"ETH"];
@@ -79,7 +85,7 @@
                 
                 [[NSUserDefaults standardUserDefaults]setObject:myAssetDic forKey:MYETH];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    [[NSNotificationCenter defaultCenter]postNotificationName:MYETH object:dic];
+                    [[NSNotificationCenter defaultCenter]postNotificationName:MYETH object:nil];
                     
                 });
                
@@ -99,14 +105,6 @@
                 [self.delegate getDataFalid:error];
             });
         }];
-        
-    });
-}
-
-- (void)getData:(NSInteger)limit{
-    _limit = limit;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        [self getCoinPair];
         
     });
 }
@@ -184,7 +182,7 @@
             });
         }
         
-        NSLog(@"response:%@",response);
+//        NSLog(@"response:%@",response);
         
     } failure:^(NSError *error) {
         //失敗
@@ -338,7 +336,7 @@
     
     for (NSDictionary *dic in ary) {
         CoinPairModel *coModel = [CoinPairModel coinPairWithDict:dic];
-        NSLog(@"%f",coModel.endPrice);
+//        NSLog(@"%f",coModel.endPrice);
         [resultAry addObject:coModel];
     }
     return resultAry;

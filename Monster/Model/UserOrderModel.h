@@ -28,5 +28,6 @@
 @property(nonatomic,assign)float orderVolume;
 @property(nonatomic,assign)double orderPrice;
 
+
 + (instancetype)userOrderWithDict:(NSDictionary *)dict;
 @end

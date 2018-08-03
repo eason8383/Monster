@@ -64,4 +64,10 @@
     });
 }
 
+- (void)resetUploadView{
+    _uploadLabel.hidden = NO;
+    _uploadImagView.hidden = NO;
+    [self.picImgView setImage:[UIImage imageNamed:@""]];
+}
+
 @end

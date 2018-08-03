@@ -28,6 +28,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    sleep(2);
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self initScreen];
     //默认人民币汇率

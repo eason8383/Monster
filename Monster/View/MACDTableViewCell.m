@@ -21,8 +21,9 @@
 @property(nonatomic,strong)IBOutlet UILabel *volumLabel;
 
 @property(nonatomic,strong)IBOutlet UIView *backView;
-@property(nonatomic,strong)IBOutlet UIView *highLowView;
-@property(nonatomic,strong)IBOutlet HighLowLabelView *hlView;
+
+@property(nonatomic,strong)IBOutlet UILabel *upDownLabel;
+
 @property(nonatomic,strong)IBOutlet UIView *kLineView;
 
 @property(nonatomic,strong)ZYWLineView *lineView;
@@ -37,10 +38,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HighLowLabelView" owner:self options:nil];
-    _hlView = [nib objectAtIndex:0];
-    [_hlView setValue:@"+22.2%" withHigh:HighLowType_High];
-    [_highLowView addSubview:_hlView];
+    
+    [_upDownLabel setText:@"+22.2%"];
 //    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     _backView.layer.borderWidth = 1;
@@ -94,16 +93,18 @@
     [_latestPriceLabel setText:[NSString stringWithFormat:@"%.8f",coinInfo.lastPrice]];
     
     NSString *nowStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",coinInfo.lastPrice] with:self.multiple];
-    [_nowPriceLabel setText:[NSString stringWithFormat:@"%@%@",dollarSign,nowStr]];
+    
+    NSString *coinStr = [currencyStr isEqualToString:CNY]?@"CNY":@"USD";
+    [_nowPriceLabel setText:[NSString stringWithFormat:@"≈%@%@",nowStr,coinStr]];
     
     NSString *highStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",coinInfo.maxPrice] with:self.multiple];
-    [_highestPriceLabel  setText:[NSString stringWithFormat:@"最高价:%@%@",dollarSign,highStr]];
+    [_highestPriceLabel  setText:[NSString stringWithFormat:@"%@%@",dollarSign,highStr]];
     
     NSString *lowStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",coinInfo.minPrice] with:self.multiple];
-    [_lowestPriceLabel  setText:[NSString stringWithFormat:@"最低价:%@%@",dollarSign,lowStr]];
+    [_lowestPriceLabel  setText:[NSString stringWithFormat:@"%@%@",dollarSign,lowStr]];
     
     
-    [_volumLabel  setText:[NSString stringWithFormat:@"24H成交量:%.4f",coinInfo.totalVolume]];
+    [_volumLabel  setText:[NSString stringWithFormat:@"%.0f",coinInfo.totalVolume]];
     if (coinInfo.mainCoinId) {
         [_coinTypeLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
     } else {
@@ -121,7 +122,10 @@
     if (isnan(result)) {      //isnan为系统函数
         result = 0.0;
     }
-    [_hlView setValue:[NSString stringWithFormat:@"%@%.2f%@",isGoingHigher?@"+":@"",result,@"%"] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
+//    [_hlView setValue:[NSString stringWithFormat:@"%@%.2f%@",isGoingHigher?@"+":@"",result,@"%"] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
+    [_upDownLabel setText:[NSString stringWithFormat:@"%@%.2f%@",isGoingHigher?@"+":@"",result,@"%"]];
+    [_upDownLabel setTextColor:[UIColor colorWithHexString:isGoingHigher?MRCOLORHEX_HIGH:MRCOLORHEX_LOW]];
+    
 }
 
 - (NSString*)decimalMultiply:(NSString*)numStr1 with:(NSString*)numStr2{
@@ -130,7 +134,7 @@
     
     NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
                                        decimalNumberHandlerWithRoundingMode:NSRoundUp
-                                       scale:2
+                                       scale:4
                                        raiseOnExactness:NO
                                        raiseOnOverflow:NO
                                        raiseOnUnderflow:NO

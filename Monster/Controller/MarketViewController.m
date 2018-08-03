@@ -42,11 +42,12 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [_homeModel getData:100];
-    _updatTimer = [NSTimer scheduledTimerWithTimeInterval:60
-                                                  repeats:YES block:^(NSTimer *timer){
-                                                      [self.homeModel getData:1];
-                                                  }];
+//    [_homeModel getData:100];
+//
+//    _updatTimer = [NSTimer scheduledTimerWithTimeInterval:60
+//                                                  repeats:YES block:^(NSTimer *timer){
+//                                                      [self.homeModel getData:1];
+//                                                  }];
     self.navigationController.navigationBar.hidden = NO;
 }
 
@@ -122,7 +123,7 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
     coVC.model = model;
     coVC.klineDataAry = [[NSMutableArray alloc]initWithArray:klineAry];
     coVC.multiple = [_homeModel getMultipleWithCurrentCoinId:model.subCoinId];
-    coVC.isHighLowKLine = YES;
+    coVC.isMRType = [model.mainCoinId isEqualToString:@"MR"]?YES:NO;
     
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:[NSString stringWithFormat:@"%@/%@",model.mainCoinId,model.subCoinId] style:UIBarButtonItemStylePlain target:nil action:nil];
     backBtn.tintColor = [UIColor whiteColor];

@@ -16,4 +16,4 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/CapitalDetailsViewCell.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/UserOrderModel.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/UserInOutModel.h

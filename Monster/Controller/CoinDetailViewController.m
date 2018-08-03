@@ -93,7 +93,6 @@
 }
 
 
-
 - (void)initial{
     _coinDetailViewModel = [CoinDetailViewModel sharedInstance];
     _coinDetailViewModel.delegate = self;
@@ -131,27 +130,27 @@
 }
 
 - (void)setStyle{
+    BOOL isGoingHigher = [self isEndPriceHigher:_model];
+//    BOOL isGoingHigher = NO;
     
-    if (self.isHighLowKLine) {
-        
-        BOOL isGoingHigher = [self isEndPriceHigher:_model];
-    
-        _gridString = isGoingHigher?@"greenGrid":@"redGrid";
-        _klineColorString = isGoingHigher?MRCOLORHEX_HIGH:MRCOLORHEX_LOW;
-    
-        [_buyBtn setBackgroundColor:[UIColor colorWithHexString:MRCOLORHEX_HIGH]];
-        [_saleBtn setBackgroundColor:[UIColor colorWithHexString:MRCOLORHEX_LOW]];
-    } else {
+    if (self.isMRType) {
+        _gridString = @"purpleGrid";
+       
         [_buyBtn setBackgroundColor:[UIColor colorWithHexString:@"5100E3"]];
         [_saleBtn setBackgroundColor:[UIColor colorWithHexString:@"5100E3"]];
         
-        _gridString = @"purpleGrid";
-//        _klineColorString = @"6241D1";
-        _klineColorString = @"5100E3";
+    } else {
+        _gridString = isGoingHigher?@"greenGrid":@"redGrid";
+//        _klineColorString = isGoingHigher?MRCOLORHEX_HIGH:MRCOLORHEX_LOW;
+        [_buyBtn setBackgroundColor:[UIColor colorWithHexString:MRCOLORHEX_HIGH]];
+        [_saleBtn setBackgroundColor:[UIColor colorWithHexString:MRCOLORHEX_LOW]];
     }
+     _klineColorString = isGoingHigher?MRCOLORHEX_HIGH:MRCOLORHEX_LOW;
+    [_subPrice_Label setTextColor:[UIColor colorWithHexString:_klineColorString]];
+    [_pesent_Label setTextColor:[UIColor colorWithHexString:_klineColorString]];
     
     [self cleanAlltimeBtn];
-    [_timeBtn_min setBackgroundColor:[UIColor colorWithHexString:_klineColorString]];
+    [_timeBtn_min setBackgroundColor:_isMRType?[UIColor colorWithHexString:@"5100E3"]:[UIColor colorWithHexString:_klineColorString]];
 }
 
 - (BOOL)isEndPriceHigher:(CoinPairModel*)coinInfo{
@@ -190,9 +189,9 @@
     [_low_Label  setText:lowStr];
     
 //    NSString *oneDayStr = [self decimalMultiply:[NSString stringWithFormat:@"%f",_model.totalVolume] with:self.multiple];
-    [_oneDay_Label  setText:[NSString stringWithFormat:@"%.4f",_model.totalVolume]];
+    [_oneDay_Label  setText:[NSString stringWithFormat:@"%.0f",_model.totalVolume]];
     
-    [_pesent_Label setText:[NSString stringWithFormat:@"%.2f",result]];
+    [_pesent_Label setText:[NSString stringWithFormat:@"%.2f%@",result,@"%"]];
 }
 
 - (NSString*)decimalMultiply:(NSString*)numStr1 with:(NSString*)numStr2{
@@ -201,7 +200,7 @@
     
     NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
                                        decimalNumberHandlerWithRoundingMode:NSRoundUp
-                                       scale:2
+                                       scale:4
                                        raiseOnExactness:NO
                                        raiseOnOverflow:NO
                                        raiseOnUnderflow:NO
@@ -293,7 +292,8 @@
 
 - (IBAction)selectTimeInteval:(UIButton*)btn{
     [self cleanAlltimeBtn];
-    [btn setBackgroundColor:[UIColor colorWithHexString:_klineColorString]];
+    
+    [btn setBackgroundColor:_isMRType?[UIColor colorWithHexString:@"5100E3"]:[UIColor colorWithHexString:_klineColorString]];
     NSString *klineType;
     switch (btn.tag) {
         case 0:
@@ -335,8 +335,7 @@
 
 - (void)dragingWithDuration:(float)duration{
     
-    NSLog(@"看這 %f",duration);
-    
+//    NSLog(@"看這 %f",duration);
     [_latestPriceLabel.layer removeAnimationForKey:@"shake"];
     [_pricePointLabel.layer removeAnimationForKey:@"shake"];
     

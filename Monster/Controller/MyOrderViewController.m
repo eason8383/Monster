@@ -74,16 +74,16 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
         }
         [self.orderAry addObjectsFromArray:[_myOrderViewModel getOrderAry]];
         [_loadMoreView stopAnimation];
-        [self.tableView reloadData];
+        
     } else {
         [_loadMoreView noMoreData];
     }
-    [self.tableView.refreshControl endRefreshing];
     
+    [self.tableView.refreshControl endRefreshing];
+    [self.tableView reloadData];
     //    [_orderAry addObject:[_myOrderViewModel getOrderAry]];
     [[VWProgressHUD shareInstance]dismiss];
-    
-    
+
 }
 
 - (void)getDataFalid:(NSError *)error{
@@ -93,6 +93,10 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (void)orderCancelSucess:(NSDictionary*)res{
     [[VWProgressHUD shareInstance]dismiss];
+    
+    if (self.orderAry.count == 1) {
+        [self.orderAry removeAllObjects];
+    }
     _currentPage = 1;
     [_myOrderViewModel getData:_currentPage];
 }
@@ -150,6 +154,10 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"EntrustNowViewCell" bundle:nil] forCellReuseIdentifier:entrustNowViewCellIdentifier];
 }
 
+- (void)getUserOrderSucess{
+    
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 //    NSLog(@"94 here :%ld",(long)[_myOrderViewModel numberOfRowsInSection]);
 //    return [_myOrderViewModel numberOfRowsInSection];
@@ -181,7 +189,8 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     
     UIView *noBillView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 89)];
     
-    noBillView.backgroundColor = [UIColor colorWithHexString:@"212025"];
+    noBillView.backgroundColor = [UIColor colorWithHexString:@"1E1D21"];
+//    noBillView.backgroundColor = [UIColor blackColor];
     if ([_myOrderViewModel numberOfRowsInSection] < 1) {
         UILabel *noBillLabel = [[UILabel alloc]initWithFrame:noBillView.frame];
         [noBillLabel setText:@"暂无委托单"];

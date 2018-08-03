@@ -9,7 +9,7 @@
 #import "MyAssetViewModel.h"
 #import "MRUserInfoClient.h"
 #import "UserCoinQuantity.h"
-#import "UserOrderModel.h"
+#import "UserInOutModel.h"
 
 @interface MyAssetViewModel()
 
@@ -63,7 +63,10 @@
             });
             
         } else {
-            
+            NSError *error = [NSError errorWithDomain:@"getOrderDepth" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate getDataFalid:error];
+            });
         }
         
         NSLog(@"response:%@",response);
@@ -71,7 +74,7 @@
     } failure:^(NSError *error) {
         //失敗
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            [self.delegate getDataFalid:error];
         });
     }];
 }
@@ -147,8 +150,8 @@
         if ([[dic objectForKey:@"success"] integerValue] == 1) {
             [self.userCoinInOutAry removeAllObjects];
             for (NSDictionary *info in [dic objectForKey:@"resultList"]) {
-                UserOrderModel *uom = [UserOrderModel userOrderWithDict:info];
-                [self.userCoinInOutAry addObject:uom];
+                UserInOutModel *uiom = [UserInOutModel userInOutWithDict:info];
+                [self.userCoinInOutAry addObject:uiom];
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -157,7 +160,10 @@
             });
             
         } else {
-            
+            NSError *error = [NSError errorWithDomain:@"getOrderDepth" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate getDataFalid:error];
+            });
         }
         
         NSLog(@"response:%@",response);
@@ -165,7 +171,7 @@
     } failure:^(NSError *error) {
         //失敗
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            [self.delegate getDataFalid:error];
         });
     }];
 }

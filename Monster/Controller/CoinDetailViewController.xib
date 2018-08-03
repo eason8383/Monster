@@ -110,7 +110,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-6.41%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b24-HZ-1LU">
-                    <rect key="frame" x="104" y="96" width="49" height="17"/>
+                    <rect key="frame" x="120" y="96" width="49" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="6jl-YO-nS8"/>
                     </constraints>
@@ -264,7 +264,7 @@
                 <constraint firstItem="hEc-cC-6vF" firstAttribute="leading" secondItem="g1C-qW-m8C" secondAttribute="trailing" constant="8" id="GGA-Tw-nUd"/>
                 <constraint firstItem="Igk-QR-TwD" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="19" id="GTi-Cf-thm"/>
                 <constraint firstItem="EWm-zr-4eD" firstAttribute="leading" secondItem="3S8-6l-DNE" secondAttribute="trailing" constant="23" id="H3v-YV-pb7"/>
-                <constraint firstItem="b24-HZ-1LU" firstAttribute="leading" secondItem="bJN-Q3-xaV" secondAttribute="trailing" constant="4" id="Hlz-mj-B7E"/>
+                <constraint firstItem="b24-HZ-1LU" firstAttribute="leading" secondItem="bJN-Q3-xaV" secondAttribute="trailing" constant="20" id="Hlz-mj-B7E"/>
                 <constraint firstItem="BeG-Dn-ceL" firstAttribute="width" secondItem="Igk-QR-TwD" secondAttribute="width" id="JZI-4s-OuA"/>
                 <constraint firstItem="has-uO-oFG" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="21" id="Nze-Aq-m2K"/>
                 <constraint firstItem="RLv-Wc-dhU" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="OIf-9X-W2V"/>

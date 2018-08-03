@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment version="4400" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanViewController">
             <connections>
                 <outlet property="bottonView" destination="6aR-n4-zUs" id="PCf-rU-u5T"/>
-                <outlet property="flasherBtn" destination="5kN-DK-pYd" id="dSJ-Jg-Wwr"/>
+                <outlet property="flasherBtn" destination="gA9-V3-J1M" id="sVL-17-6eM"/>
                 <outlet property="flasherLabel" destination="c8L-wC-2Us" id="cBI-L1-gdw"/>
                 <outlet property="picsBtn" destination="zRp-Qh-CoV" id="L1T-dW-hST"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -35,14 +35,6 @@
                             </constraints>
                             <state key="normal" image="album"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kN-DK-pYd">
-                            <rect key="frame" x="269" y="28" width="16" height="28"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="16" id="OKh-fD-aJW"/>
-                                <constraint firstAttribute="height" constant="28" id="zNK-xg-NOU"/>
-                            </constraints>
-                            <state key="normal" image="flashlight"/>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相簿选取" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAt-ue-Tjt">
                             <rect key="frame" x="76.5" y="72" width="56" height="12"/>
                             <constraints>
@@ -63,17 +55,25 @@
                             <color key="textColor" red="0.5568627451" green="0.59607843140000005" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gA9-V3-J1M">
+                            <rect key="frame" x="269" y="28" width="16" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="8Up-pl-fqR"/>
+                                <constraint firstAttribute="height" constant="28" id="xoe-oa-4zc"/>
+                            </constraints>
+                            <state key="normal" image="lightCool"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="c8L-wC-2Us" firstAttribute="centerX" secondItem="5kN-DK-pYd" secondAttribute="centerX" id="AAd-17-3LM"/>
                         <constraint firstAttribute="height" constant="100" id="EGo-1p-D91"/>
                         <constraint firstItem="FAt-ue-Tjt" firstAttribute="top" secondItem="zRp-Qh-CoV" secondAttribute="bottom" constant="19" id="FG4-a8-sL0"/>
+                        <constraint firstItem="gA9-V3-J1M" firstAttribute="centerY" secondItem="zRp-Qh-CoV" secondAttribute="centerY" id="H4Z-m4-bI8"/>
                         <constraint firstItem="zRp-Qh-CoV" firstAttribute="leading" secondItem="6aR-n4-zUs" secondAttribute="leading" constant="90" id="IZm-4P-Hno"/>
+                        <constraint firstAttribute="trailing" secondItem="gA9-V3-J1M" secondAttribute="trailing" constant="90" id="JZS-8q-XiW"/>
                         <constraint firstItem="FAt-ue-Tjt" firstAttribute="centerX" secondItem="zRp-Qh-CoV" secondAttribute="centerX" id="OUC-ml-NhG"/>
-                        <constraint firstAttribute="trailing" secondItem="5kN-DK-pYd" secondAttribute="trailing" constant="90" id="SsC-qA-6uc"/>
-                        <constraint firstItem="5kN-DK-pYd" firstAttribute="centerY" secondItem="zRp-Qh-CoV" secondAttribute="centerY" id="awv-9z-3HI"/>
-                        <constraint firstItem="c8L-wC-2Us" firstAttribute="top" secondItem="5kN-DK-pYd" secondAttribute="bottom" constant="18" id="gaQ-ub-6OL"/>
+                        <constraint firstItem="c8L-wC-2Us" firstAttribute="centerX" secondItem="gA9-V3-J1M" secondAttribute="centerX" id="Ofe-gC-W5A"/>
+                        <constraint firstItem="c8L-wC-2Us" firstAttribute="top" secondItem="gA9-V3-J1M" secondAttribute="bottom" constant="18" id="Ra8-wk-RQ4"/>
                         <constraint firstItem="zRp-Qh-CoV" firstAttribute="top" secondItem="6aR-n4-zUs" secondAttribute="top" constant="31" id="uJg-ry-aDD"/>
                     </constraints>
                 </view>
@@ -90,6 +90,6 @@
     </objects>
     <resources>
         <image name="album" width="29" height="22"/>
-        <image name="flashlight" width="16" height="28"/>
+        <image name="lightCool" width="16" height="28"/>
     </resources>
 </document>

@@ -247,7 +247,9 @@
         [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
-        [self justShowAlert:@"错误信息" message:[dic objectForKey:@"respMessage"]];
+        NSString *str = [dic objectForKey:@"respMessage"];
+        NSArray *errorAry = [str componentsSeparatedByString:@","];
+        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
     }
 }
 

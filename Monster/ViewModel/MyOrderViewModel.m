@@ -66,7 +66,7 @@
         //失敗
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            
+            [self.delegate getDataFalid:error];
         });
     }];
 }
@@ -99,7 +99,7 @@
         } failure:^(NSError *error) {
             //失敗
             dispatch_async(dispatch_get_main_queue(), ^{
-                
+                [self.delegate getDataFalid:error];
                 
             });
         }];

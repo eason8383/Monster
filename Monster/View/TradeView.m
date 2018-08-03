@@ -16,11 +16,11 @@
 @property(nonatomic,strong)IBOutlet UILabel *titleLabel;
 @property(nonatomic,strong)IBOutlet UILabel *priceLabel;
 @property(nonatomic,strong)IBOutlet UILabel *subPriceLabel;
-@property(nonatomic,strong)IBOutlet UILabel *numberLabel;
 @property(nonatomic,strong)IBOutlet UILabel *estimateLabel;
 @property(nonatomic,strong)IBOutlet UILabel *canUseLabel;
 @property(nonatomic,strong)IBOutlet UILabel *canBuyLabel;
 @property(nonatomic,strong)IBOutlet UILabel *valueLabel;
+@property(nonatomic,strong)IBOutlet UILabel *tradeETHLabel;
 
 @property(nonatomic,strong)IBOutlet UIView *tagView;
 @property(nonatomic,strong)IBOutlet UIView *steppView1;
@@ -117,7 +117,7 @@
         price -= 0.000001;
     }
     
-    [_stepperPriceField setText:[NSString stringWithFormat:@"%f",price]];
+    [_stepperPriceField setText:[NSString stringWithFormat:@"%.8f",price]];
     if (self.isBuyMode) {
         [self setUerCoinQuantity:_userCoinAry];
         [self resetVolumField];
@@ -302,7 +302,7 @@
     _saleBtn.layer.borderColor = [UIColor colorWithHexString:MRCOLORHEX_LOW].CGColor;
     _saleBtn.layer.borderWidth = 1;
     [_saleBtn setTitleColor:[UIColor colorWithHexString:MRCOLORHEX_LOW] forState:UIControlStateNormal];
-    [_comfirmBtn setTitle:[NSString stringWithFormat:@"买入%@",_model.subCoinId] forState:UIControlStateNormal];
+    [_comfirmBtn setTitle:[NSString stringWithFormat:@"买入%@",_model.mainCoinId] forState:UIControlStateNormal];
 }
 
 - (void)lowMode{
@@ -314,7 +314,7 @@
     _comfirmBtn.backgroundColor = [UIColor colorWithHexString:MRCOLORHEX_LOW];
     _saleBtn.backgroundColor = [UIColor colorWithHexString:MRCOLORHEX_LOW];
     [_saleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_comfirmBtn setTitle:[NSString stringWithFormat:@"卖出%@",_model.subCoinId] forState:UIControlStateNormal];
+    [_comfirmBtn setTitle:[NSString stringWithFormat:@"卖出%@",_model.mainCoinId] forState:UIControlStateNormal];
 }
 
 - (void)setMode:(BOOL)isHigh{
@@ -334,12 +334,12 @@
 - (void)setContent:(CoinPairModel*)coinInfo{
     _model = coinInfo;
     [_titleLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
-    [_priceLabel setText:[NSString stringWithFormat:@"%f",coinInfo.lastPrice]];
+    [_priceLabel setText:[NSString stringWithFormat:@"%.8f",coinInfo.lastPrice]];
     
     NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
     NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
     
-    [_subPriceLabel setText:[NSString stringWithFormat:@"≈%@%f",dollarSign,coinInfo.lastPrice*self.multiple]];
+    [_subPriceLabel setText:[NSString stringWithFormat:@"≈%@%.4f",dollarSign,coinInfo.lastPrice*self.multiple]];
     BOOL isGoingHigher = [self isEndPriceHigher:coinInfo];
     double result = (coinInfo.endPrice - coinInfo.beginPrice)/coinInfo.beginPrice * 100;
     if (isnan(result)) {      //isnan为系统函数
@@ -363,29 +363,29 @@
     [saleAry enumerateObjectsUsingBlock:^(TrandModel *model,NSUInteger idx, BOOL *stop) {
         switch (idx) {
             case 0: {
-                [self.upBtn_price1 setTitle:[NSString stringWithFormat:@"%f",model.orderPrice] forState:UIControlStateNormal];
+                [self.upBtn_price1 setTitle:[NSString stringWithFormat:@"%.8f",model.orderPrice] forState:UIControlStateNormal];
                 [self.up_unit1Label setText:[NSString stringWithFormat:@"%.2f",model.orderVolume]];
-                [self.stepperPriceField setText:[NSString stringWithFormat:@"%f",model.orderPrice]];
+                [self.stepperPriceField setText:[NSString stringWithFormat:@"%.8f",model.orderPrice]];
             }
                 break;
                 
             case 1: {
-                [self.upBtn_price2 setTitle:[NSString stringWithFormat:@"%f",model.orderPrice] forState:UIControlStateNormal];
+                [self.upBtn_price2 setTitle:[NSString stringWithFormat:@"%.8f",model.orderPrice] forState:UIControlStateNormal];
                 [self.up_unit2Label setText:[NSString stringWithFormat:@"%.2f",model.orderVolume]];
             }
                 break;
             case 2: {
-                [self.upBtn_price3 setTitle:[NSString stringWithFormat:@"%f",model.orderPrice] forState:UIControlStateNormal];
+                [self.upBtn_price3 setTitle:[NSString stringWithFormat:@"%.8f",model.orderPrice] forState:UIControlStateNormal];
                 [self.up_unit3Label setText:[NSString stringWithFormat:@"%.2f",model.orderVolume]];
             }
                 break;
             case 3: {
-                [self.upBtn_price4 setTitle:[NSString stringWithFormat:@"%f",model.orderPrice] forState:UIControlStateNormal];
+                [self.upBtn_price4 setTitle:[NSString stringWithFormat:@"%.8f",model.orderPrice] forState:UIControlStateNormal];
                 [self.up_unit4Label setText:[NSString stringWithFormat:@"%.2f",model.orderVolume]];
             }
                 break;
             case 4: {
-                [self.upBtn_price5 setTitle:[NSString stringWithFormat:@"%f",model.orderPrice] forState:UIControlStateNormal];
+                [self.upBtn_price5 setTitle:[NSString stringWithFormat:@"%.8f",model.orderPrice] forState:UIControlStateNormal];
                 [self.up_unit5Label setText:[NSString stringWithFormat:@"%.2f",model.orderVolume]];
             }
                 break;
@@ -397,28 +397,28 @@
     [buyAry enumerateObjectsUsingBlock:^(TrandModel *model,NSUInteger idx, BOOL *stop) {
         switch (idx) {
             case 0: {
-                [self.downBtn_price1 setTitle:[NSString stringWithFormat:@"%f",model.orderPrice] forState:UIControlStateNormal];
+                [self.downBtn_price1 setTitle:[NSString stringWithFormat:@"%.8f",model.orderPrice] forState:UIControlStateNormal];
                 [self.down_unit1Label setText:[NSString stringWithFormat:@"%.2f",model.orderVolume]];
             }
                 break;
                 
             case 1: {
-                [self.downBtn_price2 setTitle:[NSString stringWithFormat:@"%f",model.orderPrice] forState:UIControlStateNormal];
+                [self.downBtn_price2 setTitle:[NSString stringWithFormat:@"%.8f",model.orderPrice] forState:UIControlStateNormal];
                 [self.down_unit2Label setText:[NSString stringWithFormat:@"%.2f",model.orderVolume]];
             }
                 break;
             case 2: {
-                [self.downBtn_price3 setTitle:[NSString stringWithFormat:@"%f",model.orderPrice] forState:UIControlStateNormal];
+                [self.downBtn_price3 setTitle:[NSString stringWithFormat:@"%.8f",model.orderPrice] forState:UIControlStateNormal];
                 [self.down_unit3Label setText:[NSString stringWithFormat:@"%.2f",model.orderVolume]];
             }
                 break;
             case 3: {
-                [self.downBtn_price4 setTitle:[NSString stringWithFormat:@"%f",model.orderPrice] forState:UIControlStateNormal];
+                [self.downBtn_price4 setTitle:[NSString stringWithFormat:@"%.8f",model.orderPrice] forState:UIControlStateNormal];
                 [self.down_unit4Label setText:[NSString stringWithFormat:@"%.2f",model.orderVolume]];
             }
                 break;
             case 4: {
-                [self.downBtn_price5 setTitle:[NSString stringWithFormat:@"%f",model.orderPrice] forState:UIControlStateNormal];
+                [self.downBtn_price5 setTitle:[NSString stringWithFormat:@"%.8f",model.orderPrice] forState:UIControlStateNormal];
                 [self.down_unit5Label setText:[NSString stringWithFormat:@"%.2f",model.orderVolume]];
             }
                 break;

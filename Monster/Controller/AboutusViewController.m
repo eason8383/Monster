@@ -58,6 +58,7 @@
 
 - (void)setupImgs:(UIImageView*)img{
     [img setFrame:CGRectMake(0, _height, kScreenWidth, img.height)];
+//    img set13918371413
     [_scrollView addSubview:img];
     _height += img.height;
 }

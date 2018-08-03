@@ -1,0 +1,16 @@
+//
+//  IdInputView.h
+//  Monster
+//
+//  Created by CHEN HAO LI on 2018/8/3.
+//  Copyright © 2018年 Tigerrose. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+
+@interface IdInputView : UIView
+
+@property(nonatomic,strong)IBOutlet UITextField *id_Field;
+
+@end

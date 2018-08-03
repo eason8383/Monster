@@ -45,7 +45,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎登录怪兽市场" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieN-FP-lgf">
-                    <rect key="frame" x="36" y="179" width="140" height="22"/>
+                    <rect key="frame" x="36" y="181" width="140" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="140" id="1Ps-IG-KvG"/>
                         <constraint firstAttribute="height" constant="22" id="DSj-jV-gJH"/>
@@ -54,11 +54,11 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitmap" translatesAutoresizingMaskIntoConstraints="NO" id="Nct-iR-s70">
-                    <rect key="frame" x="36" y="139" width="188" height="29"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Nct-iR-s70">
+                    <rect key="frame" x="36" y="139" width="221" height="35"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="188" id="C7q-9g-amW"/>
-                        <constraint firstAttribute="height" constant="29" id="IBi-t3-RXN"/>
+                        <constraint firstAttribute="width" constant="221" id="C7q-9g-amW"/>
+                        <constraint firstAttribute="height" constant="35" id="IBi-t3-RXN"/>
                     </constraints>
                 </imageView>
                 <textField opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="电话号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pS4-Ey-Bqs">
@@ -132,7 +132,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="kzv-RV-I5M" secondAttribute="trailing" constant="-51" id="3F5-Fa-ngJ"/>
                 <constraint firstItem="ieN-FP-lgf" firstAttribute="leading" secondItem="Nct-iR-s70" secondAttribute="leading" id="5aY-CE-wrj"/>
                 <constraint firstItem="1bM-g9-NTU" firstAttribute="top" secondItem="pS4-Ey-Bqs" secondAttribute="bottom" constant="6" id="5xU-mF-R1L"/>
-                <constraint firstItem="ieN-FP-lgf" firstAttribute="top" secondItem="Nct-iR-s70" secondAttribute="bottom" constant="11" id="75L-0h-VzP"/>
+                <constraint firstItem="ieN-FP-lgf" firstAttribute="top" secondItem="Nct-iR-s70" secondAttribute="bottom" constant="7" id="75L-0h-VzP"/>
                 <constraint firstItem="cPW-RU-4jM" firstAttribute="leading" secondItem="aDV-7O-JGU" secondAttribute="trailing" constant="17" id="8Y4-fs-pWV"/>
                 <constraint firstItem="pS4-Ey-Bqs" firstAttribute="leading" secondItem="ieN-FP-lgf" secondAttribute="leading" id="AXF-E8-gpg"/>
                 <constraint firstItem="aDV-7O-JGU" firstAttribute="top" secondItem="1bM-g9-NTU" secondAttribute="bottom" constant="33" id="Adz-2E-3mh"/>
@@ -167,6 +167,6 @@
         <image name="Oval 3 Copy 4" width="23" height="47"/>
         <image name="Oval3" width="169" height="169"/>
         <image name="Rectangle 16" width="160" height="285"/>
-        <image name="bitmap" width="95" height="15"/>
+        <image name="logo" width="221" height="35"/>
     </resources>
 </document>
