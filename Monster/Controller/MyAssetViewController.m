@@ -29,7 +29,7 @@ static NSString *coinCanUseCellIdentifier = @"coinCanUseViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的资产";
+    self.title = LocalizeString(@"MYASSET");
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     [self initial];

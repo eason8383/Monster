@@ -11,6 +11,7 @@
 #import "HomePageViewController.h"
 #import "MRWebClient.h"
 #import "MRUserAccount.h"
+#import "WelcomeView.h"
 
 @interface AppDelegate ()
 
@@ -35,6 +36,7 @@
     //默认人民币汇率
     [[NSUserDefaults standardUserDefaults]setObject:CNY forKey:DEFAULTCURRENCY];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(doLogout) name:DOLOGOUT object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initScreen) name:CHANGELANGUAGE_RESET object:nil];
     
     return YES;
 }
@@ -116,12 +118,9 @@
 //    weiBoMineVC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"我的" image:[UIImage imageNamed:@"myuser_25"] tag:1];
 //    UINavigationController *nav4 = [[UINavigationController alloc]initWithRootViewController:weiBoMineVC];
 //    [_tabController setViewControllers:@[nav1,nav2,nav3,nav4]];
-    
     HomePageViewController *hpVC = [[HomePageViewController alloc]initWithNibName:@"HomePageViewController" bundle:nil];
     self.nav = [[UINavigationController alloc]initWithRootViewController:hpVC];
     _window.rootViewController = self.nav;
-    
-    
 }
 
 

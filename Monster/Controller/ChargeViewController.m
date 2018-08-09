@@ -11,6 +11,8 @@
 
 @interface ChargeViewController () <CAWViewModelDelegate,UITableViewDelegate,UITableViewDataSource>
 
+@property(nonatomic,strong)IBOutlet UILabel *choseLabel;
+
 @property(nonatomic,strong)IBOutlet UILabel *currencyLabel;
 @property(nonatomic,strong)IBOutlet UIButton *changeCurreyBtn;
 @property(nonatomic,strong)IBOutlet UIView *qrBackView;
@@ -19,7 +21,7 @@
 @property(nonatomic,strong)IBOutlet UIButton *saveQrPicBtn;
 @property(nonatomic,strong)IBOutlet UIButton *coAddressBtn;
 @property(nonatomic,strong)IBOutlet UILabel *addressLabel;
-
+@property(nonatomic,strong)IBOutlet UILabel *remindLabel;
 @property(nonatomic,strong)IBOutlet UIButton *confirmBtn;
 
 @property(nonatomic,strong)UITableView *coinTableView;
@@ -38,12 +40,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"充币";
+    self.title = LocalizeString(@"CHARGE");
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
     [self initial];
-    
+    [self fillText];
+}
+
+- (void)fillText{
+    [_choseLabel setText:LocalizeString(@"CHOISEPAIR")];
+    [_saveQrPicBtn setTitle:LocalizeString(@"SAVEQRCODE") forState:UIControlStateNormal];
+    [_coAddressBtn setTitle:LocalizeString(@"COPYADDRESS") forState:UIControlStateNormal];
+    [_confirmBtn setTitle:LocalizeString(@"CHARGE_CONFIRM") forState:UIControlStateNormal];
+    [_remindLabel setText:LocalizeString(@"CHARGE_REMIND")];
+//    "CHOISEPAIR" = "选择币种";
+//    "SAVEQRCODE" = "保存二维码";
+//    "COPYADDRESS" = "复制地址";
+//    "CHARGE_REMIND" = "*由于网络拥堵，充值完成后，请点击充值完成按钮，这样您的充值会更快到账";
+//    "CHARGE_CONFIRM" = "充值完成";
 }
 
 - (void)initial{
@@ -93,7 +108,7 @@
     UIPasteboard *pab = [UIPasteboard generalPasteboard];
     NSString *string = _walletAddress;
     [pab setString:string];
-    [self justShowAlert:@"" message:@"已复制地址"];
+    [self justShowAlert:@"" message:LocalizeString(@"COPY_DONE")];
 }
 
 - (void)coinTableView:(id)sender{
@@ -166,7 +181,7 @@
 
 - (void)monitorCoinRecharge:(NSDictionary *)result{
     [[VWProgressHUD shareInstance]dismiss];
-    [self justShowAlert:@"感谢您" message:@"充值成功将会通知您"];
+    [self justShowAlert:LocalizeString(@"THANK") message:LocalizeString(@"WEWILLINFOYOU")];
 }
 
 - (void)touchesBegan:(NSString*)qrCodeStr{
@@ -221,7 +236,7 @@
 - (IBAction)savePicture{
     
     UIImageWriteToSavedPhotosAlbum([self captureScreen:self.qrCodeView], nil, nil, nil);
-    [self justShowAlert:@"储存照片" message:@"已储存"];
+    [self justShowAlert:LocalizeString(@"SAVEPICTURE") message:LocalizeString(@"SAVED")];
 }
 
 - (UIImage *)captureScreen:(UIView*)targetView
@@ -244,12 +259,12 @@
     NSDictionary *dic = error.userInfo;
     NSDictionary *respCode = [dic objectForKey:@"respCode"];
     if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"]) {
-        [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
+        [self justShowAlert:LocalizeString(@"LOGIN_SESSION_FAILE") message:LocalizeString(@"LOGIN_AGAIN")];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
         NSString *str = [dic objectForKey:@"respMessage"];
         NSArray *errorAry = [str componentsSeparatedByString:@","];
-        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
+        [self justShowAlert:LocalizeString(@"ERROR") message:[errorAry objectAtIndex:0]];
     }
 }
 

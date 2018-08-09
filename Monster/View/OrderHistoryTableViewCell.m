@@ -22,13 +22,31 @@
 @property(nonatomic,strong)IBOutlet UILabel *avegDealLabel;
 @property(nonatomic,strong)IBOutlet UILabel *meanDealLabel;
 
+@property(nonatomic,strong)IBOutlet UILabel *totalDealLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *priceLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *timeLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *measureLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *avegDealLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *meanDealLabel_title;
+
 @end
 
 @implementation OrderHistoryTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    [self fillText];
+}
+
+- (void)fillText{
+    
+    [_timeLabel_title setText:LocalizeString(@"TIME")];
+    [_priceLabel_title setText:LocalizeString(@"ORDERPRICE")];
+    [_measureLabel_title setText:LocalizeString(@"PRDERAMOUNT")];
+    
+    [_totalDealLabel_title setText:LocalizeString(@"TOTALDEAL")];
+    [_avegDealLabel_title setText:LocalizeString(@"AVERAGEPRICE")];
+    [_meanDealLabel_title setText:LocalizeString(@"TOTALAMOUNT")];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -39,10 +57,10 @@
 
 - (void)setContent:(UserOrderModel*)userOrderInfo{
     if ([userOrderInfo.buySell isEqualToString:@"B"]) {
-        [_buySaleLabel setText:@"买入"];
+        [_buySaleLabel setText:LocalizeString(@"BUY")];
         [_buySaleLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_HIGH]];
     } else {
-        [_buySaleLabel setText:@"卖出"];
+        [_buySaleLabel setText:LocalizeString(@"SALE")];
         [_buySaleLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_LOW]];
     }
     
@@ -57,18 +75,18 @@
     NSDictionary *coinPairTable = [[NSUserDefaults standardUserDefaults]objectForKey:COINPAIRTABLE];
     
     [_coinLabel setText:[NSString stringWithFormat:@"MR/%@",[coinPairTable objectForKey:userOrderInfo.coinPairId]]];
-    [_priceLabel setText:[NSString stringWithFormat:@"%fMR",userOrderInfo.dealPrice]];
+    [_priceLabel setText:[NSString stringWithFormat:@"%.8f",userOrderInfo.orderPrice]];
     [_timeLabel setText:[NSString stringWithFormat:@"%@",currentDateString]];
     
-    [_measureLabel setText:[NSString stringWithFormat:@"%f",userOrderInfo.dealAmount]];
+    [_measureLabel setText:[NSString stringWithFormat:@"%.4f",userOrderInfo.orderQuantity]];
     
     //    [_transFeeLabel setText:[NSString stringWithFormat:@"%f",userOrderInfo.feeRate]];
     
     [_orderStateBtn setTitle:userOrderInfo.orderStatusName forState:UIControlStateNormal];
     
-    [_totalDealLabel setText:[NSString stringWithFormat:@"%f",userOrderInfo.orderPrice]];
-    [_avegDealLabel setText:[NSString stringWithFormat:@"%f",userOrderInfo.orderPrice]];
-    [_meanDealLabel setText:[NSString stringWithFormat:@"%f",userOrderInfo.orderQuantity]];
+    [_totalDealLabel setText:[NSString stringWithFormat:@"%.8f",userOrderInfo.dealAmount]];
+    [_avegDealLabel setText:[NSString stringWithFormat:@"%.8f",userOrderInfo.dealPrice]];
+    [_meanDealLabel setText:[NSString stringWithFormat:@"%.4f",userOrderInfo.dealQuantity]];
 }
 
 @end

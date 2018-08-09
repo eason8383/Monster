@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="384" height="79"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写您的身分证号" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pim-SL-AXl">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写您的身份证号" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pim-SL-AXl">
                     <rect key="frame" x="70" y="39" width="244" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="244" id="Cv0-b6-WwO"/>
@@ -26,7 +26,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身分证号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ha-Yg-GIO">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份证号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ha-Yg-GIO">
                     <rect key="frame" x="156.5" y="0.0" width="71" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="2ZO-kq-zum"/>
@@ -49,6 +49,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="id_Field" destination="Pim-SL-AXl" id="PeC-kT-hy8"/>
+                <outlet property="id_label" destination="8ha-Yg-GIO" id="09j-EK-cbE"/>
             </connections>
             <point key="canvasLocation" x="-37" y="-135.5"/>
         </view>

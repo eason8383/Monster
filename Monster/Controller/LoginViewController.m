@@ -6,8 +6,13 @@
 //  Copyright © 2018年 Tigerrose. All rights reserved.
 //
 
+
+
+
 #import "LoginViewController.h"
 #import "GoogleAuthVerifyVC.h"
+
+#define BGCOLORCODE @"4E2CE0"
 
 @interface LoginViewController () <UITextFieldDelegate,UIGestureRecognizerDelegate>
 
@@ -15,9 +20,13 @@
 @property(nonatomic,strong)IBOutlet UITextField *verifyCode_field;
 @property(nonatomic,strong)IBOutlet UIButton *verify_btn;
 @property(nonatomic,strong)IBOutlet UIButton *login_btn;
+
+@property(nonatomic,strong)IBOutlet UIButton *area_btn;
 @property(nonatomic,strong)IBOutlet UIView *mobileNo_udLine;
 @property(nonatomic,strong)IBOutlet UIView *verifyCode_udLine;
 @property(nonatomic,strong)IBOutlet NSLayoutConstraint *bottom_distance;
+
+@property(nonatomic,strong)IBOutlet UILabel *welComeLabel;
 
 @property(nonatomic,assign)float keyboardHeight;
 @property(nonatomic, copy) LoginHandler loginHandler;
@@ -25,10 +34,12 @@
 
 @end
 
+
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self fillText];
     
     _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(firstResponder:)];
 //    _tapRecognizer.delegate = self;
@@ -41,6 +52,15 @@
     
     [self registNotifications];
     
+}
+
+- (void)fillText{
+//    [_welComeLabel setText:NSLocalizedString(@"WELCOME_TITLE", comment:@"")];
+    [_welComeLabel setText:LocalizeString(@"WELCOME_TITLE")];
+    [_mobileNo_field setPlaceholder:LocalizeString(@"MOBILE_NUMBER")];
+    [_verifyCode_field setPlaceholder:LocalizeString(@"SMS_VERIFY_CODE")];
+    [_verify_btn setTitle:LocalizeString(@"GET_VERIFY_CODE") forState:UIControlStateNormal];
+    [_login_btn setTitle:LocalizeString(@"LOGIN") forState:UIControlStateNormal];
 }
 
 - (void)loadView{
@@ -83,8 +103,9 @@
 }
 
 - (void)keyboardWillhide:(NSNotification*)notification{
-    [UIView animateWithDuration:2 animations:^{
-        self.bottom_distance.constant = 58;
+    self.bottom_distance.constant = 58;
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.view layoutSubviews];
     }];
 //    NSLog(@"keyboardWillhide");
     
@@ -108,12 +129,12 @@
 - (void)isLoginBtnReadyToGo:(BOOL)isGoodToGo{
     
     if (isGoodToGo) {
-        [_login_btn setTitleColor:[UIColor colorWithHexString:@"4E2CE0"] forState:UIControlStateNormal];
+        [_login_btn setTitleColor:[UIColor colorWithHexString:BGCOLORCODE] forState:UIControlStateNormal];
         _login_btn.backgroundColor = [UIColor whiteColor];
         _login_btn.alpha = 1.0;
     } else {
         [_login_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _login_btn.backgroundColor = [UIColor colorWithHexString:@"4E2CE0"];
+        _login_btn.backgroundColor = [UIColor colorWithHexString:BGCOLORCODE];
         _login_btn.alpha = 0.6;
     }
     _login_btn.enabled = isGoodToGo;
@@ -141,9 +162,9 @@
 }
 
 - (void)move{
-    
-    [UIView animateWithDuration:2 animations:^{
-        self.bottom_distance.constant = kScreenHeight==568?120 + 58:self.keyboardHeight + 58;
+    self.bottom_distance.constant = kScreenHeight==568?120 + 58:self.keyboardHeight + 58;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
     }];
     
 }
@@ -183,21 +204,24 @@
 
 - (IBAction)getVerifyCode:(id)sender{
     [_verifyCode_field becomeFirstResponder];
-    NSString *mobNo = _mobileNo_field.text;
-    if ([InputVerifyTool verifyMobileNo:mobNo]) {
+//    NSString *mobNo = _mobileNo_field.text;
+    
+    NSString *mobNo = [NSString stringWithFormat:@"%@%@",_area_btn.titleLabel.text,_mobileNo_field.text];
+    if (_mobileNo_field.text && _mobileNo_field.text.length > 0) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
             [[MRWebClient sharedInstance]getVerifyCode:mobNo sceneCode:@"001" success:^(id response) {
                 NSDictionary *dic = response;
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if ([dic objectForKey:@"success"]) {
+                    if ([[dic objectForKey:@"success"] integerValue] == 1) {
                         
                         //倒數60秒
                         [self receiveCheckNumButton:[NSNumber numberWithInt:60]];
 
                     } else {
-                        NSDictionary *resDic = [dic objectForKey:@"respCode"];
-                        [self justShowAlert:@"" message:[resDic objectForKey:@"desc"]];
+                        NSString *str = [dic objectForKey:@"respMessage"];
+                        NSArray *errorAry = [str componentsSeparatedByString:@","];
+                        [self justShowAlert:LocalizeString(@"ERROR") message:[errorAry objectAtIndex:0]];
                     }
                 });
 
@@ -206,18 +230,19 @@
             } failure:^(NSError *error) {
                 //失敗
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self justShowAlert:@"" message:[error.userInfo objectForKey:@"ErrorMsg"]];
+                    [self justShowAlert:LocalizeString(@"NEWWORKERROR") message:[error.userInfo objectForKey:@"ErrorMsg"]];
                 });
             }];
 
         });
     } else {
-        [self justShowAlert:@"输入错误" message:@"请输入正确的电话号码"];
+        [self justShowAlert:LocalizeString(@"ERROR") message:LocalizeString(@"PLEASE_INPUT_MOBILENO")];
     }
 }
 
 - (IBAction)doLogin:(id)sender{
-    NSString *mobNo = _mobileNo_field.text;
+//    NSString *mobNo = _mobileNo_field.text;
+    NSString *mobNo = [NSString stringWithFormat:@"%@%@",_area_btn.titleLabel.text,_mobileNo_field.text];
     NSString *vrCode = _verifyCode_field.text;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -286,20 +311,33 @@
     
         _verify_btn.userInteractionEnabled=YES;
         
-        [_verify_btn setTitle:@"重新获取" forState:UIControlStateNormal];
+        [_verify_btn setTitle:LocalizeString(@"RESEND_VERIFY_CODE") forState:UIControlStateNormal];
     } else {
         
         _verify_btn.userInteractionEnabled = NO;
         
         int i = [second intValue];
         
-        [_verify_btn setTitle:[NSString stringWithFormat:@"%is后获取",i] forState:UIControlStateNormal];
+        [_verify_btn setTitle:[NSString stringWithFormat:@"%is%@",i,LocalizeString(@"RESEND")] forState:UIControlStateNormal];
         
         [self performSelector:@selector(receiveCheckNumButton:)withObject:[NSNumber numberWithInt:i-1] afterDelay:1];
     }
 }
 
--(void)viewDidDisappear:(BOOL)animated{
+- (IBAction)areaChoice:(id)sender{
+    
+        UIAlertAction *usAction = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"+1 (%@)",LocalizeString(@"AMERICAN")] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    
+            [self.area_btn setTitle:@"+1" forState:UIControlStateNormal];
+        }];
+        UIAlertAction *chinaAction = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"+86 (%@)",LocalizeString(@"CHINA")] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self.area_btn setTitle:@"+86" forState:UIControlStateNormal];
+        }];
+
+        [self showActionSheet:@"" message:@"" withActions:@[usAction,chinaAction]];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     
 }

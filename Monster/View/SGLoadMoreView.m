@@ -24,14 +24,14 @@
         _titleLabel.center = self.center;
         [_titleLabel setTextColor:[UIColor grayColor]];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        [_titleLabel setText:@"上拉更新"];
+        [_titleLabel setText:LocalizeString(@"PULLTOREFRESH")];
         _titleLabel.font = [UIFont systemFontOfSize:14.0];
         [self addSubview:_titleLabel];
         
         _tipsLabel = [[UILabel alloc] initWithFrame:frame];
 //        _tipsLabel.center = CGPointMake(frame.size.width/2, frame.size.height/2);
         _tipsLabel.center = self.center;
-        _tipsLabel.text = @"没有更多数据";
+        _tipsLabel.text = LocalizeString(@"NOMOREDATA");
         _tipsLabel.hidden = YES;
         _tipsLabel.textAlignment = NSTextAlignmentCenter;
         _tipsLabel.textColor = [UIColor lightGrayColor];

@@ -81,7 +81,7 @@
                 NSString *myAsset = [NSString stringWithFormat:@"%@",[userInfo objectForKey:@"totalBalanceETH"]];
                 NSString *multiple = [self getMultipleWithCurrentCoinId:@"ETH"];
                 result = [self decimalMultiply:myAsset with:multiple];
-                NSDictionary *myAssetDic = @{@"myAsset":myAsset,@"result":result};
+                NSDictionary *myAssetDic = @{@"myAsset":myAsset,@"result":result,@"multiple":multiple};
                 
                 [[NSUserDefaults standardUserDefaults]setObject:myAssetDic forKey:MYETH];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

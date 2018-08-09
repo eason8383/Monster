@@ -14,6 +14,7 @@ dependencies: /Users/chenhaoli/WorkPlace/Monster/Monster/View/TradeView.m \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIView+Extension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/LanguageTool.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/TradeView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/HighLowLabelView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Model/CoinPairModel.h \

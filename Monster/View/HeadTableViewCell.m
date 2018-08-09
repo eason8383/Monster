@@ -7,10 +7,12 @@
 //
 
 #import "HeadTableViewCell.h"
+#import "LSPaoMaView.h"
 
 @interface HeadTableViewCell()
 @property(nonatomic,strong)IBOutlet UIImageView *bannerBallImgView;
 @property(nonatomic,strong)IBOutlet UILabel *filpLabel;
+@property(nonatomic,strong)LSPaoMaView *paoMaLabel;
 @property(nonatomic,assign)NSInteger currentIndex;
 @property(nonatomic,strong)NSString *nowTitle;
 @property(nonatomic,strong)NSArray *infoArray;
@@ -45,12 +47,12 @@
     
     _infoArray = [NSArray array];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    NSTimer *updatTimer = [NSTimer scheduledTimerWithTimeInterval:5
-                                                  repeats:YES block:^(NSTimer *timer){
-                                                      [self.filpLabel setText:[self filpInfos]];
-                                                      [self filpAnimation];
-                                                  }];
-    [updatTimer fire];
+//    NSTimer *updatTimer = [NSTimer scheduledTimerWithTimeInterval:5
+//                                                  repeats:YES block:^(NSTimer *timer){
+//                                                      [self.filpLabel setText:[self filpInfos]];
+//                                                      [self filpAnimation];
+//                                                  }];
+//    [updatTimer fire];
 }
 
 - (NSString*)filpInfos{
@@ -66,6 +68,14 @@
         }
     }
     return @"";
+}
+
+- (void)setPoaMALabel:(NSString*)text{
+    CGRect frame = _filpLabel.frame;
+    if (_paoMaLabel == nil) {
+        _paoMaLabel = [[LSPaoMaView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height) title:text];
+        [_filpLabel addSubview:_paoMaLabel];
+    }
 }
 
 - (void)filpAnimation{

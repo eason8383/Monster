@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,15 +13,22 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderDetailViewController">
             <connections>
                 <outlet property="avegDealLabel" destination="w5L-gg-ZvL" id="8KM-dE-VAz"/>
+                <outlet property="avegDealLabel_title" destination="WvJ-ow-2e5" id="hJC-UH-YeZ"/>
                 <outlet property="buySaleLabel" destination="KwD-HT-hnS" id="xHP-w1-sTe"/>
                 <outlet property="coinLabel" destination="gdm-mB-AeO" id="NeT-sA-fNP"/>
+                <outlet property="dealAmount_title" destination="A8b-er-DAp" id="Cp7-g8-fIs"/>
+                <outlet property="dealPrice_title" destination="IC8-6h-2LW" id="buc-gk-kWF"/>
                 <outlet property="meanDealLabel" destination="Ymq-VS-Fhp" id="x2m-aP-awT"/>
+                <outlet property="meanDealLabel_title" destination="c2Q-vC-QRi" id="H1D-DN-zbh"/>
                 <outlet property="measureLabel" destination="yVG-yh-HQF" id="rif-6e-9Ag"/>
                 <outlet property="orderStateBtn" destination="Pxf-zW-lyM" id="jxO-gx-u4R"/>
                 <outlet property="priceLabel" destination="b5T-6R-peG" id="lLw-F4-hgd"/>
                 <outlet property="timeLabel" destination="tco-Py-bNF" id="u63-jE-kOy"/>
+                <outlet property="time_title" destination="2h8-K8-QJz" id="Sff-r3-6e4"/>
                 <outlet property="totalDealLabel" destination="VoB-nw-o1Y" id="GUx-x7-Hqd"/>
+                <outlet property="totalDealLabel_title" destination="wbx-Vs-KIa" id="a29-mr-q3D"/>
                 <outlet property="transFeeLabel" destination="0Fl-b8-Q1W" id="4n2-2y-Gwz"/>
+                <outlet property="transFee_title" destination="OHB-pV-fQc" id="t3Z-YG-Etr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

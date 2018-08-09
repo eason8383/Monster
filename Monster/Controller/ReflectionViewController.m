@@ -21,6 +21,10 @@
 @property(nonatomic,strong)IBOutlet UIImageView *upv_img;
 @property(nonatomic,strong)IBOutlet UIButton *upv_btn;
 
+@property(nonatomic,strong)IBOutlet UILabel *des_label;
+@property(nonatomic,strong)IBOutlet UILabel *attachs_label;
+@property(nonatomic,strong)IBOutlet UILabel *requirement_label;
+
 @property(nonatomic,strong)FeedbackViewModel *fbViewModel;
 @property(nonatomic,strong)UITapGestureRecognizer *tapRecognizer;
 
@@ -32,8 +36,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"问题反馈";
+    self.title = LocalizeString(@"FEEDBACK");
+    [self fillText];
     [self initial];
+}
+
+- (void)fillText{
+    [_des_label setText:LocalizeString(@"DESCRIPTION")];
+    [_attachs_label setText:LocalizeString(@"ATTACHMENTS")];
+    [_requirement_label setText:LocalizeString(@"ATTACHMENTSCONDITTION")];
+    [_uploadBtn setTitle:LocalizeString(@"COMMITFEEDBACK") forState:UIControlStateNormal];
+    [_commitBtn setTitle:LocalizeString(@"ALERT_SUBMIT") forState:UIControlStateNormal];
+
 }
 
 - (void)initial{
@@ -56,7 +70,7 @@
     _inputTextView.layer.cornerRadius = 4;
     
 //    [_inputTextView setValue:[UIColor colorWithWhite:1 alpha:0.6] forKeyPath:@"_placeholderLabel.textColor"];
-    self.inputTextView.zw_placeHolder = @"*必填 还可以输入500个文字";
+    self.inputTextView.zw_placeHolder = LocalizeString(@"ENTERLIMIT");
     
     _tapRecognizer  = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(firstResponder:)];
     //    _tapRecognizer.delegate = self;
@@ -126,7 +140,7 @@
 
 - (void)feedBackSuccess:(NSDictionary *)udInfo{
      [[VWProgressHUD shareInstance]dismiss];
-    [self justShowAlert:@"提交成功" message:@"感谢您的反馈，我们会尽快处理" handler:^(UIAlertAction *action){
+    [self justShowAlert:LocalizeString(@"SUCCESS") message:LocalizeString(@"THANKSFORFEEDBACK") handler:^(UIAlertAction *action){
         [self.navigationController popViewControllerAnimated:YES];
     }];
 }

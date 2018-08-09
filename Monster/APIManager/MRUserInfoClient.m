@@ -336,6 +336,8 @@
             self.userAccount.backIdCard = [dic objectForKey:@"backIdCard"]?[dic objectForKey:@"backIdCard"]:@"";
             self.userAccount.userWithIdCard = [dic objectForKey:@"userWithIdCard"]?[dic objectForKey:@"userWithIdCard"]:@"";
             self.userAccount.idCardAuditStatus = [dic objectForKey:@"idCardAuditStatus"]?[dic objectForKey:@"idCardAuditStatus"]:@"";
+            self.userAccount.idCardNo = [dic objectForKey:@"idCardNo"]?[dic objectForKey:@"idCardNo"]:@"";
+            
             [self saveUserAccount:self.userAccount];
             successBlock(dic);
         }

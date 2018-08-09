@@ -25,6 +25,13 @@
 @property(nonatomic,strong)IBOutlet UIButton *helf_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *whole_Btn;
 
+@property(nonatomic,strong)IBOutlet UILabel *chose_Label;
+@property(nonatomic,strong)IBOutlet UILabel *amount_Label;
+@property(nonatomic,strong)IBOutlet UILabel *fee_Label;
+@property(nonatomic,strong)IBOutlet UILabel *foundpsw_Label;
+@property(nonatomic,strong)IBOutlet UILabel *address_Label;
+@property(nonatomic,strong)IBOutlet UILabel *smsv_Label;
+
 @property(nonatomic,strong)IBOutlet UIButton *currency_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *scan_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *verify_Btn;
@@ -50,9 +57,55 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"提币";
-    
+    self.title = LocalizeString(@"WITHDRAW");
+    [self fillText];
     [self initial];
+}
+
+- (void)fillText{
+    [_chose_Label setText:LocalizeString(@"CHOISEPAIR")];
+    
+    [_amount_Label setText:LocalizeString(@"AMOUNT")];
+    [_units_Field setPlaceholder:LocalizeString(@"AMOUNT_PLACEHOLDER")];
+    
+    [_whole_Btn setTitle:LocalizeString(@"ALL") forState:UIControlStateNormal];
+    
+    [_fee_Label setText:LocalizeString(@"WITHDRAWALFEE")];
+    
+    [_address_Label setText:LocalizeString(@"ADDRESS")];
+    [_walletAdds_Field setPlaceholder:LocalizeString(@"ADDRESS_PLACEHOLDER")];
+    
+    [_smsv_Label setText:LocalizeString(@"VERIFYCODE")];
+    [_verify_Field setPlaceholder:LocalizeString(@"SMSCODE_PLACEHOLDER")];
+    
+    [_foundpsw_Label setText:LocalizeString(@"FOUNDPSW")];
+    [_tradePsw_Field setPlaceholder:LocalizeString(@"FOUNDPSWE_PLACEHOLDER")];
+    
+    [_googleLabel setText:LocalizeString(@"GOOGLEAUTH")];
+    [_googleField setPlaceholder:LocalizeString(@"GOOGLEAUTH_PLACEHOLDER")];
+    
+    [_confirm_Btn setTitle:LocalizeString(@"CONFIRM_WITHDRAW") forState:UIControlStateNormal];
+    [_verify_Btn setTitle:LocalizeString(@"GET_VERIFY_CODE") forState:UIControlStateNormal];
+//    @property(nonatomic,strong)IBOutlet UILabel *fee_Label;
+//    @property(nonatomic,strong)IBOutlet UILabel *foundpsw_Label;
+//    @property(nonatomic,strong)IBOutlet UILabel *address_Label;
+//    @property(nonatomic,strong)IBOutlet UILabel *smsv_Label;
+    
+//    "AMOUNT" = "数量";
+//    "AMOUNT_PLACEHOLDER" = "请输入提币数量";
+//    "AMOUNT_INTRO" = "个起提，当前最多可提取";
+//    "ALL" = "全部";
+//    "WITHDRAWALFEE" = "提现手续费";
+//    "WITHDRAWINTRO" = "单笔提现手续费为";
+//    "ADDRESS" = "钱包地址";
+//    "ADDRESS_PLACEHOLDER" = "请输入提现的钱包地址或扫描录入";
+//    "SMSCODE_PLACEHOLDER" = "请输入验证码";
+//    "FOUNDPSW" = "资金密码";
+//    "FOUNDPSWE_PLACEHOLDER" = "请输入资金密码";
+//    "CONFIRM_WITHDRAW" = "确认提币";
+//    "GOOGLEAUTH" = "谷歌验证";
+//    "GOOGLEAUTH_PLACEHOLDER" = "请输入谷歌验证码";
+
 }
 
 - (void)initial{
@@ -140,25 +193,43 @@
 
 - (void)setWithdrewFee:(NSString*)nowCoin{
     
+//    if ([nowCoin isEqualToString:@"ETH"]) {
+//        [_withdrewFeeLabel setText:@"0.01"];
+//        [_wFeeExplain_Label setText:[NSString stringWithFormat:@"(%@0.01%@)",LocalizeString(@"WITHDRAWINTRO"),nowCoin]];
+//        NSString *coinStr = [_assetInfo objectForKey:@"ETH"]?[_assetInfo objectForKey:@"ETH"]:@"0";
+//        _nowQuantity = [NSString stringWithFormat:@"%@",coinStr];
+//        [_unit_Label setText:[NSString stringWithFormat:@"(0.01%@%@ETH)",LocalizeString(@"AMOUNT_INTRO"),coinStr]];
+//    } else if ([nowCoin isEqualToString:@"MR"]) {
+//        [_withdrewFeeLabel setText:@"10"];
+//        [_wFeeExplain_Label setText:[NSString stringWithFormat:@"(%@10%@)",LocalizeString(@"WITHDRAWINTRO"),nowCoin]];
+//        NSString *coinStr = [_assetInfo objectForKey:@"MR"]?[_assetInfo objectForKey:@"MR"]:@"0";
+//        _nowQuantity = [NSString stringWithFormat:@"%@",coinStr];
+//        [_unit_Label setText:[NSString stringWithFormat:@"(100%@%@MR)",LocalizeString(@"AMOUNT_INTRO"),coinStr]];
+//    } else if ([nowCoin isEqualToString:@"MON"]) {
+//        [_withdrewFeeLabel setText:@"500"];
+//        [_wFeeExplain_Label setText:[NSString stringWithFormat:@"(%@500%@)",LocalizeString(@"WITHDRAWINTRO"),nowCoin]];
+//        NSString *coinStr = [_assetInfo objectForKey:@"MON"]?[_assetInfo objectForKey:@"MON"]:@"0";
+//        _nowQuantity = [NSString stringWithFormat:@"%@",coinStr];
+//        [_unit_Label setText:[NSString stringWithFormat:@"(1000%@%@MON)",LocalizeString(@"AMOUNT_INTRO"),coinStr]];
+//    }
+    
+    NSString *feeStr = @"";
+    NSString *minTradeStr = @"";
     if ([nowCoin isEqualToString:@"ETH"]) {
-        [_withdrewFeeLabel setText:@"0.01"];
-        [_wFeeExplain_Label setText:[NSString stringWithFormat:@"(单笔提现手续费为0.01%@)",nowCoin]];
-        NSString *coinStr = [_assetInfo objectForKey:@"ETH"]?[_assetInfo objectForKey:@"ETH"]:@"0";
-        _nowQuantity = [NSString stringWithFormat:@"%@",coinStr];
-        [_unit_Label setText:[NSString stringWithFormat:@"(0.01个起提，当前最多可提取%@个ETH)",coinStr]];
+        feeStr = @"0.01";
+        minTradeStr = @"0.01";
     } else if ([nowCoin isEqualToString:@"MR"]) {
-        [_withdrewFeeLabel setText:@"10"];
-        [_wFeeExplain_Label setText:[NSString stringWithFormat:@"(单笔提现手续费为10%@)",nowCoin]];
-        NSString *coinStr = [_assetInfo objectForKey:@"MR"]?[_assetInfo objectForKey:@"MR"]:@"0";
-        _nowQuantity = [NSString stringWithFormat:@"%@",coinStr];
-        [_unit_Label setText:[NSString stringWithFormat:@"(100个起提，当前最多可提取%@个MR)",coinStr]];
+        feeStr = @"10";
+        minTradeStr = @"100";
     } else if ([nowCoin isEqualToString:@"MON"]) {
-        [_withdrewFeeLabel setText:@"500"];
-        [_wFeeExplain_Label setText:[NSString stringWithFormat:@"(单笔提现手续费为500%@)",nowCoin]];
-        NSString *coinStr = [_assetInfo objectForKey:@"MON"]?[_assetInfo objectForKey:@"MON"]:@"0";
-        _nowQuantity = [NSString stringWithFormat:@"%@",coinStr];
-        [_unit_Label setText:[NSString stringWithFormat:@"(1000个起提，当前最多可提取%@个MON)",coinStr]];
+        feeStr = @"500";
+        minTradeStr = @"1000";
+    } else {
+        feeStr = @"0.0";
+        minTradeStr = @"0.0";
     }
+    
+    [self setFee:feeStr minTrade:minTradeStr pair:nowCoin];
     
     if (_helf_Btn.selected == YES) {
         [_units_Field setText:[self decimalDividing:_nowQuantity with:@"2"]];
@@ -166,6 +237,15 @@
     if (_whole_Btn.selected == YES) {
         [_units_Field setText:_nowQuantity];
     }
+}
+
+- (void)setFee:(NSString*)fee minTrade:(NSString*)minStr pair:(NSString*)pair{
+    [_withdrewFeeLabel setText:fee];
+    [_wFeeExplain_Label setText:[NSString stringWithFormat:@"(%@ %@ %@)",LocalizeString(@"WITHDRAWINTRO"),fee,pair]];
+    NSString *coinStr = [_assetInfo objectForKey:pair]?[_assetInfo objectForKey:pair]:@"0";
+    _nowQuantity = [NSString stringWithFormat:@"%@",coinStr];
+    
+    [_unit_Label setText:[NSString stringWithFormat:@"(%@ %@ %@ %@)",minStr,LocalizeString(@"AMOUNT_INTRO"),coinStr,pair]];
 }
 
 - (IBAction)tapHelfOrwholeBtn:(UIButton*)btn{
@@ -313,12 +393,12 @@
     NSDictionary *dic = error.userInfo;
     NSDictionary *respCode = [dic objectForKey:@"respCode"];
     if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"]) {
-        [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
+        [self justShowAlert:LocalizeString(@"LOGIN_SESSION_FAILE") message:LocalizeString(@"LOGIN_AGAIN")];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
         NSString *str = [dic objectForKey:@"respMessage"];
         NSArray *errorAry = [str componentsSeparatedByString:@","];
-        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
+        [self justShowAlert:LocalizeString(@"ERROR") message:[errorAry objectAtIndex:0]];
     }
 }
 
@@ -361,14 +441,14 @@
         
         _verify_Btn.userInteractionEnabled=YES;
         
-        [_verify_Btn setTitle:@"重新获取" forState:UIControlStateNormal];
+        [_verify_Btn setTitle:LocalizeString(@"RESEND_VERIFY_CODE") forState:UIControlStateNormal];
     } else {
         
         _verify_Btn.userInteractionEnabled = NO;
         
         int i = [second intValue];
         
-        [_verify_Btn setTitle:[NSString stringWithFormat:@"%is后获取",i] forState:UIControlStateNormal];
+        [_verify_Btn setTitle:[NSString stringWithFormat:@"%is%@",i,LocalizeString(@"RESEND")] forState:UIControlStateNormal];
         
         [self performSelector:@selector(receiveCheckNumButton:)withObject:[NSNumber numberWithInt:i-1] afterDelay:1];
     }

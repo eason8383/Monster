@@ -22,12 +22,15 @@
 #import "ReflectionViewController.h"
 #import "HomeViewModel.h"
 #import "CoinPairModel.h"
+#import "WelcomeView.h"
+
 //#import "JZNavigationExtension.h"
 @interface HomePageViewController () <RNFrostedSidebarDelegate,HomeModelDelegate>
 
 @property(nonatomic,strong)MarketViewController *mVC;
 @property(nonatomic,strong)UIView *alphaView;
 @property(nonatomic,strong)HomeViewModel *homeModel;
+@property(nonatomic,strong)WelcomeView *welView;
 
 @property(nonatomic,strong)NSTimer *updatTimer;
 
@@ -46,7 +49,6 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 
 //    NSLog(@"Previous visible view controller is %@", self.navigationController.jz_previousVisibleViewController);
     
-    
     [_homeModel getHomeInfo:100];
     self.navigationController.navigationBar.hidden = YES;
     BOOL needReloadShow = [[NSUserDefaults standardUserDefaults]boolForKey:RELOAD_AFTERSETTING];
@@ -59,6 +61,26 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
                                                       [self.homeModel getHomeInfo:1];
                                                   }];
 }
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
+    
+    NSString *needShowWelcomeView = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWWELCOMEVIEW];
+    
+    //    if (![needShowWelcomeView isEqualToString:@"Showed"]) {
+    
+    
+    [_welView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+
+}
+
+- (void)cancelWelView:(UIButton*)btn{
+    [[NSUserDefaults standardUserDefaults]setObject:@"Showed" forKey:SHOWWELCOMEVIEW];
+    
+    [_welView removeFromSuperview];
+}
+
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -80,6 +102,10 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     [[VWProgressHUD shareInstance]showLoading];
     
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"212025"]];
+    
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"WelcomeView" owner:self options:nil];
+    _welView = [nib objectAtIndex:0];
+    [self.view addSubview:_welView];
     
 }
 
@@ -122,11 +148,12 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 - (void)getDataFalid:(NSError *)error{
     [[VWProgressHUD shareInstance]dismiss];
     
-    
     NSDictionary *dic = error.userInfo;
     NSDictionary *respCode = [dic objectForKey:@"respCode"];
     if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"] || [[respCode objectForKey:@"code"]isEqualToString:@"00999"]) {
-        [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
+        [self justShowAlert:LocalizeString(@"LOGIN_SESSION_FAILE") message:LocalizeString(@"LOGIN_AGAIN")];
+        
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
         [_updatTimer invalidate];
         _updatTimer = nil;
@@ -134,7 +161,7 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         NSString *str = [dic objectForKey:@"respMessage"];
         NSArray *errorAry = [str componentsSeparatedByString:@","];
         if (str && str.length > 0) {
-            [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
+            [self justShowAlert:LocalizeString(@"ERROR") message:[errorAry objectAtIndex:0]];
         }
         
     }
@@ -154,7 +181,9 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
             [hdCell.callMenuBtn addTarget:self action:@selector(callMenu:) forControlEvents:UIControlEventTouchUpInside];
             [hdCell.audioViewBtn addTarget:self action:@selector(pushSome:) forControlEvents:UIControlEventTouchUpInside];
             [hdCell.mobileNo_Label setText:[MRWebClient sharedInstance].userAccount.mobileNo];
-            [hdCell setFilpLabelInfos:@[@"成為史上最強大交易家",@"蔡依林親臨怪獸市場",@"吳亦凡最sker的四哥",@"註冊就送MON 10,0000!!!"]];
+//            [hdCell setFilpLabelInfos:@[@"全球创新企业天使凭证交易所"]];
+            [hdCell.titleLabel setText:LocalizeString(@"HOMETITLE")];
+            [hdCell setPoaMALabel:LocalizeString(@"PAOMAMSG")];
             return hdCell;
         }
         case 1: {
@@ -170,9 +199,8 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
         }
         case 2: {
             ExponentialCell *expCell = (ExponentialCell *)[tableView dequeueReusableCellWithIdentifier:exponentialCellIdentifier];
-            
+            [expCell setTitle:LocalizeString(@"MONSTER") subTitle:LocalizeString(@"MOREDETAIl")];
             [expCell.moreDetailBtn addTarget:self action:@selector(moreDetail:) forControlEvents:UIControlEventTouchUpInside];
-            
             return expCell;
         }
         

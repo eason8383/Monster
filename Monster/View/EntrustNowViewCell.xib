@@ -40,29 +40,29 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwA-Ke-FoS">
-                        <rect key="frame" x="9" y="50" width="21" height="14"/>
+                        <rect key="frame" x="9" y="50" width="50" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="21" id="bZl-V2-rlZ"/>
+                            <constraint firstAttribute="width" constant="50" id="bZl-V2-rlZ"/>
                             <constraint firstAttribute="height" constant="14" id="d2h-eG-xLu"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="委托价 (MR)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4Y-WW-u3A">
-                        <rect key="frame" x="145" y="51" width="57" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="委托价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4Y-WW-u3A">
+                        <rect key="frame" x="128.5" y="51" width="90" height="12"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="57" id="2eh-w3-SZC"/>
+                            <constraint firstAttribute="width" constant="90" id="2eh-w3-SZC"/>
                             <constraint firstAttribute="height" constant="12" id="GKw-9X-T0o"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="委托量 (ETH)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWj-j9-ut9">
-                        <rect key="frame" x="277" y="51" width="62" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="委托量 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWj-j9-ut9">
+                        <rect key="frame" x="257" y="51" width="90" height="12"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="62" id="5bH-YT-e2m"/>
+                            <constraint firstAttribute="width" constant="90" id="5bH-YT-e2m"/>
                             <constraint firstAttribute="height" constant="12" id="Jkj-01-Q2Y"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -85,7 +85,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nY5-kQ-Cwi">
-                        <rect key="frame" x="261" y="66" width="78" height="17"/>
+                        <rect key="frame" x="259" y="66" width="78" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="78" id="1J7-MC-6ur"/>
                             <constraint firstAttribute="height" constant="17" id="b8a-9A-Rad"/>
@@ -123,11 +123,11 @@
                     <constraint firstItem="KWj-j9-ut9" firstAttribute="centerY" secondItem="a4Y-WW-u3A" secondAttribute="centerY" id="JLu-rJ-IZI"/>
                     <constraint firstItem="aiz-eX-cke" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="MVM-44-9eh"/>
                     <constraint firstItem="KWj-j9-ut9" firstAttribute="top" secondItem="D5C-u2-h09" secondAttribute="bottom" constant="9" id="Qbd-iV-EzZ"/>
-                    <constraint firstItem="nY5-kQ-Cwi" firstAttribute="trailing" secondItem="KWj-j9-ut9" secondAttribute="trailing" id="R7g-xS-ay4"/>
+                    <constraint firstItem="nY5-kQ-Cwi" firstAttribute="trailing" secondItem="KWj-j9-ut9" secondAttribute="trailing" constant="-10" id="R7g-xS-ay4"/>
                     <constraint firstItem="tKt-MW-4M4" firstAttribute="leading" secondItem="RLC-Ph-Bzo" secondAttribute="trailing" constant="11" id="Tyr-x5-VNn"/>
                     <constraint firstItem="RLC-Ph-Bzo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="UiB-Ky-UtM"/>
                     <constraint firstItem="a4Y-WW-u3A" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="asa-Oo-rmZ"/>
-                    <constraint firstAttribute="trailing" secondItem="KWj-j9-ut9" secondAttribute="trailing" constant="8" id="e3k-Eh-bpb"/>
+                    <constraint firstAttribute="trailing" secondItem="KWj-j9-ut9" secondAttribute="trailing" id="e3k-Eh-bpb"/>
                     <constraint firstItem="Y3E-eU-y8o" firstAttribute="leading" secondItem="qwA-Ke-FoS" secondAttribute="leading" id="fYJ-ea-yvK"/>
                     <constraint firstItem="XvQ-vc-SmR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fgH-6N-hdF"/>
                     <constraint firstItem="aiz-eX-cke" firstAttribute="centerY" secondItem="Y3E-eU-y8o" secondAttribute="centerY" id="fmI-Sv-JiM"/>
@@ -145,8 +145,11 @@
                 <outlet property="cancelBtn" destination="D5C-u2-h09" id="aGH-GK-XfJ"/>
                 <outlet property="coinLabel" destination="tKt-MW-4M4" id="ndI-Vp-YSs"/>
                 <outlet property="measureLabel" destination="nY5-kQ-Cwi" id="yPs-3O-lfq"/>
+                <outlet property="measureLabel_title" destination="KWj-j9-ut9" id="ndn-uI-TSd"/>
                 <outlet property="priceLabel" destination="aiz-eX-cke" id="zJP-LU-Vse"/>
+                <outlet property="priceLabel_title" destination="a4Y-WW-u3A" id="Q1V-6a-NWE"/>
                 <outlet property="timeLabel" destination="Y3E-eU-y8o" id="kOb-fa-1cs"/>
+                <outlet property="timeLabel_title" destination="qwA-Ke-FoS" id="Twl-a3-ZWp"/>
             </connections>
             <point key="canvasLocation" x="40" y="39"/>
         </tableViewCell>

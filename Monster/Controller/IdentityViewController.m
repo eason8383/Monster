@@ -41,12 +41,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self initial];
+}
+
+- (void)fillText{
+//    "IDVERIFYCATION" = "身份认证";
+//    "ID" = "身份认号";
+//    "ICPLACEHOLDER" = "请填写您的身分证号";
+//    "UPLOADFORONT" = "请上传您的身份证人面像";
+//    "UPLOADBACK" = "请上传您的身份证国徽面";
+//    "UPLOADHANDID" = "请上传您的手持身份证";
+//    "UPLOADPIC" = "上传照片";
+//    "TAPANDREUPLOAD" = "请点击后重新上传";
+//    "UNDERREVIEW" = "审查中";
 }
 
 - (void)loadView{
     [super loadView];
-    self.title = @"身份认证";
+    self.title = LocalizeString(@"IDVERIFYCATION");
     
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
@@ -93,6 +106,10 @@
     _idView = [nibv objectAtIndex:0];
     [_scrollView addSubview:_idView];
     
+    if (accInfo.idCardNo.length > 0) {
+        [_idView.id_Field setText:accInfo.idCardNo];
+    }
+    
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UpLoadImagView" owner:self options:nil];
     _aView = [nib objectAtIndex:0];
     [_aView setIdentityType:UpLoadID_Front];
@@ -130,7 +147,7 @@
     if (_confirmBtn == nil) {
         _confirmBtn = [[UIButton alloc]initWithFrame:CGRectMake(24,0,kScreenWidth - 45, 34)];
         [_confirmBtn setTintColor:[UIColor whiteColor]];
-        [_confirmBtn setTitle:@"提交" forState:UIControlStateNormal];
+        [_confirmBtn setTitle:LocalizeString(@"ALERT_SUBMIT") forState:UIControlStateNormal];
         _confirmBtn.layer.cornerRadius = 4;
         _confirmBtn.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.4].CGColor;
         _confirmBtn.layer.borderWidth = 1;
@@ -145,20 +162,20 @@
         
         if (accInfo.idCardAuditStatus.length > 0 && [accInfo.idCardAuditStatus isEqualToString:@"8"]) {
             [_confirmBtn setFrame:CGRectMake(24, 100, kScreenWidth - 45, 34)];
-            [_confirmBtn setTitle:@"成功" forState:UIControlStateNormal];
+            [_confirmBtn setTitle:LocalizeString(@"SUCCESS") forState:UIControlStateNormal];
         } else if (accInfo.idCardAuditStatus.length > 0 && [accInfo.idCardAuditStatus isEqualToString:@"9"]) {
             [_confirmBtn setFrame:CGRectMake(24, 100, kScreenWidth - 45, 34)];
-            [_confirmBtn setTitle:@"请点击后重新上传" forState:UIControlStateNormal];
+            [_confirmBtn setTitle:LocalizeString(@"TAPANDREUPLOAD") forState:UIControlStateNormal];
             _needReset = YES;
             [self setCommitBtnEnableWhenReady:YES];
         } else {
             [_confirmBtn setFrame:CGRectMake(24, 100, kScreenWidth - 45, 34)];
-            [_confirmBtn setTitle:@"审查中" forState:UIControlStateNormal];
+            [_confirmBtn setTitle:LocalizeString(@"UNDERREVIEW") forState:UIControlStateNormal];
         }
         _idView.id_Field.enabled = NO;
         
     } else {
-        [_confirmBtn setTitle:@"提交" forState:UIControlStateNormal];
+        [_confirmBtn setTitle:LocalizeString(@"ALERT_SUBMIT") forState:UIControlStateNormal];
         _idView.id_Field.enabled = YES;
     }
     
@@ -299,9 +316,9 @@
     } else {
         
         if ([self checkIfPicsTheSame]) {
-            [self justShowAlert:@"照片重复" message:@"不能上传一样的图片"];
+            [self justShowAlert:LocalizeString(@"PHOTOREPEATED") message:LocalizeString(@"PICREPEATWARING")];
         } else if (_idView.id_Field.text.length < 1) {
-           [self justShowAlert:@"信息不完整" message:@"请写入身分证号"];
+           [self justShowAlert:LocalizeString(@"IMCOMPLETE") message:LocalizeString(@"PLEASEFILLID")];
         } else {
             [[VWProgressHUD shareInstance]showLoading];
             [_idViewModel saveUserIdentity:_frontId back:_backId withId:_withId withIdNo:_idView.id_Field.text];
@@ -322,7 +339,7 @@
     [_cView resetUploadView];
     [self addTargetToButton:_cView setTag:3];
     [self setCommitBtnEnableWhenReady:NO];
-    [_confirmBtn setTitle:@"提交" forState:UIControlStateNormal];
+    [_confirmBtn setTitle:LocalizeString(@"ALERT_SUBMIT") forState:UIControlStateNormal];
 }
 
 - (void)addTargetToButton:(UpLoadImagView*)uploadView setTag:(NSInteger)tag{
@@ -350,9 +367,7 @@
     [[VWProgressHUD shareInstance]dismiss];
 //    [self setCommitBtnEnableWhenReady:NO];
 //    [_idViewModel queryUserInfo];
-    
-//    [self showAlert:@"提交成功" withMsg:@"您的信息已顺利提交 谢谢您" withActions:@[comfirmAction]];
-    [self justShowAlert:@"提交成功" message:@"您的信息已顺利提交 谢谢您" handler:^(UIAlertAction *action) {
+    [self justShowAlert:LocalizeString(@"SUCCESS") message:LocalizeString(@"COMMITSUCESS") handler:^(UIAlertAction *action) {
         [self.navigationController popViewControllerAnimated:YES];
         
     }];
@@ -363,12 +378,12 @@
     NSDictionary *dic = error.userInfo;
     NSDictionary *respCode = [dic objectForKey:@"respCode"];
     if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"]) {
-        [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
+        [self justShowAlert:LocalizeString(@"LOGIN_SESSION_FAILE") message:LocalizeString(@"LOGIN_AGAIN")];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
         NSString *str = [dic objectForKey:@"respMessage"];
         NSArray *errorAry = [str componentsSeparatedByString:@","];
-        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
+        [self justShowAlert:LocalizeString(@"ERROR") message:[errorAry objectAtIndex:0]];
     }
 }
 

@@ -25,23 +25,24 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [_uploadLabel setText:LocalizeString(@"UPLOADPIC")];
     _backView.layer.cornerRadius = 4;
 }
 
 - (void)setIdentityType:(IdentityType)idType{
     switch (idType) {
         case UpLoadID_Front:
-            [_explainLabel setText:@"请上传您的身份证人面像"];
+            [_explainLabel setText:LocalizeString(@"UPLOADFORONT")];
             break;
             
         case UpLoadID_Back:
-            [_explainLabel setText:@"请上传您的身份证国徽面"];
+            [_explainLabel setText:LocalizeString(@"UPLOADBACK")];
             break;
         case UpLoadID_Hold:
-            [_explainLabel setText:@"请上传您的手持身份证"];
+            [_explainLabel setText:LocalizeString(@"UPLOADHANDID")];
             break;
         default:
-            [_explainLabel setText:@"请上传您的身份证人面像"];
+            [_explainLabel setText:LocalizeString(@"UPLOADFORONT")];
             break;
     }
 }

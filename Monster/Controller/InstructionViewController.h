@@ -10,4 +10,6 @@
 
 @interface InstructionViewController : UIViewController
 
+@property(nonatomic,strong)NSString *nowCoin;
+
 @end

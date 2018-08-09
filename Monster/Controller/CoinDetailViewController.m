@@ -14,7 +14,9 @@
 #import "CoinDetailViewModel.h"
 //#import "JZNavigationExtension.h"
 #import "InstructionViewController.h"
+
 #define ANGLE_TO_RADIAN(angle) ((angle)/180.0 * M_PI)
+#define BGCOLOR @"5100E3"
 
 @interface CoinDetailViewController () <CoinDetailVMDelegate,ZYWLineViewDelegate>
 
@@ -26,6 +28,8 @@
 
 @property(nonatomic,strong)IBOutlet UILabel *height_Label;
 @property(nonatomic,strong)IBOutlet UILabel *low_Label;
+@property(nonatomic,strong)IBOutlet UILabel *highLabel;
+@property(nonatomic,strong)IBOutlet UILabel *lowLabel;
 @property(nonatomic,strong)IBOutlet UILabel *oneDay_Label;
 @property(nonatomic,strong)IBOutlet UILabel *subPrice_Label;
 @property(nonatomic,strong)IBOutlet UILabel *pesent_Label;
@@ -66,8 +70,21 @@
     _timeBtn_week.layer.cornerRadius = 4;
     _timeBtn_month.layer.cornerRadius = 4;
 
+    [self fillText];
     [self initial];
-    
+}
+
+- (void)fillText{
+    [_highLabel setText:LocalizeString(@"HIGH")];
+    [_lowLabel setText:LocalizeString(@"LOW")];
+    [_buyBtn setTitle:LocalizeString(@"BUY") forState:UIControlStateNormal];
+    [_saleBtn setTitle:LocalizeString(@"SALE") forState:UIControlStateNormal];
+    [_timeBtn_min setTitle:LocalizeString(@"ONEMINUTE") forState:UIControlStateNormal];
+    [_timeBtn_quter setTitle:LocalizeString(@"AQURTER") forState:UIControlStateNormal];
+    [_timeBtn_hour setTitle:LocalizeString(@"ONEHOUR") forState:UIControlStateNormal];
+    [_timeBtn_day setTitle:LocalizeString(@"ONEDAY") forState:UIControlStateNormal];
+    [_timeBtn_week setTitle:LocalizeString(@"AWEEK") forState:UIControlStateNormal];
+    [_timeBtn_month setTitle:LocalizeString(@"AMONTH") forState:UIControlStateNormal];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -115,6 +132,7 @@
 
 - (void)infoMemo{
     InstructionViewController *inVc = [[InstructionViewController alloc]initWithNibName:@"InstructionViewController" bundle:nil];
+    inVc.nowCoin = _model.mainCoinId;
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:[NSString stringWithFormat:@"%@/%@",_model.mainCoinId,_model.subCoinId] style:UIBarButtonItemStylePlain target:nil action:nil];
     backBtn.tintColor = [UIColor whiteColor];
     [self.navigationItem setBackBarButtonItem:backBtn];
@@ -136,8 +154,8 @@
     if (self.isMRType) {
         _gridString = @"purpleGrid";
        
-        [_buyBtn setBackgroundColor:[UIColor colorWithHexString:@"5100E3"]];
-        [_saleBtn setBackgroundColor:[UIColor colorWithHexString:@"5100E3"]];
+        [_buyBtn setBackgroundColor:[UIColor colorWithHexString:BGCOLOR]];
+        [_saleBtn setBackgroundColor:[UIColor colorWithHexString:BGCOLOR]];
         
     } else {
         _gridString = isGoingHigher?@"greenGrid":@"redGrid";
@@ -150,7 +168,7 @@
     [_pesent_Label setTextColor:[UIColor colorWithHexString:_klineColorString]];
     
     [self cleanAlltimeBtn];
-    [_timeBtn_min setBackgroundColor:_isMRType?[UIColor colorWithHexString:@"5100E3"]:[UIColor colorWithHexString:_klineColorString]];
+    [_timeBtn_min setBackgroundColor:_isMRType?[UIColor colorWithHexString:BGCOLOR]:[UIColor colorWithHexString:_klineColorString]];
 }
 
 - (BOOL)isEndPriceHigher:(CoinPairModel*)coinInfo{
@@ -282,7 +300,7 @@
     
     TradeViewController *tdVC = [[TradeViewController alloc]initWithNibName:@"TradeViewController" bundle:nil];
     tdVC.isHigh = (btn.tag == 1)?YES:NO;
-    tdVC.title = @"交易";
+    tdVC.title = LocalizeString(@"TRADE");
 //    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tdVC];
     tdVC.multiple = self.multiple;
     tdVC.model = self.model;
@@ -293,7 +311,7 @@
 - (IBAction)selectTimeInteval:(UIButton*)btn{
     [self cleanAlltimeBtn];
     
-    [btn setBackgroundColor:_isMRType?[UIColor colorWithHexString:@"5100E3"]:[UIColor colorWithHexString:_klineColorString]];
+    [btn setBackgroundColor:_isMRType?[UIColor colorWithHexString:BGCOLOR]:[UIColor colorWithHexString:_klineColorString]];
     NSString *klineType;
     switch (btn.tag) {
         case 0:

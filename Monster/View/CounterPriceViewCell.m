@@ -27,7 +27,7 @@
 - (void)setContent:(NSString*)title isChecked:(BOOL)checked{
     [_titleLabel setText:title];
     _checkImgView.hidden = !checked;
-    
+    self.isChecked = checked;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

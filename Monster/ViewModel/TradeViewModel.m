@@ -132,6 +132,7 @@
                 UserOrderModel *udInfo = [UserOrderModel userOrderWithDict:dicCoin];
                 [self.userOrderAry addObject:udInfo];
             }
+            NSLog(@"self.userOrderAry 才剛存好");
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate getUserOrderSucess];
             });
@@ -174,6 +175,7 @@
 }
 
 - (NSInteger)numberOfRowsInSection{
+    NSLog(@"numberOfRowsInSection被調:%lu",(unsigned long)self.userOrderAry.count);
     return self.userOrderAry.count;
 }
 

@@ -16,6 +16,8 @@
 #import "SGLoadMoreView.h"
 //#import "JZNavigationExtension.h"
 
+#define BLACKBG @"1E1D21"
+
 @interface MyOrderViewController ()<MyOrderViewModelDelegate,TradeViewModelDelegate>
 
 @property(nonatomic,strong)MyOrderViewModel *myOrderViewModel;
@@ -32,15 +34,15 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"当前委托";
+    self.title = LocalizeString(@"ORDER_OPEN");
     
     [self initial];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
-    UIBarButtonItem *timeFilterBtn = [[UIBarButtonItem alloc]initWithTitle:@"历史委托>" style:UIBarButtonItemStylePlain target:self action:@selector(showHistory:)];
+    
+    UIBarButtonItem *timeFilterBtn = [[UIBarButtonItem alloc]initWithTitle:[NSString stringWithFormat:@"%@>",LocalizeString(@"ORDER_HISTORY")] style:UIBarButtonItemStylePlain target:self action:@selector(showHistory:)];
     timeFilterBtn.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.hidden = NO;
     [self.navigationItem setRightBarButtonItem:timeFilterBtn];
@@ -66,13 +68,17 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (void)getDataSucess{
     NSArray *ary = [_myOrderViewModel getOrderAry];
-    if (ary.count > 0) {
-        if (_currentPage == 1) { //因為是refresh
+    if (ary.count > 0 ) {
+        if (_currentPage == 1 && ary.count < 10) { //因為是refresh
+            [_orderAry removeAllObjects];
+            _loadMoreView.titleLabel.hidden = YES;
             
+        } else {
+            _loadMoreView.titleLabel.hidden = NO;
             [_orderAry removeAllObjects];
             [_loadMoreView restartLoadData];
         }
-        [self.orderAry addObjectsFromArray:[_myOrderViewModel getOrderAry]];
+        [self.orderAry addObjectsFromArray:ary];
         [_loadMoreView stopAnimation];
         
     } else {
@@ -97,13 +103,16 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     if (self.orderAry.count == 1) {
         [self.orderAry removeAllObjects];
     }
+    
+    [self performSelector:@selector(reloadMyOrder) withObject:nil afterDelay:0.5];
+}
+
+- (void)reloadMyOrder{
     _currentPage = 1;
     [_myOrderViewModel getData:_currentPage];
 }
 
 - (void)initial{
-    
-    _currentPage = 1;
     
     _myOrderViewModel = [MyOrderViewModel sharedInstance];
     _myOrderViewModel.delegate = self;
@@ -130,12 +139,11 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     [self registerCells];
     
     [[VWProgressHUD shareInstance]showLoading];
-    [_myOrderViewModel getData:_currentPage];
+    [self reloadMyOrder];
     
 }
 
 - (void)refresh:(id)sender{
-    NSLog(@"reload oh");
     
     _currentPage = 1;
     [self.orderAry removeAllObjects];
@@ -154,13 +162,10 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"EntrustNowViewCell" bundle:nil] forCellReuseIdentifier:entrustNowViewCellIdentifier];
 }
 
-- (void)getUserOrderSucess{
-    
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 //    NSLog(@"94 here :%ld",(long)[_myOrderViewModel numberOfRowsInSection]);
 //    return [_myOrderViewModel numberOfRowsInSection];
+//    NSArray *ary = [_myOrderViewModel getOrderAry];
     return self.orderAry.count;
 }
 
@@ -168,7 +173,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     EntrustNowViewCell *enCell = (EntrustNowViewCell *)[tableView dequeueReusableCellWithIdentifier:entrustNowViewCellIdentifier];
-//    NSArray *orderAry = [_myOrderViewModel getOrderAry];
+
     UserOrderModel *model = [self.orderAry objectAtIndex:indexPath.row];
     enCell.cancelBtn.tag = indexPath.row;
     [enCell.cancelBtn addTarget:self action:@selector(cancelOrder:) forControlEvents:UIControlEventTouchUpInside];
@@ -180,7 +185,7 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     OrderDetailViewController *odVc = [[OrderDetailViewController alloc]initWithNibName:@"OrderDetailViewController" bundle:nil];
-//    NSArray *orderAry = [_myOrderViewModel getOrderAry];
+
     odVc.userOrderInfo = [self.orderAry objectAtIndex:indexPath.row];
     [self homeDefaultPushController:odVc];
 }
@@ -189,11 +194,11 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
     
     UIView *noBillView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 89)];
     
-    noBillView.backgroundColor = [UIColor colorWithHexString:@"1E1D21"];
+    noBillView.backgroundColor = [UIColor colorWithHexString:BLACKBG];
 //    noBillView.backgroundColor = [UIColor blackColor];
-    if ([_myOrderViewModel numberOfRowsInSection] < 1) {
+    if (self.orderAry.count < 1) {
         UILabel *noBillLabel = [[UILabel alloc]initWithFrame:noBillView.frame];
-        [noBillLabel setText:@"暂无委托单"];
+        [noBillLabel setText:LocalizeString(@"NOORDERFORNOW")];
         [noBillLabel setTextAlignment:NSTextAlignmentCenter];
         [noBillLabel setTextColor:[UIColor whiteColor]];
         [noBillView addSubview:noBillLabel];
@@ -219,21 +224,23 @@ static NSString *entrustNowViewCellIdentifier = @"EntrustNowViewCell";
 
 - (void)cancelOrder:(UIButton*)btn{
     NSMutableArray *actions = [NSMutableArray array];
-    
-    UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//    "ALERT_CONFIRM" = "OK";
+//    "ALERT_SUBMIT" = "Confirm";
+//    "ALERT_CANCEL" = "Cancel";
+    UIAlertAction *okBtn = [UIAlertAction actionWithTitle:LocalizeString(@"ALERT_CONFIRM") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [[VWProgressHUD shareInstance]showLoading];
-//        NSArray *orderAry = [self.myOrderViewModel getOrderAry];
+
         UserOrderModel *orderModel = [self.orderAry objectAtIndex:btn.tag];
         [self.tradeViewModel cancelOder:orderModel.orderId coinPair:orderModel.coinPairId];
     }];
-    UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:LocalizeString(@"ALERT_CANCEL") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         
     }];
     [actions addObject:okBtn];
     [actions addObject:cancelBtn];
     
-    [self showAlert:@"" withMsg:@"你确定要撤销此笔订单吗?" withActions:actions];
+    [self showAlert:@"" withMsg:LocalizeString(@"CONFIRMFORCANCEL") withActions:actions];
 }
 
 - (NSMutableArray*)orderAry{

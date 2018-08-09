@@ -17,6 +17,11 @@
 @property(nonatomic,strong)IBOutlet UIButton *smsVerify_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *confirm_Btn;
 
+@property(nonatomic,strong)IBOutlet UILabel *fundPswLabel;
+@property(nonatomic,strong)IBOutlet UILabel *fundPswConfirmLabel;
+@property(nonatomic,strong)IBOutlet UILabel *smsVerifyLabel;
+
+
 @property(nonatomic,strong)updatePswViewModel *udPswViewModel;
 @property(nonatomic,strong)UITapGestureRecognizer *tapRecognizer;
 
@@ -26,10 +31,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"设置资金密码";
+    self.title = LocalizeString(@"SETFUNDPSW");
     
-    
+    [self fillText];
     [self initial];
+}
+
+- (void)fillText{
+    [_fundPswLabel setText:LocalizeString(@"FUNDPSW")];
+    [_fundPswConfirmLabel setText:LocalizeString(@"CONFIRMPASSWORD")];
+    [_smsVerifyLabel setText:LocalizeString(@"SMSVERIFYCODE")];
+    [_smsVerify_Btn setTitle:LocalizeString(@"GET_VERIFY_CODE") forState:UIControlStateNormal];
+    [_smsVerify_Field setPlaceholder:LocalizeString(@"PLEASEENTERVERIFYCODE")];
+    [_foundPsw_Field setPlaceholder:LocalizeString(@"FUNDPSWPLACEHOLDER")];
+    [_conFirmCode_Field setPlaceholder:LocalizeString(@"FUNDCONFIRMPLACEHOLDER")];
+    [_confirm_Btn setTitle:LocalizeString(@"ALERT_SUBMIT") forState:UIControlStateNormal];
 }
 
 - (void)initial{
@@ -74,16 +90,16 @@
     NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
     [textField setText:text];
     
-    if (_foundPsw_Field.text.length > 0 && _conFirmCode_Field.text.length > 0 && _smsVerify_Field.text.length && [_foundPsw_Field.text isEqualToString:_conFirmCode_Field.text]) {
-        [self isAuthReadyToGo:YES];
+    if (_foundPsw_Field.text.length > 0 && _conFirmCode_Field.text.length > 0 && _smsVerify_Field.text.length) {
+        [self isUpdatReady:YES];
     } else {
-        [self isAuthReadyToGo:NO];
+        [self isUpdatReady:NO];
     }
     
     return NO;
 }
 
-- (void)isAuthReadyToGo:(BOOL)isGoodToGo{
+- (void)isUpdatReady:(BOOL)isGoodToGo{
     
     if (isGoodToGo) {
         [_confirm_Btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -101,9 +117,9 @@
 
 - (IBAction)commitUpdate:(id)sender{
     if (![self checkPswForm:_foundPsw_Field.text]) {
-        [self justShowAlert:@"密码格式有误" message:@"请输入6-12位的数字字母组合"];
-//    } else if(![_foundPsw_Field.text isEqualToString:_conFirmCode_Field.text]){
-//        [self justShowAlert:@"确认密码" message:@"请再次输入相同密码"];
+        [self justShowAlert:LocalizeString(@"ERROR") message:LocalizeString(@"FUNDPSWPLACEHOLDER")];
+    } else if(![_foundPsw_Field.text isEqualToString:_conFirmCode_Field.text]){
+        [self justShowAlert:LocalizeString(@"ERROR") message:LocalizeString(@"CONFIRMPSWISNOTTHESAME")];
     } else {
         [[VWProgressHUD shareInstance]showLoading];
         [_udPswViewModel updatePsw:_foundPsw_Field.text verifyCode:_smsVerify_Field.text];
@@ -123,13 +139,13 @@
     
     NSMutableArray *actions = [NSMutableArray array];
     
-    UIAlertAction *comfirmAction = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *comfirmAction = [UIAlertAction actionWithTitle:LocalizeString(@"ALERT_CONFIRM") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self.navigationController popViewControllerAnimated:YES];
         
     }];
     
     [actions addObject:comfirmAction];
-    [self showAlert:@"更新成功" withMsg:@"密码更新成功" withActions:actions];
+    [self showAlert:LocalizeString(@"SUCCESS") withMsg:LocalizeString(@"UPDATEPSWSUCCESS") withActions:actions];
 }
 
 - (void)updateFalid:(NSError *)error{
@@ -174,14 +190,14 @@
         
         _smsVerify_Btn.userInteractionEnabled=YES;
         
-        [_smsVerify_Btn setTitle:@"重新获取" forState:UIControlStateNormal];
+        [_smsVerify_Btn setTitle:LocalizeString(@"RESEND_VERIFY_CODE") forState:UIControlStateNormal];
     } else {
         
         _smsVerify_Btn.userInteractionEnabled = NO;
         
         int i = [second intValue];
         
-        [_smsVerify_Btn setTitle:[NSString stringWithFormat:@"%is后获取",i] forState:UIControlStateNormal];
+        [_smsVerify_Btn setTitle:[NSString stringWithFormat:@"%is%@",i,LocalizeString(@"RESEND")] forState:UIControlStateNormal];
         
         [self performSelector:@selector(receiveCheckNumButton:)withObject:[NSNumber numberWithInt:i-1] afterDelay:1];
     }
@@ -191,12 +207,12 @@
     NSDictionary *dic = error.userInfo;
     NSDictionary *respCode = [dic objectForKey:@"respCode"];
     if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"]) {
-        [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
+        [self justShowAlert:LocalizeString(@"LOGIN_SESSION_FAILE") message:LocalizeString(@"LOGIN_AGAIN")];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
         NSString *str = [dic objectForKey:@"respMessage"];
         NSArray *errorAry = [str componentsSeparatedByString:@","];
-        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
+        [self justShowAlert:LocalizeString(@"ERROR") message:[errorAry objectAtIndex:0]];
     }
 }
 

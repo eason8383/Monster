@@ -12,6 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SecurityViewController">
             <connections>
+                <outlet property="assetLabel_title" destination="XS3-P4-sDa" id="YlO-ay-OTe"/>
+                <outlet property="googleLabel_title" destination="ysC-Pe-WYh" id="KUe-eg-4oW"/>
+                <outlet property="mailBoxLabel_title" destination="T86-1M-TkI" id="zHJ-gg-bpP"/>
+                <outlet property="mobileLabel_title" destination="wjc-8t-hdH" id="scw-WG-KNZ"/>
                 <outlet property="tideAssetBtn" destination="L2b-Tg-9h7" id="pgZ-44-P1V"/>
                 <outlet property="tideAssetLabel" destination="pFW-2g-ZWP" id="6G3-Bn-WVp"/>
                 <outlet property="tideGoogleBtn" destination="JG6-Zc-B0d" id="tKS-GL-Tw5"/>
@@ -29,10 +33,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机绑定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjc-8t-hdH">
-                    <rect key="frame" x="10" y="43" width="58" height="17"/>
+                    <rect key="frame" x="10" y="43" width="150" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="ROY-6f-WP7"/>
-                        <constraint firstAttribute="width" constant="58" id="gnh-HP-HjH"/>
+                        <constraint firstAttribute="width" constant="150" id="gnh-HP-HjH"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,9 +67,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="谷歌绑定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysC-Pe-WYh">
-                    <rect key="frame" x="10" y="108" width="58" height="17"/>
+                    <rect key="frame" x="10" y="108" width="150" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="58" id="5fs-ce-213"/>
+                        <constraint firstAttribute="width" constant="150" id="5fs-ce-213"/>
                         <constraint firstAttribute="height" constant="17" id="xbU-Mi-j9o"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -73,19 +77,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="资金密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XS3-P4-sDa">
-                    <rect key="frame" x="10" y="173" width="58" height="17"/>
+                    <rect key="frame" x="10" y="173" width="150" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="enx-9c-nnS"/>
-                        <constraint firstAttribute="width" constant="58" id="nVc-mi-v8c"/>
+                        <constraint firstAttribute="width" constant="150" id="nVc-mi-v8c"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱验证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T86-1M-TkI">
-                    <rect key="frame" x="10" y="238" width="58" height="17"/>
+                    <rect key="frame" x="10" y="238" width="150" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="58" id="6mk-l2-Gjf"/>
+                        <constraint firstAttribute="width" constant="150" id="6mk-l2-Gjf"/>
                         <constraint firstAttribute="height" constant="17" id="77i-Q9-rxK"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>

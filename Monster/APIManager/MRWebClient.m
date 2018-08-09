@@ -39,7 +39,6 @@ static NSString *sessionId;
     return nil;
 }
 
-
 - (void)getVerifyCode:(NSString*)mobileNo sceneCode:(NSString*)sceneCode success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     NSDictionary *parameters = @{
                             @"mobileNoOrEmail":mobileNo,

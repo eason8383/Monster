@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,9 +40,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UP0-HS-yoW">
-                        <rect key="frame" x="10" y="48" width="21" height="14"/>
+                        <rect key="frame" x="10" y="48" width="50" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="21" id="G3w-KX-t8L"/>
+                            <constraint firstAttribute="width" constant="50" id="G3w-KX-t8L"/>
                             <constraint firstAttribute="height" constant="14" id="Ik5-dP-htB"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -209,14 +209,20 @@
             <viewLayoutGuide key="safeArea" id="iyL-fv-4Ek"/>
             <connections>
                 <outlet property="avegDealLabel" destination="BnI-Gr-UGX" id="Okn-Za-0o1"/>
+                <outlet property="avegDealLabel_title" destination="fPU-AM-ubw" id="Haf-ia-9Vc"/>
                 <outlet property="buySaleLabel" destination="0Uk-Au-EiW" id="VBw-CY-D2g"/>
                 <outlet property="coinLabel" destination="Vbo-Ul-QdL" id="i1t-4w-1lz"/>
                 <outlet property="meanDealLabel" destination="khg-cL-4YX" id="ixZ-f2-uC7"/>
+                <outlet property="meanDealLabel_title" destination="ziM-az-49H" id="EzU-W2-D6x"/>
                 <outlet property="measureLabel" destination="U7H-pd-gvd" id="N5R-5r-LcV"/>
+                <outlet property="measureLabel_title" destination="Okv-WI-poj" id="aiD-Af-45q"/>
                 <outlet property="orderStateBtn" destination="NU3-bn-zft" id="IQp-Qx-U9F"/>
                 <outlet property="priceLabel" destination="zyg-3e-M5R" id="RHS-Gi-DLE"/>
+                <outlet property="priceLabel_title" destination="wk9-HN-8EK" id="Evp-zb-xhk"/>
                 <outlet property="timeLabel" destination="Ah2-Ta-vaG" id="1zC-TN-A1J"/>
+                <outlet property="timeLabel_title" destination="UP0-HS-yoW" id="Kwr-4W-jTL"/>
                 <outlet property="totalDealLabel" destination="Irh-hI-jdK" id="b9a-Re-ezK"/>
+                <outlet property="totalDealLabel_title" destination="3TJ-av-BZo" id="jea-BK-GaK"/>
             </connections>
             <point key="canvasLocation" x="-173" y="27"/>
         </tableViewCell>

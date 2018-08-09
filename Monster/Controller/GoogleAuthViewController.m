@@ -22,6 +22,9 @@
 @property (nonatomic,strong)IBOutlet UIButton *commitBtn;
 @property (nonatomic,strong)IBOutlet NSLayoutConstraint *top_distance;
 
+@property (nonatomic,strong)IBOutlet UILabel *verifyLabel_title;
+@property (nonatomic,strong)IBOutlet UILabel *authCodeLabel_title;
+
 @property(nonatomic,assign)float keyboardHeight;
 @property UITapGestureRecognizer *tapRecognizer;
 
@@ -31,9 +34,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"绑定谷歌认证";
-    
+    self.title = LocalizeString(@"BINDGOOGLEAUTH");
+    [self fillText];
     [self initial];
+}
+
+- (void)fillText{
+    [_verifyLabel_title setText:LocalizeString(@"MOBILEVERIFYCODE")];
+    [_verifyField setPlaceholder:LocalizeString(@"PLEASEENTERVERIFYCODE")];
+    [_authCodeLabel_title setText:LocalizeString(@"GOOGLEVERIFYCODE")];
+    [_authCodeField setPlaceholder:LocalizeString(@"PLEASEENTERVERIFYCODE")];
+    [_commitBtn setTitle:LocalizeString(@"ALERT_SUBMIT") forState:UIControlStateNormal];
+    [_gainVerifyBtn setTitle:LocalizeString(@"GET_VERIFY_CODE") forState:UIControlStateNormal];
+    [_coppyBtn setTitle:LocalizeString(@"COPY") forState:UIControlStateNormal];
+//    "GOOGLEVERIFY" = "谷歌认证";
+//    "MOBILEVERIFYCODE" = "手机验证码";
+//    "GOOGLEVERIFYCODE" = "谷歌验证码";
+//    "PLEASEENTERVERIFYCODE" = "请输入验证码";
 }
 
 - (void)initial{
@@ -146,7 +163,7 @@
         [[VWProgressHUD shareInstance]showLoading];
         [_googleViewModel bindingAuthCode:_authCodeField.text verifyCode:_verifyField.text];
     } else {
-        [self justShowAlert:@"错误" message:@"请填入正确验证码"];
+        [self justShowAlert:LocalizeString(@"ERROR") message:LocalizeString(@"PLEASEFILLCORECTCode")];
     }
 }
 
@@ -165,7 +182,7 @@
     //Sucess
     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:GOOGLE_AUTH_BINDING];
     [[VWProgressHUD shareInstance]dismiss];
-    [self justShowAlert:@"谷歌认证" message:@"绑定成功" handler:^(UIAlertAction *action){
+    [self justShowAlert:LocalizeString(@"GOOGLEVERIFY") message:LocalizeString(@"BINDINGSUCCESS") handler:^(UIAlertAction *action){
         [self.navigationController popViewControllerAnimated:YES];
     }];
     
@@ -177,12 +194,13 @@
     NSDictionary *dic = error.userInfo;
     NSDictionary *respCode = [dic objectForKey:@"respCode"];
     if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"]) {
-        [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
+        [self justShowAlert:LocalizeString(@"LOGIN_SESSION_FAILE") message:LocalizeString(@"LOGIN_AGAIN")];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
         NSString *str = [dic objectForKey:@"respMessage"];
         NSArray *errorAry = [str componentsSeparatedByString:@","];
-        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
+        [self justShowAlert:LocalizeString(@"ERROR") message:[errorAry objectAtIndex:0]];
+        
     }
 }
 
@@ -243,7 +261,7 @@
     UIPasteboard *pab = [UIPasteboard generalPasteboard];
     NSString *string = _authCodeLabel.text;
     [pab setString:string];
-    [self justShowAlert:@"" message:@"已复制"];
+    [self justShowAlert:@"" message:LocalizeString(@"COPYDONE")];
 }
 
 - (UIImage *)captureScreen:(UIView*)targetView
@@ -282,14 +300,14 @@
         
         _gainVerifyBtn.userInteractionEnabled=YES;
         
-        [_gainVerifyBtn setTitle:@"重新获取" forState:UIControlStateNormal];
+        [_gainVerifyBtn setTitle:LocalizeString(@"RESEND_VERIFY_CODE") forState:UIControlStateNormal];
     } else {
         
         _gainVerifyBtn.userInteractionEnabled = NO;
         
         int i = [second intValue];
         
-        [_gainVerifyBtn setTitle:[NSString stringWithFormat:@"%is后获取",i] forState:UIControlStateNormal];
+        [_gainVerifyBtn setTitle:[NSString stringWithFormat:@"%is%@",i,LocalizeString(@"RESEND")] forState:UIControlStateNormal];
         
         [self performSelector:@selector(receiveCheckNumButton:)withObject:[NSNumber numberWithInt:i-1] afterDelay:1];
     }

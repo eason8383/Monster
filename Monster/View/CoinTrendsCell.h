@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 @class CoinPairModel;
 
-
 @interface CoinTrendsCell : UITableViewCell
 
 - (void)setContent:(CoinPairModel*)coinInfo dataArray:(NSArray*)ary;

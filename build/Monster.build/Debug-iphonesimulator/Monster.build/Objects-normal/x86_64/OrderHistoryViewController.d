@@ -15,8 +15,9 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIView+Extension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/LanguageTool.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/OrderHistoryViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/OrderHistoryTableViewCell.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/OrderDetailViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/MyOrderViewModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/OrderHistoryViewModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/SGLoadMoreView.h

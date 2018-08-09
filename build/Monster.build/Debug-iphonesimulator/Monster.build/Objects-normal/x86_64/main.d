@@ -14,4 +14,5 @@ dependencies: /Users/chenhaoli/WorkPlace/Monster/Monster/main.m \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIView+Extension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/LanguageTool.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/AppDelegate.h

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -34,10 +34,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="钱包资产估值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdr-v0-pYj">
-                    <rect key="frame" x="24" y="104" width="90" height="17"/>
+                    <rect key="frame" x="24" y="104" width="160" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="nGR-mi-EhX"/>
-                        <constraint firstAttribute="width" constant="90" id="xbb-tw-VMs"/>
+                        <constraint firstAttribute="width" constant="160" id="xbb-tw-VMs"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -60,10 +60,10 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的资产" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQb-sh-IL7">
-                    <rect key="frame" x="53" y="244" width="70" height="15"/>
+                    <rect key="frame" x="53" y="244" width="100" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="gcd-d5-RLH"/>
-                        <constraint firstAttribute="width" constant="70" id="oVp-Ee-hlZ"/>
+                        <constraint firstAttribute="width" constant="100" id="oVp-Ee-hlZ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,9 +94,9 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPD-n4-bjm">
-                    <rect key="frame" x="53" y="309.5" width="60" height="15"/>
+                    <rect key="frame" x="53" y="309.5" width="100" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="97l-wp-hX7"/>
+                        <constraint firstAttribute="width" constant="100" id="97l-wp-hX7"/>
                         <constraint firstAttribute="height" constant="15" id="Vrf-0o-W35"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -145,9 +145,9 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="问题反馈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6k-7t-YZE">
-                    <rect key="frame" x="52" y="411" width="60" height="15"/>
+                    <rect key="frame" x="52" y="411" width="80" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="Ifa-wU-xVz"/>
+                        <constraint firstAttribute="width" constant="80" id="Ifa-wU-xVz"/>
                         <constraint firstAttribute="height" constant="15" id="qHA-8K-4Tx"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -286,15 +286,23 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="aboutUsLabel" destination="anL-Ef-9HH" id="1Cm-q3-uqm"/>
                 <outlet property="aboutus_Btn" destination="4ds-X8-hBP" id="G1O-cf-BQf"/>
                 <outlet property="asset_Label" destination="YGW-EZ-PhT" id="JpQ-cV-NvX"/>
+                <outlet property="feedbackLabel" destination="H6k-7t-YZE" id="sPS-fx-Ng0"/>
+                <outlet property="idVerifyLabel" destination="pPD-n4-bjm" id="gvh-hM-GcX"/>
                 <outlet property="identy_Btn" destination="Nxv-CX-VsL" id="iRP-SI-944"/>
                 <outlet property="mobile_Label" destination="RfX-DK-1Ev" id="NzK-DS-Ndh"/>
+                <outlet property="myAssetLabel" destination="mQb-sh-IL7" id="LEW-5b-OpE"/>
                 <outlet property="myAsset_Btn" destination="Tt8-u5-YgX" id="yLr-Qh-zVv"/>
+                <outlet property="myOrderLabel" destination="sfo-sr-FY1" id="IfZ-yv-jae"/>
                 <outlet property="myOrder_Btn" destination="vBa-a4-NKi" id="72u-68-aKo"/>
+                <outlet property="myWalletLabel" destination="bdr-v0-pYj" id="Q1K-Gf-VR8"/>
                 <outlet property="nowSession" destination="l1b-y7-zep" id="5Qh-H4-etA"/>
                 <outlet property="reflect_Btn" destination="NhB-Um-bZL" id="LPx-cA-fL1"/>
+                <outlet property="securityLabel" destination="OGL-wO-mf7" id="T8q-QV-e0B"/>
                 <outlet property="security_Btn" destination="RSu-lB-Vms" id="A9k-MO-hG6"/>
+                <outlet property="settingLabel" destination="Me2-pA-HTd" id="8Yu-Wz-ZCU"/>
                 <outlet property="setup_Btn" destination="XUY-LX-miE" id="PT7-CL-IQE"/>
                 <outlet property="subAsset_Label" destination="eWE-mw-sxp" id="Ptg-WE-8VI"/>
             </connections>

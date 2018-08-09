@@ -15,6 +15,9 @@
                 <outlet property="conFirmCode_Field" destination="kdD-Nq-kZ8" id="uCm-6e-1dp"/>
                 <outlet property="confirm_Btn" destination="Jhh-OK-UOE" id="jOG-zj-9Zn"/>
                 <outlet property="foundPsw_Field" destination="om8-1h-JOi" id="qzM-b0-q31"/>
+                <outlet property="fundPswConfirmLabel" destination="eDr-XO-9KO" id="LyT-at-1AL"/>
+                <outlet property="fundPswLabel" destination="WgX-li-h6T" id="LE0-h4-MVD"/>
+                <outlet property="smsVerifyLabel" destination="GaA-A1-LwX" id="3R5-8X-b8V"/>
                 <outlet property="smsVerify_Btn" destination="uAQ-gE-66S" id="JnO-IC-3Un"/>
                 <outlet property="smsVerify_Field" destination="YxW-8l-l6P" id="pAZ-6j-d19"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -26,9 +29,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="资金密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgX-li-h6T">
-                    <rect key="frame" x="23" y="43" width="59" height="15"/>
+                    <rect key="frame" x="23" y="43" width="100" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="59" id="3l3-vo-gUn"/>
+                        <constraint firstAttribute="width" constant="100" id="3l3-vo-gUn"/>
                         <constraint firstAttribute="height" constant="15" id="bUy-qi-F4o"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -36,10 +39,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="6-12位的数字字母组合" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="om8-1h-JOi">
-                    <rect key="frame" x="23" y="74" width="250" height="20"/>
+                    <rect key="frame" x="23" y="74" width="342" height="20"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="250" id="dMy-9S-8sK"/>
                         <constraint firstAttribute="height" constant="20" id="zYH-fk-sjG"/>
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,10 +52,9 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请再次输入资金密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kdD-Nq-kZ8">
-                    <rect key="frame" x="23" y="152" width="250" height="20"/>
+                    <rect key="frame" x="23" y="152" width="342" height="20"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="250" id="09b-wP-ENY"/>
                         <constraint firstAttribute="height" constant="20" id="JUZ-NJ-TQT"/>
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,9 +65,9 @@
                     </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="资金密码确认" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDr-XO-9KO">
-                    <rect key="frame" x="23" y="121" width="102" height="15"/>
+                    <rect key="frame" x="23" y="121" width="150" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="102" id="AFl-0v-XUg"/>
+                        <constraint firstAttribute="width" constant="150" id="AFl-0v-XUg"/>
                         <constraint firstAttribute="height" constant="15" id="rv5-Ty-PdC"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -74,10 +75,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YxW-8l-l6P">
-                    <rect key="frame" x="23" y="230" width="140" height="20"/>
+                    <rect key="frame" x="23" y="230" width="229" height="20"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="140" id="CWW-S0-BZJ"/>
                         <constraint firstAttribute="height" constant="20" id="JvN-EH-KqS"/>
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -88,9 +88,9 @@
                     </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="短信验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaA-A1-LwX">
-                    <rect key="frame" x="23" y="199" width="74" height="15"/>
+                    <rect key="frame" x="23" y="199" width="150" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="74" id="SC2-Vb-9yZ"/>
+                        <constraint firstAttribute="width" constant="150" id="SC2-Vb-9yZ"/>
                         <constraint firstAttribute="height" constant="15" id="h6l-Yd-NfN"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -134,11 +134,14 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="uAQ-gE-66S" secondAttribute="trailing" constant="23" id="B3H-ra-Nlh"/>
                 <constraint firstItem="om8-1h-JOi" firstAttribute="leading" secondItem="WgX-li-h6T" secondAttribute="leading" id="Cnr-ZC-Yyc"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Jhh-OK-UOE" secondAttribute="trailing" constant="23" id="KL4-eV-t4H"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="om8-1h-JOi" secondAttribute="trailing" constant="10" id="Kzv-8g-vVq"/>
                 <constraint firstItem="YxW-8l-l6P" firstAttribute="top" secondItem="GaA-A1-LwX" secondAttribute="bottom" constant="16" id="LoG-1U-CQ4"/>
                 <constraint firstItem="kdD-Nq-kZ8" firstAttribute="leading" secondItem="eDr-XO-9KO" secondAttribute="leading" id="VSm-1X-Jbb"/>
+                <constraint firstItem="uAQ-gE-66S" firstAttribute="leading" secondItem="YxW-8l-l6P" secondAttribute="trailing" constant="10" id="avg-x2-HZ1"/>
                 <constraint firstItem="om8-1h-JOi" firstAttribute="top" secondItem="WgX-li-h6T" secondAttribute="bottom" constant="16" id="b6X-sM-Gph"/>
                 <constraint firstItem="GaA-A1-LwX" firstAttribute="leading" secondItem="eDr-XO-9KO" secondAttribute="leading" id="eZ3-iy-gJy"/>
                 <constraint firstItem="eDr-XO-9KO" firstAttribute="leading" secondItem="om8-1h-JOi" secondAttribute="leading" id="fQd-gn-115"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="kdD-Nq-kZ8" secondAttribute="trailing" constant="10" id="gMZ-Zd-9Da"/>
                 <constraint firstItem="GaA-A1-LwX" firstAttribute="top" secondItem="kdD-Nq-kZ8" secondAttribute="bottom" constant="27" id="i8Z-pR-QPf"/>
                 <constraint firstItem="Jhh-OK-UOE" firstAttribute="top" secondItem="YxW-8l-l6P" secondAttribute="bottom" constant="71" id="jbf-VJ-djA"/>
                 <constraint firstItem="Jhh-OK-UOE" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="23" id="o0T-XK-cuz"/>

@@ -14,12 +14,14 @@
             <connections>
                 <outlet property="authCodeField" destination="wXO-Ml-OCB" id="kCM-pW-UeH"/>
                 <outlet property="authCodeLabel" destination="CJA-7u-Wd0" id="WVF-QF-1Rc"/>
+                <outlet property="authCodeLabel_title" destination="2XF-2b-Mxq" id="bMq-Oj-xVP"/>
                 <outlet property="commitBtn" destination="bHS-pS-Dfo" id="Ol9-Y1-mQr"/>
                 <outlet property="coppyBtn" destination="kV6-5l-r7v" id="j7l-wX-cA8"/>
                 <outlet property="gainVerifyBtn" destination="SBe-7E-Yf6" id="2Pz-fZ-aCQ"/>
                 <outlet property="qRImgView" destination="tHq-UI-xG5" id="JBZ-l4-sFR"/>
                 <outlet property="top_distance" destination="F8M-5F-gr0" id="fL6-I0-Yge"/>
                 <outlet property="verifyField" destination="vsJ-Xz-USf" id="CHa-mC-BUg"/>
+                <outlet property="verifyLabel_title" destination="Ag5-5q-hwR" id="akZ-Xv-U7h"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -39,19 +41,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag5-5q-hwR">
-                    <rect key="frame" x="10" y="223" width="83" height="17"/>
+                    <rect key="frame" x="10" y="223" width="180" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="OcL-WW-gwr"/>
-                        <constraint firstAttribute="width" constant="83" id="dli-KQ-yAp"/>
+                        <constraint firstAttribute="width" constant="180" id="dli-KQ-yAp"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="谷歌验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XF-2b-Mxq">
-                    <rect key="frame" x="10" y="319" width="73" height="17"/>
+                    <rect key="frame" x="10" y="319" width="180" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="73" id="0ay-2y-yv5"/>
+                        <constraint firstAttribute="width" constant="180" id="0ay-2y-yv5"/>
                         <constraint firstAttribute="height" constant="17" id="xyG-fI-ylP"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>

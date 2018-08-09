@@ -15,9 +15,10 @@
 #import "UserOrderModel.h"
 #import "MyOrderViewController.h"
 #import "ChoseCoinTableViewCell.h"
+#import "AppDelegate.h"
 //#import "JZNavigationExtension.h"
 
-@interface TradeViewController () <UITableViewDelegate,UITableViewDataSource,TradeViewModelDelegate>
+@interface TradeViewController () <UITableViewDelegate,UITableViewDataSource,TradeViewModelDelegate,UIScrollViewDelegate>
 
 @property(nonatomic,strong)TradeView *tradeView;
 @property(nonatomic,strong)UITableView *tableView;
@@ -25,6 +26,7 @@
 @property(nonatomic,strong)TradeViewModel *tradeViewModel;
 @property(nonatomic,strong)NSMutableDictionary *heightAtIndexPath;//缓存高度所用字典
 @property UITapGestureRecognizer *tapRecognizer;
+//@property(nonatomic,strong)NSLayoutConstraint *hightConstraint;
 
 @end
 
@@ -43,11 +45,22 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     
     _tradeViewModel = [TradeViewModel sharedInstance];
     _tradeViewModel.delegate = self;
-    
     _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(firstResponder:)];
     _tapRecognizer.numberOfTapsRequired = 1;
-    [_tradeView addGestureRecognizer:_tapRecognizer];
     
+    if (_tradeView == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TradeView" owner:self options:nil];
+        _tradeView = [nib objectAtIndex:0];
+        
+        //发送买卖请求
+        [_tradeView.confirmBtn addTarget:self action:@selector(orderRequest:) forControlEvents:UIControlEventTouchUpInside];
+        
+        //coinTable 展开收起
+        [_tradeView.titleDownBtn addTarget:self action:@selector(coinTableViewAnimation:) forControlEvents:UIControlEventTouchUpInside];
+        //收下键盘
+        [_tradeView addGestureRecognizer:_tapRecognizer];
+    }
+
     [self registerCells];
 }
 
@@ -59,6 +72,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    _tradeViewModel.delegate = self;
     [_tradeViewModel getData:_model.coinPairId];
 }
 
@@ -70,8 +84,6 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
-    
-    
     UIBarButtonItem *backHomeBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Quotation"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissBack:)];
     backHomeBtn.tintColor = [UIColor whiteColor];
     
@@ -82,22 +94,26 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     
     [self.navigationItem setRightBarButtonItem:backBtn];
     
-    
-    
 //    _tableView.tableHeaderView = _tableView;
 //    [self.view addSubview:_tradeView];
     [self.view addSubview:self.tableView];
-    [self.view addSubview:self.coinTableView];
+    UIWindow *window = [(AppDelegate*)[[UIApplication sharedApplication] delegate] window];
+    [window addSubview:self.coinTableView];
+    NSLog(@"11---------%f",self.tableView.contentOffset.y);
 }
 
-- (void)coinTableView:(id)sender{
+- (void)coinTableViewAnimation:(id)sender{
+    [self.view endEditing:YES];
+    
+    
+    [self adjustTable:NO];
     CGRect frame;
-    float bottomFix = isiPhoneX?88:44;
+    float bottomFix = isiPhoneX?88:56;
+    
     if (_coinTableView.height == 0) {
-        frame = CGRectMake(0, bottomFix + 50 +20, kScreenWidth, kScreenHeight - 50 + 5 - bottomFix);
+        frame = CGRectMake(0, bottomFix + 63, kScreenWidth, kScreenHeight - 50 + 5 - bottomFix);
     } else {
-        
-        frame = CGRectMake(0, bottomFix + 50 +20, kScreenWidth, 0);
+        frame = CGRectMake(0, bottomFix + 63, kScreenWidth, 0);
     }
     if (self.coinTableView.height == 0) {
         [self.tradeView titleDownBtnAnticlockwiseRotation];
@@ -113,11 +129,27 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
                      }
                      completion:^(BOOL finished) {
                          if (self.coinTableView.height == 0) {
-                             [self.tradeView titleDownBtnclockwiseRotation];
+                             [self adjustTable:YES];
                          } else {
-                             [self.tradeView titleDownBtnAnticlockwiseRotation];
+                             
                          }
+                        
                      }];
+}
+
+- (void)adjustTable:(BOOL)canUse{
+    NSLog(@"Adjust");
+    float iphoneFix = isiPhoneX?88:64;
+    [self.tableView setContentOffset:CGPointMake(0, -iphoneFix) animated:YES];
+    self.tableView.scrollEnabled = canUse;
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    NSLog(@"scrollViewDidEndScrollingAnimation:%f frame:%f",scrollView.contentOffset.y,self.tableView.frame.origin.y);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"scrollViewDidScroll:%f",scrollView.contentOffset.y);
 }
 
 - (void)viewDidLayoutSubviews{
@@ -172,18 +204,20 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 
 - (void)getUserOrderSucess{
     [[VWProgressHUD shareInstance]dismiss];
+    
     [self.tableView reloadData];
+    NSLog(@"getUserOrderSucess So reload");
 }
 
 - (void)orderCancelSucess:(NSDictionary*)res{
     [[VWProgressHUD shareInstance]dismiss];
-    [_tradeViewModel getUserOrder:self.model.coinPairId];
+    [_tradeViewModel performSelector:@selector(getData:) withObject:_model.coinPairId afterDelay:0.5];
 }
 
 - (void)orderRequest:(UIButton*)btn{
     
     if (_tradeView.stepperVolumField.text.length < 1 || _tradeView.stepperPriceField.text.length < 1) {
-        [self justShowAlert:@"信息不完整" message:@"请将价格以及数量填写完成"];
+        [self justShowAlert:LocalizeString(@"IMCOMPLETE") message:LocalizeString(@"FILLTHEPRICEANDAMOUNT")];
     } else {
         [[VWProgressHUD shareInstance]showLoading];
         BOOL isBuy = _tradeView.isBuyMode?YES:NO; //isHighMode = YES 就是买入
@@ -197,9 +231,9 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 - (void)orderRequestSucess:(NSDictionary *)res{
     NSLog(@"orderRequestSucess:%@",res);
     [[VWProgressHUD shareInstance]dismiss];
-    [self justShowAlert:@"委托成功" message:[NSString stringWithFormat:@"订单号:%@",[res objectForKey:@"orderId"]]];
+    [self justShowAlert:LocalizeString(@"ORDERCOMPELTE") message:[NSString stringWithFormat:@"%@:%@",LocalizeString(@"ORDERNUMBER"),[res objectForKey:@"orderId"]]];
     
-    [_tradeViewModel getUserOrder:self.model.coinPairId];
+    [_tradeViewModel performSelector:@selector(getData:) withObject:_model.coinPairId afterDelay:0.5];
 }
 
 - (void)getDataFalid:(NSError *)error{
@@ -208,31 +242,31 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     NSDictionary *dic = error.userInfo;
     NSDictionary *respCode = [dic objectForKey:@"respCode"];
     if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"]) {
-        [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
+        [self justShowAlert:LocalizeString(@"LOGIN_SESSION_FAILE") message:LocalizeString(@"LOGIN_AGAIN")];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
         NSString *str = [dic objectForKey:@"respMessage"];
         NSArray *errorAry = [str componentsSeparatedByString:@","];
-        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
+        [self justShowAlert:LocalizeString(@"ERROR") message:[errorAry objectAtIndex:0]];
     }
 }
 
 - (void)cancelOrder:(UIButton*)btn{
     NSMutableArray *actions = [NSMutableArray array];
     
-    UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *okBtn = [UIAlertAction actionWithTitle:LocalizeString(@"ALERT_CONFIRM") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [[VWProgressHUD shareInstance]showLoading];
         NSArray *orderAry = [self.tradeViewModel getUserOrderAry];
         UserOrderModel *model = [orderAry objectAtIndex:btn.tag];
         [self.tradeViewModel cancelOder:model.orderId coinPair:self.model.coinPairId];
     }];
-    UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:LocalizeString(@"ALERT_CANCEL") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
        
     }];
     [actions addObject:okBtn];
     [actions addObject:cancelBtn];
     
-    [self showAlert:@"" withMsg:@"你确定要撤销此笔订单吗?" withActions:actions];
+    [self showAlert:@"" withMsg:LocalizeString(@"CONFIRMFORCANCEL") withActions:actions];
 }
 
 - (void)popTheCv:(id)sender{
@@ -292,12 +326,6 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (tableView == _tableView) {
-        if (_tradeView == nil) {
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TradeView" owner:self options:nil];
-            _tradeView = [nib objectAtIndex:0];
-            [_tradeView.comfirmBtn addTarget:self action:@selector(orderRequest:) forControlEvents:UIControlEventTouchUpInside];
-            [_tradeView.titleDownBtn addTarget:self action:@selector(coinTableView:) forControlEvents:UIControlEventTouchUpInside];
-        }
         [_tradeView setMode:self.isHigh];
         [_tradeView setContent:self.model];
         return _tradeView;
@@ -314,7 +342,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
         noBillView.backgroundColor = [UIColor colorWithHexString:@"212025"];
         if ([_tradeViewModel numberOfRowsInSection] < 1) {
             UILabel *noBillLabel = [[UILabel alloc]initWithFrame:noBillView.frame];
-            [noBillLabel setText:@"暂无委托单"];
+            [noBillLabel setText:LocalizeString(@"NOORDERFORNOW")];
             [noBillLabel setTextAlignment:NSTextAlignmentCenter];
             [noBillLabel setTextColor:[UIColor whiteColor]];
             [noBillView addSubview:noBillLabel];
@@ -334,7 +362,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
                 ExponentialCell *exCell = (ExponentialCell *)[tableView dequeueReusableCellWithIdentifier:exponentialCellIdentifier];
                 [exCell.moreDetailBtn addTarget:self action:@selector(moreDetail:) forControlEvents:UIControlEventTouchUpInside];
                 [exCell.contentView setBackgroundColor:[UIColor colorWithHexString:@"212025"]];
-                [exCell setTitle:@"当前委托" subTitle:@"全部"];
+                [exCell setTitle:LocalizeString(@"ORDER_OPEN") subTitle:LocalizeString(@"ALL")];
                 
                 return exCell;
             }
@@ -369,7 +397,7 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
         CoinPairModel *model = [ary objectAtIndex:indexPath.row];
         self.model = model;
         [_tradeViewModel getData:self.model.coinPairId];
-        [self coinTableView:nil];
+        [self coinTableViewAnimation:nil];
         [[VWProgressHUD shareInstance]showLoading];
     }
 }
@@ -397,14 +425,13 @@ static NSString *choseCoinTableViewCell = @"ChoseCoinTableViewCell";
     if (_coinTableView == nil) {
         
         float bottomFix = isiPhoneX?88:44;
-        CGRect frame = CGRectMake(0, bottomFix + 50 +20, kScreenWidth, 0);
+        CGRect frame = CGRectMake(0, bottomFix + 63, kScreenWidth, 0);
         _coinTableView = [[UITableView alloc] initWithFrame:frame
                                                   style:UITableViewStylePlain];
         _coinTableView.backgroundColor = [UIColor colorWithHexString:@"212025"];
         _coinTableView.rowHeight = UITableViewAutomaticDimension;
         _coinTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _coinTableView.estimatedRowHeight = 100;
-        
         _coinTableView.delegate = self;
         _coinTableView.dataSource = self;
     }

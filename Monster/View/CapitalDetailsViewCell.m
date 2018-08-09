@@ -18,6 +18,13 @@
 
 @property(nonatomic,strong)IBOutlet UILabel *feeRateLabel;
 
+@property(nonatomic,strong)IBOutlet UILabel *typeLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *coinLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *timeLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *measureLabel_title;
+
+@property(nonatomic,strong)IBOutlet UILabel *feeRateLabel_title;
+
 
 @end
 
@@ -27,7 +34,16 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self fillText];
+}
+
+- (void)fillText{
+    [_typeLabel_title setText:LocalizeString(@"TYPE")];
+    [_coinLabel_title setText:LocalizeString(@"PAIR")];
+    [_timeLabel_title setText:LocalizeString(@"TIME")];
+    [_measureLabel_title setText:LocalizeString(@"RECORDAMOUNT")];
+    [_feeRateLabel_title setText:LocalizeString(@"FEE")];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

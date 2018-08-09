@@ -32,7 +32,7 @@
     [super awakeFromNib];
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HighLowLabelView" owner:self options:nil];
     _hlView = [nib objectAtIndex:0];
-    [_hlView setValue:@"+22.2%" withHigh:HighLowType_High];
+    [_hlView setValue:@"+0.00%" withHigh:HighLowType_High];
     [_highLowView addSubview:_hlView];
     
     if(_lineView == nil) {
@@ -80,10 +80,10 @@
         result = 0.0;
     }
     
-    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
-    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
+//    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+//    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
     
-    [_hlView setValue:[NSString stringWithFormat:@"%@%.2f",dollarSign,result] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
+    [_hlView setValue:[NSString stringWithFormat:@"%.2f%@",result,@"%"] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
     
     _klineColorString = isGoingHigher?MRCOLORHEX_HIGH:MRCOLORHEX_LOW;
     _lineView.lineColor = [UIColor colorWithHexString:_klineColorString];

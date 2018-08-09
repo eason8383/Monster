@@ -15,6 +15,7 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIView+Extension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/LanguageTool.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/TradeViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/TradeView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/HighLowLabelView.h \
@@ -25,4 +26,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Model/UserOrderModel.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MyOrderViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/MRBaseTableViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ChoseCoinTableViewCell.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ChoseCoinTableViewCell.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/AppDelegate.h

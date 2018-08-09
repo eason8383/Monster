@@ -25,17 +25,17 @@
 
 - (void)setContent:(CoinPairModel*)coinInfo{
     [_titleLabel setText:[NSString stringWithFormat:@"%@/%@",coinInfo.mainCoinId,coinInfo.subCoinId]];
-    [_priceLabel setText:[NSString stringWithFormat:@"%f",coinInfo.lastPrice]];
+    [_priceLabel setText:[NSString stringWithFormat:@"%.8f",coinInfo.lastPrice]];
     
     BOOL isGoingHigher = [self isEndPriceHigher:coinInfo];
     double result = (coinInfo.endPrice - coinInfo.beginPrice)/coinInfo.beginPrice * 100;
     if (isnan(result)) {      //isnan为系统函数
         result = 0.0;
     }
-    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
-    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
+//    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+//    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
     
-    [_upDownLabel setText:[NSString stringWithFormat:@"%@%.2f",dollarSign,result]];
+    [_upDownLabel setText:[NSString stringWithFormat:@"%.2f%@",result,@"%"]];
     
     [_upDownLabel setTextColor:[UIColor colorWithHexString:isGoingHigher?MRCOLORHEX_HIGH:MRCOLORHEX_LOW]];
 }

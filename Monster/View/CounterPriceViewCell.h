@@ -10,6 +10,8 @@
 
 @interface CounterPriceViewCell : UITableViewCell
 
+@property(nonatomic,assign)BOOL isChecked;
+
 - (void)setContent:(NSString*)title isChecked:(BOOL)checked;
 
 @end

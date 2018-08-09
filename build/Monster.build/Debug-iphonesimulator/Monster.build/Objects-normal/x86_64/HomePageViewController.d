@@ -15,6 +15,7 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIView+Extension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/LanguageTool.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/HomePageViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/RNFrostedSidebar.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/SliderMenuView.h \
@@ -33,4 +34,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/AboutusViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/ReflectionViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/ViewModel/HomeViewModel.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/CoinPairModel.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Model/CoinPairModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/WelcomeView.h

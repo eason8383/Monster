@@ -14,8 +14,10 @@
             <connections>
                 <outlet property="currencyBtn" destination="nD4-AR-EYg" id="5UU-kx-xQO"/>
                 <outlet property="currencyLabel" destination="2W1-Ae-EiP" id="SVl-aY-5Lk"/>
+                <outlet property="currencyTitleLabel" destination="77i-V8-Les" id="yXd-gl-bF1"/>
                 <outlet property="languageBtn" destination="hvD-yv-h20" id="x93-YA-bcM"/>
                 <outlet property="languageLabel" destination="4uS-FI-WfC" id="XcH-5Q-bWq"/>
+                <outlet property="languageTitleLabel" destination="xFX-Tp-NuV" id="jOR-NJ-3vo"/>
                 <outlet property="logoutBtn" destination="w6V-cD-ID3" id="OZA-Up-PEQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,9 +28,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="语言" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFX-Tp-NuV">
-                    <rect key="frame" x="10" y="40" width="58" height="17"/>
+                    <rect key="frame" x="10" y="40" width="70" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="58" id="bsq-fw-Uea"/>
+                        <constraint firstAttribute="width" constant="70" id="bsq-fw-Uea"/>
                         <constraint firstAttribute="height" constant="17" id="t1t-Hg-Na4"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -63,6 +65,9 @@
                         <constraint firstAttribute="width" constant="123" id="Spg-c6-utX"/>
                         <constraint firstAttribute="height" constant="30" id="big-Gx-iVl"/>
                     </constraints>
+                    <connections>
+                        <action selector="setLanguage:" destination="-1" eventType="touchUpInside" id="F37-Kj-8qN"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nD4-AR-EYg">
                     <rect key="frame" x="242" y="98.5" width="123" height="30"/>

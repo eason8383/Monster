@@ -23,9 +23,9 @@
 + (instancetype)sharedInstance;
 
 - (void)getData:(NSInteger)page;
-- (void)getOrderHistory:(NSInteger)page;
+
 - (NSArray*)getOrderAry;
-- (NSArray*)getOrderHistoryAry;
+
 - (NSInteger)numberOfRowsInSection;
 
 @end

@@ -1,0 +1,261 @@
+/* 
+  Localizable.strings
+  Monster
+
+  Created by CHEN HAO LI on 2018/8/7.
+  Copyright © 2018年 Tigerrose. All rights reserved.
+*/
+
+//Others
+"PULLTOREFRESH" = "Pull to refresh";
+"NOMOREDATA" = "No more data";
+
+"SUCCESS" = "Sucess";
+"COPY" = "Copy";
+
+//Login Page
+"WELCOME_TITLE" = "INVEST IN THE NEXT UNICORN HERE";
+"ALERT_CONFIRM" = "OK";
+"ALERT_SUBMIT" = "Confirm";
+"ALERT_CANCEL" = "Cancel";
+
+"MOBILE_NUMBER" = "Please enter the cell phone number";
+"LOGIN_SESSION_FAILE" = "Login session has failed.";
+"LOGIN_AGAIN" = "Please login again.";
+"SMS_VERIFY_CODE" = "verification code";
+"GET_VERIFY_CODE" = "send code";
+"RESEND_VERIFY_CODE" = "send again";
+"PLEASEFILLCORECTCode" = "Please enter current verify code";
+"RESEND" = "Resend";
+"LOGIN" = "LOGIN";
+"LOGOUT" = "LOGOUT";
+"CHINA" = "China";
+"AMERICAN" = "US";
+
+"ERROR" = "Error";
+"NEWWORKERROR" = "Network error";
+"PLEASE_INPUT_MOBILENO" = "Please Input your mobile number.";
+"AREA" = "AREA";
+
+"LANGUAGE" = "Language";
+"CHINESE" = "中文";
+"ENGLISH" = "English";
+
+"SWITHCHLANGUAGE" = "Do you want to change language to";
+
+"PRICE_RATE" = "Pricing";
+"CNY" = "RMB";
+"USD" = "USD";
+
+"SETUP" = "Setup";
+
+//Home Page
+
+"PAOMAMSG" = "In order to improve the user experience and ensure the interests of users, the platform changes the recharge benefits to: the first three ETH recharges of users can get 66 MR rewards (this benefit can only be obtained after binding the id card and passing the examination).This announcement will take effect on August 2, 2018.";
+"HOMETITLE" = "Global Innovation Enterprise Angel Voucher Exchange";
+
+"HIGHPRICE" = "High";
+"LOWPRICE" = "Low";
+
+"HIGH" = "High";
+"LOW" = "Low";
+
+"MONSTER" = "MONSTER Pair";
+"MOREDETAIl" = "More detail";
+
+//menu
+
+"MYWALLETVALUE" = "Value of my asset";
+"MYASSET" = "My balance";
+"MYORDER" = "Order";
+"IDVERIFICATIOM" = "ID Verification";
+"SECURUTY" = "Security";
+"ABOUTUS" = "About us";
+"FEEDBACK" = "Feedback";
+"SETTINGS" = "Settings";
+
+//MyAsset
+"MYASSET" = "My balance";
+"MARKETABLEASSETS" = "Marketable asset (ETH)";
+"CHARGE" = "Deposit";
+"WITHDRAW" = "Withdrawal";
+"MONEY_RECORD" = "Money record";
+"ASSETDETAIL" = "My Asset Detail";
+"PAIR" = "Pair";
+"AVAILABLE" = "Available";
+"INORDER" = "In order";
+
+//Deposits
+
+"CHOISEPAIR" = "Chose Pair";
+"SAVEQRCODE" = "Save QR code";
+"COPYADDRESS" = "Copy Address";
+"CHARGE_REMIND" = "Please click the Finish Recharge Button when the recharge is complete.";
+"CHARGE_CONFIRM" = "Confirm";
+"COPY_DONE" = "Copy done";
+"THANK" = "Thank you";
+"WEWILLINFOYOU" = "We'll inform you after it finish";
+"SAVEPICTURE" = "Save Picture";
+"SAVED" = "Saved";
+
+//WithDraw
+
+"AMOUNT" = "Amount";
+"AMOUNT_PLACEHOLDER" = "Please enter the withdrawal amount";
+"AMOUNT_INTRO" = "is the min amount,The max amount is";
+"ALL" = "ALL";
+"WITHDRAWALFEE" = "Withdrawal charge";
+"WITHDRAWINTRO" = "The single withdrawal fee is";
+"ADDRESS" = "Address";
+"ADDRESS_PLACEHOLDER" = "Please enter the allet address";
+"VERIFYCODE" = "SMS code";
+"SMSCODE_PLACEHOLDER" = "Please enter SMS code";
+"FOUNDPSW" = "Fund Password";
+"FOUNDPSWE_PLACEHOLDER" = "Plase enter the found password";
+"CONFIRM_WITHDRAW" = "Confirm Withdrawal";
+"GOOGLEAUTH" = "Google Auth";
+"GOOGLEAUTH_PLACEHOLDER" = "Please enter Google Auth code";
+
+//Scan
+"QRCODESCAN" = "Scan QR code";
+"CHOSEFROMPICS" = "Chose from pics";
+"LIGHTOPEN" = "Light open";
+"LIGHTCLOSE" = "Light close";
+
+"NODATA" = "No Data";
+"NODATAFROMPICS" = "No data from this pics";
+"NOTSUPPORT" = "The HTTP contents is NOT support";
+
+//Money Record
+"NORECORDFORNOW" = "No record for now";
+"TIME" = "Time";
+"TYPE" = "Type";
+"RECORDAMOUNT" = "Amount";
+"FEE" = "Withdrawal fee";
+
+//Order
+
+"ORDER_OPEN" = "Open orders";
+"ORDER_HISTORY" = "Order history";
+"TRADE_HISTORY" = "Trade history";
+"NOORDERFORNOW" = "No order for now";
+"CONFIRMFORCANCEL" = "Do you want cancel this order?";
+"ORDERPRICE" = "Price";
+"PRDERAMOUNT" = "Amount";
+"BUY" = "Buy";
+"SALE" =  "Sale";
+"ABORT" = "Cancel";
+"TOTALDEAL" = "Total";
+"AVERAGEPRICE" = "Average price";
+"TOTALAMOUNT" = "Total amount";
+
+
+//CoinDetail
+
+"ONEMINUTE" = "1m";
+"AQURTER" = "15m";
+"ONEHOUR" = "1h";
+"ONEDAY" = "1d";
+"AWEEK" = "1w";
+"AMONTH" = "Month";
+
+//Trade
+
+"TRADE" = "Trade";
+"IMCOMPLETE" = "Incomplete";
+"FILLTHEPRICEANDAMOUNT" = "Please fill the price and amount";
+"ORDERCOMPELTE" = "Success";
+"ORDERNUMBER" = "Order NO";
+"BUYPRICE" = "Buy price";
+"CANBUY" = "Available";
+"SALEPRICE" = "Sale Price";
+"CANSALE" = "Available";
+"CANUSE" = "My balance";
+"DEEPMERGER" = "Deep merger";
+"PRICEETH" = "Price(ETH)";
+"TRADETOTALE" = "Total";
+"PRICELIMIT" = "Price";
+
+//id verify
+
+"IDVERIFYCATION" = "Verification";
+"ID" = "ID number";
+"ICPLACEHOLDER" = "Please fill your ID number";
+"UPLOADFORONT" = "ID card front photo";
+"UPLOADBACK" = "ID card back photo";
+"UPLOADHANDID" = "Hand-held ID card";
+"UPLOADPIC" = "Upload";
+"TAPANDREUPLOAD" = "Renew after tap";
+"UNDERREVIEW" = "Under Review";
+"COMMITSUCESS" = "Thank you for your commit";
+"PHOTOREPEATED" = "photo repeated";
+"PICREPEATWARING" = "Can't upload same pictues";
+"PLEASEFILLID" = "Please fill your ID number";
+
+//security
+
+"SECURYTY" = "Security Verification";
+"BINDINGPHONE" = "Binding your phone";
+"GOOGLEAUTH" = "Google authentication";
+"FUNDPSW" = "Fund Password";
+"LINKYOUREMAIL" = "Linking your Email";
+"BINDINYET" = "Set up";
+"BINDING" = "Binding";
+"FIX" = "Set up";
+
+//Google Auth
+"BINDGOOGLEAUTH" = "Bind Google authentication";
+"GOOGLEVERIFY" = "Google Auth";
+"MOBILEVERIFYCODE" = "Cell phone verification code";
+"GOOGLEVERIFYCODE" = "Google verification code";
+"PLEASEENTERVERIFYCODE" = "Please enter verify code";
+"BINDINGSUCCESS" = "Binding Success";
+"COPYDONE" = "Copied";
+
+//set fund psw
+
+"SETFUNDPSW" = "Setting Fund Password";
+"CONFIRMPASSWORD" = "Confirm Password";
+"SMSVERIFYCODE" = "SMS Verification Code";
+
+"FUNDPSWPLACEHOLDER" = "6-12 combination of numbers and letters";
+"FUNDCONFIRMPLACEHOLDER" = "Please enter the fund password again";
+"CONFIRMPSWISNOTTHESAME" = "There're different between password and confirm password";
+
+"UPDATEPSWSUCCESS" = "update password success";
+
+//set email
+
+"MAILBIND" = "Email verification";
+"MAILBOX" = "Email";
+"MAILVERIFY" = "Email verificatipn code";
+"MAILBOXCONFIRM" = "Please enter your email";
+
+//feedback
+
+"FEEDBACK" = "Feedback";
+"DESCRIPTION" = "Description";
+"ENTERLIMIT" = "*REQUIERED, Enter another 500 words";
+"ATTACHMENTS" = "Attachments";
+"ATTACHMENTSCONDITTION" = "(Need upload in jpg/jpeg/png format, and ensure that the picture is clear, the corners are complete, the brightness is uniform, and the size must not exceed 10M, optional)";
+"COMMITFEEDBACK" = "Commit";
+
+"THANKSFORFEEDBACK" = "Thank you for your feedback，We'll handle it ASAP.";
+
+//Market
+
+"MARKET" = "Market";
+"MARKETAMOUNT" = "Amount";
+"LATESTPRICE" = "Last Price";
+"ONDDAYUPDOWN" = "24H Change";
+
+//Order detail
+
+"ORDERDETAIL" = "Order Detail";
+"DEARPRICE" = "Price";
+
+//Information
+
+"MRINFORMATION" = "WHAT IS MR?\n\nMR is the MSER's equity token and the most advanced use authority credential. MR is based on the Ethereum blockchain smart contract, and will never issue additional.\n\nThe Value of MR\n\nThe core value of MR is the supreme level usage credentials of its owners, including but not limited:\n\n1.Enjoying the refunding of transaction fees;\n\n2.Sharing the benefits of MSER incubation fund;\n\n3.Enjoying the priority rights of equity token conversion;\n\n4.Enjoying the proposal right and priority voting right of the outstanding projects;\n\n5.Access to advanced trading features and other VIP competence.\n\nTotal supply created=1 Billion MR\n\nMaximum amount in public before 31st Dec,2018: 60 Million MR\n\nWebsite:www.monster.one\n\nBlock Explorer:https://etherscan.io/token/0xa62442bbc2b91ba7f639aaafdb77d2690f525104";
+
+"MONINFORMATION" = "WHAT IS MON ?\n\nMON is the token of the MSER incubation fund.The total number of MR incubation funds is 100 million, accounting for 10% of the total number of MR. It is used to support entity enterprises to complete the blockchain transformation.50% of the proceeds of the incubator fund will be returned to the secondary market on a quarterly basis and publicly sealed up.MON is obtained by holding MR mining, and 0.025 MON can be obtained per 1 MR every day.\n\nTotal supply：100,000,000,000\n\nCirculating Supply: 10,000,000,000\n\nWebsite:www.monster.one\n\nBlock Explorer:https://etherscan.io/token/0xb0f94c2c19160dbc9ed73b4886938fe3e12d2020";

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +44,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ME-MN-g4h">
-                        <rect key="frame" x="248" y="22.5" width="60" height="20"/>
+                        <rect key="frame" x="248" y="23.5" width="60" height="20"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="ACD-0H-SSK"/>
@@ -54,13 +54,12 @@
                 </subviews>
                 <color key="backgroundColor" red="0.12941176470588237" green="0.12549019607843137" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="eB0-oP-AIa" secondAttribute="bottom" constant="23" id="6JR-bx-lly"/>
-                    <constraint firstItem="eB0-oP-AIa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23.5" id="F2E-UF-kbK"/>
-                    <constraint firstItem="eB0-oP-AIa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kx3-tr-FEF"/>
                     <constraint firstItem="9o1-zC-Wy1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NaH-7g-01i"/>
                     <constraint firstItem="9o1-zC-Wy1" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="PcH-wk-5hm"/>
+                    <constraint firstAttribute="bottom" secondItem="eB0-oP-AIa" secondAttribute="bottom" constant="23" id="SLn-et-PYz"/>
                     <constraint firstItem="eB0-oP-AIa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="V0I-2L-OgN"/>
                     <constraint firstItem="fya-1U-30e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aKq-58-MPI"/>
+                    <constraint firstItem="eB0-oP-AIa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23.5" id="evm-3d-ful"/>
                     <constraint firstAttribute="trailing" secondItem="fya-1U-30e" secondAttribute="trailing" id="lMC-cd-Qyp"/>
                     <constraint firstAttribute="bottom" secondItem="fya-1U-30e" secondAttribute="bottom" id="r3a-Xo-nPA"/>
                     <constraint firstAttribute="trailing" secondItem="3ME-MN-g4h" secondAttribute="trailing" constant="12" id="vUc-wP-1W1"/>

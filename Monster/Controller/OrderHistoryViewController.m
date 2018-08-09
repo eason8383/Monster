@@ -10,12 +10,12 @@
 #import "OrderHistoryTableViewCell.h"
 
 #import "OrderDetailViewController.h"
-#import "MyOrderViewModel.h"
+#import "OrderHistoryViewModel.h"
 #import "SGLoadMoreView.h"
 //#import "JZNavigationExtension.h"
 
-@interface OrderHistoryViewController () <UITableViewDelegate,UITableViewDataSource,MyOrderViewModelDelegate>
-@property(nonatomic,strong)MyOrderViewModel *myOrderViewModel;
+@interface OrderHistoryViewController () <UITableViewDelegate,UITableViewDataSource,OrderHistoryModelDelegate>
+@property(nonatomic,strong)OrderHistoryViewModel *myOrderViewModel;
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableDictionary *heightAtIndexPath;//缓存高度所用字典
 @property(nonatomic,assign)int currentPage;
@@ -29,7 +29,7 @@ static NSString *orderHistoryViewCellIdentifier = @"orderHistoryViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"历史委托";
+    self.title = LocalizeString(@"ORDER_HISTORY");
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     [self initial];
@@ -39,7 +39,7 @@ static NSString *orderHistoryViewCellIdentifier = @"orderHistoryViewCell";
     
     [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
     
-    _myOrderViewModel = [MyOrderViewModel sharedInstance];
+    _myOrderViewModel = [OrderHistoryViewModel sharedInstance];
     _myOrderViewModel.delegate = self;
     
     //refresh 下拉更新View
@@ -72,6 +72,20 @@ static NSString *orderHistoryViewCellIdentifier = @"orderHistoryViewCell";
         [_loadMoreView noMoreData];
     }
     [_tableView.refreshControl endRefreshing];
+}
+
+- (void)getDataFalid:(NSError *)error{
+    [[VWProgressHUD shareInstance]dismiss];
+    NSDictionary *dic = error.userInfo;
+    NSDictionary *respCode = [dic objectForKey:@"respCode"];
+    if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"]) {
+        [self justShowAlert:LocalizeString(@"LOGIN_SESSION_FAILE") message:LocalizeString(@"LOGIN_AGAIN")];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
+    } else {
+        NSString *str = [dic objectForKey:@"respMessage"];
+        NSArray *errorAry = [str componentsSeparatedByString:@","];
+        [self justShowAlert:LocalizeString(@"ERROR") message:[errorAry objectAtIndex:0]];
+    }
 }
 
 - (void)loadView{

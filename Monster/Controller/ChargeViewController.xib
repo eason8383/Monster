@@ -15,12 +15,14 @@
             <connections>
                 <outlet property="addressLabel" destination="CCN-Zu-uiG" id="OTj-MS-lV3"/>
                 <outlet property="changeCurreyBtn" destination="vmX-3G-SeK" id="bgQ-FJ-aG0"/>
+                <outlet property="choseLabel" destination="bqw-4I-TIe" id="VAi-Q5-9Il"/>
                 <outlet property="coAddressBtn" destination="Pfa-ls-nez" id="uCX-bv-oZH"/>
                 <outlet property="confirmBtn" destination="9H7-Nt-kyI" id="haR-0Z-f0F"/>
                 <outlet property="currencyLabel" destination="kn3-do-hD3" id="QH7-rp-Bls"/>
                 <outlet property="downBtnView" destination="eeN-Y4-XeR" id="wqI-g8-cqQ"/>
                 <outlet property="qrBackView" destination="5Ct-A5-N3J" id="jY0-1P-NJK"/>
                 <outlet property="qrCodeView" destination="ujl-Us-tpl" id="4hB-hq-Adi"/>
+                <outlet property="remindLabel" destination="kPg-0V-qAW" id="gOB-Fh-liR"/>
                 <outlet property="saveQrPicBtn" destination="6x0-wt-ZPi" id="SRB-dA-4p8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -31,9 +33,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择币种" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqw-4I-TIe">
-                    <rect key="frame" x="10" y="43" width="60" height="15"/>
+                    <rect key="frame" x="10" y="43" width="100" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="G75-GO-qzM"/>
+                        <constraint firstAttribute="width" constant="100" id="G75-GO-qzM"/>
                         <constraint firstAttribute="height" constant="15" id="mmY-Lk-T4Q"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>

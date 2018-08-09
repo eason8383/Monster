@@ -21,8 +21,26 @@
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"1E222C"]];
     self.navigationController.navigationBar.translucent = NO;
     
-    [_textView setContentOffset:CGPointMake(0, 0)];
-    // Do any additional setup after loading the view from its nib.
+    if ([self.nowCoin isEqualToString:@"MON"]) {
+        [self.textView setText:LocalizeString(@"MONINFORMATION")];
+    } else {
+        [self.textView setText:LocalizeString(@"MRINFORMATION")];
+    }
+}
+
+- (void)viewDidLayoutSubviews {
+    [self.textView setContentOffset:CGPointZero animated:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+//    [_textView setContentOffset:CGPointMake(0, 0) animated:YES];
+//    
+//    CGPoint offset = self.textView.contentOffset;
+//    self.textView.attributedText = replace;
+//    [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
+//        [self.textView setContentOffset: offset];
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {

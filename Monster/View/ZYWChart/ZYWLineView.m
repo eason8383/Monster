@@ -116,8 +116,8 @@
 //        NSLog(@"%.8f",coinPair.endPrice);
         ZYWLineModel *lineModel = [ZYWLineModel initPositon:xPostion yPosition:yPostion barTime:coinPair.barTimeLong price:coinPair.endPrice color:this.lineColor];
         
-        NSLog(@"Price:%f",lineModel.endPrice);
-        NSLog(@"orig:%l  time:%@",lineModel.barTimeLong,[self converTimeFormat:lineModel.barTimeLong]);
+//        NSLog(@"Price:%f",lineModel.endPrice);
+//        NSLog(@"orig:%l  time:%@",lineModel.barTimeLong,[self converTimeFormat:lineModel.barTimeLong]);
         
         [this.modelPostionArray addObject:lineModel];
     }];

@@ -10,6 +10,7 @@
 #import "CapitalDetailsViewCell.h"
 #import "MyAssetViewModel.h"
 
+#define BLACKBG @"1E1D21"
 
 @interface CapitalViewController () <MyAssetViewModelDelegate>
 @property(nonatomic,strong)MyAssetViewModel *myAssetViewModel;
@@ -21,7 +22,7 @@ static NSString *capitalDetailsCellIdentifier = @"capitalDetailsCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"资金纪录";
+    self.title = LocalizeString(@"MONEY_RECORD");
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     [self initial];
@@ -77,10 +78,10 @@ static NSString *capitalDetailsCellIdentifier = @"capitalDetailsCell";
 
     UIView *noBillView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 89)];
 
-    noBillView.backgroundColor = [UIColor colorWithHexString:@"1E1D21"];
+    noBillView.backgroundColor = [UIColor colorWithHexString:BLACKBG];
     if ([_myAssetViewModel numberOfRowinSectionForCapital] < 1) {
         UILabel *noBillLabel = [[UILabel alloc]initWithFrame:noBillView.frame];
-        [noBillLabel setText:@"暂无纪录"];
+        [noBillLabel setText:LocalizeString(@"NORECORDFORNOW")];
         [noBillLabel setTextAlignment:NSTextAlignmentCenter];
         [noBillLabel setTextColor:[UIColor whiteColor]];
         [noBillView addSubview:noBillLabel];

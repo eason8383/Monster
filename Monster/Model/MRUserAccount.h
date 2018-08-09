@@ -35,6 +35,8 @@
 
 @property (nonatomic, copy) NSString *idCardAuditStatus;
 
+@property (nonatomic, copy) NSString *idCardNo;
+
 
 + (instancetype)accountWithDict:(NSDictionary *)dict;
 

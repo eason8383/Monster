@@ -16,6 +16,9 @@
 @property(nonatomic,strong)IBOutlet UILabel *coinTypeLabel;
 @property(nonatomic,strong)IBOutlet UILabel *latestPriceLabel;
 @property(nonatomic,strong)IBOutlet UILabel *nowPriceLabel;
+@property(nonatomic,strong)IBOutlet UILabel *highestLabel;
+@property(nonatomic,strong)IBOutlet UILabel *lowestLabel;
+
 @property(nonatomic,strong)IBOutlet UILabel *highestPriceLabel;
 @property(nonatomic,strong)IBOutlet UILabel *lowestPriceLabel;
 @property(nonatomic,strong)IBOutlet UILabel *volumLabel;
@@ -39,12 +42,18 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [_upDownLabel setText:@"+22.2%"];
+    [_upDownLabel setText:@"+0.00%"];
 //    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     _backView.layer.borderWidth = 1;
     _backView.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.2].CGColor;
+    
+    [self fillText];
+}
 
+- (void)fillText{
+    [_highestLabel setText:[NSString stringWithFormat:@"%@:",LocalizeString(@"HIGHPRICE")]];
+    [_lowestLabel setText:[NSString stringWithFormat:@"%@:",LocalizeString(@"LOWPRICE")]];
 }
 
 - (void)setKLine{

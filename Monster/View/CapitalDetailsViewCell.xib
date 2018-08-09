@@ -30,7 +30,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDu-AL-NCs">
-                        <rect key="frame" x="159" y="21" width="57" height="12"/>
+                        <rect key="frame" x="159" y="21.5" width="57" height="12"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="57" id="mHa-Zj-QyH"/>
                             <constraint firstAttribute="height" constant="12" id="mO7-ld-fbq"/>
@@ -40,7 +40,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类型" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tf2-jI-iCQ">
-                        <rect key="frame" x="303" y="21" width="62" height="12"/>
+                        <rect key="frame" x="303" y="21.5" width="62" height="12"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="62" id="YDy-wc-kbO"/>
                             <constraint firstAttribute="height" constant="12" id="hTk-Fd-iJn"/>
@@ -92,10 +92,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手续费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5I-RC-3tD">
-                        <rect key="frame" x="159" y="73" width="78" height="12"/>
+                        <rect key="frame" x="159" y="73" width="100" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="E14-fd-ZH7"/>
-                            <constraint firstAttribute="width" constant="78" id="XdD-BB-GN4"/>
+                            <constraint firstAttribute="width" constant="100" id="XdD-BB-GN4"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,10 +148,15 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="coinLabel" destination="lwS-Xk-3Zm" id="7oN-w0-oOK"/>
+                <outlet property="coinLabel_title" destination="Bol-KL-ldT" id="jno-8x-nYM"/>
                 <outlet property="feeRateLabel" destination="rtv-lV-dh7" id="pco-b0-4T1"/>
+                <outlet property="feeRateLabel_title" destination="S5I-RC-3tD" id="be2-dT-DxO"/>
                 <outlet property="measureLabel" destination="V9y-Xx-MZ8" id="nQu-zm-0UE"/>
+                <outlet property="measureLabel_title" destination="luR-oK-5Cc" id="HrJ-yQ-bvk"/>
                 <outlet property="timeLabel" destination="UCY-MP-reo" id="pkG-ew-Qh4"/>
+                <outlet property="timeLabel_title" destination="yDu-AL-NCs" id="0i5-0j-vmb"/>
                 <outlet property="typeLabel" destination="YPu-ZA-GRM" id="qRU-pD-SX0"/>
+                <outlet property="typeLabel_title" destination="Tf2-jI-iCQ" id="He1-AS-i6Z"/>
             </connections>
             <point key="canvasLocation" x="-244" y="83"/>
         </tableViewCell>

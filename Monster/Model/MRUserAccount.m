@@ -37,6 +37,7 @@
         self.backIdCard = [aDecoder decodeObjectForKey:@"backIdCard"];
         self.userWithIdCard = [aDecoder decodeObjectForKey:@"userWithIdCard"];
         self.idCardAuditStatus = [aDecoder decodeObjectForKey:@"idCardAuditStatus"];
+        self.idCardNo = [aDecoder decodeObjectForKey:@"idCardNo"];
         
         self.fwcJoinFlag = [aDecoder decodeBoolForKey:@"fwcJoinFlag"];
         self.hasTradePassword = [aDecoder decodeBoolForKey:@"hasTradePassword"];
@@ -58,6 +59,7 @@
     [aCoder encodeObject:_backIdCard?_backIdCard:@"" forKey:@"backIdCard"];
     [aCoder encodeObject:_userWithIdCard?_userWithIdCard:@"" forKey:@"userWithIdCard"];
     [aCoder encodeObject:_idCardAuditStatus?_idCardAuditStatus:@"" forKey:@"idCardAuditStatus"];
+    [aCoder encodeObject:_idCardNo?_idCardNo:@"" forKey:@"idCardNo"];
     
     [aCoder encodeBool:_fwcJoinFlag forKey:@"fwcJoinFlag"];
     [aCoder encodeBool:_hasTradePassword forKey:@"hasTradePassword"];

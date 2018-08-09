@@ -27,7 +27,7 @@ static NSString *marketTableViewCellIdentifier = @"MarketViewCell";
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.title = @"行情";
+    self.title = LocalizeString(@"MARKET");
     
     [self initial];
 }

@@ -1,0 +1,262 @@
+/* 
+  Localizable.strings
+  Monster
+
+  Created by CHEN HAO LI on 2018/8/7.
+  Copyright © 2018年 Tigerrose. All rights reserved.
+*/
+
+
+//其他
+
+"PULLTOREFRESH" = "上拉更新";
+"NOMOREDATA" = "没有更多数据";
+
+"SUCCESS" = "成功";
+"COPY" = "复制";
+
+//登入
+"WELCOME_TITLE" = "欢迎登录怪兽市场";
+"ALERT_CONFIRM" = "确认";
+"ALERT_SUBMIT" = "提交";
+"ALERT_CANCEL" = "取消";
+
+
+"MOBILE_NUMBER" = "电话号码";
+"LOGIN_SESSION_FAILE" = "登录会话无效";
+"LOGIN_AGAIN" = "请重新登录";
+"SMS_VERIFY_CODE" = "短信验证码";
+"GET_VERIFY_CODE" = "获取验证码";
+"RESEND_VERIFY_CODE" = "重新获取";
+"PLEASEFILLCORECTCode" = "请填入正确验证码";
+"RESEND" = "后获取";
+"LOGIN" = "登录";
+"LOGOUT" = "退出登录";
+"CHINA" = "中国";
+"AMERICAN" = "美国";
+
+"ERROR" = "错误";
+"NEWWORKERROR" = "网路错误";
+"PLEASE_INPUT_MOBILENO" = "请输入电话号码";
+"AREA" = "地区";
+
+"LANGUAGE" = "语言";
+"CHINESE" = "简体中文";
+"ENGLISH" = "English";
+
+"SWITHCHLANGUAGE" = "请问您想切换语言为";
+
+"PRICE_RATE" = "计价方式";
+"CNY" = "人民币";
+"USD" = "美元";
+
+"SETUP" = "设置";
+
+//首页
+
+"PAOMAMSG" = "为提升用户体验，保证用户利益，平台将充值福利修改为:用户前3枚充值的ETH均可获得66枚MR奖励（此项福利需先绑定身份证且通过审核后才能获得）本公告于2018年8月2日生效。";
+"HOMETITLE" = "全球创新企业天使凭证交易所";
+
+"HIGHPRICE" = "最高";
+"LOWPRICE" = "最低";
+
+"HIGH" = "高";
+"LOW" = "低";
+
+"MONSTER" = "MONSTER指数";
+"MOREDETAIl" = "更多详情";
+
+//菜单
+"MYWALLETVALUE" = "钱包资产估值";
+"MYASSET" = "我的资产";
+"MYORDER" = "我的订单";
+"IDVERIFICATIOM" = "身份认证";
+"SECURUTY" = "安全认证";
+"ABOUTUS" = "关于我们";
+"FEEDBACK" = "问题反馈";
+"SETTINGS" = "设置";
+
+//MyAsset
+"MYASSET" = "我的资产";
+"MARKETABLEASSETS" = "我的资产折合 (ETH)";
+"CHARGE" = "充值";
+"WITHDRAW" = "提币";
+"MONEY_RECORD" = "资金纪录";
+"ASSETDETAIL" = "资产明细";
+"PAIR" = "币种";
+"AVAILABLE" = "可用";
+"INORDER" = "冻结";
+
+//充值
+"CHOISEPAIR" = "选择币种";
+"SAVEQRCODE" = "保存二维码";
+"COPYADDRESS" = "复制地址";
+"CHARGE_REMIND" = "*由于网络拥堵，充值完成后，请点击充值完成按钮，这样您的充值会更快到账";
+"CHARGE_CONFIRM" = "充值完成";
+"COPY_DONE" = "已复制地址";
+"THANK" = "感谢您";
+"WEWILLINFOYOU" = "充值成功将会通知您";
+"SAVEPICTURE" = "储存照片";
+"SAVED" = "已储存";
+
+
+//提币
+"AMOUNT" = "数量";
+"AMOUNT_PLACEHOLDER" = "请输入提币数量";
+"AMOUNT_INTRO" = "个起提，当前最多可提取";
+"ALL" = "全部";
+"WITHDRAWALFEE" = "提现手续费";
+"WITHDRAWINTRO" = "单笔提现手续费为";
+"ADDRESS" = "钱包地址";
+"ADDRESS_PLACEHOLDER" = "请输入提现的钱包地址或扫描录入";
+"VERIFYCODE" = "验证码";
+"SMSCODE_PLACEHOLDER" = "请输入验证码";
+"FOUNDPSW" = "资金密码";
+"FOUNDPSWE_PLACEHOLDER" = "请输入资金密码";
+"CONFIRM_WITHDRAW" = "确认提币";
+"GOOGLEAUTH" = "谷歌验证";
+"GOOGLEAUTH_PLACEHOLDER" = "请输入谷歌验证码";
+
+//Scan
+"QRCODESCAN" = "扫描二维码";
+"CHOSEFROMPICS" = "相簿选取";
+"LIGHTOPEN" = "打开手电筒";
+"LIGHTCLOSE" = "关闭手电筒";
+"NODATA" = "没有数据";
+"NODATAFROMPICS" = "此照片没有数据";
+"NOTSUPPORT" = "此处不支持开启网页";
+
+//资金纪录
+"NORECORDFORNOW" = "暂无纪录";
+"TIME" = "时间";
+"TYPE" = "类型";
+"RECORDAMOUNT" = "金额数量";
+"FEE" = "手续费";
+
+//订单
+"ORDER_OPEN" = "当前委托";
+"ORDER_HISTORY" = "历史委托";
+"TRADE_HISTORY" = "交易纪录";
+"NOORDERFORNOW" = "暂无委托单";
+"CONFIRMFORCANCEL" = "你确定要撤销此笔订单吗?";
+"ORDERPRICE" = "委托价";
+"PRDERAMOUNT" = "委托量";
+"BUY" = "买入";
+"SALE" =  "卖出";
+"ABORT" = "撤销";
+"TOTALDEAL" = "成交总额";
+"AVERAGEPRICE" = "成交均价";
+"TOTALAMOUNT" = "成交量";
+
+
+//CoinDetail
+
+"ONEMINUTE" = "分时";
+"AQURTER" = "15分";
+"ONEHOUR" = "小时";
+"ONEDAY" = "日线";
+"AWEEK" = "周线";
+"AMONTH" = "月";
+
+//交易
+
+"TRADE" = "交易";
+"IMCOMPLETE" = "信息不完整";
+"FILLTHEPRICEANDAMOUNT" = "请将价格以及数量填写完成";
+"ORDERCOMPELTE" = "委托成功";
+"ORDERNUMBER" = "订单号";
+"BUYPRICE" = "买入价";
+"CANBUY" = "可买";
+"SALEPRICE" = "卖出价";
+"CANSALE" = "可卖";
+"CANUSE" = "可用";
+"DEEPMERGER" = "深度";
+"PRICEETH" = "价格(ETH)";
+"TRADETOTALE" = "交易额";
+"PRICELIMIT" = "限价";
+
+//id verify
+
+"IDVERIFYCATION" = "身份认证";
+"ID" = "身份认号";
+"ICPLACEHOLDER" = "请填写您的身分证号";
+"UPLOADFORONT" = "请上传您的身份证人面像";
+"UPLOADBACK" = "请上传您的身份证国徽面";
+"UPLOADHANDID" = "请上传您的手持身份证";
+"UPLOADPIC" = "上传照片";
+"TAPANDREUPLOAD" = "请点击后重新上传";
+"UNDERREVIEW" = "审查中";
+"COMMITSUCESS" = "您的信息已顺利提交 谢谢您";
+"PHOTOREPEATED" = "照片重复";
+"PICREPEATWARING" = "不能上传一样的图片";
+"PLEASEFILLID" = "请写入身分证号";
+
+//security
+
+"SECURYTY" = "安全认证";
+"BINDINGPHONE" = "手机绑定";
+"GOOGLEAUTH" = "谷歌绑定";
+"FUNDPSW" = "资金密码";
+"LINKYOUREMAIL" = "邮箱验证";
+"BINDINYET" = "未绑定";
+"BINDING" = "已绑定";
+"FIX" = "修改";
+
+
+//Google Auth
+"BINDGOOGLEAUTH" = "绑定谷歌认证";
+"GOOGLEVERIFY" = "谷歌认证";
+"MOBILEVERIFYCODE" = "手机验证码";
+"GOOGLEVERIFYCODE" = "谷歌验证码";
+"PLEASEENTERVERIFYCODE" = "请输入验证码";
+"BINDINGSUCCESS" = "绑定成功";
+"COPYDONE" = "已复制";
+
+//set fund psw
+
+"SETFUNDPSW" = "设置资金密码";
+"CONFIRMPASSWORD" = "资金密码确认";
+"SMSVERIFYCODE" = "短信验证码";
+
+"FUNDPSWPLACEHOLDER" = "6-12位的数字字母组合";
+"FUNDCONFIRMPLACEHOLDER" = "请再次输入资金密码";
+"CONFIRMPSWISNOTTHESAME" = "两次密码输入不一致";
+
+"UPDATEPSWSUCCESS" = "密码更新成功";
+
+//set email
+
+"MAILBIND" = "邮箱验证";
+"MAILBOX" = "邮箱";
+"MAILVERIFY" = "邮箱验证码";
+"MAILBOXCONFIRM" = "请输入正确的邮箱";
+
+//feedback
+
+"FEEDBACK" = "问题反馈";
+"DESCRIPTION" = "描述";
+"ENTERLIMIT" = "*必填 还可以输入500个文字";
+"ATTACHMENTS" = "附件";
+"ATTACHMENTSCONDITTION" = "(需要jpg/jpeg/png格式上传，并保证图片清晰、边角完整、亮度均匀，且大小不得超过10M,可选)";
+"COMMITFEEDBACK" = "点击上传";
+
+"THANKSFORFEEDBACK" = "感谢您的反馈，我们会尽快处理";
+
+//Market
+
+"MARKET" = "行情";
+"MARKETAMOUNT" = "成交量";
+"LATESTPRICE" = "最新价";
+"ONDDAYUPDOWN" = "24H涨跌";
+
+
+//orderDetail
+
+"ORDERDETAIL" = "成交明细";
+"DEARPRICE" = "成交价";
+
+//Information
+
+"MRINFORMATION" = "\nMR介绍\n\nMR是MSER的天使凭证和最高级使用权限凭证。MR基于以太坊区块链智能合约发行，总量10亿枚，永不增发。\n\nMR的价值\n\n怪兽币MR的核心价值在于它拥有MSER生态最高级使用权限：\n\n1 交易手续费分红权\n\n2 孵化基金分红权\n\n3 企业通证优先兑换权\n\n4 项目提案和投票权（持有MR可获得项目提案权和投票核准权、链退出提案和投票核准权）\n\n5 MSER高级交易功能权限及其他会员权限。\n\n发行总量：1,000,000,000\n\n2018年12月31日前最大流通量：60,000,000\n\n官网：www.monster.one\n\n区块查询：https://etherscan.io/token/0xa62442bbc2b91ba7f639aaafdb77d2690f525104\n\nMON介绍\n\nMON是MSER孵化基金的代币。MR孵化基金总量1亿枚，占MR总量10%，用来扶持实体企业完成区块链改造。孵化基金50%的收益将会以季度为单位在二级市场回购MON并公开封存。MON通过持有MR挖矿获得，每1枚MR每天可获得0.025枚MON。\n\n发行总量：100,000,000,000\n\n流通总量：10,000,000,000\n\n官网：www.monster.one\n\n区块查询：https://etherscan.io/token/0xb0f94c2c19160dbc9ed73b4886938fe3e12d2020";
+
+"MONINFORMATION" = "MON是MSER孵化基金的代币。MR孵化基金总量1亿枚，占MR总量10%，用来扶持实体企业完成区块链改造。孵化基金50%的收益将会以季度为单位在二级市场回购MON并公开封存。MON通过持有MR挖矿获得，每1枚MR每天可获得0.025枚MON。\n\n发行总量：100,000,000,000\n\n流通总量：10,000,000,000\n\n官网：www.monster.one\n\n区块查询：https://etherscan.io/token/0xb0f94c2c19160dbc9ed73b4886938fe3e12d2020";

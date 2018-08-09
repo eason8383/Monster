@@ -31,6 +31,7 @@
     
     _height = -12;
     UIImageView *img1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"img1"]];
+    img1.tag = 1;
     [self setupImgs:img1];
     UIImageView *img2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"img2"]];
     [self setupImgs:img2];
@@ -57,6 +58,13 @@
 }
 
 - (void)setupImgs:(UIImageView*)img{
+//    if (img.tag == 1) {
+//        img.contentMode = UIViewContentModeScaleAspectFit;
+//    } else {
+//        img.contentMode = UIViewContentModeScaleAspectFill;
+//    }
+    img.contentMode = UIViewContentModeScaleAspectFit;
+    
     [img setFrame:CGRectMake(0, _height, kScreenWidth, img.height)];
 //    img set13918371413
     [_scrollView addSubview:img];

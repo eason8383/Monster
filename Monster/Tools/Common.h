@@ -9,7 +9,11 @@
 #ifndef Common_h
 #define Common_h
 
+#define CN @"zh-Hans"
+#define EN @"en"
 
+
+#define SHOWWELCOMEVIEW @"showWelcomeView"
 //登录
 #define EGUSER @"egUser"
 #define ERQUERY @"egQuery"
@@ -59,6 +63,8 @@
 #define MR_WITHDREWAPPLY @"withdrawApply"
 
 #define DOLOGOUT @"logout"
+
+#define CHANGELANGUAGE_RESET @"changeLanguage_reset"
 
 #define LOGINVERIFYWITHGOOGLEAUTH @"loginWithGoogleAuth"
 #define PASSTHEAUTH @"passTheAuth"

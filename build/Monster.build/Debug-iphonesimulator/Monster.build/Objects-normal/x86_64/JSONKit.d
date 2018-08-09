@@ -13,4 +13,5 @@ dependencies: /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/JSONKit.m \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIBezierPath+Draw.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/UIView+Extension.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/ZYWBaseChartView.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/View/ZYWChart/model/ZYWCandleModel.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Tools/LanguageTool.h

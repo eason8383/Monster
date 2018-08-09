@@ -5,6 +5,7 @@
 //  Created by CHEN HAO LI on 2017/9/14.
 //  Copyright © 2017年 Tigerrose. All rights reserved.
 //
+//
 
 #import "UIViewController+Alert.h"
 
@@ -32,7 +33,7 @@
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle: UIAlertControllerStyleAlert];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:LocalizeString(@"ALERT_CONFIRM") style:UIAlertActionStyleCancel handler:nil];
     [alertController addAction:cancelAction];
     
     [self presentViewController:alertController animated:YES completion:^(){}];
@@ -41,7 +42,7 @@
 - (void)justShowAlert:(NSString*)title message:(NSString*)message handler:(void (^ __nullable)(UIAlertAction *action))handler{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle: UIAlertControllerStyleAlert];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleCancel handler:handler];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:LocalizeString(@"ALERT_CONFIRM") style:UIAlertActionStyleCancel handler:handler];
     [alertController addAction:cancelAction];
     
     [self presentViewController:alertController animated:YES completion:^(){}];
@@ -51,7 +52,7 @@
     
     UIAlertController *alertActionSheet = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:LocalizeString(@"ALERT_CANCEL") style:UIAlertActionStyleCancel handler:nil];
     [alertActionSheet addAction:cancelAction];
     
     if (actionArray && actionArray.count > 0) {

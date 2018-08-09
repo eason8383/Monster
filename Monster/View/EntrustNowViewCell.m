@@ -17,6 +17,10 @@
 @property(nonatomic,strong)IBOutlet UILabel *timeLabel;
 @property(nonatomic,strong)IBOutlet UILabel *measureLabel;
 
+@property(nonatomic,strong)IBOutlet UILabel *priceLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *timeLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *measureLabel_title;
+
 @end
 
 @implementation EntrustNowViewCell
@@ -26,14 +30,23 @@
     self.cancelBtn.layer.borderColor = [UIColor whiteColor].CGColor;
     self.cancelBtn.layer.borderWidth = 1;
     self.cancelBtn.layer.cornerRadius = 8;
+    [self fillText];
+}
+
+- (void)fillText{
+
+    [_priceLabel_title setText:LocalizeString(@"ORDERPRICE")];
+    [_timeLabel_title setText:LocalizeString(@"TIME")];
+    [_measureLabel_title setText:LocalizeString(@"PRDERAMOUNT")];
+    [_cancelBtn setTitle:LocalizeString(@"ABORT") forState:UIControlStateNormal];
 }
 
 - (void)setContent:(UserOrderModel*)orderInfo{
     if ([orderInfo.buySell isEqualToString:@"B"]) {
-        [_buySaleLabel setText:@"买入"];
+        [_buySaleLabel setText:LocalizeString(@"BUY")];
         [_buySaleLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_HIGH]];
     } else {
-        [_buySaleLabel setText:@"卖出"];
+        [_buySaleLabel setText:LocalizeString(@"SALE")];
         [_buySaleLabel setTextColor:[UIColor colorWithHexString:MRCOLORHEX_LOW]];
     }
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

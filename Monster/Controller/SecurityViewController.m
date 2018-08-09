@@ -25,13 +25,23 @@
 @property(nonatomic,strong)IBOutlet UILabel *tideAssetLabel;
 @property(nonatomic,strong)IBOutlet UILabel *tideMailBoxLabel;
 
+@property(nonatomic,strong)IBOutlet UILabel *mobileLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *googleLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *assetLabel_title;
+@property(nonatomic,strong)IBOutlet UILabel *mailBoxLabel_title;
+
 @end
 
 @implementation SecurityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"安全认证";
+    self.title = LocalizeString(@"SECURYTY");
+    
+    [_mobileLabel_title setText:LocalizeString(@"BINDINGPHONE")];
+    [_googleLabel_title setText:LocalizeString(@"GOOGLEAUTH")];
+    [_assetLabel_title setText:LocalizeString(@"FUNDPSW")];
+    [_mailBoxLabel_title setText:LocalizeString(@"LINKYOUREMAIL")];
     
     [self initial];
 }
@@ -46,17 +56,25 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
     BOOL googleAuthIsBinding = [[NSUserDefaults standardUserDefaults]boolForKey:GOOGLE_AUTH_BINDING];
-    [_tideGoogleLabel setText:googleAuthIsBinding?@"已绑定":@"未绑定>"];
+    
+    NSString *binding = [NSString stringWithFormat:@"%@>",LocalizeString(@"BINDING")];
+    NSString *noBind = [NSString stringWithFormat:@"%@>",LocalizeString(@"BINDINYET")];
+    
+    [_tideGoogleLabel setText:googleAuthIsBinding?binding:noBind];
     if (googleAuthIsBinding) {
         _tideGoogleBtn.enabled = NO;
     }
     [_tideMobileLabel setText:[MRWebClient sharedInstance].userAccount.mobileNo];
 //    NSString *email = [[NSUserDefaults standardUserDefaults]objectForKey:EMAIL_BINDING];
     
+    [_tideAssetLabel setText:[NSString stringWithFormat:@"%@>",LocalizeString(@"FIX")]];
+    
     MRUserAccount *userAccount = [MRWebClient sharedInstance].userAccount;
     if (userAccount.userEmail.length > 0) {
         [_tideMailBoxLabel setText:userAccount.userEmail];
         _tideMailBoxBtn.enabled = NO; //绑定后不能更改
+    } else {
+        [_tideMailBoxLabel setText:[NSString stringWithFormat:@"%@>",LocalizeString(@"SETTINGS")]];
     }
 }
 

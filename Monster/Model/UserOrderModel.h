@@ -18,15 +18,15 @@
 @property(nonatomic,copy)NSString *orderStatus;
 @property(nonatomic,copy)NSString *userId;
 
-@property(nonatomic,assign)float dealQuantity;
-@property(nonatomic,assign)float dealAmount;
-@property(nonatomic,assign)float dealPrice;
+@property(nonatomic,assign)float dealQuantity;//5
+@property(nonatomic,assign)float dealAmount;//3
+@property(nonatomic,assign)float dealPrice;//4 ?
 @property(nonatomic,assign)long createTime;
 @property(nonatomic,assign)float leftQuantity;
-@property(nonatomic,assign)float orderQuantity;
+@property(nonatomic,assign)float orderQuantity;//2
 @property(nonatomic,assign)float feeRate;
 @property(nonatomic,assign)float orderVolume;
-@property(nonatomic,assign)double orderPrice;
+@property(nonatomic,assign)double orderPrice; //1
 
 
 + (instancetype)userOrderWithDict:(NSDictionary *)dict;

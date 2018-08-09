@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment version="4400" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,9 +13,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanViewController">
             <connections>
                 <outlet property="bottonView" destination="6aR-n4-zUs" id="PCf-rU-u5T"/>
-                <outlet property="flasherBtn" destination="gA9-V3-J1M" id="sVL-17-6eM"/>
-                <outlet property="flasherLabel" destination="c8L-wC-2Us" id="cBI-L1-gdw"/>
+                <outlet property="flasherLabel" destination="c8L-wC-2Us" id="JCb-wd-lEP"/>
                 <outlet property="picsBtn" destination="zRp-Qh-CoV" id="L1T-dW-hST"/>
+                <outlet property="picsLabel" destination="FAt-ue-Tjt" id="Vno-bX-T8Z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,9 +36,9 @@
                             <state key="normal" image="album"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相簿选取" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAt-ue-Tjt">
-                            <rect key="frame" x="76.5" y="72" width="56" height="12"/>
+                            <rect key="frame" x="54.5" y="72" width="100" height="12"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="56" id="Ghy-hc-gJK"/>
+                                <constraint firstAttribute="width" constant="100" id="Ghy-hc-gJK"/>
                                 <constraint firstAttribute="height" constant="12" id="oI7-yP-hLx"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -55,26 +55,26 @@
                             <color key="textColor" red="0.5568627451" green="0.59607843140000005" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gA9-V3-J1M">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xW-ig-Fuq">
                             <rect key="frame" x="269" y="28" width="16" height="28"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="16" id="8Up-pl-fqR"/>
-                                <constraint firstAttribute="height" constant="28" id="xoe-oa-4zc"/>
+                                <constraint firstAttribute="width" constant="16" id="6nR-x9-uxk"/>
+                                <constraint firstAttribute="height" constant="28" id="KiD-Pl-q23"/>
                             </constraints>
                             <state key="normal" image="lightCool"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="c8L-wC-2Us" firstAttribute="centerX" secondItem="8xW-ig-Fuq" secondAttribute="centerX" id="09H-xF-iHp"/>
                         <constraint firstAttribute="height" constant="100" id="EGo-1p-D91"/>
                         <constraint firstItem="FAt-ue-Tjt" firstAttribute="top" secondItem="zRp-Qh-CoV" secondAttribute="bottom" constant="19" id="FG4-a8-sL0"/>
-                        <constraint firstItem="gA9-V3-J1M" firstAttribute="centerY" secondItem="zRp-Qh-CoV" secondAttribute="centerY" id="H4Z-m4-bI8"/>
                         <constraint firstItem="zRp-Qh-CoV" firstAttribute="leading" secondItem="6aR-n4-zUs" secondAttribute="leading" constant="90" id="IZm-4P-Hno"/>
-                        <constraint firstAttribute="trailing" secondItem="gA9-V3-J1M" secondAttribute="trailing" constant="90" id="JZS-8q-XiW"/>
                         <constraint firstItem="FAt-ue-Tjt" firstAttribute="centerX" secondItem="zRp-Qh-CoV" secondAttribute="centerX" id="OUC-ml-NhG"/>
-                        <constraint firstItem="c8L-wC-2Us" firstAttribute="centerX" secondItem="gA9-V3-J1M" secondAttribute="centerX" id="Ofe-gC-W5A"/>
-                        <constraint firstItem="c8L-wC-2Us" firstAttribute="top" secondItem="gA9-V3-J1M" secondAttribute="bottom" constant="18" id="Ra8-wk-RQ4"/>
+                        <constraint firstItem="8xW-ig-Fuq" firstAttribute="centerY" secondItem="zRp-Qh-CoV" secondAttribute="centerY" id="UKT-bf-gMd"/>
+                        <constraint firstAttribute="trailing" secondItem="8xW-ig-Fuq" secondAttribute="trailing" constant="90" id="fKk-vP-RuT"/>
                         <constraint firstItem="zRp-Qh-CoV" firstAttribute="top" secondItem="6aR-n4-zUs" secondAttribute="top" constant="31" id="uJg-ry-aDD"/>
+                        <constraint firstItem="c8L-wC-2Us" firstAttribute="top" secondItem="8xW-ig-Fuq" secondAttribute="bottom" constant="18" id="uXL-Gk-VNe"/>
                     </constraints>
                 </view>
             </subviews>

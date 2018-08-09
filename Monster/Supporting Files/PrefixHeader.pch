@@ -22,6 +22,7 @@
 #import "ZYWBaseChartView.h"
 #import "ZYWCandleModel.h"
 #import "Masonry.h"
+#import "LanguageTool.h"
 
 #endif
 

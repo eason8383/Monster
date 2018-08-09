@@ -26,7 +26,6 @@
     [super awakeFromNib];
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HighLowLabelView" owner:self options:nil];
     _hlView = [nib objectAtIndex:0];
-//    [_hlView setValue:@"+22.2%" withHigh:HighLowType_High];
     [_highLowView addSubview:_hlView];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
@@ -43,11 +42,11 @@
     if (isnan(result)) {      //isnan为系统函数
         result = 0.0;
     }
-    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
-    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
+//    NSString *currencyStr = [[NSUserDefaults standardUserDefaults]objectForKey:DEFAULTCURRENCY];
+//    NSString *dollarSign = [currencyStr isEqualToString:CNY]?@"￥":@"$";
     
-    [_hlView setValue:[NSString stringWithFormat:@"%@%.2f",dollarSign,result] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
-    [_volumLabel  setText:[NSString stringWithFormat:@"成交量:%.4f",coinInfo.totalVolume]];
+    [_hlView setValue:[NSString stringWithFormat:@"%.2f%@",result,@"%"] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
+    [_volumLabel  setText:[NSString stringWithFormat:@"%@:%.4f",LocalizeString(@"MARKETAMOUNT"),coinInfo.totalVolume]];
 }
 
 - (NSString*)decimalMultiply:(NSString*)numStr1 with:(NSString*)numStr2{

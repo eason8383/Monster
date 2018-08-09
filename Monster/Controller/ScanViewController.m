@@ -18,6 +18,7 @@
 @property(nonatomic,strong)IBOutlet UIButton *picsBtn;
 @property(nonatomic,strong)IBOutlet UIButton *flasherBtn;
 @property(nonatomic,strong)IBOutlet UILabel *flasherLabel;
+@property(nonatomic,strong)IBOutlet UILabel *picsLabel;
 @property(nonatomic,strong)IBOutlet UIView *bottonView;
 @property(nonatomic,strong)UIImageView *scanImageView;
 
@@ -27,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad]; 
-    self.title = @"扫描二维码";
+    self.title = LocalizeString(@"QRCODESCAN");
     
     self.navigationController.navigationBar.translucent = NO;
     
@@ -42,7 +43,8 @@
     
     [self.view bringSubviewToFront:_bottonView];
 //    [self setupScanQRCode];
-    
+    [_picsLabel setText:LocalizeString(@"CHOSEFROMPICS")];
+    [_flasherLabel setText:LocalizeString(@"LIGHTOPEN")];
     [_flasherBtn setImage:[UIImage imageNamed:@"btn_flashlight"] forState:UIControlStateNormal];
     [_flasherBtn setImage:[UIImage imageNamed:@"btn_flashlight"] forState:UIControlStateSelected];
     [_flasherBtn addTarget:self action:@selector(light_buttonAct:) forControlEvents:UIControlEventTouchUpInside];
@@ -56,12 +58,17 @@
 - (void)light_buttonAct:(UIButton *)button {
     if (button.selected == NO) { // 点击打开照明灯
         
-        [_flasherLabel setText:@"关闭手电筒"];
+        [_flasherLabel setText:LocalizeString(@"LIGHTCLOSE")];
     } else { // 点击关闭照明灯
-        [_flasherLabel setText:@"打开手电筒"];
+        [_flasherLabel setText:LocalizeString(@"LIGHTOPEN")];
         
     }
     [_scanView light_buttonAction:button];
+    //        "QRCODESCAN" = "扫描二维码";
+    //        "CHOSEFROMPICS" = "相簿选取";
+    //        "LIGHTOPEN" = "打开手电筒";
+    //        "LIGHTCLOSE" = "关闭手电筒";
+
 }
 
 
@@ -120,7 +127,7 @@
             //         隐藏遮盖
             [[VWProgressHUD shareInstance] dismiss];
             
-            [self justShowAlert:@"此处不支持开启网页" message:@""];
+            [self justShowAlert:LocalizeString(@"NOTSUPPORT") message:@""];
 
         });
     } else {
@@ -171,8 +178,9 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:FILLWALLETADDRESS object:content];
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        [self justShowAlert:@"没有数据" message:@"此照片没有数据"];
+        [self justShowAlert:LocalizeString(@"NODATA") message:LocalizeString(@"NODATAFROMPICS")];
     }
+    
     //进行处理(音效、网址分析、页面跳转等)
     
 }

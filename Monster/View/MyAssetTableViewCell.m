@@ -12,6 +12,15 @@
 @property(nonatomic,strong)IBOutlet UILabel *myAssetLabel;
 @property(nonatomic,strong)IBOutlet UILabel *subAssetLabel;
 @property(nonatomic,strong)IBOutlet UILabel *titleLabel;
+
+@property(nonatomic,strong)IBOutlet UILabel *chargeLabel;
+@property(nonatomic,strong)IBOutlet UILabel *withdrawLabel;
+@property(nonatomic,strong)IBOutlet UILabel *recordLabel;
+@property(nonatomic,strong)IBOutlet UILabel *detailLabel;
+@property(nonatomic,strong)IBOutlet UILabel *pairLabel;
+@property(nonatomic,strong)IBOutlet UILabel *avaliLabel;
+@property(nonatomic,strong)IBOutlet UILabel *inOrderLabel;
+
 @property(nonatomic,strong)IBOutlet UIImageView *checkBox;
 @property(nonatomic,strong)IBOutlet UIView *backView;
 
@@ -29,7 +38,29 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self fillText];
+}
+
+- (void)fillText{
+    [_titleLabel setText:LocalizeString(@"MARKETABLEASSETS")];
+    [_chargeLabel setText:LocalizeString(@"CHARGE")];
+    [_withdrawLabel setText:LocalizeString(@"WITHDRAW")];
+    [_recordLabel setText:LocalizeString(@"MONEY_RECORD")];
+    [_detailLabel setText:LocalizeString(@"ASSETDETAIL")];
     
+    [_pairLabel setText:LocalizeString(@"PAIR")];
+    [_avaliLabel setText:LocalizeString(@"AVAILABLE")];
+    [_inOrderLabel setText:LocalizeString(@"INORDER")];
+
+//    "MYASSET" = "我的资产";
+//    "MARKETABLEASSETS" = "我的资产折合 (ETH)";
+//    "CHARGE" = "充值";
+//    "WITHDRAW" = "提币";
+//    "MONEY_RECORD" = "资金纪录";
+//    "ASSETDETAIL" = "资产明细";
+//    "PAIR" = "币种";
+//    "AVAILABLE" = "可用";
+//    "INORDER" = "冻结";
 }
 
 - (void)setContent:(NSDictionary *)info{

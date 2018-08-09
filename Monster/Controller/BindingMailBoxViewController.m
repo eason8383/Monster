@@ -17,6 +17,9 @@
 @property(nonatomic,strong)IBOutlet UIButton *mailVerify_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *confirm_Btn;
 
+@property(nonatomic,strong)IBOutlet UILabel *mailVerify_Label;
+@property(nonatomic,strong)IBOutlet UILabel *mailBox_Label;
+
 @property(nonatomic,strong)IdentityViewModel *idViewModel;
 
 @end
@@ -25,7 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"邮箱验证";
+    self.title = LocalizeString(@"MAILBIND");
+    
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
@@ -39,8 +43,17 @@
     _confirm_Btn.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.4].CGColor;
     _confirm_Btn.layer.borderWidth = 1;
     _confirm_Btn.layer.cornerRadius = 4;
-    
+    [self fillText];
     [self initial];
+}
+
+- (void)fillText{
+    [_mailBox_Label setText:LocalizeString(@"MAILBOX")];
+    [_mailBox_Field setPlaceholder:LocalizeString(@"MAILBOXCONFIRM")];
+    [_mailVerify_Label setText:LocalizeString(@"MAILVERIFY")];
+    [_mailVerify_Field setPlaceholder:LocalizeString(@"PLEASEENTERVERIFYCODE")];
+    [_confirm_Btn setTitle:LocalizeString(@"ALERT_SUBMIT") forState:UIControlStateNormal];
+    [_mailVerify_Btn setTitle:LocalizeString(@"GET_VERIFY_CODE") forState:UIControlStateNormal];
 }
 
 - (void)initial{
@@ -60,7 +73,7 @@
         [_idViewModel userEmailIdentity:_mailBox_Field.text verifyCode:_mailVerify_Field.text];
     } else {
         
-        [self justShowAlert:@"错误" message:@"请填入完整信息"];
+        [self justShowAlert:LocalizeString(@"ERROR") message:@"请填入完整信息"];
     }
 }
 
@@ -95,7 +108,7 @@
             
         });
     } else {
-        [self justShowAlert:@"信息不完整" message:@"请填入邮箱地址"];
+        [self justShowAlert:LocalizeString(@"IMCOMPLETE") message:@"请填入邮箱地址"];
     }
 }
 
@@ -105,12 +118,12 @@
     NSDictionary *dic = error.userInfo;
     NSDictionary *respCode = [dic objectForKey:@"respCode"];
     if ([[respCode objectForKey:@"code"]isEqualToString:@"00207"]) {
-        [self justShowAlert:@"登陆会话无效" message:@"请重新登录"];
+        [self justShowAlert:LocalizeString(@"LOGIN_SESSION_FAILE") message:LocalizeString(@"LOGIN_AGAIN")];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     } else {
         NSString *str = [dic objectForKey:@"respMessage"];
         NSArray *errorAry = [str componentsSeparatedByString:@","];
-        [self justShowAlert:@"错误信息" message:[errorAry objectAtIndex:0]];
+        [self justShowAlert:LocalizeString(@"ERROR") message:[errorAry objectAtIndex:0]];
     }
 }
 
@@ -121,14 +134,14 @@
         
         _mailVerify_Btn.userInteractionEnabled=YES;
         
-        [_mailVerify_Btn setTitle:@"重新获取" forState:UIControlStateNormal];
+        [_mailVerify_Btn setTitle:LocalizeString(@"RESEND_VERIFY_CODE") forState:UIControlStateNormal];
     } else {
         
         _mailVerify_Btn.userInteractionEnabled = NO;
         
         int i = [second intValue];
         
-        [_mailVerify_Btn setTitle:[NSString stringWithFormat:@"%is后获取",i] forState:UIControlStateNormal];
+        [_mailVerify_Btn setTitle:[NSString stringWithFormat:@"%is%@",i,LocalizeString(@"RESEND")] forState:UIControlStateNormal];
         
         [self performSelector:@selector(receiveCheckNumButton:)withObject:[NSNumber numberWithInt:i-1] afterDelay:1];
     }
