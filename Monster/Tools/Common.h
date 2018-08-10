@@ -12,7 +12,7 @@
 #define CN @"zh-Hans"
 #define EN @"en"
 
-
+#define ISNOWHIDEMYASSET @"hideMyAsset"
 #define SHOWWELCOMEVIEW @"showWelcomeView"
 //登录
 #define EGUSER @"egUser"
@@ -25,6 +25,7 @@
 
 #define MR_SMSVERIFYCODE @"sendSmsVerifyCode"
 #define MR_SMSLOGIN @"smsLogin"
+#define MR_PSWLOGIN @"passwordLogin"
 
 #define MR_QUERYCOINPAIR @"queryCoinPair"
 #define MR_QUERYKLINELASTBAR @"queryKlineLastBar"

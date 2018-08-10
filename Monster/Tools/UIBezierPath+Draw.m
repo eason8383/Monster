@@ -23,6 +23,7 @@
         {
             [path addLineToPoint:CGPointMake(obj.xPosition,obj.yPosition)];
         }
+        NSLog(@"obj.yPosition:%f",obj.yPosition);
     }];
     return path;
 }

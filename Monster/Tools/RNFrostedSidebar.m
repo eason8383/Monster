@@ -262,7 +262,7 @@ static RNFrostedSidebar *rn_frostedMenu;
         _isSingleSelect = NO;
         _contentView = [[SliderMenuView alloc] init];
         _contentView.clipsToBounds = NO;
-
+//        [_contentView setisHideMode:[[NSUserDefaults standardUserDefaults]objectForKey:@"ISNOWHIDEMYASSET"]];
         _width = 270;
         _animationDuration = 0.25f;
         _itemSize = CGSizeMake(_width/2, _width/2);
@@ -529,6 +529,7 @@ static RNFrostedSidebar *rn_frostedMenu;
     while (controller.presentedViewController != nil) {
         controller = controller.presentedViewController;
     }
+    [_contentView setisHideMode:[[NSUserDefaults standardUserDefaults]boolForKey:@"ISNOWHIDEMYASSET"]];
     [self showInViewController:controller animated:animated];
 }
 

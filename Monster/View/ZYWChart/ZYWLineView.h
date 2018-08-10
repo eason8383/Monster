@@ -26,10 +26,10 @@
 @property (nonatomic,strong) NSArray *dataArray;
 @property (nonatomic,strong) UIColor *fillColor;
 @property (nonatomic,assign) BOOL isFillColor;
+@property (nonatomic,assign) BOOL isReverFillColor;
 @property (nonatomic,assign) BOOL useAnimation;
 @property (nonatomic,assign) BOOL hasDraggableLine;
 @property (nonatomic,assign) BOOL lightEffect;
-
 
 - (void)stockFill;
 

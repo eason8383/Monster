@@ -18,6 +18,9 @@
 "ALERT_CONFIRM" = "OK";
 "ALERT_SUBMIT" = "Confirm";
 "ALERT_CANCEL" = "Cancel";
+"USEVERIFYCODELOGIN" = "Login with verify Code";
+"USEPSWLOGIN" = "Login with password";
+"PSWPLACEHOLDER" = "Please enter the password";
 
 "MOBILE_NUMBER" = "Please enter the cell phone number";
 "LOGIN_SESSION_FAILE" = "Login session has failed.";

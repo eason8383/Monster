@@ -24,15 +24,19 @@
 #import "CoinPairModel.h"
 #import "WelcomeView.h"
 
-//#import "JZNavigationExtension.h"
-@interface HomePageViewController () <RNFrostedSidebarDelegate,HomeModelDelegate>
+#define BLACKBG @"212025"
+#define PURPLEBG @"5E2DCD"
+
+@interface HomePageViewController () <RNFrostedSidebarDelegate,HomeModelDelegate,UIScrollViewDelegate>
 
 @property(nonatomic,strong)MarketViewController *mVC;
-@property(nonatomic,strong)UIView *alphaView;
+@property(nonatomic,strong)UIView *alphaView; //侧滑菜单出现时的半透明遮罩
 @property(nonatomic,strong)HomeViewModel *homeModel;
 @property(nonatomic,strong)WelcomeView *welView;
 
 @property(nonatomic,strong)NSTimer *updatTimer;
+
+@property(nonatomic,assign)float originOffset;
 
 @end
 
@@ -46,9 +50,6 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-
-//    NSLog(@"Previous visible view controller is %@", self.navigationController.jz_previousVisibleViewController);
-    
     [_homeModel getHomeInfo:100];
     self.navigationController.navigationBar.hidden = YES;
     BOOL needReloadShow = [[NSUserDefaults standardUserDefaults]boolForKey:RELOAD_AFTERSETTING];
@@ -65,13 +66,8 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     
-    
-    NSString *needShowWelcomeView = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWWELCOMEVIEW];
-    
-    //    if (![needShowWelcomeView isEqualToString:@"Showed"]) {
-    
-    
     [_welView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    _originOffset = self.tableView.contentOffset.y;
 
 }
 
@@ -81,14 +77,8 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     [_welView removeFromSuperview];
 }
 
-
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    if (self.navigationController.jz_operation == UINavigationControllerOperationPop) {
-//        NSLog(@"Controller will be poped.");
-//    } else if (self.navigationController.jz_operation == UINavigationControllerOperationPush) {
-//        NSLog(@"Controller will push to another.");
-//    }
     
     [_updatTimer invalidate];
     _updatTimer = nil;
@@ -101,12 +91,10 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     
     [[VWProgressHUD shareInstance]showLoading];
     
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"212025"]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:BLACKBG]];
     
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"WelcomeView" owner:self options:nil];
-    _welView = [nib objectAtIndex:0];
-    [self.view addSubview:_welView];
-    
+    //欢迎页面
+    [self caseShowWelcomePage];
 }
 
 - (void)initial{
@@ -121,6 +109,16 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     UISwipeGestureRecognizer *swipeLeftToRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     [self.view addGestureRecognizer:swipeLeftToRight];
     
+}
+
+- (void)caseShowWelcomePage{
+    NSString *needShowWelcomeView = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWWELCOMEVIEW];
+    
+    if (![needShowWelcomeView isEqualToString:@"Showed"]) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"WelcomeView" owner:self options:nil];
+        _welView = [nib objectAtIndex:0];
+        [self.view addSubview:_welView];
+    }
 }
 
 - (void)handleSwipe:(id)sender {
@@ -333,8 +331,16 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     [callout show];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y > _originOffset) {
+        [self.view setBackgroundColor:[UIColor colorWithHexString:BLACKBG]];
+    } else {
+        [self.view setBackgroundColor:[UIColor colorWithHexString:PURPLEBG]];
+    }
+}
+
 - (void)pushSome:(id)sender{
-    
+    //点击喇吧后动作
 }
 
 - (void)moreDetail:(id)sender{

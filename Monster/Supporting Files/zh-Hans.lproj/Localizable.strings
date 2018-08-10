@@ -20,7 +20,9 @@
 "ALERT_CONFIRM" = "确认";
 "ALERT_SUBMIT" = "提交";
 "ALERT_CANCEL" = "取消";
-
+"USEVERIFYCODELOGIN" = "使用验证码登录";
+"USEPSWLOGIN" = "使用密码登录";
+"PSWPLACEHOLDER" = "请输入密码";
 
 "MOBILE_NUMBER" = "电话号码";
 "LOGIN_SESSION_FAILE" = "登录会话无效";
@@ -179,7 +181,7 @@
 
 "IDVERIFYCATION" = "身份认证";
 "ID" = "身份认号";
-"ICPLACEHOLDER" = "请填写您的身分证号";
+"ICPLACEHOLDER" = "请填写您的身份证号";
 "UPLOADFORONT" = "请上传您的身份证人面像";
 "UPLOADBACK" = "请上传您的身份证国徽面";
 "UPLOADHANDID" = "请上传您的手持身份证";
@@ -189,7 +191,7 @@
 "COMMITSUCESS" = "您的信息已顺利提交 谢谢您";
 "PHOTOREPEATED" = "照片重复";
 "PICREPEATWARING" = "不能上传一样的图片";
-"PLEASEFILLID" = "请写入身分证号";
+"PLEASEFILLID" = "请写入身份证号";
 
 //security
 

@@ -35,7 +35,7 @@
         //
         title = [NSString stringWithFormat:@"  %@  ",title];//间隔
         
-        timeInterval = [self displayDurationForString:title];
+        timeInterval = [self displayDurationForString:title] + 5;
         
         self.backgroundColor = [UIColor clearColor];
         self.clipsToBounds = YES;

@@ -21,6 +21,11 @@
 @property(nonatomic,strong)IBOutlet UILabel *avaliLabel;
 @property(nonatomic,strong)IBOutlet UILabel *inOrderLabel;
 
+@property(nonatomic,strong)IBOutlet UILabel *bSecretLabel;
+@property(nonatomic,strong)IBOutlet UIImageView *eyeImg;
+@property(nonatomic,strong)IBOutlet UIButton *hideAssetBtn;
+@property(nonatomic,assign)BOOL isNowHideMyAsset;
+
 @property(nonatomic,strong)IBOutlet UIImageView *checkBox;
 @property(nonatomic,strong)IBOutlet UIView *backView;
 
@@ -38,6 +43,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    _isNowHideMyAsset = [[NSUserDefaults standardUserDefaults]boolForKey:@"ISNOWHIDEMYASSET"];
+    [self setisHideMode:_isNowHideMyAsset];
     [self fillText];
 }
 
@@ -82,6 +89,21 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)tapHideMyAsset:(UIButton*)sender{
+    
+    _isNowHideMyAsset = !_isNowHideMyAsset;
+    
+    [self setisHideMode:_isNowHideMyAsset];
+    [[NSUserDefaults standardUserDefaults]setBool:_isNowHideMyAsset forKey: @"ISNOWHIDEMYASSET"];
+}
+
+- (void)setisHideMode:(BOOL)isHide{
+    _myAssetLabel.hidden = isHide;
+    _subAssetLabel.hidden = isHide;
+    [_eyeImg setImage:[UIImage imageNamed:isHide?@"nodisplay":@"display"]];
+    _bSecretLabel.hidden = !isHide;
 }
 
 @end

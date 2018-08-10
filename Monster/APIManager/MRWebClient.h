@@ -23,6 +23,9 @@ typedef void(^loginCompleteBlock)(NSString*result);
 //获取到useraccount
 - (MRUserAccount*)getUserAccount;
 
+//md5加密
+- (NSString *)md5:(NSString *)input;
+
 //异步请求
 - (void)getResponse:(NSString*)controller action:(NSString*)action parametes:(NSString*)parameters isEncrypt:(BOOL)isEncrypt complete:(loginCompleteBlock)complete error:(void(^)(NSError*error))errorBlock;
 
@@ -32,7 +35,11 @@ typedef void(^loginCompleteBlock)(NSString*result);
 
 - (void)getVerifyCode:(NSString*)mobileNo sceneCode:(NSString*)sceneCode success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
+
+//使用验证码登入
 - (void)loginWithMobileNo:(NSString*)mobileNo verifyCode:(NSString*)verifyCode success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+//使用密码登入
+- (void)loginWithMobileNo:(NSString*)mobileNo password:(NSString*)password success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
 - (void)upLoadImageData:(NSData*)data success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 

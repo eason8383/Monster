@@ -17,7 +17,10 @@
                 <outlet property="login_btn" destination="Gzf-TU-84p" id="OUj-lH-1rQ"/>
                 <outlet property="mobileNo_field" destination="pS4-Ey-Bqs" id="qHl-ue-6pH"/>
                 <outlet property="mobileNo_udLine" destination="1bM-g9-NTU" id="KdZ-jQ-2M1"/>
-                <outlet property="verifyCode_field" destination="aDV-7O-JGU" id="zRz-Es-Ocu"/>
+                <outlet property="swithLoginWay_Label" destination="sz7-4J-u1F" id="7HW-wr-2bI"/>
+                <outlet property="swithLoginWay_btn" destination="WNL-bc-MBX" id="eK3-mi-sx9"/>
+                <outlet property="vBaseLine_distance" destination="FWr-ob-Eh6" id="4rf-78-IbM"/>
+                <outlet property="vCodeOrPsw_field" destination="aDV-7O-JGU" id="eRC-Xe-NOi"/>
                 <outlet property="verifyCode_udLine" destination="dFk-bg-d0t" id="ku3-uf-dke"/>
                 <outlet property="verify_btn" destination="cPW-RU-4jM" id="Wkn-F4-W0q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -140,10 +143,30 @@
                         <action selector="getVerifyCode:" destination="-1" eventType="touchUpInside" id="mms-FU-Hne"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用密码登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sz7-4J-u1F">
+                    <rect key="frame" x="36" y="641" width="200" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="92o-L2-9Ra"/>
+                        <constraint firstAttribute="width" constant="200" id="hxM-ie-nid"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WNL-bc-MBX">
+                    <rect key="frame" x="36" y="637" width="200" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ngd-pC-QMe"/>
+                    </constraints>
+                    <connections>
+                        <action selector="swithLoginWay:" destination="-1" eventType="touchUpInside" id="SsJ-pZ-TWp"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="kzv-RV-I5M" secondAttribute="trailing" constant="-51" id="3F5-Fa-ngJ"/>
+                <constraint firstItem="WNL-bc-MBX" firstAttribute="trailing" secondItem="sz7-4J-u1F" secondAttribute="trailing" id="4Ih-oB-BRk"/>
                 <constraint firstItem="ieN-FP-lgf" firstAttribute="leading" secondItem="Nct-iR-s70" secondAttribute="leading" id="5aY-CE-wrj"/>
                 <constraint firstItem="1bM-g9-NTU" firstAttribute="top" secondItem="pS4-Ey-Bqs" secondAttribute="bottom" constant="6" id="5xU-mF-R1L"/>
                 <constraint firstItem="ieN-FP-lgf" firstAttribute="top" secondItem="Nct-iR-s70" secondAttribute="bottom" constant="7" id="75L-0h-VzP"/>
@@ -151,6 +174,7 @@
                 <constraint firstItem="Gzf-TU-84p" firstAttribute="leading" secondItem="aDV-7O-JGU" secondAttribute="leading" id="CgJ-mK-6He"/>
                 <constraint firstItem="Gzf-TU-84p" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="CyO-yx-r7k"/>
                 <constraint firstItem="cPW-RU-4jM" firstAttribute="leading" secondItem="dFk-bg-d0t" secondAttribute="trailing" constant="25" id="FWr-ob-Eh6"/>
+                <constraint firstItem="WNL-bc-MBX" firstAttribute="leading" secondItem="sz7-4J-u1F" secondAttribute="leading" id="JJ8-cS-5xs"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="top" secondItem="TYQ-94-a2h" secondAttribute="top" constant="44" id="Jka-eo-HXW"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="TYQ-94-a2h" secondAttribute="bottom" constant="-34" id="Pxq-7n-pfT"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Gzf-TU-84p" secondAttribute="bottom" constant="58" id="Rik-7o-TdH"/>
@@ -164,6 +188,9 @@
                 <constraint firstItem="dFk-bg-d0t" firstAttribute="top" secondItem="aDV-7O-JGU" secondAttribute="bottom" constant="6" id="Znn-eB-KsY"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="top" secondItem="kzv-RV-I5M" secondAttribute="top" constant="44" id="cpj-j7-FXA"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="TYQ-94-a2h" secondAttribute="trailing" id="eSW-tR-ER6"/>
+                <constraint firstItem="sz7-4J-u1F" firstAttribute="leading" secondItem="aDV-7O-JGU" secondAttribute="leading" id="gfA-cb-BBQ"/>
+                <constraint firstItem="WNL-bc-MBX" firstAttribute="centerY" secondItem="sz7-4J-u1F" secondAttribute="centerY" id="idx-AH-ZLN"/>
+                <constraint firstItem="sz7-4J-u1F" firstAttribute="top" secondItem="dFk-bg-d0t" secondAttribute="bottom" constant="10" id="mq6-6f-Bgi"/>
                 <constraint firstItem="VnL-o3-qA3" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="19" id="n5a-zN-adp"/>
                 <constraint firstItem="cPW-RU-4jM" firstAttribute="centerY" secondItem="aDV-7O-JGU" secondAttribute="centerY" id="rTb-sb-rLQ"/>
                 <constraint firstItem="Nct-iR-s70" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="36" id="rYM-Y6-iIh"/>

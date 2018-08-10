@@ -9,6 +9,7 @@
 #import "MRWebClient.h"
 #import "AppDelegate.h"
 #import "MRUserAccount.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @interface MRWebClient()
 
@@ -94,21 +95,48 @@ static NSString *sessionId;
             
             self.userAccount = [MRUserAccount accountWithDict:dic];
             self.userAccount.mobileNo = mobileNo;
-            sessionId = self.userAccount.sessionId;
             
-            //save for auto login
-            [[NSUserDefaults standardUserDefaults]setObject:sessionId forKey:@"sessionId"];
+            [self dealLoginInfoAfterSuccess:dic];
+
+            successBlock(dic);
+        }
+        
+    } error:^(NSError *error) {
+        if (error) {
+            failureBlock(error);
+        }
+    }];
+}
+
+- (void)loginWithMobileNo:(NSString*)mobileNo password:(NSString*)password success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
+    
+    NSString *md5Psw = [self md5:password];
+    
+    NSDictionary *parameters = @{
+                                 @"version":@"1.0",
+                                 @"source":@"99",
+                                 @"mobileNo":mobileNo,
+                                 @"loginPassword":md5Psw
+                                 };
+    
+    NSString *jsonParameter = [parameters JSONString];
+    
+    [self getResponse:MR_PSWLOGIN action:EGUSER parametes:jsonParameter isEncrypt:NO complete:^(NSString *result) {
+        
+        NSDictionary *dic = [self dictionaryWithJsonString:result];
+        
+        if ([[dic objectForKey:@"ErrorCode"] intValue] != 0){
+            NSError *error = [NSError errorWithDomain:@"Get model data error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
             
-            NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.userAccount];
-            [[NSUserDefaults standardUserDefaults]setObject:userData forKey:@"userAccount"];
+            failureBlock(error);
             
-            //save user status
-            [[NSUserDefaults standardUserDefaults]setObject:[dic objectForKey:@"hasGoogleAuth"] forKey:GOOGLE_AUTH_BINDING];
-            [[NSUserDefaults standardUserDefaults]setObject:[dic objectForKey:@"hasTradePassword"] forKey:TRADEPASSWORD];
+        } else {
             
-#pragma mark
-#pragma mark - 只保存用户信息
-            [self saveUserAccount:self.userAccount];
+            self.userAccount = [MRUserAccount accountWithDict:dic];
+            self.userAccount.mobileNo = mobileNo;
+            
+            [self dealLoginInfoAfterSuccess:dic];
+            
             successBlock(dic);
         }
         
@@ -121,6 +149,24 @@ static NSString *sessionId;
 
 #pragma mark
 #pragma mark - 保存对象
+
+
+- (void)dealLoginInfoAfterSuccess:(NSDictionary*)dic{
+    
+    sessionId = self.userAccount.sessionId;
+    //save for auto login
+    [[NSUserDefaults standardUserDefaults]setObject:sessionId forKey:@"sessionId"];
+    
+    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.userAccount];
+    [[NSUserDefaults standardUserDefaults]setObject:userData forKey:@"userAccount"];
+    
+    //save user status
+    [[NSUserDefaults standardUserDefaults]setObject:[dic objectForKey:@"hasGoogleAuth"] forKey:GOOGLE_AUTH_BINDING];
+    [[NSUserDefaults standardUserDefaults]setObject:[dic objectForKey:@"hasTradePassword"] forKey:TRADEPASSWORD];
+#pragma mark
+#pragma mark - 只保存用户信息
+    [self saveUserAccount:self.userAccount];
+}
 
 - (void)saveUserAccount:(MRUserAccount*)userAccount{
     
@@ -355,42 +401,19 @@ static NSString *sessionId;
     }];
     [dataTask resume];
     
+}
+
+- (NSString *)md5:(NSString *)input {
+    const char *cStr = [input UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
     
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
     
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    //发起网络请求
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
     
-//    [session uploadTaskWithRequest:(NSURLRequest *)request fromFile:(NSURL *)fileURL completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler
-//    NSURL *fileURL = [NSURL fileURLWithPath:path isDirectory:NO];
-//    [[session uploadTaskWithRequest:request fromFile:path completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//
-//        NSHTTPURLResponse *res = (NSHTTPURLResponse *)response;
-//        if (!error) {
-//            if ([res statusCode] == 401) {
-//                NSInteger code = [res statusCode];
-//                NSError *error = [NSError errorWithDomain:[NSString stringWithFormat:@"%ld", (long)code] code:401 userInfo:nil];
-//                errorBlock(error);
-//                [session invalidateAndCancel];
-//            }else {
-//                NSString* dataStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//
-//                //                if (isEncrypt) {
-//                //                    dataStr = [AESCipher decryptAES:dataStr key:KEY iv:IV];
-//                //                } else {
-//                //                    dataStr = [dataStr stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
-//                //                }
-//
-//                if (complete) {
-//                    complete(dataStr);
-//                    [session invalidateAndCancel];
-//                }
-//            }
-//        } else {
-//            errorBlock(error);
-//            [session invalidateAndCancel];
-//        }
-//    }]resume];
-    
+    return  output;
 }
 
 - (NSMutableURLRequest *)requestWithURL:(NSURL *)url andFilenName:(NSString *)fileName andLocalFilePath:(NSString *)localFilePath{

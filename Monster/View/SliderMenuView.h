@@ -26,5 +26,7 @@
 
 @property(nonatomic,strong)IBOutlet UILabel *nowSession;
 
+- (void)setisHideMode:(BOOL)isHide;
+
 
 @end

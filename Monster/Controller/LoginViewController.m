@@ -17,13 +17,17 @@
 @interface LoginViewController () <UITextFieldDelegate,UIGestureRecognizerDelegate>
 
 @property(nonatomic,strong)IBOutlet UITextField *mobileNo_field;
-@property(nonatomic,strong)IBOutlet UITextField *verifyCode_field;
+@property(nonatomic,strong)IBOutlet UITextField *vCodeOrPsw_field;
 @property(nonatomic,strong)IBOutlet UIButton *verify_btn;
 @property(nonatomic,strong)IBOutlet UIButton *login_btn;
 
 @property(nonatomic,strong)IBOutlet UIButton *area_btn;
 @property(nonatomic,strong)IBOutlet UIView *mobileNo_udLine;
 @property(nonatomic,strong)IBOutlet UIView *verifyCode_udLine;
+
+@property(nonatomic,strong)IBOutlet UILabel *swithLoginWay_Label;
+@property(nonatomic,strong)IBOutlet UIButton *swithLoginWay_btn;
+@property(nonatomic,strong)IBOutlet NSLayoutConstraint *vBaseLine_distance;
 @property(nonatomic,strong)IBOutlet NSLayoutConstraint *bottom_distance;
 
 @property(nonatomic,strong)IBOutlet UILabel *welComeLabel;
@@ -56,9 +60,14 @@
 
 - (void)fillText{
 //    [_welComeLabel setText:NSLocalizedString(@"WELCOME_TITLE", comment:@"")];
+//    "USEVERIFYCODELOGIN" = "使用验证码登录";
+//    "USEPSWLOGIN" = "使用密码登录";
+    
+    
+    [self.swithLoginWay_Label setText:self.verify_btn.hidden?LocalizeString(@"USEVERIFYCODELOGIN"):LocalizeString(@"USEPSWLOGIN")];
     [_welComeLabel setText:LocalizeString(@"WELCOME_TITLE")];
     [_mobileNo_field setPlaceholder:LocalizeString(@"MOBILE_NUMBER")];
-    [_verifyCode_field setPlaceholder:LocalizeString(@"SMS_VERIFY_CODE")];
+    [_vCodeOrPsw_field setPlaceholder:_verify_btn.hidden?LocalizeString(@"PSWPLACEHOLDER"):LocalizeString(@"SMS_VERIFY_CODE")];
     [_verify_btn setTitle:LocalizeString(@"GET_VERIFY_CODE") forState:UIControlStateNormal];
     [_login_btn setTitle:LocalizeString(@"LOGIN") forState:UIControlStateNormal];
 }
@@ -120,10 +129,10 @@
 
 - (void)verifyCodeGetResponder:(BOOL)isBecomeRp{
     
-    _verifyCode_field.alpha = isBecomeRp?1:0.6;
+    _vCodeOrPsw_field.alpha = isBecomeRp?1:0.6;
     _verifyCode_udLine.alpha = isBecomeRp?1:0.6;
     _verify_btn.alpha = isBecomeRp?1:0.6;
-    [_verifyCode_field setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_vCodeOrPsw_field setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
 }
 
 - (void)isLoginBtnReadyToGo:(BOOL)isGoodToGo{
@@ -172,7 +181,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     if (textField.tag == 11) {
         [_mobileNo_field resignFirstResponder];
-        [_verifyCode_field becomeFirstResponder];
+        [_vCodeOrPsw_field becomeFirstResponder];
     } else {
         if (_login_btn.enabled) {
             [self doLogin:nil];
@@ -186,7 +195,7 @@
     NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
     [textField setText:text];
     
-    if (_mobileNo_field.text.length > 0 && _verifyCode_field.text.length > 0) {
+    if (_mobileNo_field.text.length > 0 && _vCodeOrPsw_field.text.length > 0) {
         [self isLoginBtnReadyToGo:YES];
     } else {
         [self isLoginBtnReadyToGo:NO];
@@ -197,13 +206,13 @@
 
 - (void)firstResponder:(id)sender{
     [_mobileNo_field resignFirstResponder];
-    [_verifyCode_field resignFirstResponder];
+    [_vCodeOrPsw_field resignFirstResponder];
     [self mobileNoGetResponder:NO];
     [self verifyCodeGetResponder:NO];
 }
 
 - (IBAction)getVerifyCode:(id)sender{
-    [_verifyCode_field becomeFirstResponder];
+    [_vCodeOrPsw_field becomeFirstResponder];
 //    NSString *mobNo = _mobileNo_field.text;
     
     NSString *mobNo = [NSString stringWithFormat:@"%@%@",_area_btn.titleLabel.text,_mobileNo_field.text];
@@ -241,62 +250,63 @@
 }
 
 - (IBAction)doLogin:(id)sender{
-//    NSString *mobNo = _mobileNo_field.text;
+
     NSString *mobNo = [NSString stringWithFormat:@"%@%@",_area_btn.titleLabel.text,_mobileNo_field.text];
-    NSString *vrCode = _verifyCode_field.text;
+    NSString *vrcOrPswStr = _vCodeOrPsw_field.text;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        [[MRWebClient sharedInstance]loginWithMobileNo:mobNo verifyCode:vrCode success:^(id response) {
-            
-            MRUserAccount *userInfo = [MRWebClient sharedInstance].userAccount;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                if (userInfo.success) {
-                    
-                    //通知appDelegate登入成功
-//                    BOOL isGoogleBinding = [[NSUserDefaults standardUserDefaults]boolForKey:GOOGLE_AUTH_BINDING];
-//                    if (isGoogleBinding) {
-//                        GoogleAuthVerifyVC *gVc = [[GoogleAuthVerifyVC alloc]initWithNibName:@"GoogleAuthVerifyVC" bundle:nil];
-////                        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:gVc];
-//                        [self presentViewController:gVc animated:YES completion:nil];
-//                    } else {
-                        [self entringMainPage];
-//                    }
-                    
-                } else {
-                    
-                    [self justShowAlert:@"" message:userInfo.respMessage];
-                }
-            });
-            NSLog(@"response:%@",response);
-            
-        } failure:^(NSError *error) {
-            //登录失败
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self justShowAlert:@"" message:[error.userInfo objectForKey:@"ErrorMsg"]];
-            });
-        }];
-        
+        if (self.verify_btn.hidden) {
+            [self doLogonWithPsw:mobNo password:vrcOrPswStr];
+        } else {
+            [self doLogonWithVcode:mobNo verifyCode:vrcOrPswStr];
+        }
     });
-    
+}
+
+- (void)doLogonWithVcode:(NSString*)mobileNo verifyCode:(NSString*)verifyCode{
+    [[MRWebClient sharedInstance]loginWithMobileNo:mobileNo verifyCode:verifyCode success:^(id response) {
+        
+        MRUserAccount *userInfo = [MRWebClient sharedInstance].userAccount;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (userInfo.success) {
+                [self entringMainPage];
+            } else {
+                [self justShowAlert:@"" message:userInfo.respMessage];
+            }
+        });
+        NSLog(@"response:%@",response);
+        
+    } failure:^(NSError *error) {
+        //登录失败
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self justShowAlert:@"" message:[error.userInfo objectForKey:@"ErrorMsg"]];
+        });
+    }];
+}
+
+- (void)doLogonWithPsw:(NSString*)mobileNo password:(NSString*)psw{
+    [[MRWebClient sharedInstance]loginWithMobileNo:mobileNo password:psw success:^(id response) {
+        
+        MRUserAccount *userInfo = [MRWebClient sharedInstance].userAccount;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (userInfo.success) {
+                [self entringMainPage];
+            } else {
+                [self justShowAlert:@"" message:userInfo.respMessage];
+            }
+        });
+        NSLog(@"response:%@",response);
+        
+    } failure:^(NSError *error) {
+        //登录失败
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self justShowAlert:@"" message:[error.userInfo objectForKey:@"ErrorMsg"]];
+        });
+    }];
 }
 
 - (void)entringMainPage{
-//    [MRWebClient sharedInstance].userAccount =
-//    self.userAccount = [MRUserAccount accountWithDict:dic];
-//    self.userAccount.mobileNo = mobileNo;
-//    sessionId = self.userAccount.sessionId;
-//
-//    //save for auto login
-//    [[NSUserDefaults standardUserDefaults]setObject:sessionId forKey:@"sessionId"];
-//
-//    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.userAccount];
-//    [[NSUserDefaults standardUserDefaults]setObject:userData forKey:@"userAccount"];
-//#pragma mark
-//#pragma mark - 只保存用户信息
-//    [self saveUserAccount:self.userAccount];
-    
     MRUserAccount *userInfo = [MRWebClient sharedInstance].userAccount;
     self.loginHandler(userInfo.sessionId);
 }
@@ -335,6 +345,29 @@
         }];
 
         [self showActionSheet:@"" message:@"" withActions:@[usAction,chinaAction]];
+}
+
+- (IBAction)swithLoginWay:(id)sender{
+    
+    _vBaseLine_distance.constant = (_vBaseLine_distance.constant == 25)?-85:25;
+    
+    [UIView animateWithDuration:0.6
+                          delay:0.1
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         if (self.vBaseLine_distance.constant != 25) {
+                             self.verify_btn.hidden = YES;
+                         }
+                         [self.view layoutSubviews];
+                         
+                     }
+                     completion:^(BOOL finished) {
+                         if (self.vBaseLine_distance.constant == 25) {
+                             self.verify_btn.hidden = NO;
+                         }
+                         [self.vCodeOrPsw_field setPlaceholder:self.verify_btn.hidden?LocalizeString(@"PSWPLACEHOLDER"):LocalizeString(@"SMS_VERIFY_CODE")];
+                         [self.swithLoginWay_Label setText:self.verify_btn.hidden?LocalizeString(@"USEVERIFYCODELOGIN"):LocalizeString(@"USEPSWLOGIN")];
+                     }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{

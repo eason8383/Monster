@@ -20,7 +20,11 @@
 @property(nonatomic,strong)IBOutlet UILabel *feedbackLabel;
 @property(nonatomic,strong)IBOutlet UILabel *settingLabel;
 
-
+@property(nonatomic,strong)IBOutlet UILabel *bSecretLabel;
+@property(nonatomic,strong)IBOutlet UILabel *sSecretLabel;
+@property(nonatomic,strong)IBOutlet UIImageView *eyeImg;
+@property(nonatomic,strong)IBOutlet UIButton *hideAssetBtn;
+@property(nonatomic,assign)BOOL isNowHideMyAsset;
 
 @end
 
@@ -28,6 +32,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    _isNowHideMyAsset = [[NSUserDefaults standardUserDefaults]boolForKey:@"ISNOWHIDEMYASSET"];
+    [self setisHideMode:_isNowHideMyAsset];
     [self fillText];
 }
 
@@ -49,6 +55,23 @@
     //    "ABOUTUS" = "关于我们";
     //    "FEEDBACK" = "问题反馈";
     //    "SETTINGS" = "设置";
+}
+
+
+- (IBAction)tapHideMyAsset:(UIButton*)sender{
+    
+    _isNowHideMyAsset = !_isNowHideMyAsset;
+    
+    [self setisHideMode:_isNowHideMyAsset];
+    [[NSUserDefaults standardUserDefaults]setBool:_isNowHideMyAsset forKey: @"ISNOWHIDEMYASSET"];
+}
+
+- (void)setisHideMode:(BOOL)isHide{
+    _asset_Label.hidden =  isHide;
+    _subAsset_Label.hidden = isHide;
+    [_eyeImg setImage:[UIImage imageNamed:isHide?@"nodisplay":@"display"]];
+    _bSecretLabel.hidden = !isHide;
+    _sSecretLabel.hidden = !isHide;
 }
 
 @end

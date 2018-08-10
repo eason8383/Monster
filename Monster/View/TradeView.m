@@ -66,6 +66,8 @@
 @property(nonatomic,strong)IBOutlet MRButton *quickDividBtn4;
 @property(nonatomic,strong)IBOutlet MRButton *quickDividBtn5;
 
+@property(nonatomic,strong)IBOutlet UIImageView *down5Img;
+
 @property(nonatomic,strong)NSArray *userCoinAry;
 
 @property UITapGestureRecognizer *tapRecognizer;
@@ -283,15 +285,15 @@
 //    _titleDownBtn.transform = transform;
 //    [UIView commitAnimations];
     
-    self.titleDownBtn.transform = CGAffineTransformMakeRotation(180 *M_PI / 180.0);
-    CGAffineTransform transform = self.titleDownBtn.transform;
+    self.down5Img.transform = CGAffineTransformMakeRotation(180 *M_PI / 180.0);
+    CGAffineTransform transform = self.down5Img.transform;
     transform = CGAffineTransformScale(transform, 1,1);
     
     [UIView animateWithDuration:1
                           delay:0.1
                         options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
                      animations:^{
-                         self.titleDownBtn.transform = transform;
+                         self.down5Img.transform = transform;
                          [self layoutIfNeeded];
                          
                      }
@@ -305,15 +307,15 @@
 //    [UIView beginAnimations:nil context:nil];
 //    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 //    [UIView setAnimationDuration:0.5]; //动画时长
-    _titleDownBtn.transform = CGAffineTransformMakeRotation(0*M_PI/180);
-    CGAffineTransform transform = _titleDownBtn.transform;
+    self.down5Img.transform = CGAffineTransformMakeRotation(0*M_PI/180);
+    CGAffineTransform transform = self.down5Img.transform;
     transform = CGAffineTransformScale(transform, 1,1);
     
     [UIView animateWithDuration:1
                           delay:0.1
                         options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
                      animations:^{
-                         self.titleDownBtn.transform = transform;
+                         self.down5Img.transform = transform;
                          [self layoutIfNeeded];
                          
                      }
@@ -393,7 +395,7 @@
     if (isnan(result)) {      //isnan为系统函数
         result = 0.0;
     }
-//    [_stepperVolumField setText:[NSString stringWithFormat:@"数量(%@)",coinInfo.mainCoinId]];
+
     [_hlView setValue:[NSString stringWithFormat:@"%@%.2f%@",isGoingHigher?@"+":@"",result,@"%"] withHigh:isGoingHigher?HighLowType_High:HighLowType_Low];
     
     if (self.isBuyMode) {

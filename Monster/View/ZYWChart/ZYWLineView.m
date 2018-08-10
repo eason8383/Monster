@@ -74,11 +74,18 @@
     
     [self.layer addSublayer:self.lineChartLayer];
  
-    if (_isFillColor)
+    if (_isFillColor || _isReverFillColor)
     {
         ZYWLineModel *lastPoint = _modelPostionArray.lastObject;
-        [path addLineToPoint:CGPointMake(lastPoint.xPosition,self.height - self.topMargin)];
-        [path addLineToPoint:CGPointMake(self.leftMargin, self.height - self.topMargin)];
+        
+        if (_isReverFillColor) {
+            [path addLineToPoint:CGPointMake(lastPoint.xPosition,self.topMargin - self.height)];
+            [path addLineToPoint:CGPointMake(self.leftMargin, self.topMargin - self.height)];
+        } else {
+            [path addLineToPoint:CGPointMake(lastPoint.xPosition,self.height - self.topMargin)];
+            [path addLineToPoint:CGPointMake(self.leftMargin, self.height - self.topMargin)];
+        }
+        
         path.lineWidth = 0;
         [_fillColor setFill];
         [path fill];
@@ -112,7 +119,11 @@
         CoinPairModel *coinPair = self.dataArray[idx];
         CGFloat value = coinPair.endPrice;
         CGFloat xPostion = this.lineSpace*idx + this.leftMargin;
-        CGFloat yPostion = (this.maxY - value)*this.scaleY + this.topMargin;
+        
+        CGFloat scale = [self decimalCalculate:(this.maxY - value) with:this.scaleY withSign:@"*" scale:8];
+        CGFloat yPostion = scale + this.topMargin;
+        
+//        CGFloat yPostion = (this.maxY - value)*this.scaleY + this.topMargin;
 //        NSLog(@"%.8f",coinPair.endPrice);
         ZYWLineModel *lineModel = [ZYWLineModel initPositon:xPostion yPosition:yPostion barTime:coinPair.barTimeLong price:coinPair.endPrice color:this.lineColor];
         
@@ -133,9 +144,14 @@
     }
     NSNumber *min  = [ary valueForKeyPath:@"@min.floatValue"];
     NSNumber *max = [ary valueForKeyPath:@"@max.floatValue"];
-    self.maxY = [max floatValue] * 1.1;
-    self.minY  = [min floatValue] * 0.9;
-    self.scaleY = (self.height - self.topMargin - self.bottomMargin)/(self.maxY-self.minY);
+    self.maxY = [max floatValue] * 1.2;
+    self.minY  = [min floatValue] * 0.8;
+    
+//    self.maxY = [max floatValue];
+//    self.minY  = [min floatValue];
+//    self.scaleY = (self.height - self.topMargin - self.bottomMargin)/(self.maxY-self.minY);
+    
+    self.scaleY = [self decimalCalculate:(self.height - self.topMargin - self.bottomMargin) with:(self.maxY-self.minY) withSign:@"/" scale:8];
 }
 
 - (void)draw
@@ -175,8 +191,6 @@
         [_poLine setFrame:CGRectMake(current.x - 22, -30, 44, self.frame.size.height - 80)];
     }
     
-    
-    
     [self addSubview:_poLine];
     
     int index = (current.x - self.leftMargin)/self.lineSpace;
@@ -186,8 +200,8 @@
         [self.delegate returnPrice:lineModel.endPrice];
     }
     
-    NSLog(@"bounds:%@ \n nowPoint:%@",NSStringFromCGRect(self.bounds),NSStringFromCGPoint(current));
-    NSLog(@"poLine.frame %@ \n %@",NSStringFromCGRect(_poLine.frame),NSStringFromCGPoint(current));
+//    NSLog(@"bounds:%@ \n nowPoint:%@",NSStringFromCGRect(self.bounds),NSStringFromCGPoint(current));
+//    NSLog(@"poLine.frame %@ \n %@",NSStringFromCGRect(_poLine.frame),NSStringFromCGPoint(current));
 }
 
 - (NSString*)converTimeFormat:(long)barTime{
@@ -204,7 +218,7 @@
 // 触摸结束
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.delegate touchesEnd];
-    NSLog(@"RedView:touchesEnded");
+//    NSLog(@"RedView:touchesEnded");
     [_poLine removeFromSuperview];
 }
 
@@ -238,6 +252,43 @@
     }
     [self.delegate dragingWithDuration:5/offset.x];
     
+}
+
+
+- (CGFloat)decimalCalculate:(CGFloat)fnum1 with:(CGFloat)fnum2 withSign:(NSString*)sign scale:(short)scale{
+    
+    NSString *numStr1 = [NSString stringWithFormat:@"%g",fnum1];
+    NSString *numStr2 = [NSString stringWithFormat:@"%g",fnum2];
+    
+    NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:numStr1];
+    NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:numStr2];
+    
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
+                                       decimalNumberHandlerWithRoundingMode:NSRoundUp
+                                       scale:scale
+                                       raiseOnExactness:NO
+                                       raiseOnOverflow:NO
+                                       raiseOnUnderflow:NO
+                                       raiseOnDivideByZero:NO];
+    NSDecimalNumber *result;
+    if ([sign isEqualToString:@"+"]) {
+        result = [num1 decimalNumberByAdding:num2 withBehavior:roundUp];
+    } else if([sign isEqualToString:@"-"]) {
+        result = [num1 decimalNumberBySubtracting:num2 withBehavior:roundUp];
+    } else if([sign isEqualToString:@"*"]) {
+        result = [num1 decimalNumberByMultiplyingBy:num2 withBehavior:roundUp];
+    } else if([sign isEqualToString:@"/"]) {
+        result = [num1 decimalNumberByDividingBy:num2 withBehavior:roundUp];
+    }
+    
+    NSString *resultStr;
+    if ([[result stringValue] isEqual:@"NaN"]) {
+        resultStr = @"0";
+    } else {
+        resultStr = [result stringValue];
+    }
+    
+    return [resultStr floatValue];
 }
 
 @end
