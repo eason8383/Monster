@@ -43,7 +43,7 @@
     [super awakeFromNib];
     
     [_upDownLabel setText:@"+0.00%"];
-//    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     _backView.layer.borderWidth = 1;
     _backView.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.2].CGColor;

@@ -73,6 +73,7 @@
 "MYORDER" = "Order";
 "IDVERIFICATIOM" = "ID Verification";
 "SECURUTY" = "Security";
+"BENEFIT" = "Benefit";
 "ABOUTUS" = "About us";
 "FEEDBACK" = "Feedback";
 "SETTINGS" = "Settings";
@@ -205,6 +206,7 @@
 "BINDINYET" = "Set up";
 "BINDING" = "Binding";
 "FIX" = "Set up";
+"SETUPPSW" = "Setup password";
 
 //Google Auth
 "BINDGOOGLEAUTH" = "Bind Google authentication";
@@ -218,14 +220,20 @@
 //set fund psw
 
 "SETFUNDPSW" = "Setting Fund Password";
-"CONFIRMPASSWORD" = "Confirm Password";
+"CONFIRMFUNDPASSWORD" = "Confirm Password";
 "SMSVERIFYCODE" = "SMS Verification Code";
 
 "FUNDPSWPLACEHOLDER" = "6-12 combination of numbers and letters";
 "FUNDCONFIRMPLACEHOLDER" = "Please enter the fund password again";
 "CONFIRMPSWISNOTTHESAME" = "There're different between password and confirm password";
 
-"UPDATEPSWSUCCESS" = "update password success";
+"UPDATEPSWSUCCESS" = "update fund password success";
+
+//set psw
+
+"CONFIRMPASSWORD" = "confirm password";
+"CONFIRMPSWPLACEHOLDER" = "Please enter the password again";
+"SETUPPSWSUCCESS" = "setup password success";
 
 //set email
 

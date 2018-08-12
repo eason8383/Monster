@@ -20,4 +20,5 @@ dependencies: \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/BindingMobileViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/BindingMailBoxViewController.h \
   /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SetFCodeViewController.h \
-  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/GoogleAuthViewController.h
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/GoogleAuthViewController.h \
+  /Users/chenhaoli/WorkPlace/Monster/Monster/Controller/SetPswViewController.h

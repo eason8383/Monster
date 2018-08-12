@@ -15,7 +15,9 @@
 
 - (void)getUserCoinInOutInfo:(NSString*)inOrOut Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
-- (void)updateUserPsw:(NSString*)newPsw verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+- (void)updatePsw:(NSString*)newPsw verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
+
+- (void)updateFundPsw:(NSString*)newPsw verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 
 - (void)saveUserIdentity:(NSString*)frontId backId:(NSString*)backId withId:(NSString*)withId withIdNo:(NSString*)idNo Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock;
 

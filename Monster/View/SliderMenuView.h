@@ -21,7 +21,7 @@
 @property(nonatomic,strong)IBOutlet UIButton *security_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *aboutus_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *setup_Btn;
-@property(nonatomic,strong)IBOutlet UIButton *logout_Btn;
+@property(nonatomic,strong)IBOutlet UIButton *benefit_Btn;
 @property(nonatomic,strong)IBOutlet UIButton *reflect_Btn;
 
 @property(nonatomic,strong)IBOutlet UILabel *nowSession;

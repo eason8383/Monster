@@ -22,9 +22,9 @@
 
 + (NSString *)environment{
     
-//    return MREnvironment_TEST;
+    return MREnvironment_TEST;
 //    return MREnvironment_Public;
-    return MREnvironment_PRE;
+//    return MREnvironment_PRE;
 }
 
 

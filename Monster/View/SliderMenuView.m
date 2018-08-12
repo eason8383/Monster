@@ -20,6 +20,8 @@
 @property(nonatomic,strong)IBOutlet UILabel *feedbackLabel;
 @property(nonatomic,strong)IBOutlet UILabel *settingLabel;
 
+@property(nonatomic,strong)IBOutlet UILabel *benefitLabel;
+
 @property(nonatomic,strong)IBOutlet UILabel *bSecretLabel;
 @property(nonatomic,strong)IBOutlet UILabel *sSecretLabel;
 @property(nonatomic,strong)IBOutlet UIImageView *eyeImg;
@@ -46,6 +48,7 @@
     [_aboutUsLabel setText:LocalizeString(@"ABOUTUS")];
     [_feedbackLabel setText:LocalizeString(@"FEEDBACK")];
     [_settingLabel setText:LocalizeString(@"SETTINGS")];
+    [_benefitLabel setText:LocalizeString(@"BENEFIT")];
     
     //    "MYWALLETVALUE" = "钱包资产估值";
     //    "MYASSET" = "我的资产";

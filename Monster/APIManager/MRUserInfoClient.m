@@ -83,7 +83,44 @@
     }];
 }
 
-- (void)updateUserPsw:(NSString*)newPsw verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
+- (void)updatePsw:(NSString*)newPsw verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
+    self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
+    
+    NSString *md5Psw = [self md5:newPsw];
+    NSDictionary *parameters = @{
+                                 @"source":@"03",
+                                 @"version":@"1.0",
+                                 @"mobileNo":self.userAccount.mobileNo,
+                                 @"userId":self.userAccount.userId?self.userAccount.userId:@"",
+                                 @"sessionId":self.userAccount.sessionId?self.userAccount.sessionId:@"",
+                                 @"verifyCode":verifyCode,
+                                 @"newPassword":md5Psw,
+                                 @"passwordType":@"L"
+                                 };
+    
+    NSString *jsonParameter = [parameters JSONString];
+    
+    [self getResponse:MR_RESETUSERPASSWORD action:EGUSER parametes:jsonParameter isEncrypt:NO complete:^(NSString *result) {
+        
+        NSDictionary *dic = [self dictionaryWithJsonString:result];
+        NSDictionary *resdic = [dic objectForKey:@"respCode"];
+        if (![[resdic objectForKey:@"code"] isEqualToString:@"00000"]) {
+            NSError *error = [NSError errorWithDomain:@"setup user psw error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            
+            failureBlock(error);
+            
+        } else {
+            successBlock(dic);
+        }
+        
+    } error:^(NSError *error) {
+        if (error) {
+            failureBlock(error);
+        }
+    }];
+}
+
+- (void)updateFundPsw:(NSString*)newPsw verifyCode:(NSString*)verifyCode Success:(void(^)(id response))successBlock failure:(void(^)(NSError*error))failureBlock{
     self.userAccount = [[MRWebClient sharedInstance]getUserAccount];
     
     NSString *md5Psw = [self md5:newPsw];
@@ -105,7 +142,7 @@
         NSDictionary *dic = [self dictionaryWithJsonString:result];
         NSDictionary *resdic = [dic objectForKey:@"respCode"];
         if (![[resdic objectForKey:@"code"] isEqualToString:@"00000"]) {
-            NSError *error = [NSError errorWithDomain:@"reset user psw error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
+            NSError *error = [NSError errorWithDomain:@"reset fund psw error" code:[[dic objectForKey:@"ErrorCode"]intValue] userInfo:dic];
             
             failureBlock(error);
             

@@ -11,6 +11,7 @@
 #import "BindingMailBoxViewController.h"
 #import "SetFCodeViewController.h"
 #import "GoogleAuthViewController.h"
+#import "SetPswViewController.h"
 //#import "JZNavigationExtension.h"
 
 @interface SecurityViewController ()
@@ -19,12 +20,15 @@
 @property(nonatomic,strong)IBOutlet UIButton *tideGoogleBtn;
 @property(nonatomic,strong)IBOutlet UIButton *tideAssetBtn;
 @property(nonatomic,strong)IBOutlet UIButton *tideMailBoxBtn;
+@property(nonatomic,strong)IBOutlet UIButton *pswBtn;
 
 @property(nonatomic,strong)IBOutlet UILabel *tideMobileLabel;
 @property(nonatomic,strong)IBOutlet UILabel *tideGoogleLabel;
 @property(nonatomic,strong)IBOutlet UILabel *tideAssetLabel;
 @property(nonatomic,strong)IBOutlet UILabel *tideMailBoxLabel;
+@property(nonatomic,strong)IBOutlet UILabel *pswLabel;
 
+@property(nonatomic,strong)IBOutlet UILabel *pswLabel_title;
 @property(nonatomic,strong)IBOutlet UILabel *mobileLabel_title;
 @property(nonatomic,strong)IBOutlet UILabel *googleLabel_title;
 @property(nonatomic,strong)IBOutlet UILabel *assetLabel_title;
@@ -42,6 +46,7 @@
     [_googleLabel_title setText:LocalizeString(@"GOOGLEAUTH")];
     [_assetLabel_title setText:LocalizeString(@"FUNDPSW")];
     [_mailBoxLabel_title setText:LocalizeString(@"LINKYOUREMAIL")];
+    [_pswLabel_title setText:LocalizeString(@"SETUPPSW")];
     
     [self initial];
 }
@@ -67,6 +72,7 @@
     [_tideMobileLabel setText:[MRWebClient sharedInstance].userAccount.mobileNo];
 //    NSString *email = [[NSUserDefaults standardUserDefaults]objectForKey:EMAIL_BINDING];
     
+    [_pswLabel setText:[NSString stringWithFormat:@"%@>",LocalizeString(@"SETTINGS")]];
     [_tideAssetLabel setText:[NSString stringWithFormat:@"%@>",LocalizeString(@"FIX")]];
     
     MRUserAccount *userAccount = [MRWebClient sharedInstance].userAccount;
@@ -83,7 +89,6 @@
     
 }
 
-
 - (IBAction)tapToVerify:(UIButton*)btn{
     UIViewController *cV = [[UIViewController alloc]init];
     switch (btn.tag) {
@@ -93,17 +98,21 @@
         }
             break;
         case 1:{
-            GoogleAuthViewController *googleVc = [[GoogleAuthViewController alloc]initWithNibName:@"GoogleAuthViewController" bundle:nil];
-            cV = googleVc;
+            SetPswViewController *pswVC = [[SetPswViewController alloc]initWithNibName:@"SetPswViewController" bundle:nil];
+            cV = pswVC;
         }
             break;
         case 2:{
-            SetFCodeViewController *sfVc = [[SetFCodeViewController alloc]initWithNibName:@"SetFCodeViewController" bundle:nil];
-            cV = sfVc;
+            GoogleAuthViewController *googleVc = [[GoogleAuthViewController alloc]initWithNibName:@"GoogleAuthViewController" bundle:nil];
+            cV = googleVc;
         }
             
             break;
         case 3:{
+            SetFCodeViewController *sfVc = [[SetFCodeViewController alloc]initWithNibName:@"SetFCodeViewController" bundle:nil];
+            cV = sfVc;
+        }
+        case 4:{
             BindingMailBoxViewController *bMailVc = [[BindingMailBoxViewController alloc]initWithNibName:@"BindingMailBoxViewController" bundle:nil];
             cV = bMailVc;
         }

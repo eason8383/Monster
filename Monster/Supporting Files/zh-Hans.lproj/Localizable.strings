@@ -74,6 +74,7 @@
 "MYORDER" = "我的订单";
 "IDVERIFICATIOM" = "身份认证";
 "SECURUTY" = "安全认证";
+"BENEFIT" = "官方福利";
 "ABOUTUS" = "关于我们";
 "FEEDBACK" = "问题反馈";
 "SETTINGS" = "设置";
@@ -203,6 +204,7 @@
 "BINDINYET" = "未绑定";
 "BINDING" = "已绑定";
 "FIX" = "修改";
+"SETUPPSW" = "设置密码";
 
 
 //Google Auth
@@ -217,7 +219,7 @@
 //set fund psw
 
 "SETFUNDPSW" = "设置资金密码";
-"CONFIRMPASSWORD" = "资金密码确认";
+"CONFIRMFUNDPASSWORD" = "资金密码确认";
 "SMSVERIFYCODE" = "短信验证码";
 
 "FUNDPSWPLACEHOLDER" = "6-12位的数字字母组合";
@@ -225,6 +227,11 @@
 "CONFIRMPSWISNOTTHESAME" = "两次密码输入不一致";
 
 "UPDATEPSWSUCCESS" = "密码更新成功";
+
+//set psw
+"CONFIRMPASSWORD" = "密码确认";
+"CONFIRMPSWPLACEHOLDER" = "请再次输入密码";
+"SETUPPSWSUCCESS" = "密码设置成功";
 
 //set email
 

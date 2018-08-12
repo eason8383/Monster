@@ -115,10 +115,14 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
     NSString *needShowWelcomeView = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWWELCOMEVIEW];
     
     if (![needShowWelcomeView isEqualToString:@"Showed"]) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"WelcomeView" owner:self options:nil];
-        _welView = [nib objectAtIndex:0];
-        [self.view addSubview:_welView];
+        [self showWelcomePage];
     }
+}
+
+- (void)showWelcomePage{
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"WelcomeView" owner:self options:nil];
+    _welView = [nib objectAtIndex:0];
+    [self.view addSubview:_welView];
 }
 
 - (void)handleSwipe:(id)sender {
@@ -283,23 +287,26 @@ static NSString *coinTrendsCellIdentifier = @"CoinTreCell";
             break;
         }
         case 4: {
-            AboutusViewController *abVc= [[AboutusViewController alloc]initWithNibName:@"AboutusViewController" bundle:nil];
-
-            cV = abVc;
-            
-            break;
+            [self showWelcomePage];
+            return;
         }
         case 5: {
-            ReflectionViewController *reVc = [[ReflectionViewController alloc]initWithNibName:@"ReflectionViewController" bundle:nil];
-            cV = reVc;
+            AboutusViewController *abVc= [[AboutusViewController alloc]initWithNibName:@"AboutusViewController" bundle:nil];
+            
+            cV = abVc;
         }
             break;
         case 6: {
+            ReflectionViewController *reVc = [[ReflectionViewController alloc]initWithNibName:@"ReflectionViewController" bundle:nil];
+            cV = reVc;
+        }
+        case 7:{
             SetupViewController *siVc = [[SetupViewController alloc]initWithNibName:@"SetupViewController" bundle:nil];
             cV = siVc;
             break;
         }
-        case 7:{
+            
+        case 8:{
             //Logout
             [[NSNotificationCenter defaultCenter] postNotificationName:DOLOGOUT object:nil];
             return;

@@ -39,7 +39,7 @@
 
 - (void)fillText{
     [_fundPswLabel setText:LocalizeString(@"FUNDPSW")];
-    [_fundPswConfirmLabel setText:LocalizeString(@"CONFIRMPASSWORD")];
+    [_fundPswConfirmLabel setText:LocalizeString(@"CONFIRMFUNDPASSWORD")];
     [_smsVerifyLabel setText:LocalizeString(@"SMSVERIFYCODE")];
     [_smsVerify_Btn setTitle:LocalizeString(@"GET_VERIFY_CODE") forState:UIControlStateNormal];
     [_smsVerify_Field setPlaceholder:LocalizeString(@"PLEASEENTERVERIFYCODE")];
@@ -122,7 +122,7 @@
         [self justShowAlert:LocalizeString(@"ERROR") message:LocalizeString(@"CONFIRMPSWISNOTTHESAME")];
     } else {
         [[VWProgressHUD shareInstance]showLoading];
-        [_udPswViewModel updatePsw:_foundPsw_Field.text verifyCode:_smsVerify_Field.text];
+        [_udPswViewModel updateFundPsw:_foundPsw_Field.text verifyCode:_smsVerify_Field.text];
     }
 }
 
@@ -134,7 +134,7 @@
     return matches;
 }
 
-- (void)updateSuccess:(NSDictionary *)udInfo{
+- (void)updateFundPswSuccess:(NSDictionary *)udInfo{
     [[VWProgressHUD shareInstance]dismiss];
     
     NSMutableArray *actions = [NSMutableArray array];

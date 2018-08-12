@@ -357,7 +357,7 @@ static RNFrostedSidebar *rn_frostedMenu;
     [self.contentView.aboutus_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView.setup_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView.reflect_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView.logout_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView.benefit_Btn addTarget:self action:@selector(tapDnBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView.close_Btn addTarget:self action:@selector(tapCloseBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.contentView];
@@ -392,9 +392,9 @@ static RNFrostedSidebar *rn_frostedMenu;
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAll;
-}
+//- (NSUInteger)supportedInterfaceOrientations {
+//    return UIInterfaceOrientationMaskAll;
+//}
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
@@ -481,7 +481,7 @@ static RNFrostedSidebar *rn_frostedMenu;
     blurFrame.origin.x = contentFrame.origin.x;
     blurFrame.size.width = _width;
     
-    void (^animations)() = ^{
+    void (^animations)(void) = ^{
         self.contentView.frame = contentFrame;
         self.blurView.frame = blurFrame;
     };

@@ -66,7 +66,6 @@
 		9B9DFD3620EF7CA900E56B2F /* CapitalDetailsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B9DFD3420EF7CA900E56B2F /* CapitalDetailsViewCell.xib */; };
 		9BA85A9820F0AC3F00C096B0 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA85A9620F0AC3F00C096B0 /* OrderDetailViewController.m */; };
 		9BA85A9920F0AC3F00C096B0 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA85A9720F0AC3F00C096B0 /* OrderDetailViewController.xib */; };
-		9BB945D820EC63C400B8D7BE /* NavigtionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB945D720EC63C400B8D7BE /* NavigtionController.m */; };
 		9BB945EB20EC6E8300B8D7BE /* HeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB945E920EC6E8300B8D7BE /* HeadTableViewCell.m */; };
 		9BB945EC20EC6E8300B8D7BE /* HeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB945EA20EC6E8300B8D7BE /* HeadTableViewCell.xib */; };
 		9BB945F120EC6ED200B8D7BE /* MainPageHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB945F020EC6ED200B8D7BE /* MainPageHeadView.xib */; };
@@ -128,6 +127,8 @@
 		D73E1E76211C45D10093B5E2 /* Group25.png in Resources */ = {isa = PBXBuildFile; fileRef = D73E1E78211C45D10093B5E2 /* Group25.png */; };
 		D73E1E7F211C4EBD0093B5E2 /* Group25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D73E1E7D211C4EBD0093B5E2 /* Group25@2x.png */; };
 		D73E1E83211C4ED90093B5E2 /* Group25@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D73E1E81211C4ED80093B5E2 /* Group25@3x.png */; };
+		D73E1E8D2120136F0093B5E2 /* SetPswViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73E1E8B2120136F0093B5E2 /* SetPswViewController.m */; };
+		D73E1E8E2120136F0093B5E2 /* SetPswViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73E1E8C2120136F0093B5E2 /* SetPswViewController.xib */; };
 		D741B5592109BB4C00451FF0 /* FeedbackViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D741B5582109BB4C00451FF0 /* FeedbackViewModel.m */; };
 		D7441B2F211AE6250076C706 /* OrderHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7441B2E211AE6250076C706 /* OrderHistoryViewModel.m */; };
 		D745E25520F74E9B0001EA11 /* TradeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D745E25420F74E9B0001EA11 /* TradeViewModel.m */; };
@@ -309,8 +310,6 @@
 		9BA85A9520F0AC3F00C096B0 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		9BA85A9620F0AC3F00C096B0 /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		9BA85A9720F0AC3F00C096B0 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
-		9BB945D620EC63C400B8D7BE /* NavigtionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigtionController.h; sourceTree = "<group>"; };
-		9BB945D720EC63C400B8D7BE /* NavigtionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigtionController.m; sourceTree = "<group>"; };
 		9BB945E820EC6E8300B8D7BE /* HeadTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadTableViewCell.h; sourceTree = "<group>"; };
 		9BB945E920EC6E8300B8D7BE /* HeadTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadTableViewCell.m; sourceTree = "<group>"; };
 		9BB945EA20EC6E8300B8D7BE /* HeadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadTableViewCell.xib; sourceTree = "<group>"; };
@@ -409,6 +408,9 @@
 		D73E1E80211C4EC90093B5E2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/Group25@2x.png"; sourceTree = "<group>"; };
 		D73E1E82211C4ED80093B5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/Group25@3x.png"; sourceTree = "<group>"; };
 		D73E1E84211C4EE00093B5E2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/Group25@3x.png"; sourceTree = "<group>"; };
+		D73E1E8A2120136F0093B5E2 /* SetPswViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetPswViewController.h; sourceTree = "<group>"; };
+		D73E1E8B2120136F0093B5E2 /* SetPswViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetPswViewController.m; sourceTree = "<group>"; };
+		D73E1E8C2120136F0093B5E2 /* SetPswViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetPswViewController.xib; sourceTree = "<group>"; };
 		D741B5572109BB4C00451FF0 /* FeedbackViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackViewModel.h; sourceTree = "<group>"; };
 		D741B5582109BB4C00451FF0 /* FeedbackViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewModel.m; sourceTree = "<group>"; };
 		D7441B2D211AE6250076C706 /* OrderHistoryViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderHistoryViewModel.h; sourceTree = "<group>"; };
@@ -711,8 +713,6 @@
 				9B87073D20EB453600156E39 /* HomePageViewController.h */,
 				9B87073E20EB453600156E39 /* HomePageViewController.m */,
 				9B87073F20EB453600156E39 /* HomePageViewController.xib */,
-				9BB945D620EC63C400B8D7BE /* NavigtionController.h */,
-				9BB945D720EC63C400B8D7BE /* NavigtionController.m */,
 				9BB9461120ECD90600B8D7BE /* CoinDetailViewController.h */,
 				9BB9461220ECD90600B8D7BE /* CoinDetailViewController.m */,
 				9BB9461320ECD90600B8D7BE /* CoinDetailViewController.xib */,
@@ -764,6 +764,9 @@
 				D735D7BA20F0C17D007E2B7C /* SetFCodeViewController.h */,
 				D735D7BB20F0C17D007E2B7C /* SetFCodeViewController.m */,
 				D735D7BC20F0C17D007E2B7C /* SetFCodeViewController.xib */,
+				D73E1E8A2120136F0093B5E2 /* SetPswViewController.h */,
+				D73E1E8B2120136F0093B5E2 /* SetPswViewController.m */,
+				D73E1E8C2120136F0093B5E2 /* SetPswViewController.xib */,
 				D708218B20F48C80002AEDA2 /* AboutusViewController.h */,
 				D708218C20F48C80002AEDA2 /* AboutusViewController.m */,
 				D708218D20F48C80002AEDA2 /* AboutusViewController.xib */,
@@ -1128,6 +1131,7 @@
 				D73E1E4C211C36320093B5E2 /* img1_e.png in Resources */,
 				9B7EEE8D20E9C39000DF88B4 /* Main.storyboard in Resources */,
 				9BB9461F20ECE85F00B8D7BE /* MarketTableViewCell.xib in Resources */,
+				D73E1E8E2120136F0093B5E2 /* SetPswViewController.xib in Resources */,
 				9BA85A9920F0AC3F00C096B0 /* OrderDetailViewController.xib in Resources */,
 				D75939262107358B004E75FF /* InstructionViewController.xib in Resources */,
 			);
@@ -1238,6 +1242,7 @@
 				D73B24E9210823F00045E77B /* UITextView+ZWPlaceHolder.m in Sources */,
 				9B4F1DB620EF6B9700DEF626 /* WithdrawViewController.m in Sources */,
 				9B4F1D8420EE3E1700DEF626 /* CoinCanUseViewCell.m in Sources */,
+				D73E1E8D2120136F0093B5E2 /* SetPswViewController.m in Sources */,
 				D71F719C20F84FF9003513C5 /* UCoinQuantity.m in Sources */,
 				D7CAB0D420F3096B00B8B99B /* ZYWLineModel.m in Sources */,
 				9B7703422102C47D00F64E85 /* IdentityViewModel.m in Sources */,
@@ -1249,7 +1254,6 @@
 				D7441B2F211AE6250076C706 /* OrderHistoryViewModel.m in Sources */,
 				9B7EEEC320EA030A00DF88B4 /* LoginViewController.m in Sources */,
 				D722C43121196E2B000944E0 /* LanguageViewController.m in Sources */,
-				9BB945D820EC63C400B8D7BE /* NavigtionController.m in Sources */,
 				D7CAB0CE20F3094000B8B99B /* ZYWLineView.m in Sources */,
 				9BB945FD20ECA2B400B8D7BE /* MACDTableViewCell.m in Sources */,
 				9B87074B20EB639900156E39 /* SliderMenuView.m in Sources */,
